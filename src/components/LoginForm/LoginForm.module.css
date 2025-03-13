@@ -1,0 +1,109 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  .form {
+    gap: 16px;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid rfb(38, 38, 38, 0.15);
+  transition: border-color 0.3s ease;
+  border-radius: 30px;
+  font-size: 14px;
+  outline: none;
+}
+@media screen and (min-width: 768px) {
+  .input {
+    font-size: 16px;
+    padding: 16px 40px 16px 16px;
+  }
+}
+
+input.default {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+}
+input.valid {
+  border-color: #08aa83;
+}
+input.focus {
+  border-color: #f6b83d;
+}
+input.invalid {
+  border-color: #ef2447;
+}
+.error {
+  font-size: 16px;
+  margin-left: 16px;
+  color: #ef2447;
+}
+.togglePassword {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  background: none;
+  color: #f6b83d;
+  transition: color 0.3s ease;
+}
+input.invalid + .togglePassword {
+  margin-bottom: 17px;
+}
+@media screen and (min-width: 768px) {
+  .togglePassword {
+    right: 16px;
+    font-size: 32px;
+    margin-top: 5px;
+  }
+}
+.togglePassword:hover {
+  color: #f9b020;
+}
+
+.validIcon {
+  position: absolute;
+  right: 50px;
+  font-size: 18px;
+}
+.invalidIcon {
+  position: absolute;
+  right: 50px;
+  font-size: 18px;
+  fill: red;
+}
+.button {
+  margin-top: 14px;
+  padding: 12px;
+  background-color: #f6b83d;
+  border: none;
+  border-radius: 30px;
+  color: #ffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: 16px;
+    padding: 16px;
+    font-size: 16px;
+  }
+}
+button:hover {
+  background-color: #f9b020;
+}
