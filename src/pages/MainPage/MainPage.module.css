@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/imgs/mobile/main-mob@1x.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100dvh;
+  flex-shrink: 0;
+}
+
+@media only screen and (min-width: 320px) and (min-resolution: 192dpi) {
+  .container {
+    background-image: url(../../assets/imgs/mobile/main-mob@2x.jpg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    background-image: url(../../assets/imgs/tablet/main-tablet@1x.jpg);
+  }
+}
+
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .container {
+    background-image: url(../../assets/imgs/tablet/main-tablet@2x.jpg);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    background-image: url(../../assets/imgs/desktop/main-desk@1x.jpg);
+  }
+}
+
+@media screen and (min-width: 1280px) and (min-resolution: 192dpi) {
+  .container {
+    background-image: url(../../assets/imgs/desktop/main-desk@2x.jpg);
+  }
+}
+
+.logoMain {
+  fill: var(--white-color);
+  width: 190px;
+  height: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoMain {
+    width: 375px;
+    height: 100px;
+  }
+}
