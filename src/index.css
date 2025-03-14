@@ -9,7 +9,9 @@
   --black-color: #262626;
   --female-color: #f43f5e;
   --female-hover: rgba(244, 63, 94, 0.1);
+  --input-default: rgba(38, 38, 38, 0.15);
   --male-color: #54adff;
+  --text-color: rgba(255, 255, 255, 1);
   --male-hover: rgba(84, 173, 255, 0.1);
   --both-color: rgba(246, 184, 61, 1);
   --both-hover-icon: rgba(255, 244, 223, 1);

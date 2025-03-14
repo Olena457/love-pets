@@ -59,13 +59,11 @@ input.invalid {
   color: var(--main-color);
   transition: color 0.3s ease;
 }
-input.invalid + .togglePassword {
-  margin-bottom: 17px;
-}
+
 @media screen and (min-width: 768px) {
   .togglePassword {
     right: 16px;
-    font-size: 32px;
+    font-size: 22px;
     margin-top: 5px;
   }
 }
@@ -83,6 +81,13 @@ input.invalid + .togglePassword {
   right: 50px;
   font-size: 18px;
   fill: var(--red-color);
+}
+@media screen and(min-width:768px) {
+  .validIcon,
+  .invalidIcon {
+    font-size: 22px;
+    right: 52px;
+  }
 }
 .button {
   margin-top: 14px;
