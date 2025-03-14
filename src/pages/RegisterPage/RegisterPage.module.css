@@ -1,0 +1,85 @@
+.pageRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+}
+@media screen and (min-width: 768px) {
+  .pageRegister {
+    padding: 32px;
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .pageRegister {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-color: var(--white-color);
+  border-radius: 30px;
+  padding: 27px 20px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    border-radius: 60px;
+    padding: 30px 140px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 82px 84px;
+  }
+}
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 768px) {
+  .titleContainer {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+}
+.description {
+  font-size: 14px;
+  font-weight: 500;
+}
+@media screen and (min-width: 768px) {
+  .description {
+    gap: 18px;
+  }
+}
+.footerDescription,
+.footerDescription a {
+  display: flex;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.footerDescription {
+  margin-bottom: 12px;
+  color: var(--input-default);
+}
+@media screen and (min-width: 768px) {
+  .footerDescription,
+  .footerDescription a {
+    font-size: 14px;
+  }
+  .footerDescription {
+    margin-top: 16px;
+  }
+}
+.footerDescription a {
+  color: var(--main-color);
+}
+.footerDescription a:hover {
+  text-decoration: underline;
+}
