@@ -46,3 +46,27 @@ export const signout = createAsyncThunk(
     }
   }
 );
+export const getCurrentUser = createAsyncThunk(
+  'user/current',
+  async (_, thukAPi) => {
+    try {
+      prepareAuthHeader(thukAPi);
+      const response = await axiosInstance.get('/user/current');
+      return response.data.data;
+    } catch (error) {
+      return thukAPi.rejectWithValue(error.reponse.data);
+    }
+  }
+);
+export const getCurrentUserFullInfo = createAsyncThunk(
+  'user/current/full',
+  async (_, thukAPI) => {
+    try {
+      prepareAuthHeader(thukAPI);
+      const response = await axiosInstance.get('/user/current/full');
+      return response.data.data;
+    } catch (error) {
+      return thukAPI.rejectWithValue(error.reponse.data);
+    }
+  }
+);

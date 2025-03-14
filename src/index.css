@@ -1,3 +1,20 @@
+:root {
+  --main-color: #f6b83d;
+  --main-light: #fff4df;
+  --dark-hover: #f9b020;
+  --hover-light: #fbe7c1;
+  --red-color: #ef2447;
+  --green-color: #08aa83;
+  --white-color: #ffffff;
+  --black-color: #262626;
+  --female-color: #f43f5e;
+  --female-hover: rgba(244, 63, 94, 0.1);
+  --male-color: #54adff;
+  --male-hover: rgba(84, 173, 255, 0.1);
+  --both-color: rgba(246, 184, 61, 1);
+  --both-hover-icon: rgba(255, 244, 223, 1);
+}
+
 body {
   font-family: 'Monroe', sans-serif;
   font-weight: 400;
