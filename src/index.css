@@ -24,7 +24,7 @@ body {
   font-style: normal;
   margin: 0 auto;
   padding: 0;
-  place-items: center;
+  /* place-items: center; */
   min-width: 1440px;
   color: #262626;
   background-color: #f9f9f9;
