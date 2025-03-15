@@ -1,0 +1,90 @@
+.iconCross {
+  width: 24px;
+  height: 24px;
+}
+.iconCat {
+  width: 80px;
+  height: 80px;
+  /* margin-bottom: 20px; */
+}
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modalContent {
+  background: var(--white-color);
+  padding: 40px 28px;
+  border-radius: 30px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  justify-items: center;
+}
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--black-color);
+  cursor: pointer;
+}
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.message {
+  color: var(--black-color);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.confirmButton,
+.cancelButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 12px 0;
+  width: 135px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.3 ease;
+  transition: background-color 0.3 ease;
+}
+@media screen and (max-width: 375px) {
+  .confirmButton,
+  .cancelButton {
+    width: 112px;
+  }
+}
+.confirmButton {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+.cancelButton:hover {
+  background-color: #e5e7eb;
+}
+.confirmButton:hover {
+  background-color: #f9a825;
+}

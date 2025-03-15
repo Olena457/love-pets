@@ -22,7 +22,7 @@ const Loader = () => {
 
   return (
     <div className={css.container}>
-      <Icon id="icon-logo" className={css.logoMain} />
+      <Icon id="main-logo" className={css.logoMain} />
       <div className={css.loader}>
         <CircularProgressbar
           value={progress}

@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+}
+
+.headerMenu {
+  display: none;
+}
+@media screen and (min-widt: 1280px) {
+  .headerMenu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: 167px;
+  }
+}
+.nav .menuIcon {
+  cursor: pointer;
+}
+@media screen and(min-width:768px) {
+  .nav .menuIcon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.homeNav .icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.menuButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100dvh;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 20px 40px;
+  z-index: 100;
+}
+
+.homeNav .burgerMenu {
+  fill: var(--white-color);
+}
+.closeIcon {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  fill: var(--white-color);
+  cursor: pointer;
+}
+.homeNav .closeIcon {
+  fill: #262626;
+}
+.menuList {
+  display: flex;
+  justify-content: center;
+  color: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 15px 20px;
+  transition: color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+.homeNav .menuItem {
+  color: var(--black-color);
+  border-color: var(--input-default);
+}
+.menuItem :hover,
+.menuItem :active {
+  border-color: var(--white-color);
+}
+.homeNav .menuItem :hover,
+.homeNav .menuItem :active {
+  border-color: var(--main-color);
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  border-color: var(--main-light);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userIcon {
+  width: 24px;
+  height: 24px;
+}
+.authButtons {
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .headerNav {
+    display: flex;
+    gap: 8px;
+    margin-right: 16px;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .menuButton {
+    display: none;
+  }
+  .bergerMenu {
+    display: none;
+  }
+  .headerNav {
+    margin-right: 0;
+  }
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .menuItem {
+    background: transparent;
+    color: var(--black-color);
+    font-size: 16px;
+    padding: 15px 20px;
+    font-weight: 500;
+    transition: color 0.3 ease;
+    transition: border-color 0.3 ease;
+    cursor: pointer;
+    background-repeat: 30px;
+    border: 1px solid var(--input-default);
+  }
+  .homeNav .menuItem {
+    color: var(--white-color);
+    border-radius: 1px solid var(--light-border-color);
+  }
+  .homeNav .menuItem :hover,
+  .homeNav .menuItem :focus,
+  .homeNav .menuItem :active {
+    border-color: var(--white-color);
+  }
+  .menuItem :hover,
+  .menuItem :focus,
+  .menuItem :active {
+    border-color: var(--main-color);
+  }
+}

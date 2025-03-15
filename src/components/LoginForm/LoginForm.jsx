@@ -65,8 +65,6 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.inputWrapper}>
-        <Icon id="mail" className={css.icon} />{' '}
-        {/* Іконка для поля електронної пошти */}
         <input
           type="email"
           placeholder="Email"
