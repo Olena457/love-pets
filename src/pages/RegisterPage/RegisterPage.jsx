@@ -5,12 +5,12 @@ import css from './RegisterPage.module.css';
 
 const RegisterPage = () => {
   const registerImages = {
-    mobile1x: '../../img/register-mobile@1x.jpg',
-    mobile2x: '../../img/register-mobile@2x.jpg',
-    tablet1x: '../../img/register-tablet@1x.jpg',
-    tablet2x: '../../img/register-tablet@2x.jpg',
-    desktop1x: '../../img/register-desktop@1x.jpg',
-    desktop2x: '../../img/register-desktop@2x.jpg',
+    mobile1x: '../../assets/imgs/mobile/register-mob@1x.png',
+    mobile2x: '../../assets/imgs/mobile/register-mob@2x.png',
+    tablet1x: '../../assets/imgs/tablet/register-tablet@1x.png',
+    tablet2x: '../../assets/imgs/tablet/register-tablet@2x.png',
+    desktop1x: '../../assets/imgs/desktop/register-desk@1x.png',
+    desktop2x: '../../assets/imgs/desktop/register-desk@2x.png',
   };
 
   return (

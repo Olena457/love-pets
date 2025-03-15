@@ -53,3 +53,31 @@
     height: 100px;
   }
 }
+.loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .loader {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+.progressText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1.6;
+  letter-spacing: -0.04em;
+}
