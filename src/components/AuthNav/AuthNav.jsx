@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import css from './AuthNav.module.css';
 const AuthNav = ({ onClose }) => {
   const location = useLocation();
-  const isHome = location.pathname === '/home';
+  const isHomePage = location.pathname === '/home';
   return (
     <div className={`${css.authNav} ${isHomePage ? css.authNavHome : ''}`}>
       <Link to="/login" className={css.loginButton} onClick={onClose}>

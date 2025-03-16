@@ -2,16 +2,16 @@ import { useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
 import css from './UserNav.module.css';
 import { useState } from 'react';
-import { singout } from '../../redux/users/usersOperations.js';
+import { signout } from '../../redux/users/usersOperations.js';
 import ModalAction from '../ModalAction/ModalAction.jsx';
 
 const UserNav = ({ onClose }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home';
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleLogout = () => {
-    dispatch(singout());
+    dispatch(signout());
     if (onClose) {
       onClose();
     }

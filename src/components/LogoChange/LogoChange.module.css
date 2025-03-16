@@ -1,0 +1,10 @@
+.logoChange {
+  width: 79px;
+  height: 20px;
+}
+@media screen and (min-width: 768px) {
+  .logoChange {
+    width: 105px;
+    height: 28px;
+  }
+}

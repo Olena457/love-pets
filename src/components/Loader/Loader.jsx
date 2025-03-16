@@ -1,4 +1,4 @@
-import css from './MainPage.module.css';
+import css from './Loader.module.css';
 import Icon from '../../components/Icon/Icon.jsx';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

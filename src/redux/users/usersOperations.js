@@ -8,7 +8,7 @@ const prepareAuthHeader = thunkAPI => {
   }
   setAuthHeader(token);
 };
-export const singup = createAsyncThunk(
+export const signup = createAsyncThunk(
   'user/singup',
   async (userData, { rejectWithValue }) => {
     try {
