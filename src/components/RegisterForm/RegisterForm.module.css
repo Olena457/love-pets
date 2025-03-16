@@ -33,7 +33,7 @@
 }
 
 input.default {
-  border: 1px solidvar(--input-default);
+  border: 1px solid var(--input-default);
 }
 input.valid {
   border-color: var(--green-color);

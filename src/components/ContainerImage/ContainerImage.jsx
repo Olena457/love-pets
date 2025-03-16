@@ -1,4 +1,4 @@
-import css from './ImageContainer.module.css';
+import css from './ContainerImage.module.css';
 
 const ContainerImage = ({ images }) => {
   return (
@@ -6,17 +6,14 @@ const ContainerImage = ({ images }) => {
       <img
         src={images.mobile1x}
         srcSet={`
-          ${images.mobile1x} 320w,
-          ${images.mobile2x} 320w,
-          ${images.tablet1x} 768w,
-          ${images.tablet2x} 768w,
-          ${images.desktop1x} 1280w,
-          ${images.desktop2x} 1280w
+          ${images.mobile1x} 1x, ${images.mobile2x} 2x,
+          ${images.tablet1x} 768w, ${images.tablet2x} 768w,
+          ${images.desktop1x} 1280w, ${images.desktop2x} 1280w
         `}
         sizes="(min-width: 1280px) 1280px, 
                (min-width: 768px) 768px, 
-               320px"
-        alt="Pet"
+               100vw"
+        alt="Pet representation"
         className={css.petImage}
       />
     </div>

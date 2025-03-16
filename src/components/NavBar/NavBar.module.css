@@ -28,7 +28,7 @@
   align-items: center;
   gap: 12px;
 }
-.menuButton {
+/* .menuButton {
   position: absolute;
   top: 0;
   right: 0;
@@ -41,7 +41,7 @@
   justify-content: space-between;
   padding: 120px 20px 40px;
   z-index: 100;
-}
+} */
 
 .homeNav .burgerMenu {
   fill: var(--white-color);

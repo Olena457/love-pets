@@ -22,7 +22,7 @@
   flex-direction: column;
   width: 100%;
 
-  border-color: var(--white-color);
+  background-color: var(--text-color);
   border-radius: 30px;
   padding: 27px 20px;
 }

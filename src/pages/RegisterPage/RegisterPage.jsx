@@ -2,20 +2,27 @@ import Title from '../../components/Title/Title.jsx';
 import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
 import RegisterForm from '../../components/RegisterForm/RegisterForm.jsx';
 import css from './RegisterPage.module.css';
+import catImageMobile1x from '../../assets/imgs/mobile/register-mob@1x.png';
+import catImageMobile2x from '../../assets/imgs/mobile/register-mob@2x.png';
+import catImageTablet1x from '../../assets/imgs/tablet/register-tablet@1x.png';
+import catImageTablet2x from '../../assets/imgs/tablet/register-tablet@2x.png';
+import catImageDesktop1x from '../../assets/imgs/desktop/register-desk@1x.png';
+import catImageDesktop2x from '../../assets/imgs/desktop/register-desk@2x.png';
 
 const RegisterPage = () => {
-  const registerImages = {
-    mobile1x: '../../assets/imgs/mobile/register-mob@1x.png',
-    mobile2x: '../../assets/imgs/mobile/register-mob@2x.png',
-    tablet1x: '../../assets/imgs/tablet/register-tablet@1x.png',
-    tablet2x: '../../assets/imgs/tablet/register-tablet@2x.png',
-    desktop1x: '../../assets/imgs/desktop/register-desk@1x.png',
-    desktop2x: '../../assets/imgs/desktop/register-desk@2x.png',
-  };
-
   return (
     <div className={css.pageRegister}>
-      <ContainerImage images={registerImages} />
+      <ContainerImage
+        images={{
+          mobile1x: catImageMobile1x,
+          mobile2x: catImageMobile2x,
+          tablet1x: catImageTablet1x,
+          tablet2x: catImageTablet2x,
+          desktop1x: catImageDesktop1x,
+          desktop2x: catImageDesktop2x,
+        }}
+      />
+      ;
       <div className={css.container}>
         <div className={css.titleContainer}>
           <Title title="Register" />
@@ -24,10 +31,10 @@ const RegisterPage = () => {
           </p>
         </div>
         <RegisterForm />
-        <p className={css.footerDescription}>
-          Already have an account?<a href="/login">Login</a>
-        </p>
       </div>
+      <p className={css.footerDescription}>
+        Already have an account?<a href="/register">register</a>
+      </p>
     </div>
   );
 };

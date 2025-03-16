@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { signup } from '../../redux/users/usersOperations.js';
-import css from './LoginForm.module.css';
+import css from './RegisterForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../Icon/Icon.jsx';
 
