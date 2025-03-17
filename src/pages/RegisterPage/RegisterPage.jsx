@@ -22,7 +22,7 @@ const RegisterPage = () => {
           desktop2x: catImageDesktop2x,
         }}
       />
-      ;
+
       <div className={css.container}>
         <div className={css.titleContainer}>
           <Title title="Register" />
@@ -32,9 +32,6 @@ const RegisterPage = () => {
         </div>
         <RegisterForm />
       </div>
-      <p className={css.footerDescription}>
-        Already have an account?<a href="/register">register</a>
-      </p>
     </div>
   );
 };

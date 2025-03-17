@@ -19,6 +19,23 @@
   --both-hover-icon: rgba(255, 244, 223, 1);
 }
 
+/* body {
+  font-family: 'Monroe', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  min-width: 1440px;
+  color: #262626;
+  background-color: #f9f9f9;
+} */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 body {
   font-family: 'Monroe', sans-serif;
   font-weight: 400;
@@ -27,7 +44,10 @@ body {
   margin: 0 auto;
   padding: 0;
   /* place-items: center; */
-  min-width: 1440px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  overflow-x: hidden;
   color: #262626;
   background-color: #f9f9f9;
 }

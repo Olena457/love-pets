@@ -4,7 +4,7 @@ const ContainerImage = ({ images }) => {
   return (
     <div className={css.petContainer}>
       <img
-        src={images.mobile1x}
+        src={images.desck1x}
         srcSet={`
           ${images.mobile1x} 1x, ${images.mobile2x} 2x,
           ${images.tablet1x} 768w, ${images.tablet2x} 768w,

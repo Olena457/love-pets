@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import eyeIcon from '../../assets/icons/eyeIcon.svg';
+import showEye from '../../assets/icons/showEye.svg';
 import { useDispatch } from 'react-redux';
 import { signup } from '../../redux/users/usersOperations.js';
 import css from './RegisterForm.module.css';
@@ -61,9 +63,15 @@ const RegisterForm = () => {
   const getValidationIcon = field => {
     if (touchedFields[field]) {
       return errors[field] ? (
-        <Icon id="cross" className={css.invalidIcon} />
+        <Icon
+          id="cross"
+          width={16}
+          height={16}
+          className={css.invalidIcon}
+          stroke="#ef2447"
+        />
       ) : (
-        <Icon id="check" className={css.validIcon} />
+        <Icon id="check" width={16} height={16} className={css.validIcon} />
       );
     }
     return null;
@@ -105,7 +113,6 @@ const RegisterForm = () => {
       {errors.email && <p className={css.error}>{errors.email.message}</p>}
 
       <div className={css.inputWrapper}>
-        <Icon id="eye-off" className={css.icon} />
         <input
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
@@ -119,7 +126,11 @@ const RegisterForm = () => {
           className={css.togglePassword}
           onClick={() => setShowPassword(prev => !prev)}
         >
-          {showPassword ? <Icon id="eye-off" /> : <Icon id="eye" />}
+          {showPassword ? (
+            <img src={showEye} alt="eye show" />
+          ) : (
+            <img src={eyeIcon} alt="eye hide" />
+          )}
         </button>
       </div>
       {errors.password && (
@@ -127,7 +138,6 @@ const RegisterForm = () => {
       )}
 
       <div className={css.inputWrapper}>
-        <Icon id="eye-off" className={css.icon} />
         <input
           type={showConfirmPassword ? 'text' : 'password'}
           placeholder="Confirm password"
@@ -141,7 +151,11 @@ const RegisterForm = () => {
           className={css.togglePassword}
           onClick={() => setShowConfirmPassword(prev => !prev)}
         >
-          {showConfirmPassword ? <Icon id="eye-off" /> : <Icon id="eye" />}
+          {showConfirmPassword ? (
+            <img src={showEye} alt="eye show" />
+          ) : (
+            <img src={eyeIcon} alt="eye hide" />
+          )}
         </button>
       </div>
       {errors.confirmPassword && (
@@ -151,6 +165,9 @@ const RegisterForm = () => {
       <button type="submit" className={css.button}>
         Registration
       </button>
+      <p className={css.footerDescription}>
+        Already have an account?<a href="/register">Login</a>
+      </p>
     </form>
   );
 };

@@ -9,6 +9,8 @@ const LogoChange = ({ isHomePage }) => {
         <div className={css.headerNav}>
           <Link to="/home">
             <Icon
+              width={79}
+              height={20}
               id={isHomePage ? 'logo-white' : 'logo'}
               className={css.logoChange}
             />

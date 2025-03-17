@@ -1,6 +1,7 @@
 .logoChange {
   width: 79px;
   height: 20px;
+  display: inline-block;
 }
 @media screen and (min-width: 768px) {
   .logoChange {

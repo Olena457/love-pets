@@ -31,6 +31,9 @@
     padding: 16px 40px 16px 16px;
   }
 }
+form input:first-child {
+  margin-top: 10px;
+}
 
 input.default {
   border: 1px solid var(--input-default);
@@ -56,8 +59,6 @@ input.invalid {
   font-size: 18px;
   border: none;
   background: none;
-  color: var(--main-color);
-  transition: color 0.3s ease;
 }
 input.invalid + .togglePassword {
   margin-bottom: 17px;
@@ -68,9 +69,6 @@ input.invalid + .togglePassword {
     font-size: 32px;
     margin-top: 5px;
   }
-}
-.togglePassword:hover {
-  color: var(--dark-hover);
 }
 
 .validIcon {
@@ -94,6 +92,7 @@ input.invalid + .togglePassword {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -106,4 +105,30 @@ input.invalid + .togglePassword {
 }
 button:hover {
   background-color: var(--dark-hover);
+}
+.footerDescription,
+.footerDescription a {
+  display: flex;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.footerDescription {
+  margin-bottom: 12px;
+  color: var(--input-default);
+}
+@media screen and (min-width: 768px) {
+  .footerDescription,
+  .footerDescription a {
+    font-size: 14px;
+  }
+  .footerDescription {
+    margin-top: 16px;
+  }
+}
+.footerDescription a {
+  color: var(--main-color);
+}
+.footerDescription a:hover {
+  text-decoration: underline;
 }

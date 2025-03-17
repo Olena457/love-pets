@@ -44,31 +44,49 @@ input.focus {
 input.invalid {
   border-color: var(--red-color);
 }
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+}
+@media screen and (min-width: 768px) {
+  .description {
+    gap: 18px;
+  }
+}
 .error {
   font-size: 16px;
   margin-left: 16px;
   color: var(--red-color);
 }
-.togglePassword {
+/* .togglePassword {
   position: absolute;
   right: 10px;
   cursor: pointer;
   font-size: 18px;
   border: none;
   background: none;
-  color: var(--main-color);
   transition: color 0.3s ease;
+} */
+.togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 @media screen and (min-width: 768px) {
   .togglePassword {
     right: 16px;
     font-size: 22px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
   }
-}
-.togglePassword:hover {
-  color: var(--dark-hover);
 }
 
 .validIcon {
@@ -80,7 +98,7 @@ input.invalid {
   position: absolute;
   right: 50px;
   font-size: 18px;
-  fill: var(--red-color);
+  stroke: #ef2447;
 }
 @media screen and(min-width:768px) {
   .validIcon,
@@ -101,6 +119,7 @@ input.invalid {
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 @media screen and (min-width: 768px) {
   .button {
@@ -111,4 +130,30 @@ input.invalid {
 }
 button:hover {
   background-color: var(--dark-hover);
+}
+.footerDescription,
+.footerDescription a {
+  display: flex;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.footerDescription {
+  margin-bottom: 12px;
+  color: var(--input-default);
+}
+@media screen and (min-width: 768px) {
+  .footerDescription,
+  .footerDescription a {
+    font-size: 14px;
+  }
+  .footerDescription {
+    margin-top: 16px;
+  }
+}
+.footerDescription a {
+  color: var(--main-color);
+}
+.footerDescription a:hover {
+  text-decoration: underline;
 }
