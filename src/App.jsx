@@ -6,6 +6,7 @@ import Header from './components/Header/Header.jsx';
 import Layout from './components/Layout/Layout.jsx';
 
 const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
+const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
 const RegisterPage = lazy(() =>
   import('../src/pages/RegisterPage/RegisterPage.jsx')
 );
@@ -27,7 +28,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/news" element={<NewsPage />} /> */}
+        <Route path="/news" element={<NewsPage />} />
         {/* <Route path="/add" element={<AddPage />} /> */}
         <Route
           path="/profile"

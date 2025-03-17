@@ -82,7 +82,7 @@ input.invalid + .togglePassword {
   font-size: 18px;
   fill: var(--red-color);
 }
-.button {
+.loginBtn {
   margin-top: 14px;
   padding: 12px;
   background-color: var(--main-color);
@@ -97,13 +97,13 @@ input.invalid + .togglePassword {
   transition: background-color 0.3s ease;
 }
 @media screen and (min-width: 768px) {
-  .button {
+  .loginBtn {
     font-size: 16px;
     padding: 16px;
     font-size: 16px;
   }
 }
-button:hover {
+.loginBtn:hover {
   background-color: var(--dark-hover);
 }
 .footerDescription,

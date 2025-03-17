@@ -79,7 +79,6 @@ const LoginForm = () => {
       {errors.email && <p className={css.error}>{errors.email.message}</p>}
 
       <div className={css.inputWrapper}>
-        {/* <Icon id="eye-off" className={css.icon} /> */}
         <input
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
@@ -94,9 +93,9 @@ const LoginForm = () => {
           onClick={() => setShowPassword(prev => !prev)}
         >
           {showPassword ? (
-            <img src={showEye} alt="eye show" />
+            <img src={showEye} alt="eye show" width="20" height="20" />
           ) : (
-            <img src={eyeIcon} alt="eye hide" />
+            <img src={eyeIcon} alt="eye hide" width="20" height="20" />
           )}
         </button>
       </div>
@@ -104,7 +103,7 @@ const LoginForm = () => {
         <p className={css.error}>{errors.password.message}</p>
       )}
 
-      <button type="submit" className={css.button}>
+      <button type="submit" className={css.loginBtn}>
         Login
       </button>
       <p className={css.footerDescription}>

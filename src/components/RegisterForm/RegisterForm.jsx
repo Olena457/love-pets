@@ -127,9 +127,9 @@ const RegisterForm = () => {
           onClick={() => setShowPassword(prev => !prev)}
         >
           {showPassword ? (
-            <img src={showEye} alt="eye show" />
+            <img src={showEye} alt="eye show" width="20" height="20" />
           ) : (
-            <img src={eyeIcon} alt="eye hide" />
+            <img src={eyeIcon} alt="eye hide" width="20" height="20" />
           )}
         </button>
       </div>
@@ -152,9 +152,9 @@ const RegisterForm = () => {
           onClick={() => setShowConfirmPassword(prev => !prev)}
         >
           {showConfirmPassword ? (
-            <img src={showEye} alt="eye show" />
+            <img src={showEye} alt="eye show" width="20" height="20" />
           ) : (
-            <img src={eyeIcon} alt="eye hide" />
+            <img src={eyeIcon} alt="eye hide" width="20" height="20" />
           )}
         </button>
       </div>
@@ -162,7 +162,7 @@ const RegisterForm = () => {
         <p className={css.error}>{errors.confirmPassword.message}</p>
       )}
 
-      <button type="submit" className={css.button}>
+      <button type="submit" className={css.loginBtn}>
         Registration
       </button>
       <p className={css.footerDescription}>
