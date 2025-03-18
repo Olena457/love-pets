@@ -1,0 +1,116 @@
+.container {
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  min-width: 335px;
+  margin: 0 20px 20px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    border-radius: 60px;
+    min-width: 704px;
+    margin: 0 32px 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    min-width: 1216px;
+  }
+}
+.commonContainer {
+  width: 266px;
+  height: 222px;
+  margin: 245px 33px;
+}
+@media screen and (min-width: 768px) {
+  .commonContainer {
+    width: 640px;
+    height: 436px;
+    margin: 245px 33px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .commonContainer {
+    width: 650px;
+    height: 436px;
+    margin: 109px 283px;
+  }
+}
+.imageWrapper {
+  width: 100%;
+  max-width: 269px;
+  height: auto;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .imageWrapper {
+    margin-bottom: 40px;
+    max-width: 650px;
+  }
+}
+.wrapperText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperText {
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapperText {
+    gap: 20px;
+  }
+}
+.description {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--white-color);
+}
+@media screen and (min-width: 768px) {
+  .description {
+    font-size: 24px;
+    line-height: 1.167;
+  }
+}
+.btnGo {
+  background-color: var(--main-light);
+  color: var(--main-color);
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  width: 150px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+  transition: background-color 0.3s ease;
+}
+.btnGo:hover,
+.btnGo:focus {
+  background-color: var(--hover-light);
+  color: var(--dark-hover);
+}
+@media screen and (min-width: 768px) {
+  .btnGo {
+    font-size: 16px;
+    padding: 14px 30px;
+    line-height: 1.25;
+    width: 162px;
+  }
+}

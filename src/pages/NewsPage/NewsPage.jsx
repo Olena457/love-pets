@@ -50,9 +50,7 @@ const NewsPage = () => {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {news.length === 0 && !isLoading && !error && (
-        <p className={css.noFound}>
-          No results found for &quot;{searchQuery}&quot;.
-        </p>
+        <p className={css.noFound}>No results found for{searchQuery};.</p>
       )}
       {news.length > 0 && <NewsList news={news} />}
       {totalPages > 1 && news.length > 0 && (

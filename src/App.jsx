@@ -11,8 +11,13 @@ const RegisterPage = lazy(() =>
   import('../src/pages/RegisterPage/RegisterPage.jsx')
 );
 const LoginPage = lazy(() => import('../src/pages/LoginPage/LoginPage.jsx'));
+
 const ProfilePage = lazy(() =>
   import('../src/pages/ProfilePage/ProfilePage.jsx')
+);
+
+const NotFoundPage = lazy(() =>
+  import('../src/pages/NotFoundPage/NotFoundPage.jsx')
 );
 
 import './App.css';
@@ -38,7 +43,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
