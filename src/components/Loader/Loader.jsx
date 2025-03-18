@@ -1,5 +1,4 @@
 import css from './Loader.module.css';
-import Icon from '../../components/Icon/Icon.jsx';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useState, useEffect } from 'react';
@@ -22,11 +21,11 @@ const Loader = () => {
 
   return (
     <div className={css.container}>
-      <Icon id="main-logo" className={css.logoMain} />
       <div className={css.loader}>
         <CircularProgressbar
           value={progress}
           styles={buildStyles({
+            strokeWidth: 2,
             pathColor: '#ffffff',
             trailColor: 'rgba(255, 255, 255, 0.2)',
           })}

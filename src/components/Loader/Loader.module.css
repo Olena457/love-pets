@@ -41,17 +41,6 @@
   }
 }
 
-.logoMain {
-  width: 190px;
-  height: 50px;
-}
-
-@media screen and (min-width: 768px) {
-  .logoMain {
-    width: 375px;
-    height: 100px;
-  }
-}
 .loader {
   position: relative;
   width: 200px;

@@ -1,9 +1,9 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Loader from '../src/components/Loader/Loader.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
-import Header from './components/Header/Header.jsx';
 import Layout from './components/Layout/Layout.jsx';
+import Header from './components/Header/Header.jsx';
 
 const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
 const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
@@ -23,13 +23,13 @@ const NotFoundPage = lazy(() =>
 import './App.css';
 
 function App() {
-  // const location = useLocation();
+  const location = useLocation();
+  const hideHeader = location.pathname === '/';
   return (
     <Suspense fallback={<Loader />}>
-      <Header />
+      {!hideHeader && <Header />}
       <Routes>
-        <Route path="/" element={<Layout />} />
-
+        <Route path="/" element={<Layout hideHeader={true} />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
