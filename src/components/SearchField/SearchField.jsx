@@ -1,6 +1,7 @@
 import css from './SearchField.module.css';
-import Icon from '../Icon/Icon.jsx';
 import { useEffect, useState } from 'react';
+import searchCommon from '../../assets/icons/searchCommon.svg';
+import blackCross from '../../assets/icons/blackCross.svg';
 
 const SearchField = ({ onSubmit, initialQuery = '' }) => {
   const [query, setQuery] = useState(initialQuery);
@@ -14,18 +15,18 @@ const SearchField = ({ onSubmit, initialQuery = '' }) => {
   };
 
   const handleClear = () => {
-    const currentQuery = '';
-    setQuery(currentQuery);
-    onSubmit(currentQuery);
+    setQuery('');
+    onSubmit('');
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(query);
+    setQuery('');
   };
 
   return (
-    <div>
+    <div className={css.searchContainer}>
       <form className={css.search} onSubmit={handleSubmit}>
         <input
           type="text"
@@ -35,24 +36,28 @@ const SearchField = ({ onSubmit, initialQuery = '' }) => {
           className={css.input}
         />
         <div className={css.iconsContainer}>
-          {query && (
-            <Icon
-              id="cross"
-              width={16}
-              height={16}
-              stroke="#262626"
-              className={css.clearIcon}
-              onClick={handleClear}
-            />
-          )}
-          <Icon
-            id="search"
-            width={16}
-            height={16}
-            stroke="#262626"
-            className={css.searchIcon}
+          <button
+            type="button"
+            className={css.clearButton}
             onClick={handleSubmit}
-          />
+          >
+            <img
+              src={searchCommon}
+              alt="search"
+              width="18"
+              height="18"
+              className={css.searchIcon}
+            />{' '}
+          </button>
+          {query && (
+            <button
+              type="button"
+              className={css.clearButton}
+              onClick={handleClear}
+            >
+              <img src={blackCross} alt="clear" width="18" height="18" />
+            </button>
+          )}
         </div>
       </form>
     </div>
