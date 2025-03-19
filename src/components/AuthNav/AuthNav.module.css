@@ -1,11 +1,11 @@
 .authNav {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+  display: none;
 }
 @media screen and (min-width: 768px) {
   .authNav .authNavhome {
-    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 }
 .loginButton,
@@ -46,3 +46,46 @@
 .registerButton:focus {
   background-color: var(--hover-light);
 }
+
+/* .authNav {
+  display: flex;
+  gap: 10px;
+}
+
+.authNavHome {
+  color: var(--white-color);
+}
+
+.loginButton,
+.registerButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--main-color);
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.loginButton:hover,
+.registerButton:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+@media screen and (max-width: 767px) {
+  .authNav {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .authNav {
+    display: flex;
+  }
+  .loginButton,
+  .registerButton {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+} */

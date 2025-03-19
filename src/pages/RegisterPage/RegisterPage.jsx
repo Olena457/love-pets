@@ -22,7 +22,6 @@ const RegisterPage = () => {
           desktop2x: catImageDesktop2x,
         }}
       />
-
       <div className={css.container}>
         <div className={css.titleContainer}>
           <Title title="Register" />

@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import Icon from '../Icon/Icon.jsx';
+import blackBurger from '../../assets/icons/blackBurger.svg';
+import whiteBurger from '../../assets/icons/whiteBurger.svg';
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
-import LogoChange from '../LogoChange/LogoChange.jsx';
+import closeIcons from '../../assets/icons/closeIcons.svg';
 import css from './NavBar.module.css';
 import UserNav from '../UserNav/UserNav.jsx';
 import AuthNav from '../AuthNav/AuthNav.jsx';
@@ -22,9 +23,7 @@ const NavBar = () => {
 
   const isActive = path => location.pathname === path;
   const shouldShowUserBar =
-    isAuthenticated &&
-    location.pathname !== '/register' &&
-    location.pathname !== '/login';
+    isAuthenticated && !['/register', '/login'].includes(location.pathname);
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -47,7 +46,6 @@ const NavBar = () => {
       <div className={`${css.nav} ${isHomePage ? css.homeNav : ''}`}>
         <div className={css.container}>
           <div className={css.headerNav}>
-            <LogoChange isHomePage={isHomePage} />
             <div className={css.headerMenu}>
               <Link
                 to="/news"
@@ -58,17 +56,17 @@ const NavBar = () => {
                 News
               </Link>
               <Link
-                to="/notices"
+                to="/find-pet"
                 className={`${css.menuItem} ${
-                  isActive('/notices') ? css.active : ''
+                  isActive('/find-pet') ? css.active : ''
                 }`}
               >
                 Find pet
               </Link>
               <Link
-                to="/friends"
+                to="/our-friends"
                 className={`${css.menuItem} ${
-                  isActive('/friends') ? css.active : ''
+                  isActive('/our-friends') ? css.active : ''
                 }`}
               >
                 Our friends
@@ -82,20 +80,25 @@ const NavBar = () => {
           </div>
           <div className={css.icons}>
             {shouldShowUserBar && <UserBar />}
-            <button className={css.menuButton} onClick={toggleMenu}>
-              <Icon id="menu" width={32} height={32} />
+            <button className={css.burgerButton} onClick={toggleMenu}>
+              <img
+                src={isHomePage ? whiteBurger : blackBurger}
+                alt={isHomePage ? 'white burger' : 'black burger'}
+                width="40"
+                height="40"
+                className={css.burgerIcon}
+              />
             </button>
           </div>
         </div>
         {menuOpen && (
-          <div className={css.burgerMenu} ref={menuRef}>
-            <Icon
-              id="cross"
-              width={32}
-              height={32}
-              className={css.closeIcon}
-              onClick={toggleMenu}
-            />
+          <div
+            className={`${css.burgerMenu} ${
+              isHomePage ? css.burgerMenuHome : ''
+            }`}
+            ref={menuRef}
+          >
+            <img src={closeIcons} alt="close" width="40" height="40" />
             <ul className={css.menuList}>
               <li>
                 <Link
@@ -110,9 +113,9 @@ const NavBar = () => {
               </li>
               <li>
                 <Link
-                  to="/notices"
+                  to="/find-pet"
                   className={`${css.menuItem} ${
-                    isActive('/notices') ? css.active : ''
+                    isActive('/find-pet') ? css.active : ''
                   }`}
                   onClick={toggleMenu}
                 >
@@ -121,9 +124,9 @@ const NavBar = () => {
               </li>
               <li>
                 <Link
-                  to="/friends"
+                  to="/our-friends"
                   className={`${css.menuItem} ${
-                    isActive('/friends') ? css.active : ''
+                    isActive('/our-friends') ? css.active : ''
                   }`}
                   onClick={toggleMenu}
                 >

@@ -3,7 +3,7 @@ import axiosInstance from '../api.js';
 
 export const fetchNews = createAsyncThunk(
   'news/fetchNews',
-  async ({ page = 1, perPage = 6, searchQuery = '' }, { rejectWithValue }) => {
+  async ({ page = 1, perPage = 2, searchQuery = '' }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/news', {
         params: { page, perPage, keyword: searchQuery },

@@ -9,3 +9,24 @@
     height: 28px;
   }
 }
+.white {
+  font-family: Manrope;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+
+  color: var(--white-color);
+  background-color: transparent;
+}
+.color {
+  font-family: Manrope;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+
+  color: var(--black-color);
+  background-color: transparent;
+}
+.logo {
+  background-color: transparent;
+}

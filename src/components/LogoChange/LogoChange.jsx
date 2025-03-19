@@ -1,19 +1,19 @@
-import Icon from '../Icon/Icon.jsx';
 import css from './LogoChange.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+const LogoChange = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/home';
 
-const LogoChange = ({ isHomePage }) => {
   return (
     <div className={`${css.nav} ${isHomePage ? css.homeNav : ''}`}>
       <div className={css.container}>
         <div className={css.headerNav}>
-          <Link to="/home">
-            <Icon
-              width={79}
-              height={20}
-              id={isHomePage ? 'logo-white' : 'logo'}
-              className={css.logoChange}
-            />
+          <Link to="/home" className={css.logo}>
+            {isHomePage ? (
+              <div className={css.white}>Petl🤍ve</div>
+            ) : (
+              <div className={css.color}>Petl💛ve</div>
+            )}
           </Link>
         </div>
       </div>

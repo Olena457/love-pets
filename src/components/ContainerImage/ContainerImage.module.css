@@ -1,5 +1,6 @@
 .petContainer {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   background-color: var(--main-color);
@@ -15,9 +16,10 @@
 @media (min-width: 768px) {
   .petContainer {
     border-radius: 60px;
-
-    /* width: 704px; */
-    height: 302px;
+    flex-shrink: 1;
+    width: 704px;
+    /* height: 302px; */
+    height: auto;
     background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
   }
 }
@@ -25,36 +27,75 @@
 @media (min-width: 1280px) {
   .petContainer {
     width: 592px;
-    height: 654px;
+    /* max-height: 654px; */
+    height: auto;
     background-image: url('../../assets/imgs/desktop/rectangle-desk@1x.png');
   }
 }
 
+.blockCat {
+  display: none;
+}
 @media screen and (min-width: 768px) {
-  .petContainer {
-    border-radius: 60px;
+  .blockCat {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    display: flex;
+    width: 294px;
+    z-index: 3;
+    height: 121px;
+    background-image: url('../../assets/imgs/block-cat.png');
+    border-radius: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .blockCat {
+    bottom: 90px;
+    left: 90px;
+  }
+}
+
+.blockDog {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .blockDog {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    display: flex;
+    width: 294px;
+    z-index: 3;
+    height: 121px;
+    background-image: url('../../assets/imgs/block-dog.png');
+    border-radius: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .blockDog {
+    bottom: 40px;
+    left: 90px;
   }
 }
 
 .petImage {
   width: 335px;
   height: 280px;
-  /* margin-right: 15px; */
 }
 
 @media screen and (min-width: 768px) {
   .petImage {
     width: 364px;
     height: 302px;
-    /* margin-right: 20px; */
+    margin-left: 250px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .petImage {
-    width: 512px;
-    height: 660px;
-    /* margin-left: 50px; */
-    /* flex-shrink: 1; */
+    width: 536px;
+    height: 652px;
+    margin: 0 auto;
   }
 }

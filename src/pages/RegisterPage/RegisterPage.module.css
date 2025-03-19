@@ -15,8 +15,11 @@
   .pageRegister {
     flex-direction: row;
     gap: 32px;
+    max-width: 1280px;
+    margin: 0 auto;
   }
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -28,12 +31,16 @@
 }
 @media screen and (min-width: 768px) {
   .container {
+    max-width: 704px;
+    height: 560px;
     border-radius: 60px;
     padding: 30px 140px;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
+    max-width: 592px;
+    height: 654px;
     padding: 82px 84px;
   }
 }

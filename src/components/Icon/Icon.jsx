@@ -4,7 +4,7 @@ const Icon = ({ id, width, height, className = '', fillColor }) => {
   return (
     <svg
       className={`${className}`}
-      // style={{ background: "transparent" }}
+      // style={{ background: 'transparent' }}
       width={width}
       height={height}
     >

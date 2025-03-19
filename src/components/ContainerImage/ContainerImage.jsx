@@ -1,6 +1,9 @@
 import css from './ContainerImage.module.css';
+import { useLocation } from 'react-router-dom';
 
 const ContainerImage = ({ images }) => {
+  const location = useLocation();
+  const type = location.pathname.includes('register') ? 'register' : 'login';
   return (
     <div className={css.petContainer}>
       <img
@@ -16,6 +19,8 @@ const ContainerImage = ({ images }) => {
         alt="Pet representation"
         className={css.petImage}
       />
+      {type === 'register' && <div className={css.blockCat}></div>}
+      {type === 'login' && <div className={css.blockDog}></div>}
     </div>
   );
 };
