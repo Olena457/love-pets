@@ -16,6 +16,9 @@ const ProfilePage = lazy(() =>
   import('../src/pages/ProfilePage/ProfilePage.jsx')
 );
 
+const NoticesPage = lazy(() =>
+  import('../src/pages/NoticesPage/NoticesPage.jsx')
+);
 const NotFoundPage = lazy(() =>
   import('../src/pages/NotFoundPage/NotFoundPage.jsx')
 );
@@ -34,6 +37,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/notices" element={<NoticesPage />} />
         <Route
           path="/profile"
           element={

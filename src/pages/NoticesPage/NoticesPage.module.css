@@ -1,0 +1,26 @@
+.container {
+  margin: 26px 0 80px;
+  padding: 0 20px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    margin-top: 32px;
+    padding: 0 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 0 64px;
+  }
+}
+.noFound {
+  margin-top: 20px;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .searchWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+}

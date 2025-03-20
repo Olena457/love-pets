@@ -1,18 +1,3 @@
-const colors = {
-  primary: '#262626',
-  focus: '#F6B83D',
-  neutral: 'rgba(38, 38, 38, 0.60)',
-  background: '#fff',
-};
-
-const baseFontSize = window.innerWidth <= 320 ? '14px' : '16px';
-
-const commonStyles = {
-  fontSize: baseFontSize,
-  textTransform: 'capitalize',
-  cursor: 'pointer',
-};
-
 const selectStyles = {
   control: provided => ({
     ...provided,
@@ -20,26 +5,28 @@ const selectStyles = {
     padding: '5px',
     border: 'none',
     boxShadow: 'none',
-    backgroundColor: colors.background,
+    backgroundColor: '#fff',
     fontWeight: '500',
     cursor: 'pointer',
   }),
   placeholder: provided => ({
     ...provided,
-    color: colors.primary,
-    ...commonStyles,
+    color: '#262626',
+    fontSize: window.innerWidth <= 320 ? '14px' : '16px',
   }),
   singleValue: provided => ({
     ...provided,
-    color: colors.primary,
-    ...commonStyles,
+    color: '#262626',
+    fontSize: window.innerWidth <= 320 ? '14px' : '16px',
+    textTransform: 'capitalize',
+    cursor: 'pointer',
   }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
   dropdownIndicator: provided => ({
     ...provided,
-    color: colors.primary,
+    color: '#262626',
     cursor: 'pointer',
   }),
   menu: provided => ({
@@ -52,9 +39,11 @@ const selectStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    ...commonStyles,
-    color: state.isFocused ? colors.focus : colors.neutral,
-    backgroundColor: 'transparent',
+    fontSize: window.innerWidth <= 320 ? '14px' : '16px',
+    textTransform: 'capitalize',
+    cursor: 'pointer',
+    color: state.isFocused ? '#F6B83D' : 'rgba(38, 38, 38, 0.60)',
+    backgroundColor: state.isFocused ? 'transparent' : 'transparent',
     transition: 'color 0.3s ease',
     ':active': {
       backgroundColor: 'transparent',

@@ -12,10 +12,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { usersReducer } from './users/usersSlice.js';
 import { newsReducer } from './news/newsSlice.js';
-import { noticesReducer } from './notice/noticesSlice.js';
+import { noticesReducer } from './notices/noticesSlice.js';
 import { citiesReducer } from './cities/citiesSlice.js';
 import { filtersReducer } from './filters/filtersSlice.js';
-import { profileReducer } from './profile/profileSlice.js';
+import profileReducer from './profile/profileSlice.js';
 const usersPersistConfig = {
   key: 'users',
   storage,

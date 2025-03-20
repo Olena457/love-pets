@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import {
   fetchNoticeCategories,
   fetchNoticeSexOptions,
   fetchNoticeSpecies,
-} from '../../redux/notices/noticeOperations';
+} from '../../redux/notices/noticesOperations.js';
 import { fetchCityLocations } from '../../redux/cities/citiesOperations.js';
 import {
   selectAvailableCategories,
@@ -21,11 +22,10 @@ import {
   setLocation,
   setSort,
   resetFilters,
-} from '../../redux/filters/FilterSlice.js';
+} from '../../redux/filters/filtersSlice';
 import SearchField from '../SearchField/SearchField.jsx';
 import css from './NoticesFilters.module.css';
 import selectStyles from './selectStyles.js';
-import CloseIcon from '../../assets/icons/closeIcon.svg';
 
 const NoticesFilters = ({ onFilterChange }) => {
   const dispatch = useDispatch();
@@ -187,9 +187,7 @@ const NoticesFilters = ({ onFilterChange }) => {
             <label htmlFor={option} className={css.sortLabel}>
               {option.charAt(0).toUpperCase() + option.slice(1)}
               {filters.sort.includes(option) && (
-                <img
-                  src={CloseIcon}
-                  alt="Remove"
+                <RxCross2
                   className={css.crossIcon}
                   onClick={event => handleRemoveSort(option, event)}
                 />
@@ -203,6 +201,10 @@ const NoticesFilters = ({ onFilterChange }) => {
       </button>
     </div>
   );
+};
+
+NoticesFilters.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default NoticesFilters;

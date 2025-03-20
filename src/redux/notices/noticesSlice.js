@@ -7,7 +7,7 @@ import {
   fetchNoticeSpecies,
   addNoticeToFavorites,
   removeNoticeFromFavorites,
-} from './noticeOperations';
+} from './noticesOperations';
 
 const initialState = {
   items: [],
