@@ -13,26 +13,21 @@
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .headerMenu {
     display: flex;
     gap: 8px;
-
     align-items: center;
     margin-right: 167px;
   }
 }
+
 .burgerButton {
   background-color: transparent;
 }
+
 @media screen and (min-width: 1280px) {
   .burgerButton {
-    display: none;
-  }
-  .whiteBurger {
-    display: none;
-  }
-  .blackBurger {
     display: none;
   }
 }
@@ -47,26 +42,11 @@
   }
 }
 
-/* ___________________________ */
 .burgerMenu {
   display: none;
 }
-.butgerMenu {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
-  height: 100dvh;
-  background-color: var(--main-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 120px 20px 40px;
-  z-index: 1000;
-}
-@media screen and (max-width: 767px) {
+
+@media screen and (max-width: 768px) {
   .burgerMenu {
     display: flex;
     flex-direction: column;
@@ -75,62 +55,6 @@
     padding: 20px;
     border-radius: 10px;
   }
-}
-
-/* .menuButton {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
-  height: 100dvh;
-  background-color: var(--main-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 120px 20px 40px;
-  z-index: 100;
-} */
-
-@media screen and (min-width: 1280px) {
-  .menuButton {
-    display: none;
-  }
-}
-
-.nav .menuIcon {
-  cursor: pointer;
-
-  /* stroke: #262626;
-  fill: #262626;
-  width: 32px;
-  height: 32px; */
-}
-
-@media screen and (min-width: 768px) {
-  .nav .menuIcon {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-.homeNav .icons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.closeIcon {
-  position: absolute;
-  top: 28px;
-  right: 20px;
-  fill: var(--white-color);
-  cursor: pointer;
-}
-
-.homeNav .closeIcon {
-  fill: #262626;
 }
 
 .menuList {
@@ -154,30 +78,41 @@
   }
 }
 
+/* Базовий стиль для кнопок навігації */
 .menuItem {
   background: transparent;
-  color: var(--text-color);
+  color: var(--black-color);
   font-weight: 500;
   font-size: 16px;
   padding: 15px 20px;
-  border: 1px solid transparent;
+  border: 1px solid var(--light-border-color);
   border-radius: 30px;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .menuItem:hover {
-  color: var(--highlight-color);
   border-color: var(--main-color);
 }
 
 .homeNav .menuItem {
-  color: var(--black-color);
-  border-color: var(--input-default);
+  color: var(--white-color);
+  border-color: var(--white-color);
 }
 
 .homeNav .menuItem:hover,
 .homeNav .menuItem:focus,
 .homeNav .menuItem:active {
+  border-color: var(--black-color);
+}
+
+.otherNav .menuItem {
+  color: var(--black-color);
+  border-color: var(--light-border-color);
+}
+
+.otherNav .menuItem:hover,
+.otherNav .menuItem:focus,
+.otherNav .menuItem:active {
   border-color: var(--main-color);
 }
 
@@ -224,23 +159,5 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-  }
-  .menuItem {
-    color: var(--black-color);
-    border: 1px solid var(--input-default);
-  }
-  .homeNav .menuItem {
-    color: var(--white-color);
-    border: 1px solid var(--light-border-color);
-  }
-  .menuItem:hover,
-  .menuItem:focus,
-  .menuItem:active {
-    border-color: var(--main-color);
-  }
-  .homeNav .menuItem:hover,
-  .homeNav .menuItem:focus,
-  .homeNav .menuItem:active {
-    border-color: var(--white-color);
   }
 }

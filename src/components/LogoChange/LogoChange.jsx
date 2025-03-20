@@ -1,5 +1,6 @@
 import css from './LogoChange.module.css';
 import { Link, useLocation } from 'react-router-dom';
+
 const LogoChange = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home';
