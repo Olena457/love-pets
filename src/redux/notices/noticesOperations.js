@@ -1,34 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../api.js';
 
-// utileties API
-const apiRequest = async (
-  method,
-  path,
-  { params = {}, body = null } = {},
-  rejectWithValue
-) => {
-  try {
-    const response = await axiosInstance({
-      method,
-      url: path,
-      params,
-      data: body,
-    });
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(error.response?.data || error.message);
-  }
-};
-
-// fearch notices
-
 export const fetchNotices = createAsyncThunk(
   'notices/fetchNotices',
   async (
     {
       page = 1,
-      perPage = 6,
+      perPage = 3,
       searchQuery = '',
       category = '',
       gender = '',
@@ -37,10 +15,8 @@ export const fetchNotices = createAsyncThunk(
     },
     { rejectWithValue }
   ) => {
-    return await apiRequest(
-      'get',
-      '/notices',
-      {
+    try {
+      const response = await axiosInstance.get('/notices', {
         params: {
           page,
           perPage,
@@ -50,82 +26,109 @@ export const fetchNotices = createAsyncThunk(
           type,
           location,
         },
-      },
-      rejectWithValue
-    );
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
 
-// featch notice  ID
+// fetch categories
 export const fetchNoticeById = createAsyncThunk(
   'notices/fetchNoticeById',
   async (id, { rejectWithValue }) => {
-    return await apiRequest('get', `/notices/${id}`, {}, rejectWithValue);
+    try {
+      const response = await axiosInstance.get(`/notices/${id}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
 
-// featch categories
-export const fetchNoticeCategories = createAsyncThunk(
-  'notices/fetchNoticeCategories',
-  async (_, { rejectWithValue }) => {
-    return await apiRequest('get', '/notices/categories', {}, rejectWithValue);
-  }
-);
-
-//featch sex options of pets
+// fetch sex options of pets
 export const fetchNoticeSexOptions = createAsyncThunk(
-  'notices/fetchNoticeSexOptions',
+  'notices/fetchSexOptions',
   async (_, { rejectWithValue }) => {
-    return await apiRequest('get', '/notices/sex', {}, rejectWithValue);
+    try {
+      const response = await axiosInstance.get('/notices/sex');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
 
-// featch species
 export const fetchNoticeSpecies = createAsyncThunk(
-  'notices/fetchNoticeSpecies',
+  'notices/fetchSpecies',
   async (_, { rejectWithValue }) => {
-    return await apiRequest('get', '/notices/species', {}, rejectWithValue);
+    try {
+      const response = await axiosInstance.get('/notices/species');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
-
-// addet to favorite
+export const fetchNoticeCategories = createAsyncThunk(
+  'notices/fetchCategories',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get('/notices/categories');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+// add to favorites
 export const addNoticeToFavorites = createAsyncThunk(
-  'notices/addNoticeToFavorites',
+  'notices/addToFavorites',
   async (id, { rejectWithValue }) => {
-    return await apiRequest(
-      'post',
-      `/notices/favorites/add/${id}`,
-      {},
-      rejectWithValue
-    );
+    try {
+      const response = await axiosInstance.post(`/notices/favorites/add/${id}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
 
 // delete from favorites
 export const removeNoticeFromFavorites = createAsyncThunk(
-  'notices/removeNoticeFromFavorites',
+  'notices/removeFromFavorites',
   async (id, { rejectWithValue }) => {
-    return await apiRequest(
-      'delete',
-      `/notices/favorites/remove/${id}`,
-      {},
-      rejectWithValue
-    );
+    try {
+      const response = await axiosInstance.delete(
+        `/notices/favorites/remove/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );
-
 // toggle favorite
 export const toggleFavoriteNotice = createAsyncThunk(
   'notices/toggleFavoriteNotice',
   async (id, { getState, rejectWithValue }) => {
     const state = getState();
     const isFavorite = state.notices.favorites.includes(id);
-
-    const method = isFavorite ? 'delete' : 'post';
-    const path = isFavorite
-      ? `/notices/favorites/remove/${id}`
-      : `/notices/favorites/add/${id}`;
-
-    return await apiRequest(method, path, {}, rejectWithValue);
+    try {
+      if (isFavorite) {
+        const response = await axiosInstance.delete(
+          `/notices/favorites/remove/${id}`
+        );
+        return response.data;
+      } else {
+        const response = await axiosInstance.post(
+          `/notices/favorites/add/${id}`
+        );
+        return response.data;
+      }
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
   }
 );

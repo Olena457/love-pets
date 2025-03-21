@@ -36,41 +36,40 @@ const filtersSlice = createSlice({
     // renew sortion options
     setSort(state, action) {
       const sortOption = action.payload;
-      const { sort } = state;
-
-      const sortingGroups = {
-        popularity: ['popular', 'unpopular'],
-        price: ['cheap', 'expensive'],
-      };
+      if (!Array.isArray(state.sort)) {
+        state.sort = [];
+      }
+      const popularityOptions = ['popular', 'unpopular'];
+      const priceOptions = ['cheap', 'expensive'];
 
       // toggle sort option
-      if (sort.includes(sortOption)) {
-        state.sort = sort.filter(option => option !== sortOption);
-        return;
+      if (state.sort.includes(sortOption)) {
+        state.sort = state.sort.filter(option => option !== sortOption);
+      } else {
+        state.sort = state.sort.filter(
+          options =>
+            !(
+              popularityOptions.includes(options) &&
+              popularityOptions.includes(sortOption)
+            ) &&
+            !(
+              priceOptions.includes(options) &&
+              priceOptions.includes(sortOption)
+            )
+        );
+        state.sort.push(sortOption);
       }
-
-      // filter out conflicting options
-      const isConflictingOption = group =>
-        sortingGroups[group].includes(sortOption);
-
-      const updatedSort = sort.filter(
-        option =>
-          !Object.keys(sortingGroups).some(
-            group =>
-              isConflictingOption(group) &&
-              sortingGroups[group].includes(option)
-          )
-      );
-
-      state.sort = [...updatedSort, sortOption];
     },
-    // reset all filters
     resetFilters(state) {
-      Object.assign(state, initialState);
+      state.searchQuery = '';
+      state.category = '';
+      state.gender = '';
+      state.type = '';
+      state.location = '';
+      state.sort = [];
     },
   },
 });
-
 export const {
   setSearchQuery,
   setCategory,

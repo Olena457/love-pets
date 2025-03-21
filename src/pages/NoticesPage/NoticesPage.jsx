@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Title from '../../components/Title/Title.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
@@ -11,6 +12,7 @@ import {
 import {
   selectTotalPages,
   selectCurrentPage,
+  // selectError,
 } from '../../redux/notices/noticesSelectors.js';
 import {
   selectFilteredNoticesWithFilters,
@@ -34,6 +36,7 @@ const NoticesPage = () => {
   const gender = useSelector(selectGender);
   const type = useSelector(selectType);
   const location = useSelector(selectLocation);
+  // const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(
@@ -58,27 +61,44 @@ const NoticesPage = () => {
     dispatch(toggleFavoriteNotice(id));
   };
 
-  const handleFilterChange = page => {
-    dispatch(setCurrentPage(page));
-    dispatch(
-      fetchNotices({
-        page,
-        perPage: 6,
-        searchQuery,
-        category,
-        gender,
-        type,
-        location,
-      })
-    );
-  };
+  // const handleFilterChange = page => {
+  //   dispatch(setCurrentPage(page));
+  //   dispatch(
+  //     fetchNotices({
+  //       page,
+  //       perPage: 3,
+  //       searchQuery,
+  //       category,
+  //       gender,
+  //       type,
+  //       location,
+  //     })
+  //   );
+  // };
 
+  const handleFilterChange = useCallback(
+    page => {
+      dispatch(setCurrentPage(page));
+      dispatch(
+        fetchNotices({
+          page,
+          perPage: 3,
+          searchQuery,
+          category,
+          gender,
+          type,
+          location,
+        })
+      );
+    },
+    [dispatch, searchQuery, category, gender, type, location]
+  );
   const handlePageChange = page => {
     dispatch(setCurrentPage(page));
     dispatch(
       fetchNotices({
         page,
-        perPage: 6,
+        perPage: 3,
         searchQuery,
         category,
         gender,
@@ -87,16 +107,17 @@ const NoticesPage = () => {
       })
     );
   };
-
   return (
     <div className={css.container}>
+      {/* added error */}
+      {/* {error && <p className={css.error}>{error}</p>} */}
       <Title title="Find your favorite pet" />
       <NoticesFilters onFilterChange={handleFilterChange} />
       {notices.length === 0 ? (
-        <p className={css.noResults}>
+        <div className={css.noResults}>
           "Unfortunately, no pets were found for your request.😿 Please try
           again."
-        </p>
+        </div>
       ) : (
         <>
           <NoticesList

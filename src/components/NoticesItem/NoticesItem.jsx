@@ -36,7 +36,8 @@ const NoticesItem = ({ notice, onLearnMore, onToggleFavorite }) => {
             width={24}
             height={24}
             className={css.star}
-            stroke="#f6b83d"
+
+            // stroke="#f6b83d"
           />
           <span>{popularity}</span>
         </div>

@@ -18,20 +18,10 @@ const initialState = {
   favorites: [],
   totalPages: 0,
   currentPage: 1,
-  perPage: 6,
+  perPage: 3,
   searchQuery: '',
   isLoading: false,
   error: null,
-};
-
-const handlePending = state => {
-  state.isLoading = true;
-  state.error = null;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
 };
 
 const noticesSlice = createSlice({
@@ -47,13 +37,19 @@ const noticesSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchNotices.pending, handlePending)
+      .addCase(fetchNotices.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchNotices.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = action.payload.results;
         state.totalPages = action.payload.totalPages;
       })
-      .addCase(fetchNotices.rejected, handleRejected)
+      .addCase(fetchNotices.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(fetchNoticeById.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -63,7 +59,10 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.selectedNotice = action.payload;
       })
-      .addCase(fetchNoticeById.rejected, handleRejected)
+      .addCase(fetchNoticeById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(fetchNoticeCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
       })

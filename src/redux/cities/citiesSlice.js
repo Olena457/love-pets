@@ -8,37 +8,36 @@ const initialState = {
   error: null,
 };
 
-const handlePending = state => {
-  state.isLoading = true;
-  state.error = null;
-};
-
-const handleFulfilled = (state, action, key) => {
-  state.isLoading = false;
-  state[key] = action.payload;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
 const citiesSlice = createSlice({
   name: 'cities',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchCities.pending, handlePending)
+      .addCase(fetchCities.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchCities.fulfilled, (state, action) => {
-        handleFulfilled(state, action, 'cities');
+        state.isLoading = false;
+        state.cities = action.payload;
       })
-      .addCase(fetchCities.rejected, handleRejected)
-      .addCase(fetchCityLocations.pending, handlePending)
+      .addCase(fetchCities.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchCityLocations.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchCityLocations.fulfilled, (state, action) => {
-        handleFulfilled(state, action, 'cityLocations');
+        state.isLoading = false;
+        state.cityLocations = action.payload;
       })
-      .addCase(fetchCityLocations.rejected, handleRejected);
+      .addCase(fetchCityLocations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 

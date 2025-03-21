@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import blackCross from '../../assets/icons/blackCross.svg';
 import Select from 'react-select';
+import selectStyles from './selectStyles.js';
 import {
   fetchNoticeCategories,
   fetchNoticeSexOptions,
   fetchNoticeSpecies,
 } from '../../redux/notices/noticesOperations.js';
 import { fetchCityLocations } from '../../redux/cities/citiesOperations.js';
+// import { selectCityLocations } from '../../redux/cities/citiesSelectors.js';
 import {
   selectAvailableCategories,
   selectAvailableSexOptions,
@@ -25,16 +27,15 @@ import {
 } from '../../redux/filters/filtersSlice';
 import SearchField from '../SearchField/SearchField.jsx';
 import css from './NoticesFilters.module.css';
-import selectStyles from './selectStyles.js';
 
-const NoticesFilters = ({ onFilterChange }) => {
+const NoticesFilters = memo(({ onFilterChange }) => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectAvailableCategories);
   const sexOptions = useSelector(selectAvailableSexOptions);
   const species = useSelector(selectAvailableSpecies);
   const locations = useSelector(selectAvailableLocations);
-
+  // const locations = useSelector(selectCityLocations);
   const filters = useSelector(state => state.filters);
 
   const [categoryValue, setCategoryValue] = useState(null);
@@ -76,13 +77,11 @@ const NoticesFilters = ({ onFilterChange }) => {
     dispatch(setType(selectedOption?.value || ''));
     onFilterChange();
   };
-
   const handleLocationChange = selectedOption => {
     setLocationValue(selectedOption);
     dispatch(setLocation(selectedOption?.value || ''));
     onFilterChange();
   };
-
   const handleSortChange = sortValue => {
     dispatch(setSort(sortValue));
     onFilterChange();
@@ -94,7 +93,6 @@ const NoticesFilters = ({ onFilterChange }) => {
     dispatch(setSort(sortValue));
     onFilterChange();
   };
-
   const handleReset = () => {
     setCategoryValue(null);
     setGenderValue(null);
@@ -137,7 +135,7 @@ const NoticesFilters = ({ onFilterChange }) => {
               }))
             )}
             onChange={handleGenderChange}
-            placeholder="By gender"
+            placeholder="Gender"
             styles={selectStyles}
           />
         </div>
@@ -151,7 +149,7 @@ const NoticesFilters = ({ onFilterChange }) => {
               }))
             )}
             onChange={handleTypeChange}
-            placeholder="By type"
+            placeholder="Type"
             styles={selectStyles}
           />
         </div>
@@ -187,7 +185,11 @@ const NoticesFilters = ({ onFilterChange }) => {
             <label htmlFor={option} className={css.sortLabel}>
               {option.charAt(0).toUpperCase() + option.slice(1)}
               {filters.sort.includes(option) && (
-                <RxCross2
+                <img
+                  src={blackCross}
+                  alt="clear"
+                  width="18"
+                  height="18"
                   className={css.crossIcon}
                   onClick={event => handleRemoveSort(option, event)}
                 />
@@ -201,10 +203,5 @@ const NoticesFilters = ({ onFilterChange }) => {
       </button>
     </div>
   );
-};
-
-NoticesFilters.propTypes = {
-  onFilterChange: PropTypes.func.isRequired,
-};
-
+});
 export default NoticesFilters;

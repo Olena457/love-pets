@@ -78,42 +78,34 @@
   }
 }
 
-/* Базовий стиль для кнопок навігації */
-.menuItem {
+a.menuItem {
   background: transparent;
-  color: var(--black-color);
   font-weight: 500;
   font-size: 16px;
   padding: 15px 20px;
-  border: 1px solid var(--light-border-color);
   border-radius: 30px;
+  border: 1px solid #dad4d4;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.menuItem:hover {
-  border-color: var(--main-color);
-}
-
-.homeNav .menuItem {
-  color: var(--white-color);
-  border-color: var(--white-color);
+.homeNav a.menuItem {
+  color: #fff;
 }
 
 .homeNav .menuItem:hover,
 .homeNav .menuItem:focus,
 .homeNav .menuItem:active {
-  border-color: var(--black-color);
+  border-color: #fff;
 }
 
-.otherNav .menuItem {
-  color: var(--black-color);
-  border-color: var(--light-border-color);
+.otherNav a.menuItem {
+  color: #262626;
 }
 
 .otherNav .menuItem:hover,
 .otherNav .menuItem:focus,
 .otherNav .menuItem:active {
-  border-color: var(--main-color);
+  border-color: #f6b83d;
 }
 
 .icons {
