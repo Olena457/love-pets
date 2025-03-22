@@ -25,10 +25,12 @@ const Header = () => {
   const isHomePage = location.pathname === '/home';
 
   return (
-    <header className={`${css.header} ${isHomePage ? css.homeHeader : ''}`}>
-      <LogoChange />
-      <NavBar />
-    </header>
+    <div className={css.wrapperHome}>
+      <header className={`${css.header} ${isHomePage ? css.homeHeader : ''}`}>
+        <LogoChange />
+        <NavBar />
+      </header>
+    </div>
   );
 };
 

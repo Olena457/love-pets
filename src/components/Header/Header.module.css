@@ -29,6 +29,10 @@
     border-top-right-radius: 60px;
   }
 } */
+.wrapperHome {
+  background-color: aqua;
+  margin: 16px 20px 0px 20px;
+}
 .header {
   display: flex;
   justify-content: space-between;
