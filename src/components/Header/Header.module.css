@@ -1,20 +1,17 @@
 .wrapperHome {
   background-color: aqua;
   min-width: 280px;
-  padding: 10px 20px 0px 20px;
-  margin: 0 20px 0 52px;
+  margin: 10px 20px 0 20px;
 }
 @media screen and (min-width: 768px) {
   .wrapperHome {
-    margin: 20px 32px 0px 64px;
-    padding: 0px 20px 0px 20px;
+    margin: 16px 20px 0px 50px;
     min-width: 768px;
   }
 }
 @media screen and (min-width: 1280px) {
   .wrapperHome {
-    margin: 20px 0px 0px 64px;
-    padding: 0px 20px 0px 20px;
+    margin: 0px 14px 0px 22px;
     min-width: 1280px;
   }
 }

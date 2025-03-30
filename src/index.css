@@ -20,11 +20,11 @@
   --both-hover-icon: rgba(255, 244, 223, 1);
 }
 
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
+} */
 body {
   font-family: 'Monroe', sans-serif;
   font-weight: 400;
