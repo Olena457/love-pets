@@ -32,13 +32,10 @@ body {
   font-style: normal;
   margin: 0;
   padding: 0;
-  /* place-items: center; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  overflow-x: hidden;
-  color: #262626;
-  background-color: #f9f9f9;
+  place-items: center;
+
+  color: var(--black-color);
+  background-color: var(--background-color);
 }
 
 h1,
