@@ -1,3 +1,7 @@
+.wrapper {
+  padding: 10px 20px 20px 10px;
+}
+
 .container {
   background-color: var(--main-color);
   display: flex;
@@ -5,16 +9,14 @@
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-  min-width: 335px;
+  min-width: 280px;
   max-height: 712px;
   height: auto;
-
-  margin: 0 20px 20px;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .container {
     border-radius: 60px;
-    min-width: auto;
     max-height: 878px;
     margin: 0 32px 32px;
   }
@@ -23,13 +25,13 @@
   .container {
     height: auto;
     max-height: 654px;
-    min-width: 1216px;
+    max-width: 1216px;
   }
 }
 .commonContainer {
   width: 266px;
   height: 222px;
-  margin: 245px 33px;
+  margin: 245px 10px;
 }
 @media screen and (min-width: 768px) {
   .commonContainer {

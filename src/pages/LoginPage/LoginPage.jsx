@@ -23,7 +23,7 @@ const LoginPage = () => {
           desktop2x: dogImageDesktop2x,
         }}
       />
-      <div className={css.container}>
+      <div className={css.containerLogin}>
         <div className={css.titleWrapper}>
           <Title title="Login" />
           <p className={css.description}>

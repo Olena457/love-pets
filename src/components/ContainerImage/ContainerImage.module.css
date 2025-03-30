@@ -17,8 +17,7 @@
   .petContainer {
     border-radius: 60px;
     flex-shrink: 1;
-    width: 704px;
-    /* height: 302px; */
+    max-width: 704px;
     height: auto;
     background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
   }
@@ -26,8 +25,8 @@
 
 @media (min-width: 1280px) {
   .petContainer {
-    width: 592px;
-    /* max-height: 654px; */
+    max-width: 592px;
+
     height: auto;
     background-image: url('../../assets/imgs/desktop/rectangle-desk@1x.png');
   }
@@ -80,13 +79,11 @@
 }
 
 .petImage {
-  width: 335px;
   height: 280px;
 }
 
 @media screen and (min-width: 768px) {
   .petImage {
-    width: 364px;
     height: 302px;
     margin-left: 250px;
   }
@@ -94,7 +91,6 @@
 
 @media screen and (min-width: 1280px) {
   .petImage {
-    width: 536px;
     height: 652px;
     margin: 0 auto;
   }

@@ -8,7 +8,7 @@ const Header = () => {
   const isHomePage = location.pathname === '/home';
 
   return (
-    <div className={css.wrapperHome}>
+    <div className={isHomePage ? css.wrapperHome : ''}>
       <header className={`${css.header} ${isHomePage ? css.homeHeader : ''}`}>
         <LogoChange />
         <NavBar />

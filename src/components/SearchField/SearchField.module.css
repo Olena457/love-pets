@@ -1,88 +1,8 @@
-/* .search {
-  display: flex;
-  align-items: center;
-  border-radius: 30px;
-  border: 1px solid var(--input-default);
-  background-color: var(--white-color);
-  width: 100%;
-  padding: 12px;
-}
-.search:focus,
-.search:hover {
-  border: 1px solid var(--dark-hover);
-}
-@media screen and (min-width: 768px) {
-  .search {
-    width: 230;
-    padding: 14px;
-  }
-}
-.searchContainer {
-  display: flex;
-  align-items: center;
-}
-
-.input {
-  flex: 1;
-  padding-right: 40px;
-}
-
-.iconsContainer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.searchIcon {
-  cursor: poiner;
-}
-.clearButton {
-  cursor: poiner;
-}
-.clearButton {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: 0;
-  padding: 0;
-}
-.input::placeholder {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--input-default);
-}
-@media screen and (min-width: 768px) {
-  .input::placeholder {
-    font-size: 16px;
-  }
-}
-
-
-.iconsContainer {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-@media screen and (min-width: 768px) {
-  .iconsContainer {
-    gap: 4px;
-  }
-} */
 .search {
   display: flex;
   align-items: center;
   border-radius: 30px;
+
   border: 1px solid var(--input-default);
   background-color: var(--white-color);
   width: 100%;
@@ -96,7 +16,7 @@
 
 @media screen and (min-width: 768px) {
   .search {
-    width: 300px; /* Додано px для коректного відображення */
+    width: 300px;
     padding: 14px;
   }
 }
@@ -107,18 +27,18 @@
 }
 
 .input {
-  flex: 1; /* Забезпечує, що поле вводу займає весь доступний простір */
+  flex: 1;
   border: none;
   outline: none;
   background: transparent;
   padding: 0;
-  margin-right: 10px; /* Відступ між полем вводу та іконками */
+  margin-right: 10px;
 }
 
 .input::placeholder {
   font-size: 14px;
   font-weight: 400;
-  color: var(--input-default);
+  color: var(--black-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -130,14 +50,14 @@
 .iconsContainer {
   display: flex;
   align-items: center;
-  gap: 8px; /* Відстань між іконками */
+  gap: 8px;
 }
 
 .searchIcon,
 .clearButton img {
-  width: 18px; /* Фіксована ширина для іконок */
-  height: 18px; /* Фіксована висота для іконок */
-  flex-shrink: 0; /* Забороняє стиснення іконок */
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .clearButton {

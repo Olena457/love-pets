@@ -25,11 +25,11 @@
   align-items: center;
   padding: 28px 20px 20px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .homeHeader {
   background-color: var(--main-color);
-
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
