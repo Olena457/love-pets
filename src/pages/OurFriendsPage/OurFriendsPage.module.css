@@ -1,0 +1,17 @@
+.containerPageFriends {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 34px;
+  padding-bottom: 80px;
+}
+@media screen and (min-width: 768px) {
+  .containerPageFriends {
+    padding-top: 53px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .containerPageFriends {
+    padding-top: 64px;
+  }
+}

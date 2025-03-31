@@ -16,6 +16,8 @@ import { noticesReducer } from './notices/noticesSlice.js';
 import { citiesReducer } from './cities/citiesSlice.js';
 import { filtersReducer } from './filters/filtersSlice.js';
 import profileReducer from './profile/profileSlice.js';
+import friendsReducer from './friends/ourFriendsSlice.js';
+
 const usersPersistConfig = {
   key: 'users',
   storage,
@@ -47,6 +49,7 @@ export const store = configureStore({
     news: persistReducer(newsPersistConfig, newsReducer),
     notices: persistReducer(noticePersistConfig, noticesReducer),
     filters: persistReducer(filtersPersistConfig, filtersReducer),
+    friendsStore: friendsReducer,
     profile: persistReducer(profilePersistConfig, profileReducer),
     cities: citiesReducer,
   },
