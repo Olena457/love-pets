@@ -16,6 +16,9 @@ const ProfilePage = lazy(() =>
   import('../src/pages/ProfilePage/ProfilePage.jsx')
 );
 
+const OurFriendsPage = lazy(() =>
+  import('../src/pages/OurFriendsPage/OurFriendsPage.jsx')
+);
 const NoticesPage = lazy(() =>
   import('../src/pages/NoticesPage/NoticesPage.jsx')
 );
@@ -37,6 +40,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/our-friends" element={<OurFriendsPage />} />
         <Route path="/notices" element={<NoticesPage />} />
         <Route
           path="/profile"

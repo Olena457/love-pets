@@ -1,17 +1,17 @@
 .wrapperFriends {
   display: flex;
+  flex-direction: column;
+  min-width: 320px;
   position: relative;
-  padding: 40px 25px 40px 20px;
+  padding: 50px 12px 40px 12px;
   border-radius: 15px;
   background-color: var(--white-color);
+  gap: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-.wrapperFriends:not(:last-child) {
-  margin-bottom: 20px;
-}
-@media screen and (min-width: 768px) {
-  .wrapperFriends {
-    padding: 40px 20px;
-  }
+
+.wrapperFriends:not(last-child) {
+  margin-bottom: 8px;
 }
 
 .hourTime {
@@ -21,71 +21,68 @@
   line-height: 1.33;
   padding: 8px;
   border-radius: 30px;
-  text-align: 30px;
+  text-align: center;
   color: var(--main-color);
-  background-color: var(--hover-light);
+  background: var(--hover-light);
 }
-@media screen and (min-width: 768px) {
-  .hourTime {
-    font-size: 14px;
-    line-height: 1.28;
-  }
-}
+
 .wrapperImage {
   width: 80px;
   height: 80px;
-  margin-right: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-@media screen and (min-width: 768px) {
-  .wrapperImage {
-    width: 90px;
-    height: 90px;
-    margin-right: 16px;
-  }
+
+.wrapperImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-@media screen and (min-width: 1280px) {
-  .wrapperImage {
-    margin-right: 20px;
-  }
+
+.details {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
 }
+
 .titleName {
   font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
-  margin-bottom: 14px;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--dark-color);
 }
-@media screen and (min-width: 768px) {
-  .titleName {
-    font-size: 20px;
-    line-height: 1.3;
-    margin-bottom: 20px;
-  }
-}
-.descripnsonList {
-  max-width: 194px;
-  white-space: nowrap;
-  overflow: hidden;
+
+.descriptionText {
+  display: flex;
+  min-width: 194px;
+  font-weight: 500;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
   text-overflow: ellipsis;
+  color: var(--dark-color);
+  text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-.descripnsonList:not(last-child) {
-  margin-bottom: 8px;
+
+.friendPhone,
+.friendEmail,
+.friendMaps {
+  color: var(--dark-color);
+  white-space: nowrap;
+  max-width: 194px;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.descripnsonList:hover {
-  cursor: poiner;
+.friendPhone:hover,
+.friendEmail:hover,
+.friendMaps:hover {
   color: var(--main-color);
 }
-.descriptionText {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.28;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 .accentText {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--border-color);
+  color: var(--light-border-color);
 }
