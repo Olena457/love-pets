@@ -1,6 +1,6 @@
 import AsyncSelect from 'react-select/async';
-import axiosInstance from '../../utils/axiosInstance';
-import css from './LocationSelect.module.css';
+import axiosInstance from '../../redux/api.js';
+import css from './SelectLocation.module.css';
 import blackCross from '../../assets/icons/blackCross.svg';
 import { useDispatch } from 'react-redux';
 import { setLocation, setLocationId } from '../../redux/filters/filtersSlice';

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import selectStyles from './selectStyles.js';
-import SelectLocation from '../SelectLocation/SelectLocation.jsx';
+import { SelectLocation } from '../SelectLocation/SelectLocation.jsx';
 import { selectLocation } from '../../redux/filters/filtersSelectors.js';
 import { setFilterTerm, setPage } from '../../redux/pets/petsSlice.js';
 import { selectFilterTerm } from '../../redux/pets/petsSelectors.js';
@@ -10,7 +10,7 @@ import {
   setGender,
   setLocation,
   setLocationId,
-  setSpecie,
+  setSpecies,
 } from '../../redux/filters/filtersSlice.js';
 import SearchField from '../SearchField/SearchField.jsx';
 import css from './NoticesFilters.module.css';
@@ -35,7 +35,7 @@ export const NoticesFilters = ({
   };
 
   const handleSpecieChange = selectedOption => {
-    dispatch(setSpecie(selectedOption.value));
+    dispatch(setSpecies(selectedOption.value));
     dispatch(setPage(1));
   };
 

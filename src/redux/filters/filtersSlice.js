@@ -46,6 +46,7 @@ export const {
   setPopular,
   setExpensive,
   setLocation,
+  setLocationId,
   resetFilters,
 } = filtersSlice.actions;
 

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import css from './UserNav.module.css';
 import { useState } from 'react';
 import { signout } from '../../redux/users/usersOperations.js';
-import ModalAction from '../ModalAction/ModalAction.jsx';
+import ModalApproveAction from '../ModalApproveAction/ModalApproveAction.jsx';
 
 const UserNav = ({ onClose }) => {
   const location = useLocation();
@@ -29,7 +29,7 @@ const UserNav = ({ onClose }) => {
         LOG OUT
       </button>
       {isModalOpen && (
-        <ModalAction
+        <ModalApproveAction
           onConfirm={handleLogout}
           onCansel={closeModal}
           message="Already leaving?"

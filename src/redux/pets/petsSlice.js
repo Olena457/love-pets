@@ -6,7 +6,7 @@ import {
   fetchPets,
   fetchPetsById,
   fetchSpecies,
-} from './petsOperations';
+} from './petsOperation.js';
 
 const initialState = {
   categories: [],

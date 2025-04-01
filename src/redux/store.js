@@ -13,40 +13,46 @@ import storage from 'redux-persist/lib/storage';
 import modalReducer from './modal/modalSlice.js';
 import { usersReducer } from './users/usersSlice.js';
 import { newsReducer } from './news/newsSlice.js';
-// import { noticesReducer } from './notices/noticesSlice.js';
-// import { citiesReducer } from './cities/citiesSlice.js';
+
 import { filtersReducer } from './filters/filtersSlice.js';
 import profileReducer from './profile/profileSlice.js';
 import friendsReducer from './friends/ourFriendsSlice.js';
+import petsReducer from './pets/petsSlice.js'; // Імпорт вашого petsReducer
 
+// Конфігурація для users
 const usersPersistConfig = {
   key: 'users',
   storage,
   whitelist: ['token'],
 };
+
+// Конфігурація для news
 const newsPersistConfig = {
   key: 'news',
   storage,
   whitelist: ['currentPage'],
 };
-// const noticePersistConfig = {
-//   key: 'notice',
-//   storage,
-//   whitelist: ['currentPage', 'searchQuery', 'favorites'],
-// };
 
+// Конфігурація для profile
 const profilePersistConfig = {
   key: 'profile',
   storage,
   whitelist: ['profile'],
 };
+
+// Конфігурація для petsStore
+const petsPersistConfig = {
+  key: 'pets',
+  storage,
+  whitelist: ['currentPage', 'filterTerm', 'favorites'], // Коректний whitelist для збереження
+};
+
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
     users: persistReducer(usersPersistConfig, usersReducer),
     news: persistReducer(newsPersistConfig, newsReducer),
-    // notices: persistReducer(noticePersistConfig, noticesReducer),
-    petsStore: persistReducer,
+    petsStore: persistReducer(petsPersistConfig, petsReducer), // Виправлено
     filtersStore: filtersReducer,
     friendsStore: friendsReducer,
     profileStore: persistReducer(profilePersistConfig, profileReducer),

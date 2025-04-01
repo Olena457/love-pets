@@ -26,8 +26,8 @@ import {
 import {
   selectCategory,
   selectGender,
-  selectIsExpensive,
-  selectIsPopular,
+  selectExpensive,
+  selectPopular,
   selectLocationId,
   selectSpecie,
 } from '../../redux/filters/filtersSelectors.js';
@@ -48,8 +48,8 @@ const NoticesPage = () => {
   const pets = useSelector(selectPets);
   const totalPages = useSelector(selectTotalPages);
   const categoryTerm = useSelector(selectCategory);
-  const isExpensive = useSelector(selectIsExpensive);
-  const isPopular = useSelector(selectIsPopular);
+  const isExpensive = useSelector(selectExpensive);
+  const isPopular = useSelector(selectPopular);
   const locationId = useSelector(selectLocationId);
   const specieTerm = useSelector(selectSpecie);
 
