@@ -1,49 +1,30 @@
-.iconCross {
-  width: 24px;
-  height: 24px;
-}
 .iconCat {
   width: 80px;
   height: 80px;
   /* margin-bottom: 20px; */
 }
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+
+.modalWrap {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
-  z-index: 1000;
-}
-.modalContent {
-  background: var(--white-color);
   padding: 40px 28px;
-  border-radius: 30px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  justify-items: center;
+  width: calc(335px - 28px - 28px);
 }
-.closeButton {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--black-color);
-  cursor: pointer;
+@media screen and (min-width: 768px) {
+  .modalWrap {
+    padding: 80px;
+    width: calc(448px - 160px);
+  }
 }
-.iconContainer {
+.iconImgContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80px;
   height: 80px;
+  /* border-radius: 50px; */
   margin-bottom: 20px;
 }
 
@@ -51,11 +32,21 @@
   color: var(--black-color);
   font-size: 20px;
   font-weight: 700;
+  line-height: 1;
+  text-align: center;
   margin-bottom: 28px;
 }
-.modalActions {
+@media screen and (min-width: 768px) {
+  .message {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+}
+.modalBtnWrap {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  width: 100%;
+  gap: 8px;
   gap: 8px;
 }
 .confirmButton,
@@ -64,7 +55,8 @@
   justify-content: center;
   align-items: center;
   border: none;
-  padding: 12px 0;
+  padding: 12px;
+  /* width: 100%; */
   width: 135px;
   border-radius: 30px;
   font-size: 14px;
@@ -75,6 +67,8 @@
 @media screen and (max-width: 375px) {
   .confirmButton,
   .cancelButton {
+    font-size: 16px;
+    padding: 14px;
     width: 112px;
   }
 }

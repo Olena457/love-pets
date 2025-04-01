@@ -1,130 +1,128 @@
 import { useEffect } from 'react';
-import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Title from '../../components/Title/Title.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
 import {
-  fetchNotices,
-  toggleFavoriteNotice,
-} from '../../redux/notices/noticesOperations.js';
+  fetchCategories,
+  fetchGenders,
+  fetchPets,
+  fetchSpecies,
+} from '../../redux/pets/petsOperation.js';
 import {
+  selectCategories,
+  selectError,
+  selectFilterTerm,
+  selectGenders,
+  selectIsLoading,
+  selectPage,
+  selectPerPage,
+  selectPets,
+  selectSpecies,
   selectTotalPages,
-  selectCurrentPage,
-  // selectError,
-} from '../../redux/notices/noticesSelectors.js';
+} from '../../redux/pets/petsSelectors.js';
 import {
-  selectFilteredNoticesWithFilters,
-  selectSearchQuery,
   selectCategory,
   selectGender,
-  selectType,
-  selectLocation,
+  selectIsExpensive,
+  selectIsPopular,
+  selectLocationId,
+  selectSpecie,
 } from '../../redux/filters/filtersSelectors.js';
-import { setCurrentPage } from '../../redux/notices/noticesSlice.js';
-
+import { setFilterTerm, setPage } from '../../redux/pets/petsSlice.js';
 import css from './NoticesPage.module.css';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
-  const notices = useSelector(selectFilteredNoticesWithFilters);
+  const categories = useSelector(selectCategories);
+  const currentPage = useSelector(selectPage);
+  const error = useSelector(selectError);
+  const filterWord = useSelector(selectFilterTerm);
+  const genders = useSelector(selectGenders);
+  const isLoading = useSelector(selectIsLoading);
+  const perPage = useSelector(selectPerPage);
+  const genderTerm = useSelector(selectGender);
+  const species = useSelector(selectSpecies);
+  const pets = useSelector(selectPets);
   const totalPages = useSelector(selectTotalPages);
-  const currentPage = useSelector(selectCurrentPage);
-  const searchQuery = useSelector(selectSearchQuery);
-  const category = useSelector(selectCategory);
-  const gender = useSelector(selectGender);
-  const type = useSelector(selectType);
-  const location = useSelector(selectLocation);
-  // const error = useSelector(selectError);
+  const categoryTerm = useSelector(selectCategory);
+  const isExpensive = useSelector(selectIsExpensive);
+  const isPopular = useSelector(selectIsPopular);
+  const locationId = useSelector(selectLocationId);
+  const specieTerm = useSelector(selectSpecie);
 
+  const filteredPets = genderTerm
+    ? pets.filter(pet => pet.sex === genderTerm)
+    : pets;
+
+  // Initial data fetching
+  useEffect(() => {
+    dispatch(fetchGenders());
+    dispatch(fetchCategories());
+    dispatch(fetchSpecies());
+    dispatch(setFilterTerm(''));
+    dispatch(setPage(1));
+  }, [dispatch]);
+
+  // Fetch pets based on filters and pagination
   useEffect(() => {
     dispatch(
-      fetchNotices({
+      fetchPets({
         page: currentPage,
-        perPage: 3,
-        searchQuery,
-        category,
-        gender,
-        type,
-        location,
+        limit: perPage,
+        filterWord,
+        category: categoryTerm,
+        species: specieTerm,
+        sex: genderTerm,
+        isPopular,
+        isExpensive,
+        locationId,
       })
     );
-  }, [dispatch, currentPage, searchQuery, category, gender, type, location]);
+  }, [
+    dispatch,
+    currentPage,
+    perPage,
+    filterWord,
+    categoryTerm,
+    specieTerm,
+    genderTerm,
+    isPopular,
+    isExpensive,
+    locationId,
+  ]);
 
-  const handleLearnMore = id => {
-    console.log(`Fetch details for notice with id: ${id}`);
-    // need to add modal window with details
+  const handlePageChange = newPage => {
+    dispatch(setPage(newPage));
   };
 
-  const handleToggleFavorite = id => {
-    dispatch(toggleFavoriteNotice(id));
-  };
-
-  // const handleFilterChange = page => {
-  //   dispatch(setCurrentPage(page));
-  //   dispatch(
-  //     fetchNotices({
-  //       page,
-  //       perPage: 3,
-  //       searchQuery,
-  //       category,
-  //       gender,
-  //       type,
-  //       location,
-  //     })
-  //   );
-  // };
-
-  const handleFilterChange = useCallback(
-    page => {
-      dispatch(setCurrentPage(page));
-      dispatch(
-        fetchNotices({
-          page,
-          perPage: 3,
-          searchQuery,
-          category,
-          gender,
-          type,
-          location,
-        })
-      );
-    },
-    [dispatch, searchQuery, category, gender, type, location]
-  );
-  const handlePageChange = page => {
-    dispatch(setCurrentPage(page));
-    dispatch(
-      fetchNotices({
-        page,
-        perPage: 3,
-        searchQuery,
-        category,
-        gender,
-        type,
-        location,
-      })
-    );
-  };
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={css.container}>
-      {/* added error */}
-      {/* {error && <p className={css.error}>{error}</p>} */}
+      {error && (
+        <p className={css.error}>Oops...Please try to reload the page</p>
+      )}
       <Title title="Find your favorite pet" />
-      <NoticesFilters onFilterChange={handleFilterChange} />
-      {notices.length === 0 ? (
+      <NoticesFilters
+        genders={genders}
+        categories={categories}
+        species={species}
+        filterTerm={filterWord}
+        onFilterChange={term => dispatch(setFilterTerm(term))}
+        categoryTerm={categoryTerm}
+        genderTerm={genderTerm}
+      />
+      {filteredPets.length === 0 ? (
         <div className={css.noResults}>
           "Unfortunately, no pets were found for your request.😿 Please try
           again."
         </div>
       ) : (
         <>
-          <NoticesList
-            notices={notices}
-            onLearnMore={handleLearnMore}
-            onToggleFavorite={handleToggleFavorite}
-          />
+          <NoticesList pets={filteredPets} />
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

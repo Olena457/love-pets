@@ -9,7 +9,7 @@ const prepareAuthHeader = thunkAPI => {
   setAuthHeader(token);
 };
 export const signup = createAsyncThunk(
-  'user/singup',
+  'user/signup',
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post('/users/signup', userData);

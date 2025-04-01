@@ -1,0 +1,51 @@
+.modalOverlay {
+  /* position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background: rgba(38, 38, 38, 0.3); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modalOverlay:hover {
+  cursor: pointer;
+}
+.modalContainer {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  background: #ffffff;
+  border-radius: 30px;
+  max-height: 100vh;
+  overflow-x: auto;
+  background-color: #ffffff;
+}
+.modalBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
+  transition: color 0.3s linear;
+  color: var(--black-color);
+}
+.modalBtn:hover {
+  color: var(--dark-hover);
+}
+.icon {
+  width: 24px;
+  height: 24px;
+}

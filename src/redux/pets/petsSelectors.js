@@ -1,0 +1,13 @@
+export const selectPets = state => state.petStore.pets;
+export const selectPet = state => state.petStore.pet;
+export const selectIsLoading = state => state.petStore.isLoading;
+export const selectError = state => state.petStore.error;
+export const selectPerPage = state => state.petStore.perPage;
+export const selectPage = state => state.petStore.page;
+export const selectTotalPages = state => state.petStore.totalPages;
+export const selectGenders = state => state.petStore.genders;
+export const selectCategories = state => state.petStore.categories;
+export const selectSpecies = state => state.petStore.species;
+export const selectFilterTerm = state => state.petStore.filterTerm;
+export const selectCities = state => state.petStore.cities;
+export const selectFavorites = state => state.petStore.favorites;

@@ -1,82 +1,51 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  searchQuery: '',
   category: '',
   gender: '',
-  type: '',
+  specie: '',
+  popular: null,
+  expensive: null,
   location: '',
-  sort: [],
+  locationId: '',
 };
 
 const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    // renew search query
-    setSearchQuery(state, action) {
-      state.searchQuery = action.payload;
-    },
-    // renew category of pet
     setCategory(state, action) {
       state.category = action.payload;
     },
-    // renew sex of pet
     setGender(state, action) {
       state.gender = action.payload;
     },
-    // renew type of pet
-    setType(state, action) {
+    setSpecie(state, action) {
       state.type = action.payload;
+    },
+    setPopular(state, action) {
+      state.popular = action.payload;
+    },
+    setExpensive(state, action) {
+      state.expensive = action.payload;
     },
     // renew location
     setLocation(state, action) {
       state.location = action.payload;
     },
-    // renew sortion options
-    setSort(state, action) {
-      const sortOption = action.payload;
-      if (!Array.isArray(state.sort)) {
-        state.sort = [];
-      }
-      const popularityOptions = ['popular', 'unpopular'];
-      const priceOptions = ['cheap', 'expensive'];
-
-      // toggle sort option
-      if (state.sort.includes(sortOption)) {
-        state.sort = state.sort.filter(option => option !== sortOption);
-      } else {
-        state.sort = state.sort.filter(
-          options =>
-            !(
-              popularityOptions.includes(options) &&
-              popularityOptions.includes(sortOption)
-            ) &&
-            !(
-              priceOptions.includes(options) &&
-              priceOptions.includes(sortOption)
-            )
-        );
-        state.sort.push(sortOption);
-      }
-    },
-    resetFilters(state) {
-      state.searchQuery = '';
-      state.category = '';
-      state.gender = '';
-      state.type = '';
-      state.location = '';
-      state.sort = [];
+    setLocationId(state, action) {
+      state.locationId = action.payload;
     },
   },
 });
+
 export const {
-  setSearchQuery,
   setCategory,
   setGender,
-  setType,
+  setSpecies,
+  setPopular,
+  setExpensive,
   setLocation,
-  setSort,
   resetFilters,
 } = filtersSlice.actions;
 

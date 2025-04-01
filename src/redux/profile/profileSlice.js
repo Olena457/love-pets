@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { addToFavorites, deleteFromFavorites } from '../pets/petsOperation.js';
 import axiosInstance from '../api';
 
+//  fetching  user profile
 export const fetchProfile = createAsyncThunk(
   'profile/fetchProfile',
   async (_, { rejectWithValue }) => {
@@ -14,6 +16,7 @@ export const fetchProfile = createAsyncThunk(
   }
 );
 
+//  updating  user profile
 export const updateProfile = createAsyncThunk(
   'profile/updateProfile',
   async (profileData, { rejectWithValue }) => {
@@ -52,18 +55,30 @@ const profileSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+      // actions  fetching profile
       .addCase(fetchProfile.pending, handlePending)
       .addCase(fetchProfile.fulfilled, (state, action) => {
         state.isLoading = false;
         state.profile = action.payload;
       })
       .addCase(fetchProfile.rejected, handleRejected)
+
+      //actions updating profile
       .addCase(updateProfile.pending, handlePending)
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.isLoading = false;
         state.profile = action.payload;
       })
-      .addCase(updateProfile.rejected, handleRejected);
+      .addCase(updateProfile.rejected, handleRejected)
+
+      // Handle  adding to favorites
+      .addCase(addToFavorites.pending, handlePending)
+      .addCase(addToFavorites.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.profile.favorites = action.payload; // Update favorites list
+      })
+      .addCase(deleteFromFavorites.rejected, handleRejected);
   },
 });
 
