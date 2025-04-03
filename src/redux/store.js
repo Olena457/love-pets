@@ -13,49 +13,50 @@ import storage from 'redux-persist/lib/storage';
 import modalReducer from './modal/modalSlice.js';
 import { usersReducer } from './users/usersSlice.js';
 import { newsReducer } from './news/newsSlice.js';
-
+import { citiesReducer } from './cities/citiesSlice.js';
 import { filtersReducer } from './filters/filtersSlice.js';
+import { noticesReducer } from './notices/noticesSlice.js';
 import profileReducer from './profile/profileSlice.js';
 import friendsReducer from './friends/ourFriendsSlice.js';
-import petsReducer from './pets/petsSlice.js'; // Імпорт вашого petsReducer
 
-// Конфігурація для users
 const usersPersistConfig = {
   key: 'users',
   storage,
   whitelist: ['token'],
 };
 
-// Конфігурація для news
 const newsPersistConfig = {
   key: 'news',
   storage,
   whitelist: ['currentPage'],
 };
 
-// Конфігурація для profile
 const profilePersistConfig = {
   key: 'profile',
   storage,
   whitelist: ['profile'],
 };
 
-// Конфігурація для petsStore
-const petsPersistConfig = {
-  key: 'pets',
+const noticesPersistConfig = {
+  key: 'notices',
   storage,
-  whitelist: ['currentPage', 'filterTerm', 'favorites'], // Коректний whitelist для збереження
+  whitelist: ['currentPage', 'searchQuery', 'favorites'],
 };
-
+const filtersPersistConfig = {
+  key: 'filters',
+  storage,
+  whitelist: ['searchQuery', 'category', 'gender', 'type', 'location', 'sort'],
+};
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
     users: persistReducer(usersPersistConfig, usersReducer),
     news: persistReducer(newsPersistConfig, newsReducer),
-    petsStore: persistReducer(petsPersistConfig, petsReducer), // Виправлено
-    filtersStore: filtersReducer,
-    friendsStore: friendsReducer,
-    profileStore: persistReducer(profilePersistConfig, profileReducer),
+    notices: persistReducer(noticesPersistConfig, noticesReducer),
+    profile: persistReducer(profilePersistConfig, profileReducer),
+    filters: filtersReducer(filtersPersistConfig, filtersReducer),
+    friends: friendsReducer,
+    cities: citiesReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

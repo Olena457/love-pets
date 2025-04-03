@@ -7,31 +7,31 @@ import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Loader from '../../components/Loader/Loader.jsx';
 import {
   fetchCategories,
-  fetchGenders,
-  fetchPets,
+  fetchNoticeSex,
+  fetchNotices,
+  toggleFavoriteNotice,
   fetchSpecies,
-} from '../../redux/pets/petsOperation.js';
+} from '../../redux/notices/noticesOperations.js';
 import {
   selectCategories,
   selectError,
-  selectFilterTerm,
-  selectGenders,
+  selectSearchQuery,
+  selectSexOptions,
   selectIsLoading,
   selectPage,
   selectPerPage,
-  selectPets,
+  selectFilteredNoticesWithFilters,
   selectSpecies,
   selectTotalPages,
-} from '../../redux/pets/petsSelectors.js';
+} from '../../redux/notices/noticesSelectors.js';
 import {
   selectCategory,
   selectGender,
-  selectExpensive,
-  selectPopular,
-  selectLocationId,
-  selectSpecie,
 } from '../../redux/filters/filtersSelectors.js';
-import { setFilterTerm, setPage } from '../../redux/pets/petsSlice.js';
+import {
+  setSearchQuery,
+  setCurrentPage,
+} from '../../redux/notices/noticesSlice.js';
 import css from './NoticesPage.module.css';
 
 const NoticesPage = () => {
@@ -39,63 +39,65 @@ const NoticesPage = () => {
   const categories = useSelector(selectCategories);
   const currentPage = useSelector(selectPage);
   const error = useSelector(selectError);
-  const filterWord = useSelector(selectFilterTerm);
-  const genders = useSelector(selectGenders);
+  const SearchQuery = useSelector(selectSearchQuery);
+  const genders = useSelector(selectSexOptions);
   const isLoading = useSelector(selectIsLoading);
   const perPage = useSelector(selectPerPage);
   const genderTerm = useSelector(selectGender);
   const species = useSelector(selectSpecies);
-  const pets = useSelector(selectPets);
+  const notices = useSelector(selectFilteredNoticesWithFilters); // Використовуємо notices замість pets
   const totalPages = useSelector(selectTotalPages);
   const categoryTerm = useSelector(selectCategory);
-  const isExpensive = useSelector(selectExpensive);
-  const isPopular = useSelector(selectPopular);
-  const locationId = useSelector(selectLocationId);
-  const specieTerm = useSelector(selectSpecie);
+  const sort = useSelector(state => state.filters.sort); // Додано
 
-  const filteredPets = genderTerm
-    ? pets.filter(pet => pet.sex === genderTerm)
-    : pets;
+  const filteredNotices = genderTerm
+    ? notices.filter(notice => notice.sex === genderTerm)
+    : notices;
 
   // Initial data fetching
   useEffect(() => {
-    dispatch(fetchGenders());
+    dispatch(fetchNoticeSex());
     dispatch(fetchCategories());
     dispatch(fetchSpecies());
-    dispatch(setFilterTerm(''));
-    dispatch(setPage(1));
+    dispatch(setSearchQuery(''));
+    dispatch(setCurrentPage(1));
   }, [dispatch]);
 
-  // Fetch pets based on filters and pagination
+  // Fetch notices based on filters, pagination, and sort options
   useEffect(() => {
     dispatch(
-      fetchPets({
+      fetchNotices({
         page: currentPage,
         limit: perPage,
-        filterWord,
+        SearchQuery,
         category: categoryTerm,
-        species: specieTerm,
+        species,
         sex: genderTerm,
-        isPopular,
-        isExpensive,
-        locationId,
+        isPopular: sort.includes('popular'),
+        isExpensive: sort.includes('expensive'),
       })
     );
   }, [
     dispatch,
     currentPage,
     perPage,
-    filterWord,
+    SearchQuery,
     categoryTerm,
-    specieTerm,
+    species,
     genderTerm,
-    isPopular,
-    isExpensive,
-    locationId,
+    sort,
   ]);
 
   const handlePageChange = newPage => {
-    dispatch(setPage(newPage));
+    dispatch(setCurrentPage(newPage));
+  };
+  const handleLearnMore = id => {
+    console.log(`Fetch details for notice ID: ${id}`);
+    // Додати модалку
+  };
+
+  const handleToggleFavorite = id => {
+    dispatch(toggleFavoriteNotice(id));
   };
 
   return isLoading ? (
@@ -103,26 +105,32 @@ const NoticesPage = () => {
   ) : (
     <div className={css.container}>
       {error && (
-        <p className={css.error}>Oops...Please try to reload the page</p>
+        <p className={css.error}>Oops...Please try to reload the page🐈</p>
       )}
       <Title title="Find your favorite pet" />
       <NoticesFilters
         genders={genders}
         categories={categories}
         species={species}
-        filterTerm={filterWord}
-        onFilterChange={term => dispatch(setFilterTerm(term))}
+        filterTerm={SearchQuery}
+        onFilterChange={term => dispatch(setSearchQuery(term))}
+        onFetch={params => dispatch(fetchNotices(params))}
+        onPageChange={page => dispatch(setCurrentPage(page))}
         categoryTerm={categoryTerm}
         genderTerm={genderTerm}
       />
-      {filteredPets.length === 0 ? (
+      {filteredNotices.length === 0 ? (
         <div className={css.noResults}>
           "Unfortunately, no pets were found for your request.😿 Please try
           again."
         </div>
       ) : (
         <>
-          <NoticesList pets={filteredPets} />
+          <NoticesList
+            notices={filteredNotices}
+            onLearnMore={handleLearnMore}
+            onToggleFavorite={handleToggleFavorite}
+          />
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
-  addPetToFavorites,
-  deletePetFromFavorites,
-} from '../pets/petsOperation.js';
+  addNoticeToFavorites,
+  removeNoticeFromFavorites,
+} from '../notices/noticesOperations.js';
 import axiosInstance from '../api';
 
 //  fetching  user profile
@@ -75,13 +75,13 @@ const profileSlice = createSlice({
       .addCase(updateProfile.rejected, handleRejected)
 
       // Handle  adding to favorites
-      .addCase(addPetToFavorites.pending, handlePending)
-      .addCase(addPetToFavorites.fulfilled, (state, action) => {
+      .addCase(addNoticeToFavorites.pending, handlePending)
+      .addCase(addNoticeToFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.profile.favorites = action.payload; // Update favorites list
       })
-      .addCase(deletePetFromFavorites.rejected, handleRejected);
+      .addCase(removeNoticeFromFavorites.rejected, handleRejected);
   },
 });
 

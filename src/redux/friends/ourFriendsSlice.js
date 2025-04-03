@@ -4,7 +4,6 @@ import axiosInstance from '../api.js';
 export const fetchFriends = createAsyncThunk(
   'friends/fetchFriends',
   async (_, { rejectWithValue }) => {
-    // Виправлено аргументи
     try {
       const response = await axiosInstance.get(`/friends`);
       return response.data;

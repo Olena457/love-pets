@@ -1,39 +1,38 @@
 .selectContainer {
-  border-radius: 30px;
-  background-color: var(--hover-light);
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 12px;
   display: flex;
-  flex-direction: column;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid var(--input-default);
+  background-color: var(--white-color);
+  padding: 12px;
+  width: 100%;
 }
 
-@media screen and (max-width: 375px) {
-  .selectContainer {
-    padding: 20px;
-  }
+.selectContainer:focus,
+.selectContainer:hover {
+  border: 1px solid var(--dark-hover);
 }
+
 @media screen and (min-width: 768px) {
   .selectContainer {
-    padding: 40px 32px;
+    width: 300px;
+    padding: 14px;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .selectContainer {
-    padding: 40px;
-  }
-}
 .resetBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   display: flex;
-  padding: 12px 50px;
-  border-radius: 30px;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  background-color: var(--main-color);
-  max-width: 180px;
-  font-size: 14px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.crossIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
