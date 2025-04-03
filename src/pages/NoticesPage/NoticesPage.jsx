@@ -20,13 +20,13 @@ import {
   selectIsLoading,
   selectPage,
   selectPerPage,
-  selectFilteredNoticesWithFilters,
   selectSpecies,
   selectTotalPages,
 } from '../../redux/notices/noticesSelectors.js';
 import {
   selectCategory,
   selectGender,
+  selectFilteredNoticesWithFilters,
 } from '../../redux/filters/filtersSelectors.js';
 import {
   setSearchQuery,
@@ -45,10 +45,10 @@ const NoticesPage = () => {
   const perPage = useSelector(selectPerPage);
   const genderTerm = useSelector(selectGender);
   const species = useSelector(selectSpecies);
-  const notices = useSelector(selectFilteredNoticesWithFilters); // Використовуємо notices замість pets
+  const notices = useSelector(selectFilteredNoticesWithFilters);
   const totalPages = useSelector(selectTotalPages);
   const categoryTerm = useSelector(selectCategory);
-  const sort = useSelector(state => state.filters.sort); // Додано
+  const sort = useSelector(state => state.filters.sort);
 
   const filteredNotices = genderTerm
     ? notices.filter(notice => notice.sex === genderTerm)

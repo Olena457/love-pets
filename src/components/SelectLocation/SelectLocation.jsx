@@ -1,10 +1,3 @@
-import AsyncSelect from 'react-select/async';
-import axiosInstance from '../../redux/api.js';
-import css from './SelectLocation.module.css';
-import blackCross from '../../assets/icons/blackCross.svg';
-import { useDispatch } from 'react-redux';
-import { setLocation } from '../../redux/filters/filtersSlice';
-import { setSearchQuery } from '../../redux/notices/noticesSlice';
 // import customStyles from './selectCustomStyles.js';
 
 // export const SelectLocation = ({ handleOptionChange, selectedOpt }) => {
@@ -60,6 +53,15 @@ import { setSearchQuery } from '../../redux/notices/noticesSlice';
 //   );
 // };
 // export default SelectLocation;
+
+import AsyncSelect from 'react-select/async';
+import axiosInstance from '../../redux/api.js';
+import css from './SelectLocation.module.css';
+import blackCross from '../../assets/icons/blackCross.svg';
+import { useDispatch } from 'react-redux';
+import { setLocation } from '../../redux/filters/filtersSlice';
+import { setSearchQuery } from '../../redux/notices/noticesSlice';
+
 export const SelectLocation = ({
   handleOptionChange = () => {},
   selectedOpt = null,

@@ -204,7 +204,6 @@ export const fetchNotices = createAsyncThunk(
 // Fetch Notice by ID
 export const fetchNoticeById = createAsyncThunk(
   'notices/fetchNoticeById',
-  //  'notices/{id}',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/notices/${id}`);
