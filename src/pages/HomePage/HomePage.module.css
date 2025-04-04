@@ -16,15 +16,17 @@
 } */
 .home {
   display: flex;
+  line-height: 0.6;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-width: 280px;
   margin: 0px 20px;
-  height: 390px;
+  height: 280px;
   margin: 0px 20px;
   color: var(--white-color);
-  padding: 60px 20px 50px;
+  padding: 10px 20px 20px 20px;
+  /* padding: 60px 20px 50px; */
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   background-color: var(--main-color);
@@ -32,7 +34,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 @media screen and (min-width: 768px) {
   .home {
@@ -40,7 +42,7 @@
     min-width: 704px;
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 60px;
-    height: 496px;
+    height: 384px;
   }
   .content {
     gap: 32px;
@@ -49,14 +51,15 @@
 @media screen and (min-width: 1280px) {
   .home {
     max-width: 1216px;
-    height: 384px;
+    max-height: 270px;
   }
 }
 .title {
   color: var(--white-color);
-  font-size: 50px;
+  font-size: 46px;
   font-weight: 700;
-  margin-bottom: 24px;
+  line-height: 0.86;
+  margin-bottom: 14px;
 }
 @media screen and (min-width: 768px) {
   .title {
@@ -147,7 +150,7 @@
   .photo {
     background-image: url('../../assets/imgs/desktop/home-desk@1x.jpg');
     width: 1216px;
-    height: 384px;
+    max-height: 384px;
   }
 }
 @media screen and (min-width: 1280px) and (min-resolution: 192dpi) {
