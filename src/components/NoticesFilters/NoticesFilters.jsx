@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
-import selectStyles from './selectStyles.js';
-import SelectLocation from '../SelectLocation/SelectLocation.jsx';
 import blackCross from '../../assets/icons/blackCross.svg';
-
+import Select from 'react-select';
+import {
+  fetchNoticeCategories,
+  fetchNoticeSexOptions,
+  fetchNoticeSpecies,
+} from '../../redux/notices/noticesOperations.js';
+import { fetchCityLocations } from '../../redux/cities/citiesOperations.js';
 import {
   selectAvailableCategories,
   selectAvailableSexOptions,
@@ -14,66 +18,90 @@ import {
   setSearchQuery,
   setCategory,
   setGender,
+  setType,
   setLocation,
   setSort,
+  resetFilters,
 } from '../../redux/filters/filtersSlice.js';
 import SearchField from '../SearchField/SearchField.jsx';
-import { setCurrentPage } from '../../redux/notices/noticesSlice.js';
-import { selectSearchQuery } from '../../redux/notices/noticesSelectors.js';
 import css from './NoticesFilters.module.css';
+import selectStyles from './selectStyles';
 
-export const NoticesFilters = () => {
+const NoticesFilters = ({ onFilterChange }) => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectAvailableCategories);
   const sexOptions = useSelector(selectAvailableSexOptions);
   const species = useSelector(selectAvailableSpecies);
   const locations = useSelector(selectAvailableLocations);
-  const searchQuery = useSelector(selectSearchQuery);
+
+  const filters = useSelector(state => state.filters);
+
+  const [categoryValue, setCategoryValue] = useState(null);
+  const [genderValue, setGenderValue] = useState(null);
+  const [typeValue, setTypeValue] = useState(null);
+  const [locationValue, setLocationValue] = useState(null);
+
   const addShowAllOption = options => [
-    { value: '', label: 'Show all' }, // "Show all"
+    { value: '', label: 'Show all' },
     ...options,
   ];
-  //
-  const sortOptions = useSelector(state => state.filters.sort);
+
+  useEffect(() => {
+    dispatch(fetchNoticeCategories());
+    dispatch(fetchNoticeSexOptions());
+    dispatch(fetchNoticeSpecies());
+    dispatch(fetchCityLocations());
+  }, [dispatch]);
+
+  const handleSearchChange = query => {
+    dispatch(setSearchQuery(query));
+    onFilterChange();
+  };
 
   const handleCategoryChange = selectedOption => {
+    setCategoryValue(selectedOption);
     dispatch(setCategory(selectedOption?.value || ''));
-    dispatch(setCurrentPage(1));
+    onFilterChange();
   };
 
   const handleGenderChange = selectedOption => {
+    setGenderValue(selectedOption);
     dispatch(setGender(selectedOption?.value || ''));
-    dispatch(setCurrentPage(1));
+    onFilterChange();
   };
 
-  const handleSpeciesChange = selectedOption => {
-    dispatch(setCategory(selectedOption?.value || ''));
-    dispatch(setCurrentPage(1));
+  const handleTypeChange = selectedOption => {
+    setTypeValue(selectedOption);
+    dispatch(setType(selectedOption?.value || ''));
+    onFilterChange();
   };
 
   const handleLocationChange = selectedOption => {
+    setLocationValue(selectedOption);
     dispatch(setLocation(selectedOption?.value || ''));
-    dispatch(setCurrentPage(1));
+    onFilterChange();
   };
 
-  const handleSearchQueryChange = term => {
-    dispatch(setSearchQuery(term));
-    dispatch(setCurrentPage(1));
+  const handleSortChange = sortValue => {
+    dispatch(setSort(sortValue));
+    onFilterChange();
   };
 
-  const handleSortChange = option => {
-    dispatch(setSort(option)); // renew sort
-    dispatch(setCurrentPage(1)); // return page 1
-  };
-
-  const handleRemoveSort = (option, event) => {
+  const handleRemoveSort = (sortValue, event) => {
     event.preventDefault();
-    dispatch(setSort(option));
+    event.stopPropagation();
+    dispatch(setSort(sortValue));
+    onFilterChange();
   };
 
-  const handleResetSort = () => {
-    dispatch(setSort([]));
+  const handleReset = () => {
+    setCategoryValue(null);
+    setGenderValue(null);
+    setTypeValue(null);
+    setLocationValue(null);
+    dispatch(resetFilters());
+    onFilterChange();
   };
 
   return (
@@ -81,39 +109,55 @@ export const NoticesFilters = () => {
       <div className={css.row}>
         <div className={css.first}>
           <SearchField
-            onSubmit={handleSearchQueryChange}
-            initialQuery={searchQuery}
+            onSubmit={handleSearchChange}
+            initialQuery={filters.searchQuery}
           />
         </div>
         <div className={css.second}>
           <Select
-            options={categories}
-            placeholder="Categories"
+            value={categoryValue}
+            options={addShowAllOption(
+              categories.map(category => ({
+                value: category,
+                label: category,
+              }))
+            )}
             onChange={handleCategoryChange}
+            placeholder="Category"
             styles={selectStyles}
           />
         </div>
         <div className={css.third}>
           <Select
-            options={sexOptions}
-            placeholder="Gender"
+            value={genderValue}
+            options={addShowAllOption(
+              sexOptions.map(sex => ({
+                value: sex,
+                label: sex,
+              }))
+            )}
             onChange={handleGenderChange}
+            placeholder="By gender"
             styles={selectStyles}
           />
         </div>
         <div className={css.fourth}>
           <Select
-            options={species}
-            placeholder="Species"
-            onChange={handleSpeciesChange}
+            value={typeValue}
+            options={addShowAllOption(
+              species.map(type => ({
+                value: type,
+                label: type,
+              }))
+            )}
+            onChange={handleTypeChange}
+            placeholder="By type"
             styles={selectStyles}
           />
         </div>
-
         <div className={css.fifth}>
-          <SelectLocation
-            handleOptionChange={handleLocationChange}
-            // value={locationValue}
+          <Select
+            value={locationValue}
             options={addShowAllOption(
               locations.map(location => ({
                 value: location.cityEn,
@@ -127,23 +171,22 @@ export const NoticesFilters = () => {
         </div>
       </div>
       <hr className={css.hr} />
-      {/* sort */}
       <div className={css.sorting}>
         {['popular', 'unpopular', 'cheap', 'expensive'].map(option => (
           <div
             key={option}
-            className={sortOptions.includes(option) ? css.selected : ''}
+            className={filters.sort.includes(option) ? css.selected : ''}
           >
             <input
               type="checkbox"
               id={option}
               value={option}
-              checked={sortOptions.includes(option)}
+              checked={filters.sort.includes(option)}
               onChange={() => handleSortChange(option)}
             />
             <label htmlFor={option} className={css.sortLabel}>
               {option.charAt(0).toUpperCase() + option.slice(1)}
-              {sortOptions.includes(option) && (
+              {filters.sort.includes(option) && (
                 <img
                   src={blackCross}
                   alt="clear"
@@ -157,7 +200,7 @@ export const NoticesFilters = () => {
           </div>
         ))}
       </div>
-      <button className={css.resetButton} onClick={handleResetSort}>
+      <button className={css.resetButton} onClick={handleReset}>
         Reset
       </button>
     </div>

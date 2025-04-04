@@ -1,56 +1,3 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   category: '',
-//   gender: '',
-//   specie: '',
-//   popular: null,
-//   expensive: null,
-//   location: '',
-//   locationId: '',
-// };
-
-// const filtersSlice = createSlice({
-//   name: 'filters',
-//   initialState,
-//   reducers: {
-//     setCategory(state, action) {
-//       state.category = action.payload;
-//     },
-//     setGender(state, action) {
-//       state.gender = action.payload;
-//     },
-//     setSpecie(state, action) {
-//       state.type = action.payload;
-//     },
-//     setPopular(state, action) {
-//       state.popular = action.payload;
-//     },
-//     setExpensive(state, action) {
-//       state.expensive = action.payload;
-//     },
-//     // renew location
-//     setLocation(state, action) {
-//       state.location = action.payload;
-//     },
-//     setLocationId(state, action) {
-//       state.locationId = action.payload;
-//     },
-//   },
-// });
-
-// export const {
-//   setCategory,
-//   setGender,
-//   setSpecie,
-//   setPopular,
-//   setExpensive,
-//   setLocation,
-//   setLocationId,
-//   resetFilters,
-// } = filtersSlice.actions;
-
-// export const filtersReducer = filtersSlice.reducer;
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -83,22 +30,29 @@ const filtersSlice = createSlice({
     },
     setSort(state, action) {
       const sortOption = action.payload;
+      if (!Array.isArray(state.sort)) {
+        state.sort = [];
+      }
 
-      const conflictGroups = [
-        ['popular', 'unpopular'],
-        ['cheap', 'expensive'],
-      ];
+      const popularityOptions = ['popular', 'unpopular'];
+      const priceOptions = ['cheap', 'expensive'];
 
-      state.sort = state.sort.includes(sortOption)
-        ? state.sort.filter(option => option !== sortOption)
-        : state.sort
-            .filter(
-              option =>
-                !conflictGroups.some(
-                  group => group.includes(option) && group.includes(sortOption)
-                )
+      if (state.sort.includes(sortOption)) {
+        state.sort = state.sort.filter(option => option !== sortOption);
+      } else {
+        state.sort = state.sort.filter(
+          option =>
+            !(
+              popularityOptions.includes(option) &&
+              popularityOptions.includes(sortOption)
+            ) &&
+            !(
+              priceOptions.includes(option) && priceOptions.includes(sortOption)
             )
-            .concat(sortOption);
+        );
+
+        state.sort.push(sortOption);
+      }
     },
     resetFilters(state) {
       state.searchQuery = '';

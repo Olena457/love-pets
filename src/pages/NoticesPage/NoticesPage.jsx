@@ -1,96 +1,53 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Title from '../../components/Title/Title.jsx';
+import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
-import NoticesList from '../../components/NoticesList/NoticesList.jsx';
-import Loader from '../../components/Loader/Loader.jsx';
 import {
-  fetchCategories,
-  fetchNoticeSex,
   fetchNotices,
   toggleFavoriteNotice,
-  fetchSpecies,
 } from '../../redux/notices/noticesOperations.js';
 import {
-  selectCategories,
-  selectError,
-  selectSearchQuery,
-  selectSexOptions,
-  selectIsLoading,
-  selectPage,
-  selectPerPage,
-  selectSpecies,
   selectTotalPages,
+  selectCurrentPage,
 } from '../../redux/notices/noticesSelectors.js';
 import {
+  selectFilteredNoticesWithFilters,
+  selectSearchQuery,
   selectCategory,
   selectGender,
-  selectFilteredNoticesWithFilters,
+  selectType,
+  selectLocation,
 } from '../../redux/filters/filtersSelectors.js';
-import {
-  setSearchQuery,
-  setCurrentPage,
-} from '../../redux/notices/noticesSlice.js';
+import { setCurrentPage } from '../../redux/notices/noticesSlice.js';
 import css from './NoticesPage.module.css';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(selectCategories);
-  const currentPage = useSelector(selectPage);
-  const error = useSelector(selectError);
-  const SearchQuery = useSelector(selectSearchQuery);
-  const genders = useSelector(selectSexOptions);
-  const isLoading = useSelector(selectIsLoading);
-  const perPage = useSelector(selectPerPage);
-  const genderTerm = useSelector(selectGender);
-  const species = useSelector(selectSpecies);
   const notices = useSelector(selectFilteredNoticesWithFilters);
   const totalPages = useSelector(selectTotalPages);
-  const categoryTerm = useSelector(selectCategory);
-  const sort = useSelector(state => state.filters.sort);
+  const currentPage = useSelector(selectCurrentPage);
+  const searchQuery = useSelector(selectSearchQuery);
+  const category = useSelector(selectCategory);
+  const gender = useSelector(selectGender);
+  const type = useSelector(selectType);
+  const location = useSelector(selectLocation);
 
-  const filteredNotices = genderTerm
-    ? notices.filter(notice => notice.sex === genderTerm)
-    : notices;
-
-  // Initial data fetching
-  useEffect(() => {
-    dispatch(fetchNoticeSex());
-    dispatch(fetchCategories());
-    dispatch(fetchSpecies());
-    dispatch(setSearchQuery(''));
-    dispatch(setCurrentPage(1));
-  }, [dispatch]);
-
-  // Fetch notices based on filters, pagination, and sort options
   useEffect(() => {
     dispatch(
       fetchNotices({
         page: currentPage,
-        limit: perPage,
-        SearchQuery,
-        category: categoryTerm,
-        species,
-        sex: genderTerm,
-        isPopular: sort.includes('popular'),
-        isExpensive: sort.includes('expensive'),
+        perPage: 6,
+        searchQuery,
+        category,
+        gender,
+        type,
+        location,
       })
     );
-  }, [
-    dispatch,
-    currentPage,
-    perPage,
-    SearchQuery,
-    categoryTerm,
-    species,
-    genderTerm,
-    sort,
-  ]);
+  }, [dispatch, currentPage, searchQuery, category, gender, type, location]);
 
-  const handlePageChange = newPage => {
-    dispatch(setCurrentPage(newPage));
-  };
   const handleLearnMore = id => {
     console.log(`Fetch details for notice ID: ${id}`);
     // Додати модалку
@@ -100,34 +57,46 @@ const NoticesPage = () => {
     dispatch(toggleFavoriteNotice(id));
   };
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  const handleFilterChange = () => {
+    dispatch(setCurrentPage(1));
+    dispatch(
+      fetchNotices({
+        page: 1,
+        perPage: 6,
+        searchQuery,
+        category,
+        gender,
+        type,
+        location,
+      })
+    );
+  };
+
+  const handlePageChange = page => {
+    dispatch(setCurrentPage(page));
+    dispatch(
+      fetchNotices({
+        page,
+        perPage: 6,
+        searchQuery,
+        category,
+        gender,
+        type,
+        location,
+      })
+    );
+  };
+
+  return (
     <div className={css.container}>
-      {error && (
-        <p className={css.error}>Oops...Please try to reload the page🐈</p>
-      )}
       <Title title="Find your favorite pet" />
-      <NoticesFilters
-        genders={genders}
-        categories={categories}
-        species={species}
-        filterTerm={SearchQuery}
-        onFilterChange={term => dispatch(setSearchQuery(term))}
-        onFetch={params => dispatch(fetchNotices(params))}
-        onPageChange={page => dispatch(setCurrentPage(page))}
-        categoryTerm={categoryTerm}
-        genderTerm={genderTerm}
-      />
-      {filteredNotices.length === 0 ? (
-        <div className={css.noResults}>
-          "Unfortunately, no pets were found for your request.😿 Please try
-          again."
-        </div>
+      <NoticesFilters onFilterChange={handleFilterChange} />
+      {notices.length === 0 ? (
+        <p className={css.error}>Oops...Please try to reload the page🐈</p>
       ) : (
         <>
           <NoticesList
-            notices={filteredNotices}
+            notices={notices}
             onLearnMore={handleLearnMore}
             onToggleFavorite={handleToggleFavorite}
           />

@@ -1,0 +1,16 @@
+.popularityList {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 18px;
+}
+@media screen and (max-width: 768px) {
+  .popularityList {
+    gap: 27px;
+  }
+}
+.yellowItem {
+  fill: var(--main-color);
+}
+.grayItem {
+  fill: var(--light-border-color);
+}

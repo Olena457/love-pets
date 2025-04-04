@@ -28,7 +28,7 @@ const usersPersistConfig = {
 const newsPersistConfig = {
   key: 'news',
   storage,
-  whitelist: ['currentPage'],
+  whitelist: ['currentPage', 'searchQuery'],
 };
 
 const profilePersistConfig = {
@@ -54,7 +54,7 @@ export const store = configureStore({
     news: persistReducer(newsPersistConfig, newsReducer),
     notices: persistReducer(noticesPersistConfig, noticesReducer),
     profile: persistReducer(profilePersistConfig, profileReducer),
-    filters: filtersReducer(filtersPersistConfig, filtersReducer),
+    filters: persistReducer(filtersPersistConfig, filtersReducer),
     friends: friendsReducer,
     cities: citiesReducer,
   },
