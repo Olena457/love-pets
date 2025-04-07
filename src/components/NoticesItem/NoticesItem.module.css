@@ -86,15 +86,8 @@
   display: flex;
   align-self: flex-start;
 }
+
 /* .price {
-  font-size: 16px;
-  font-weight: 700;
-  margin-top: auto;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: flex-start;
-} */
-.price {
   font-size: 16px;
   font-weight: 700;
   margin-top: auto;
@@ -103,7 +96,30 @@
   align-items: center;
   justify-content: flex-start;
   gap: 4px;
+} */
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  align-items: center;
+  width: 100%;
 }
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  /* color: green; */
+  align-self: flex-start;
+}
+
+.negotiable {
+  font-size: 16px;
+  font-weight: 700;
+  color: orange;
+  margin-right: 35px;
+  text-align: center;
+}
+
 .actions {
   display: flex;
   gap: 10px;
@@ -118,6 +134,7 @@
   border-radius: 30px;
   padding: 14px 0;
   width: 80%;
+  margin-top: 10px;
   background-color: var(--main-color);
   transition: background-color 0.3s ease;
 }
