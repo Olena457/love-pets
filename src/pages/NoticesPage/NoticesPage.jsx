@@ -170,7 +170,7 @@ const NoticesPage = () => {
   }, [dispatch, currentPage, searchQuery, category, gender, type, location]);
 
   const handleLearnMore = id => {
-    dispatch(fetchNoticeById({ _id: id }));
+    dispatch(fetchNoticeById({ id }));
     dispatch(openModal());
   };
 
