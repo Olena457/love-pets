@@ -1,5 +1,8 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Loader from '../src/components/Loader/Loader.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import Layout from './components/Layout/Layout.jsx';
@@ -32,27 +35,30 @@ function App() {
   const location = useLocation();
   const hideHeader = location.pathname === '/';
   return (
-    <Suspense fallback={<Loader />}>
-      {!hideHeader && <Header />}
-      <Routes>
-        <Route path="/" element={<Layout hideHeader={true} />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/our-friends" element={<OurFriendsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <ProfilePage />
-            </PrivateRoute>
-          }
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <>
+      <Suspense fallback={<Loader />}>
+        {!hideHeader && <Header />}
+        <Routes>
+          <Route path="/" element={<Layout hideHeader={true} />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/our-friends" element={<OurFriendsPage />} />
+          <Route path="/notices" element={<NoticesPage />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      <ToastContainer />
+    </>
   );
 }
 

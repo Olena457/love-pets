@@ -1,6 +1,5 @@
-import css from './Stars.css';
-import Icon from '../Icon/Icon.jsx';
-
+import css from './Stars.module.css';
+import starYellow from '../../assets/icons/starYellow.svg';
 export const Stars = ({ popularity }) => {
   const oneStar = 500;
   const totalStars = 5;
@@ -14,9 +13,9 @@ export const Stars = ({ popularity }) => {
   // added yellow stars
   for (let i = 0; i < startsToShow; i++) {
     stars.push(
-      <Icon
+      <img
         key={i}
-        icon="star"
+        src={starYellow}
         color="yellow"
         width="16"
         height="16"
@@ -25,16 +24,16 @@ export const Stars = ({ popularity }) => {
     );
   }
 
-  // added grey stars
+  // added stars
   for (let i = startsToShow; i < totalStars; i++) {
     stars.push(
-      <Icon
+      <img
         key={i}
-        icon="star"
-        color="grey"
+        src={starYellow}
+        color="yellow"
         width="16"
         height="16"
-        className={css.grayItem}
+        className={css.yellowItem}
       />
     );
   }

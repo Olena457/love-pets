@@ -1,0 +1,101 @@
+.modalWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.noticeImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background: #ff6b6b;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.textBlock {
+  text-align: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.popularityWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.propertyList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.property {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.accentProperty {
+  font-weight: bold;
+}
+
+.comment {
+  font-size: 14px;
+  color: #666;
+}
+
+.btnWrap {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.contactBtn {
+  background: #28a745;
+}
+
+.contactBtn:hover {
+  background: #218838;
+}
