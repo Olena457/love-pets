@@ -2,10 +2,11 @@ const selectStyles = {
   control: (provided, state) => ({
     ...provided,
     borderRadius: '30px',
-    padding: '2px ',
+    padding: '2px',
+    color: '#262626',
+    backgroundColor: '#ffffff',
     border: state.isFocused ? '2px solid #F6B83D' : '1px solid #D1C6C6',
     boxShadow: state.isFocused ? '0 0 5px #F6B83D' : 'none',
-    backgroundColor: '#fff',
     fontWeight: '500',
     cursor: 'pointer',
     transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
@@ -21,7 +22,6 @@ const selectStyles = {
   }),
   singleValue: provided => ({
     ...provided,
-
     color: '#262626',
     fontSize: window.innerWidth <= 320 ? '12px' : '16px',
     textTransform: 'capitalize',
@@ -60,7 +60,7 @@ const selectStyles = {
     backgroundColor: state.isSelected
       ? '#ffffff'
       : state.isFocused
-      ? '#f9b020'
+      ? 'rgba(255, 255, 255, 0.9)'
       : 'transparent',
     transition: 'background-color 0.3s ease, color 0.3s ease',
     ':active': {

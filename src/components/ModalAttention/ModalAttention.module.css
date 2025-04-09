@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 295px;
+  min-width: 295px;
   padding: 40px 20px;
   text-align: center;
 }
@@ -17,41 +17,75 @@
 .title {
   font-weight: 700;
   font-size: 20px;
-  color: #d9534f; /* Червоний колір попередження */
+  color: var(--dark-hover);
   margin-bottom: 20px;
 }
 
 .comment {
   font-size: 14px;
   line-height: 1.286;
-  color: #6c757d; /* Сірий колір тексту */
+  color: var(--clack-color);
   margin-bottom: 24px;
 }
-
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+  height: 148px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media screen and (min-width: 768px) {
+  .textWrap {
+    width: 346px;
+    height: 148px;
+    gap: 12px;
+  }
+}
 .btnWrap {
   display: flex;
+  width: 272px;
+  height: 42px;
   gap: 8px;
   justify-content: center;
 }
-
+@media screen and (min-width: 768px) {
+  .btnWrap {
+    width: 288px;
+    height: 48px;
+  }
+}
 .btn {
   padding: 12px 24px;
   border-radius: 30px;
+  width: 129px;
+  height: 42px;
   font-size: 14px;
   font-weight: 700;
-  background-color: #007bff;
-  color: #fff;
   transition: background-color 0.3s ease-in-out;
 }
-
-.btn:hover {
-  background-color: #0056b3;
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 16px;
+    font-weight: 700;
+    width: 140px;
+    height: 48px;
+  }
 }
-
 .registerBtn {
-  background-color: #ffc107;
+  color: var(--main-color);
+  background-color: var(--main-light);
 }
 
 .registerBtn:hover {
-  background-color: #e0a800;
+  background-color: var(--hover-light);
+}
+.loginBtn {
+  color: var(--white-color);
+  background-color: var(--main-color);
+}
+
+.loginBtn:hover {
+  background-color: var(--dark-hover);
 }

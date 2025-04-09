@@ -21,14 +21,19 @@ const ModalAttention = () => {
   return (
     <div className={css.modalWrap}>
       <img className={css.noticeImg} src={attentionDog} alt="Attention" />
-      <h2 className={css.title}>Attention</h2>
-      <p className={css.comment}>
-        Some functionality is available only for authorized users. If you have
-        an account, please log in. Otherwise, please register to access all
-        features.
-      </p>
+      <div className={css.textWrap}>
+        <h2 className={css.title}>Attention</h2>
+        <p className={css.comment}>
+          Some functionality is available only for authorized users. If you have
+          an account, please log in. Otherwise, please register to access all
+          features.
+        </p>
+      </div>
       <div className={css.btnWrap}>
-        <button className={css.btn} onClick={handleLoginClick}>
+        <button
+          className={`${css.btn} ${css.loginBtn}`}
+          onClick={handleLoginClick}
+        >
           Login
         </button>
         <button

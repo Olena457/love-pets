@@ -14,24 +14,50 @@ export const selectGender = state => state.filters.gender;
 export const selectType = state => state.filters.type;
 export const selectLocation = state => state.filters.location;
 
+// export const selectAvailableCategories = createSelector(
+//   [selectCategories],
+//   categories => categories || []
+// );
+
+// export const selectAvailableSexOptions = createSelector(
+//   [selectSexOptions],
+//   sexOptions => sexOptions || []
+// );
+
+// export const selectAvailableSpecies = createSelector(
+//   [selectSpecies],
+//   species => species || []
+// );
+
+// export const selectAvailableLocations = createSelector(
+//   [selectCityLocations],
+//   locations => locations || []
+// );
 export const selectAvailableCategories = createSelector(
   [selectCategories],
-  categories => categories || []
+  categories => categories.map(category => category.trim())
 );
 
 export const selectAvailableSexOptions = createSelector(
   [selectSexOptions],
-  sexOptions => sexOptions || []
+  sexOptions => sexOptions.map(option => option.toLowerCase())
 );
 
 export const selectAvailableSpecies = createSelector(
   [selectSpecies],
-  species => species || []
+  species => [...species]
 );
 
 export const selectAvailableLocations = createSelector(
   [selectCityLocations],
-  locations => locations || []
+  locations =>
+    locations.map(location => ({
+      ...location,
+      cityName:
+        typeof location.cityName === 'string'
+          ? location.cityName.toUpperCase()
+          : 'Unknown',
+    }))
 );
 
 export const selectFilteredNoticesWithFilters = createSelector(
