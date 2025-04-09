@@ -36,12 +36,7 @@ const Modal = ({ children }) => {
     <div className={css.modalOverlay} onClick={handleOverlayClick}>
       <div className={css.modalContainer}>
         <button className={css.modalBtn} onClick={handleCloseClick}>
-          <Icon
-            id="icon-cross-small"
-            width={24}
-            height={24}
-            className={css.icon}
-          />
+          <Icon id="cross-small" width={24} height={24} className={css.icon} />
         </button>
         {children}
       </div>

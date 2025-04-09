@@ -1,11 +1,4 @@
 .modalOverlay {
-  /* position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-  background: rgba(38, 38, 38, 0.3); */
   position: fixed;
   top: 0;
   left: 0;
@@ -21,17 +14,14 @@
   cursor: pointer;
 }
 .modalContainer {
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  background: #ffffff;
+  position: relative;
+  min-width: 320px;
   border-radius: 30px;
-  max-height: 100vh;
+  min-height: 394px;
   overflow-x: auto;
   background-color: #ffffff;
 }
+
 .modalBtn {
   position: absolute;
   top: 20px;

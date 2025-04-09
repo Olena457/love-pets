@@ -119,8 +119,7 @@ import Title from '../../components/Title/Title.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
-import Modal from '../../components/Modal/Modal.jsx';
-import ModalNotices from '../../components/ModalNotices/ModalNotices.jsx';
+import ModalWrapper from '../../components/ModalWrapper/ModalWrapper.jsx';
 import { openModal } from '../../redux/modal/modalSlice.js';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations.js';
 import { selectIsOpenModal } from '../../redux/modal/modalSelectors.js';
@@ -170,7 +169,7 @@ const NoticesPage = () => {
   }, [dispatch, currentPage, searchQuery, category, gender, type, location]);
 
   const handleLearnMore = id => {
-    dispatch(fetchNoticeById({ id }));
+    dispatch(fetchNoticeById(id));
     dispatch(openModal());
   };
 
@@ -213,7 +212,7 @@ const NoticesPage = () => {
       <Title title="Find your favorite pet" />
       <NoticesFilters onFilterChange={handleFilterChange} />
       {notices.length === 0 ? (
-        <p className={css.error}>Oops...Please try to reload the page🐈</p>
+        <p className={css.error}>Please try to reload the page🐈</p>
       ) : (
         <>
           <NoticesList
@@ -230,11 +229,7 @@ const NoticesPage = () => {
           )}
         </>
       )}
-      {isModalOpen && (
-        <Modal>
-          <ModalNotices />
-        </Modal>
-      )}
+      {isModalOpen && <ModalWrapper />}
     </div>
   );
 };

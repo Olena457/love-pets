@@ -1,4 +1,4 @@
-.modalWrap {
+/* .modalWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,4 +98,99 @@
 
 .contactBtn:hover {
   background: #218838;
+} */
+.modalWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 279px;
+  padding: 40px 28px;
+}
+
+.imageWrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.noticeImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.categoryBadge {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  padding: 8px 14px;
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
+  left: -4px;
+  background-color: #f0f0f0; /* Змінити на ваш колір */
+  color: #333; /* Змінити на ваш колір */
+}
+
+.textBlock {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000; /* Змінити на ваш колір */
+}
+
+.popularityWrap {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.propertyList {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 18px;
+}
+
+.property {
+  font-size: 12px;
+  line-height: 1.167;
+  text-transform: capitalize;
+}
+
+.comment {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.286;
+  color: #666; /* Змінити на ваш колір */
+}
+
+.btnWrap {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.contactBtn {
+  background-color: #28a745;
+}
+
+.contactBtn:hover {
+  background-color: #218838;
 }

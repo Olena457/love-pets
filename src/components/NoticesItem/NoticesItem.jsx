@@ -140,7 +140,7 @@ import { openModal } from '../../redux/modal/modalSlice.js';
 import {
   addNoticeToFavorites,
   removeNoticeFromFavorites,
-  fetchNoticeById,
+  // fetchNoticeById,
 } from '../../redux/notices/noticesOperations.js';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import css from './NoticesItem.module.css';
@@ -148,12 +148,12 @@ import starYellow from '../../assets/icons/starYellow.svg';
 import trashIcon from '../../assets/icons/trashDel.svg';
 import heartIcon from '../../assets/icons/heartEmpty.svg';
 
-const NoticesItem = ({ notice }) => {
+const NoticesItem = ({ notice, onLearnMore, onToggleFavorite }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const {
-    id,
+    _id,
     imgURL,
     title,
     popularity,
@@ -168,19 +168,21 @@ const NoticesItem = ({ notice }) => {
   } = notice;
 
   const handleLearnMore = () => {
-    dispatch(fetchNoticeById({ id }));
+    // dispatch(fetchNoticeById( _id ));
+    onLearnMore(_id);
     dispatch(openModal());
   };
 
   const handleToggleFavorite = async () => {
     if (!isAuthenticated) {
+      onToggleFavorite(_id);
       dispatch(openModal());
       return;
     }
     if (isFavorite) {
-      await dispatch(removeNoticeFromFavorites(id));
+      await dispatch(removeNoticeFromFavorites(_id));
     } else {
-      await dispatch(addNoticeToFavorites(id));
+      await dispatch(addNoticeToFavorites(_id));
     }
   };
 

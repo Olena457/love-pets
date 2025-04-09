@@ -1,0 +1,57 @@
+.modalWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 295px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.noticeImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #d9534f; /* Червоний колір попередження */
+  margin-bottom: 20px;
+}
+
+.comment {
+  font-size: 14px;
+  line-height: 1.286;
+  color: #6c757d; /* Сірий колір тексту */
+  margin-bottom: 24px;
+}
+
+.btnWrap {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.registerBtn {
+  background-color: #ffc107;
+}
+
+.registerBtn:hover {
+  background-color: #e0a800;
+}

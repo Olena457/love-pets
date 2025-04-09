@@ -137,7 +137,7 @@ const NoticesFilters = ({ onFilterChange }) => {
               }))
             )}
             onChange={handleGenderChange}
-            placeholder="By gender"
+            placeholder="Gender"
             styles={selectStyles}
           />
         </div>
@@ -151,7 +151,7 @@ const NoticesFilters = ({ onFilterChange }) => {
               }))
             )}
             onChange={handleTypeChange}
-            placeholder="By type"
+            placeholder="Type"
             styles={selectStyles}
           />
         </div>
