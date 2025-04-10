@@ -1,0 +1,168 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 218px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    width: 374px;
+  }
+}
+
+.yellowBg {
+  background-color: var(--main-color);
+}
+
+.whiteBg {
+  background-color: var(--white-color);
+}
+
+.closeBtn {
+  position: relative;
+  align-self: flex-end;
+  background: none;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .closeBtn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.closeIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media screen and (min-width: 768px) {
+  .closeIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  color: var(--white-color);
+  margin-top: 150px;
+  border-radius: 30px;
+  padding: 15px 20px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .menuList {
+    margin-top: 185px;
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.navigationMenu {
+  margin-top: 120px;
+  /* margin-top: 235px; */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+a.navLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 119px;
+  height: 48px;
+  font-weight: 500;
+  padding: 15px 0px;
+  font-size: 14px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  width: 100px;
+}
+@media screen and (min-width: 768px) {
+  a.navLink {
+    width: 149px;
+    height: 50px;
+    font-size: 16px;
+  }
+}
+.homeBtn {
+  color: var(--black-color);
+  border: 1px solid var(--light-border-color);
+}
+.homeBtn:active {
+  background-color: var(--dark-hover);
+}
+.yellowBtn {
+  color: var(--white-color);
+  background-color: transparent;
+  border: 1px solid #cfc4c4;
+}
+.yellowBtn:active {
+  background-color: var(--white-color);
+}
+
+.authButton {
+  padding: 12px 24px;
+  border-radius: 30px;
+  width: 172px;
+  height: 42px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .authButton {
+    font-size: 16px;
+    font-weight: 500;
+    width: 149px;
+    height: 50px;
+  }
+}
+.registerBtn {
+  color: var(--main-color);
+  background-color: var(--main-light);
+}
+
+.registerBtn:hover {
+  background-color: var(--hover-light);
+}
+.loginBtn {
+  border: 1px solid var(--white-color);
+  color: var(--white-color);
+  background-color: var(--main-color);
+}
+
+.loginBtn:hover {
+  background-color: var(--dark-hover);
+}
