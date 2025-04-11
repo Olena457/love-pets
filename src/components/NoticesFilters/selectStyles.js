@@ -1,6 +1,7 @@
 const selectStyles = {
   control: (provided, state) => ({
     ...provided,
+    paddingRight: '5px',
     borderRadius: '30px',
     padding: '2px',
     color: '#262626',
@@ -26,6 +27,9 @@ const selectStyles = {
     fontSize: window.innerWidth <= 320 ? '12px' : '16px',
     textTransform: 'capitalize',
     cursor: 'pointer',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   }),
   indicatorSeparator: () => ({
     display: 'none',

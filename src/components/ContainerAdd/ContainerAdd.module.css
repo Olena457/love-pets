@@ -1,0 +1,33 @@
+.petContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  border-radius: 30px;
+  width: 100%;
+  background-image: url('../../assets/imgs/mobile/rectangle-mob@1x.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .petContainer {
+    border-radius: 60px;
+    flex-shrink: 1;
+    max-width: 704px;
+    height: auto;
+    background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
+  }
+}
+
+@media (min-width: 1280px) {
+  .petContainer {
+    max-width: 592px;
+
+    height: auto;
+    background-image: url('../../assets/imgs/desktop/rectangle-desk@1x.png');
+  }
+}

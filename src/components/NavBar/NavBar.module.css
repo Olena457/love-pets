@@ -12,7 +12,7 @@
 .headerMenu {
   display: none;
 }
-@media screen and (mix-width: 1279px) {
+@media screen and (min-width: 1279px) {
   .headerMenu {
     display: flex;
     gap: 8px;
@@ -86,7 +86,13 @@
     display: none;
   }
 }
-
+.headerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  /* height: 100%; */
+}
 /* .icons {
   display: flex;
   align-items: center;

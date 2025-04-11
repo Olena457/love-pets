@@ -1,118 +1,71 @@
-// import customStyles from './selectCustomStyles.js';
-
-// export const SelectLocation = ({ handleOptionChange, selectedOpt }) => {
-//   const dispatch = useDispatch();
-
-//   const loadOptions = async inputValue => {
-//     try {
-//       const response = await axiosInstance.get(`/cities?keyword=${inputValue}`);
-//       const fetchedOptions = response.data.map(option => ({
-//         value: option._id,
-//         label: `${option.stateEn}, ${option.cityEn}`,
-//       }));
-//       return fetchedOptions;
-//     } catch (error) {
-//       console.error('Error fetching options:', error);
-//       return [];
-//     }
-//   };
-
-//   const handleChange = selected => {
-//     if (selected) {
-//       handleOptionChange(selected);
-//     }
-//   };
-
-//   const handleReset = () => {
-//     dispatch(setLocation(''));
-//     dispatch(setSearchQuery(''));
-//   };
-
-//   return (
-//     <div className={css.selectContainer}>
-//       <AsyncSelect
-//         value={selectedOpt}
-//         onChange={handleChange}
-//         loadOptions={loadOptions}
-//         // styles={customStyles}
-//         placeholder="Enter location"
-//         noOptionsMessage={() => 'No options found'}
-//       />
-//       {selectedOpt && (
-//         <button className={css.resetBtn} type="button" onClick={handleReset}>
-//           <img
-//             src={blackCross}
-//             alt="clear"
-//             width="18"
-//             height="18"
-//             className={css.crossIcon}
-//           />
-//         </button>
-//       )}
-//     </div>
-//   );
-// };
-// export default SelectLocation;
-
-import AsyncSelect from 'react-select/async';
-import axiosInstance from '../../redux/api.js';
+import React, { useEffect, useState } from 'react';
+import Select from 'react-select';
 import css from './SelectLocation.module.css';
+import searchCommon from '../../assets/icons/searchCommon.svg';
 import blackCross from '../../assets/icons/blackCross.svg';
-import { useDispatch } from 'react-redux';
-import { setLocation } from '../../redux/filters/filtersSlice';
-import { setSearchQuery } from '../../redux/notices/noticesSlice';
+import selectCustomLocationStyles from './selectCustomLocationStyles.js';
 
-export const SelectLocation = ({
-  handleOptionChange = () => {},
-  selectedOpt = null,
-}) => {
-  const dispatch = useDispatch();
+const SelectLocation = ({ onSubmit, initialValue = '', options }) => {
+  const [selectedValue, setSelectedValue] = useState(initialValue);
 
-  const loadOptions = async inputValue => {
-    try {
-      const response = await axiosInstance.get(`/cities?keyword=${inputValue}`);
-      const fetchedOptions = response.data.map(option => ({
-        value: option._id,
-        label: `${option.stateEn}, ${option.cityEn}`,
-      }));
-      return fetchedOptions;
-    } catch (error) {
-      console.error('Error fetching options:', error);
-      return [];
-    }
+  useEffect(() => {
+    setSelectedValue(initialValue);
+  }, [initialValue]);
+
+  const handleClear = () => {
+    setSelectedValue('');
+    onSubmit('');
   };
 
-  const handleChange = selected => {
-    if (selected) {
-      handleOptionChange(selected);
-    }
-  };
-
-  const handleReset = () => {
-    dispatch(setLocation(''));
-    dispatch(setSearchQuery(''));
+  const handleChange = selectedOption => {
+    setSelectedValue(selectedOption?.value || '');
+    onSubmit(selectedOption?.value || '');
   };
 
   return (
-    <div className={css.selectContainer}>
-      <AsyncSelect
-        value={selectedOpt}
-        onChange={handleChange}
-        loadOptions={loadOptions}
-        placeholder="Enter location"
-        noOptionsMessage={() => 'No options found'}
-      />
-      {selectedOpt && (
-        <button className={css.resetBtn} type="button" onClick={handleReset}>
+    <div className={css.searchContainer}>
+      <div className={css.search} style={{ position: 'relative' }}>
+        <button
+          type="button"
+          className={css.clearButton}
+          style={{
+            position: 'absolute',
+            left: '10px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+          }}
+        >
           <img
-            src={blackCross}
-            alt="clear"
+            src={searchCommon}
+            alt="search"
             width="18"
             height="18"
-            className={css.crossIcon}
+            className={css.searchIcon}
           />
         </button>
-      )}
+        <Select
+          value={options.find(opt => opt.value === selectedValue)}
+          onChange={handleChange}
+          options={options}
+          placeholder="Location"
+          styles={selectCustomLocationStyles}
+        />
+        {selectedValue && (
+          <button
+            type="button"
+            className={css.clearButton}
+            style={{
+              position: 'absolute',
+              right: '10px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+            }}
+            onClick={handleClear}
+          >
+            <img src={blackCross} alt="clear" width="18" height="18" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

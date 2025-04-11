@@ -11,6 +11,7 @@ import MyFavoritesPets from '../src/components/MyNotices/MyFavoritePets/MyFavori
 import Viewed from '../src/components/MyNotices/Viewed/Viewed.jsx';
 
 const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
+const AddPetPage = lazy(() => import('../src/pages/AddPetPage/AddPetPage.jsx'));
 const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
 const RegisterPage = lazy(() =>
   import('../src/pages/RegisterPage/RegisterPage.jsx')
@@ -48,6 +49,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
           <Route
             path="/profile"
             element={

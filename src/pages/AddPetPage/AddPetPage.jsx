@@ -1,29 +1,39 @@
 import Title from '../../components/Title/Title.jsx';
-import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
-// import AddForm from '../../components/AddForm/AddForm.jsx';
+import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import css from './AddPetPage.module.css';
+import ContainerAdd from '../../components/ContainerAdd/ContainerAdd.jsx';
 
-const AddPetPage = () => {
-  const loginImages = {
-    mobile1x: '../../assets/imgs/mobile/login-mob@1x.png',
-    mobile2x: '../../assets/imgs/mobile/login-mob@2x.png',
-    tablet1x: '../../assets/imgs/tablet/login-tablet@1x.png',
-    tablet2x: '../../assets/imgs/tablet/login-tablet@2x.png',
-    desktop1x: '../../assets/imgs/desktop/login-desk@1x.png',
-    desktop2x: '../../assets/imgs/desktop/login-desk@2x.png',
-  };
+import addImageMobile1x from '../../assets/imgs/mobile/add-mob@1x.png';
+import addImageMobile2x from '../../assets/imgs/mobile/add-mob@2x.png';
+import addImageTablet1x from '../../assets/imgs/tablet/add-tablet@1x.png';
+import addImageTablet2x from '../../assets/imgs/tablet/add-tablet@2x.png';
+import addImageDesktop1x from '../../assets/imgs/desktop/add-desktop@1x.png';
+import addImageDesktop2x from '../../assets/imgs/desktop/add-desktop@2x.png';
 
+const LoginPage = () => {
   return (
     <div className={css.pageLogin}>
-      <ContainerImage images={loginImages} />
-      <div className={css.container}>
-        <div className={css.titleContainer}>
-          <Title title=" Add my pet/<span className={css.smallTitle}>personal details</span>" />
+      <ContainerAdd
+        images={{
+          mobile1x: addImageMobile1x,
+          mobile2x: addImageMobile2x,
+          tablet1x: addImageTablet1x,
+          tablet2x: addImageTablet2x,
+          desktop1x: addImageDesktop1x,
+          desktop2x: addImageDesktop2x,
+        }}
+      />
+      <div className={css.containerLogin}>
+        <div className={css.titleWrapper}>
+          <Title title="add Pet" />
+          <p className={css.description}>
+            Welcome! Please enter your credentials to login to the platform:
+          </p>
         </div>
-        {/* <AddForm /> */}
+        <LoginForm />
       </div>
     </div>
   );
 };
 
-export default AddPetPage;
+export default LoginPage;
