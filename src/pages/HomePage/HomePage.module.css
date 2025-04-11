@@ -93,13 +93,14 @@
 }
 @media screen and (min-width: 768px) {
   .title {
+    line-height: 1;
     font-size: 80px;
   }
   .description {
     font-size: 18px;
     line-height: 1.22;
     display: flex;
-    /* margin-bottom: 32px; */
+    margin-bottom: 32px;
     align-self: flex-end;
     width: 255px;
   }

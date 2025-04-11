@@ -185,57 +185,57 @@ const NavBar = () => {
     <nav>
       <div className={`${css.nav} ${isHomePage ? css.homeNav : css.otherNav}`}>
         <div className={css.container}>
-          <div className={css.headerNav}>
-            <div className={css.headerMenu}>
-              <Link
-                to="/news"
-                className={`${css.menuItem} ${
-                  isActive('/news') ? css.active : ''
-                }`}
-              >
-                News
-              </Link>
-              <Link
-                to="/notices"
-                className={`${css.menuItem} ${
-                  isActive('/notices') ? css.active : ''
-                }`}
-              >
-                Find pet
-              </Link>
-              <Link
-                to="/our-friends"
-                className={`${css.menuItem} ${
-                  isActive('/our-friends') ? css.active : ''
-                }`}
-              >
-                Our friends
-              </Link>
-            </div>
-            {isAuthenticated ? (
-              <UserNav onClose={handleMenuClose} />
-            ) : (
-              <AuthNav onClose={handleMenuClose} />
-            )}
-          </div>
-          <div className={css.icons}>
-            {shouldShowUserBar && <UserBar />}
-            <button
-              className={`${css.burgerButton} ${
-                isHomePage ? css.whiteIcon : css.blackIcon
+          {/* <div className={css.headerNav}> */}
+          <div className={css.headerMenu}>
+            <Link
+              to="/news"
+              className={`${css.menuItem} ${
+                isActive('/news') ? css.active : ''
               }`}
-              onClick={handleBurgerClick}
             >
-              <img
-                src={isHomePage ? whiteBurger : blackBurger}
-                alt={isHomePage ? 'white burger' : 'black burger'}
-                width="40"
-                height="40"
-                className={css.burgerIcon}
-              />
-            </button>
+              News
+            </Link>
+            <Link
+              to="/notices"
+              className={`${css.menuItem} ${
+                isActive('/notices') ? css.active : ''
+              }`}
+            >
+              Find pet
+            </Link>
+            <Link
+              to="/our-friends"
+              className={`${css.menuItem} ${
+                isActive('/our-friends') ? css.active : ''
+              }`}
+            >
+              Our friends
+            </Link>
           </div>
+          {isAuthenticated ? (
+            <UserNav onClose={handleMenuClose} />
+          ) : (
+            <AuthNav onClose={handleMenuClose} />
+          )}
         </div>
+        <div className={css.iconsWrap}>
+          {shouldShowUserBar && <UserBar />}
+          <button
+            className={`${css.burgerButton} ${
+              isHomePage ? css.whiteIcon : css.blackIcon
+            }`}
+            onClick={handleBurgerClick}
+          >
+            <img
+              src={isHomePage ? whiteBurger : blackBurger}
+              alt={isHomePage ? 'white burger' : 'black burger'}
+              width="40"
+              height="40"
+              className={css.burgerIcon}
+            />
+          </button>
+        </div>
+        {/* </div> */}
       </div>
       {isMobMenuOpen && <MobMenu />}
     </nav>

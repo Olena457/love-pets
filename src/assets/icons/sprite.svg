@@ -63,6 +63,11 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.88" d="M25.333 5.333H6.666A2.667 2.667 0 0 0 3.999 8v18.667a2.667 2.667 0 0 0 2.667 2.667h18.667A2.667 2.667 0 0 0 28 26.667V8a2.667 2.667 0 0 0-2.667-2.667zM21.333 2.667V8M10.667 2.667V8M4 13.333h24"/>
     </symbol>
 
+    <symbol id="icon-plus" viewBox="0 0 32 32">
+    <path fill="inherit" stroke='currentColor' style="stroke: var(--color2, currentColor)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16 6.667v18.667"></path>
+    <path fill="inherit" stroke='currentColor' style="stroke: var(--color2, currentColor)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M6.667 16h18.667"></path>
+    </symbol>
+    
     <symbol id="icon-arrow-down" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3.556" d="m8 12 8 8 8-8"/>
     </symbol>

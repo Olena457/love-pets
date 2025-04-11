@@ -121,7 +121,7 @@ a.navLink {
   border: 1px solid var(--light-border-color);
 }
 .homeBtn:active {
-  background-color: var(--dark-hover);
+  border: 1px solid var(--dark-hover);
 }
 .yellowBtn {
   color: var(--white-color);
@@ -129,7 +129,7 @@ a.navLink {
   border: 1px solid #cfc4c4;
 }
 .yellowBtn:active {
-  background-color: var(--white-color);
+  border: 1px solid var(--white-color);
 }
 
 .authButton {
