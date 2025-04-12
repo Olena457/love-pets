@@ -25,7 +25,15 @@
     width: 374px;
   }
 }
+@media screen and (min-width: 1280px) {
+  .overlay {
+    display: none;
+  }
 
+  .menu {
+    display: none;
+  }
+}
 .yellowBg {
   background-color: var(--main-color);
 }
@@ -133,6 +141,9 @@ a.navLink {
 }
 
 .authButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 24px;
   border-radius: 30px;
   width: 172px;

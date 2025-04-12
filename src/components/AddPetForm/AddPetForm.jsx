@@ -32,12 +32,11 @@ const petTypes = [
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
-  imgUrl: Yup.string()
-    .matches(
-      /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
-      'Must be a valid image URL'
-    )
-    .required('Image URL is required'),
+  imgUrl: Yup.string().matches(
+    /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+    'Must be a valid image URL'
+  ),
+
   birthday: Yup.string()
     .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in the format YYYY-MM-DD')
     .required('Birthday is required'),

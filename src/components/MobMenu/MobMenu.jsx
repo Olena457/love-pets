@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import whiteCross from '../../assets/icons/whiteCross.svg';
 import blackCross from '../../assets/icons/blackCross.svg';
 import { closeMobMenu } from '../../redux/mobile/mobMenuSlice';
@@ -10,7 +10,6 @@ export const MobMenu = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // Перевіряємо, чи це сторінка /home
   const isHomePage = location.pathname === '/home';
 
   useEffect(() => {
@@ -75,12 +74,15 @@ export const MobMenu = () => {
           </a>
         </div>
         <div className={css.menuList}>
-          <button className={`${css.authButton} ${css.loginBtn}`}>
+          <Link to="/login" className={`${css.authButton} ${css.loginBtn}`}>
             LOG IN
-          </button>
-          <button className={`${css.authButton} ${css.registerBtn}`}>
+          </Link>
+          <Link
+            to="/register"
+            className={`${css.authButton} ${css.registerBtn}`}
+          >
             REGISTRATION
-          </button>
+          </Link>
         </div>
       </div>
     </div>
