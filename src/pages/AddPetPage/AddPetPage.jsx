@@ -1,5 +1,5 @@
-import Title from '../../components/Title/Title.jsx';
-import LoginForm from '../../components/LoginForm/LoginForm.jsx';
+// import Title from '../../components/Title/Title.jsx';
+import AddPetForm from '../../components/AddPetForm/AddPetForm.jsx';
 import css from './AddPetPage.module.css';
 import ContainerAdd from '../../components/ContainerAdd/ContainerAdd.jsx';
 
@@ -12,7 +12,7 @@ import addImageDesktop2x from '../../assets/imgs/desktop/add-desktop@2x.png';
 
 const LoginPage = () => {
   return (
-    <div className={css.pageLogin}>
+    <div className={css.pageAdd}>
       <ContainerAdd
         images={{
           mobile1x: addImageMobile1x,
@@ -23,14 +23,8 @@ const LoginPage = () => {
           desktop2x: addImageDesktop2x,
         }}
       />
-      <div className={css.containerLogin}>
-        <div className={css.titleWrapper}>
-          <Title title="add Pet" />
-          <p className={css.description}>
-            Welcome! Please enter your credentials to login to the platform:
-          </p>
-        </div>
-        <LoginForm />
+      <div className={css.containerAdd}>
+        <AddPetForm />
       </div>
     </div>
   );

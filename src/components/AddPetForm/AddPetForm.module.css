@@ -1,0 +1,318 @@
+.formContainer {
+  background-color: var(--white-color);
+}
+.titleWrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.formTitle {
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--black-color);
+  margin-bottom: 20px;
+}
+
+.formTitle span {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--border-color);
+}
+@media screen and (min-width: 768px) {
+  .formTitle {
+    font-size: 32px;
+  }
+  .formTitle span {
+    font-size: 16px;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.select {
+  width: 100%;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid #b6aeae;
+  border-radius: 30px;
+  font-size: 14px;
+  outline-color: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.select:hover {
+  border-color: #f6b83d;
+}
+
+.select:focus {
+  border-color: #f6b83d;
+}
+
+@media screen and (min-width: 768px) {
+  .select {
+    padding: 8px 60px 8px 8px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .select {
+    padding: 8px 88px 8px 8px;
+  }
+}
+
+/* gender_________________________________ */
+.genderSelection {
+  display: flex;
+  width: 100%;
+  flex: start;
+  gap: 5px;
+}
+
+.radio {
+  display: none;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  margin-top: 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.female {
+  background-color: rgba(248, 56, 88, 0.3);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+.male {
+  background-color: rgba(84, 173, 255, 0.1);
+  border: 1px solid rgba(84, 173, 255, 0.2);
+}
+
+.multiple {
+  background-color: rgba(255, 244, 223, 0.8);
+  border: 1px solid rgba(255, 244, 223, 0.8);
+}
+
+.radio:checked + .icon.female {
+  background-color: #ff7a90;
+  border: 2px solid #f43f5e;
+}
+
+.radio:checked + .icon.male {
+  background-color: rgba(84, 173, 255, 0.3);
+  border: 2px solid #529ce9;
+}
+
+.radio:checked + .icon.multiple {
+  background-color: rgba(255, 223, 143, 1);
+  border: 2px solid #f7c652;
+}
+
+.iconGender {
+  width: 24px;
+  height: 24px;
+}
+
+/* ____________________________________________ */
+.petAvatar {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: var(--main-light);
+}
+
+@media screen and (min-width: 768px) {
+  .petAvatar {
+    width: 86px;
+    height: 86px;
+  }
+}
+.iconPetDefault {
+  margin-top: 0;
+}
+/* upload_________________________________________ */
+.wrapperUpload {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  align-items: center;
+}
+.uploadButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding: 5px 8px;
+  gap: 10px;
+  color: var(--black-color);
+  width: 127px;
+  height: 36px;
+  background-color: var(--main-light);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.uploadButton:hover {
+  background-color: var(--hover-light);
+}
+@media screen and (min-width: 768px) {
+  .uploadButton {
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 166px;
+    height: 42px;
+  }
+}
+.uploadTitle {
+  white-space: nowrap;
+}
+.cloudIcon {
+  width: 18px;
+  height: 18px;
+}
+@media screen and (min-width: 768px) {
+  .cloudIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+}
+
+.label {
+  font-weight: bold;
+  color: var(--black-color);
+}
+
+.inputfield {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid var(--light-border-color);
+  transition: border-color 0.3s ease;
+  border-radius: 30px;
+  font-size: 14px;
+  outline: none;
+}
+@media screen and (min-width: 768px) {
+  .inputfield {
+    font-size: 16px;
+    padding: 16px 40px 16px 16px;
+  }
+}
+form inputfield:first-child {
+  margin-top: 20px;
+}
+
+form inputfield:nth-child(3) {
+  margin-top: 0;
+}
+inputfield.default {
+  border: 1px solid var(--light-border-color);
+}
+inputfield.valid {
+  border-color: var(--green-color);
+}
+inputfield.focus {
+  border-color: var(--main-color);
+}
+inputfield.invalid {
+  border-color: var(--red-color);
+}
+.error {
+  font-size: 16px;
+  margin-left: 16px;
+  color: var(--red-color);
+}
+
+.GroupSelect {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  width: 100%;
+  /* align-items: center; */
+  gap: 10px;
+}
+.buttonGroup {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  /* padding: 12px; */
+  /* min-width: 208px; */
+  width: 100%;
+  height: 42px;
+  transition: background-color 300ms ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .buttonGroup {
+    /* max-width: 348px; */
+    height: 48px;
+  }
+}
+.buttonAdd {
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  border-radius: 30px;
+  letter-spacing: -0.03em;
+  width: 100px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .buttonAdd {
+    width: 170px;
+    height: 46px;
+  }
+}
+.submit {
+  color: var(--white-color);
+  background-color: var(--main-color);
+}
+
+.submit:hover,
+.submit:active {
+  background-color: var(--dark-hover);
+}
+
+.back {
+  color: var(--black-color);
+  background-color: rgba(38, 38, 38, 0.05);
+  border: 1px solid var(--light-border-color);
+}
+
+.back:hover,
+.back:active {
+  border: 1px solid var(--main-color);
+}
+
+@media screen and (min-width: 768px) {
+  .navLink {
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 14px;
+    min-width: 114px;
+  }
+}

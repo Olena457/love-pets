@@ -1,14 +1,14 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import styles from './MyNotices.module.css';
+import css from './MyNotices.module.css';
 
 const MyNotices = () => {
   return (
-    <div className={styles.myNoticesWrap}>
-      <div className={styles.myNoticesList}>
-        <NavLink className={styles.navLinkFavorite} to="favorites">
+    <div className={css.myNoticesWrap}>
+      <div className={css.myNoticesList}>
+        <NavLink className={css.navLinkFavorite} to="favorites">
           My favorites pets
         </NavLink>
-        <NavLink className={styles.navLinkView} to="viewed">
+        <NavLink className={css.navLinkView} to="viewed">
           Viewed
         </NavLink>
       </div>

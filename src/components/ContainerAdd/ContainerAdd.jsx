@@ -19,8 +19,6 @@ const ContainerAdd = ({ images }) => {
         alt="Pet representation"
         className={css.petImage}
       />
-      {/* {type === 'register' && <div className={css.blockCat}></div>}
-      {type === 'login' && <div className={css.blockDog}></div>} */}
     </div>
   );
 };
