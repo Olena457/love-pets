@@ -17,7 +17,7 @@
   .petContainer {
     border-radius: 60px;
     flex-shrink: 1;
-    max-width: 704px;
+    /* max-width: 704px; */
     height: auto;
     background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
   }

@@ -7,6 +7,7 @@
 }
 @media screen and (min-width: 768px) {
   .pageRegister {
+    max-width: 704px;
     /* padding: 32px; */
     gap: 16px;
   }
