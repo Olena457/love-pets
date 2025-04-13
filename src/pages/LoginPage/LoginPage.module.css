@@ -53,9 +53,10 @@
     max-width: 704px;
     height: 560px;
     border-radius: 60px;
-    padding: 30px 140px;
+    padding: 80px 140px 60px 140px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .containerLogin {
     max-width: 592px;
@@ -80,7 +81,7 @@
 .description {
   font-size: 14px;
   font-weight: 500;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 @media screen and (min-width: 768px) {
   .description {
