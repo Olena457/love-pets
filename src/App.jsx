@@ -10,26 +10,22 @@ import Header from './components/Header/Header.jsx';
 import MyFavoritesPets from '../src/components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from '../src/components/MyNotices/Viewed/Viewed.jsx';
 
-const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
-const AddPetPage = lazy(() => import('../src/pages/AddPetPage/AddPetPage.jsx'));
-const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
+const AddPetPage = lazy(() => import('./pages/AddPetPage/AddPetPage.jsx'));
+const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage.jsx'));
 const RegisterPage = lazy(() =>
-  import('../src/pages/RegisterPage/RegisterPage.jsx')
+  import('./pages/RegisterPage/RegisterPage.jsx')
 );
-const LoginPage = lazy(() => import('../src/pages/LoginPage/LoginPage.jsx'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx'));
 
-const ProfilePage = lazy(() =>
-  import('../src/pages/ProfilePage/ProfilePage.jsx')
-);
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage.jsx'));
 
 const OurFriendsPage = lazy(() =>
-  import('../src/pages/OurFriendsPage/OurFriendsPage.jsx')
+  import('./pages/OurFriendsPage/OurFriendsPage.jsx')
 );
-const NoticesPage = lazy(() =>
-  import('../src/pages/NoticesPage/NoticesPage.jsx')
-);
+const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage.jsx'));
 const NotFoundPage = lazy(() =>
-  import('../src/pages/NotFoundPage/NotFoundPage.jsx')
+  import('./pages/NotFoundPage/NotFoundPage.jsx')
 );
 
 import './App.css';
