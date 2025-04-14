@@ -62,25 +62,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-
-        {/* <Routes>
-          <Route path="/" element={<Layout hideHeader={true} />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/our-friends" element={<OurFriendsPage />} />
-          <Route path="/notices" element={<NoticesPage />} />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <ProfilePage />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes> */}
       </Suspense>
       <ToastContainer />
     </>
