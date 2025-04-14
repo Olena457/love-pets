@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './UserBlock.module.css';
 import Icon from '../../Icon/Icon';
-import useDeviceType from '../../../hooks/useDeviceType.js';
+import { useDeviceType } from '../../../hooks/useDeviceType.js';
 import { useSelector } from 'react-redux';
 import { selectProfile } from '../../../redux/profile/profileSelectors';
 
