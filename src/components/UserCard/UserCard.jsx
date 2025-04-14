@@ -1,7 +1,7 @@
 import css from './UserCard.module.css';
 import Icon from '../Icon/Icon';
 import { UserBlock } from './UserBlock/UserBlock.jsx';
-import { PetsBlock } from './PetsBlock/PetsBlock.jsx';
+import { PetBlock } from './PetBlock/PetBlock.jsx';
 import { useDispatch } from 'react-redux';
 import { openModalEditUser } from '../../redux/modal/modalSlice.js';
 
@@ -23,7 +23,7 @@ export const UserCard = () => {
         </button>
       </div>
       <UserBlock />
-      <PetsBlock />
+      <PetBlock />
     </div>
   );
 };

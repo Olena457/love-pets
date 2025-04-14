@@ -1,3 +1,7 @@
+.containerFriend {
+  margin: 0 auto;
+}
+
 .list {
   display: grid;
   grid-template-columns: 1fr;
