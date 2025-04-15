@@ -1,5 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { parse, format } from 'date-fns';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import multipleImg from '../../assets/icons/multiple.svg';
@@ -11,7 +12,7 @@ import customSelectAddStyles from '../../components/AddPetForm/customSelectAddSt
 
 import Select from 'react-select';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import css from './AddPetForm.module.css';
 
 const petTypes = [
@@ -33,21 +34,24 @@ const petTypes = [
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
   name: Yup.string().required('Name is required'),
-  imgUrl: Yup.string().matches(
-    /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
-    'Must be a valid image URL'
-  ),
 
-  birthday: Yup.string()
-    .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Date must be in the format DD.MM.YYYY')
-    .required('Birthday is required'),
+  imgUrl: Yup.string()
+    .nullable()
+    .test(
+      'is-url-if-present',
+      'Must be a valid image URL',
+      value =>
+        !value ||
+        value.length === 0 ||
+        /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/.test(value)
+    ),
+  birthday: Yup.string().required('Birthday is required'),
   species: Yup.object().shape({
     value: Yup.string().required('Type of animal is required'),
     label: Yup.string(),
   }),
 
-  // species: Yup.string().required('Type of animal is required'),
-  gender: Yup.string().required('Gender is required'),
+  sex: Yup.string().required('Sex is required'),
 });
 
 const AddPetForm = () => {
@@ -63,36 +67,20 @@ const AddPetForm = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
-  const [gender, setGender] = useState('');
+  // const [sex, setSex] = useState('');
 
   const handleSpeciesChange = option => {
-    setValue('species', option); // Реєстрація лише value
-    trigger('species'); // Триггер валідації
+    setValue('species', option);
+    trigger('species');
   };
 
   const getInputClass = field => {
     if (!touchedFields[field] && !errors[field]) {
-      return css.default; // Сірий бордер для дефолтного стану
+      return css.default;
     }
-    return errors[field] ? css.invalid : css.valid; // Червоний бордер для невалідних, зелений для валідних
+    return errors[field] ? css.invalid : css.valid;
   };
 
-  // const getInputClass = field => {
-  //   return errors[field] ? css.invalid : css.valid;
-  // };
-
-  // const getInputClass = field => {
-  //   if (!touchedFields[field]) {
-  //     return css.default;
-  //   }
-  //   return errors[field] ? css.invalid : css.valid;
-  // };
-  // const onSubmit = data => {
-  //   toast.success('Data successfully added!');
-  //   console.log('Simulated Data:', data);
-  //   reset();
-  //   setGender('');
-  // };
   const onSubmit = async data => {
     const isValid = await trigger([
       'title',
@@ -100,18 +88,20 @@ const AddPetForm = () => {
       'imgUrl',
       'birthday',
       'species',
-      'gender',
+      'sex',
     ]);
     if (!isValid) {
-      console.log('Form contains errors'); // Для тестування помилок
-      return; // Зупиняємо сабміт, якщо є помилки
+      console.log('Form contains errors');
+      return;
     }
-
+    const parsedDate = parse(data.birthday, 'DD.MM.YYYY', new Date());
+    const formattedDate = format(parsedDate, 'yyyy-MM-dd');
+    data.birthday = formattedDate;
     try {
       toast.success('Data successfully added!');
       console.log('Simulated Data:', data);
       reset();
-      setGender('');
+      // setSex('');
     } catch {
       toast.error('Something went wrong');
     }
@@ -124,67 +114,73 @@ const AddPetForm = () => {
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         {/* Gender Selection */}
-        <div className={css.formGroup}>
-          <div className={css.genderSelection}>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={gender === 'female'}
-                onChange={() => setGender('female')}
-                className={css.radio}
-              />
-              <div className={`${css.icon} ${css.female}`}>
-                <img src={iconFemale} alt="Female" className={css.iconGender} />
+        <Controller
+          name="sex"
+          control={control}
+          render={({ field }) => (
+            <div className={css.formGroup}>
+              <div className={css.genderSelection}>
+                <label>
+                  <input
+                    {...field}
+                    type="radio"
+                    name="sex"
+                    value="female"
+                    checked={field.value === 'female'}
+                    className={css.radio}
+                  />
+                  <div className={`${css.icon} ${css.female}`}>
+                    <img
+                      src={iconFemale}
+                      alt="Female"
+                      className={css.iconGender}
+                    />
+                  </div>
+                </label>
+                <label>
+                  <input
+                    {...field}
+                    type="radio"
+                    name="sex"
+                    value="male"
+                    checked={field.value === 'male'}
+                    className={css.radio}
+                  />
+                  <div className={`${css.icon} ${css.male}`}>
+                    <img src={iconMale} alt="Male" className={css.iconGender} />
+                  </div>
+                </label>
+                <label>
+                  <input
+                    {...field}
+                    type="radio"
+                    name="sex"
+                    value="multiple"
+                    checked={field.value === 'multiple'}
+                    className={css.radio}
+                  />
+                  <div className={`${css.icon} ${css.multiple}`}>
+                    <img
+                      src={multipleImg}
+                      alt="Multiple"
+                      className={css.iconGender}
+                    />
+                  </div>
+                </label>
               </div>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={gender === 'male'}
-                onChange={() => setGender('male')}
-                className={css.radio}
-              />
-              <div className={`${css.icon} ${css.male}`}>
-                <img src={iconMale} alt="Male" className={css.iconGender} />
-              </div>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="multiple"
-                checked={gender === 'multiple'}
-                onChange={() => setGender('multiple')}
-                className={css.radio}
-              />
-              <div className={`${css.icon} ${css.multiple}`}>
-                <img
-                  src={multipleImg}
-                  alt="Multiple"
-                  className={css.iconGender}
+
+              {errors.sex && <p className={css.error}>{errors.sex.message}</p>}
+              <div className={css.petAvatar}>
+                <Icon
+                  id="paw"
+                  width={32}
+                  height={32}
+                  className={css.iconPetDefault}
                 />
               </div>
-            </label>
-          </div>
-
-          {errors.gender && (
-            <p className={css.error}>{errors.gender.message}</p>
+            </div>
           )}
-          <div className={css.petAvatar}>
-            <Icon
-              id="paw"
-              width={32}
-              height={32}
-              className={css.iconPetDefault}
-            />
-          </div>
-        </div>
-        {/* avatar________________________________ */}
-
+        />
         {/* Image URL */}
         <div className={css.formGroup}>
           <div className={css.wrapperUpload}>
@@ -198,10 +194,10 @@ const AddPetForm = () => {
                   placeholder="Enter URL "
                   {...register('imgUrl')}
                   className={`${css.inputfield} ${getInputClass('imgUrl')}`}
-                  onChange={() => trigger('imgUrl')}
-                  // className={`${css.inputfield} ${
-                  //   errors.imgUrl ? css.invalid : ''
-                  // }`}
+                  onChange={e => {
+                    field.onChange(e.target.value);
+                    trigger('imgUrl');
+                  }}
                 />
               )}
             />
@@ -219,7 +215,7 @@ const AddPetForm = () => {
             <p className={css.error}>{errors.imgUrl.message}</p>
           )}
         </div>
-        {/* Title*/}
+
         <div className={css.formGroup}>
           <Controller
             name="title"
@@ -228,15 +224,17 @@ const AddPetForm = () => {
               <input
                 {...field}
                 type="text"
-                // placeholder="Title"
                 placeholder={errors.title ? 'Title is required' : 'Title'}
                 {...register('title')}
                 className={`${css.inputfield} ${getInputClass('title')}`}
-                onChange={() => trigger('title')}
+                onChange={e => {
+                  field.onChange(e.target.value);
+                  trigger('title');
+                }}
               />
             )}
           />
-          {errors.name && <p className={css.error}>{errors.name.message}</p>}
+          {/* {errors.name && <p className={css.error}>{errors.name.message}</p>} */}
         </div>
         {/* Name */}
         <div className={css.formGroup}>
@@ -250,17 +248,20 @@ const AddPetForm = () => {
                 placeholder="Pet's name"
                 {...register('name')}
                 className={`${css.inputfield} ${getInputClass('name')}`}
-                onChange={() => trigger('name')}
+                onChange={e => {
+                  field.onChange(e.target.value);
+                  trigger('name');
+                }}
               />
             )}
           />
-          {errors.name && <p className={css.error}>{errors.name.message}</p>}
+          {/* {errors.name && <p className={css.error}>{errors.name.message}</p>} */}
         </div>
         <div className={css.GroupSelect}>
           {/* Date of Birth */}
           <div className={css.formGroup}>
             <Controller
-              name="birthday"
+              name="birthDay"
               control={control}
               render={({ field }) => (
                 <input
@@ -268,13 +269,13 @@ const AddPetForm = () => {
                   type="date"
                   {...register('birthday')}
                   className={`${css.inputfield} ${getInputClass('birthday')}`}
-                  onChange={() => trigger('birthday')}
+                  onChange={e => {
+                    field.onChange(e.target.value);
+                    trigger('birthDay');
+                  }}
                 />
               )}
             />
-            {errors.birthday && (
-              <p className={css.error}>{errors.birthday.message}</p>
-            )}
           </div>
 
           {/* Type of Animal */}
@@ -288,15 +289,11 @@ const AddPetForm = () => {
                   options={petTypes}
                   placeholder="Select type"
                   styles={customSelectAddStyles}
-                  // {...register('species')}
-                  // className={`${css.select} ${getInputClass('species')}`}
                   onChange={option => {
                     field.onChange(option);
                     handleSpeciesChange(option);
                   }}
-                  className={`${css.select} ${
-                    errors.species ? css.invalid : ''
-                  }`}
+                  className={`${css.select} ${getInputClass('species')}`}
                 />
               )}
             />
@@ -310,7 +307,7 @@ const AddPetForm = () => {
           <button
             type="button"
             className={`${css.buttonAdd} ${css.back}`}
-            onClick={() => (window.location.href = '/profile')}
+            onClick={() => (window.location.href = '/news')}
           >
             Back
           </button>
