@@ -15,22 +15,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import css from './AddPetForm.module.css';
 
 const petTypes = [
-  { value: 'ants', label: 'Ants' },
-  { value: 'bees', label: 'Bees' },
-  { value: 'fish', label: 'Fish' },
-  { value: 'frog', label: 'Frog' },
-  { value: 'lizard', label: 'Lizard' },
-  { value: 'monkey', label: 'Monkey' },
-  { value: 'snake', label: 'Snake' },
-  { value: 'dog', label: 'Dog' },
-  { value: 'turtle', label: 'Turtle' },
-  { value: 'spider', label: 'Spider' },
-  { value: 'cat', label: 'Cat' },
-  { value: 'bird', label: 'Bird' },
-  { value: 'rabbit', label: 'Rabbit' },
+  { value: 'ants', label: 'ants' },
+  { value: 'bees', label: 'bees' },
+  { value: 'fish', label: 'fish' },
+  { value: 'frog', label: 'frog' },
+  { value: 'lizard', label: 'lizard' },
+  { value: 'monkey', label: 'monkey' },
+  { value: 'snake', label: 'snake' },
+  { value: 'dog', label: 'dog' },
+  { value: 'turtle', label: 'turtle' },
+  { value: 'spider', label: 'spider' },
+  { value: 'cat', label: 'cat' },
+  { value: 'bird', label: 'bird' },
+  { value: 'rabbit', label: 'rabbit' },
 ];
 
 const validationSchema = Yup.object().shape({
+  title: Yup.string().required('Title is required'),
   name: Yup.string().required('Name is required'),
   imgUrl: Yup.string().matches(
     /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
@@ -38,28 +39,82 @@ const validationSchema = Yup.object().shape({
   ),
 
   birthday: Yup.string()
-    .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in the format YYYY-MM-DD')
+    .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Date must be in the format DD.MM.YYYY')
     .required('Birthday is required'),
-  species: Yup.string().required('Type of animal is required'),
+  species: Yup.object().shape({
+    value: Yup.string().required('Type of animal is required'),
+    label: Yup.string(),
+  }),
+
+  // species: Yup.string().required('Type of animal is required'),
   gender: Yup.string().required('Gender is required'),
 });
 
 const AddPetForm = () => {
   const {
+    trigger,
+    register,
+    setValue,
     control,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm({
     resolver: yupResolver(validationSchema),
+    mode: 'onBlur',
   });
   const [gender, setGender] = useState('');
 
-  const onSubmit = data => {
-    toast.success('Data successfully added!');
-    console.log('Simulated Data:', data);
-    reset();
-    setGender('');
+  const handleSpeciesChange = option => {
+    setValue('species', option); // Реєстрація лише value
+    trigger('species'); // Триггер валідації
+  };
+
+  const getInputClass = field => {
+    if (!touchedFields[field] && !errors[field]) {
+      return css.default; // Сірий бордер для дефолтного стану
+    }
+    return errors[field] ? css.invalid : css.valid; // Червоний бордер для невалідних, зелений для валідних
+  };
+
+  // const getInputClass = field => {
+  //   return errors[field] ? css.invalid : css.valid;
+  // };
+
+  // const getInputClass = field => {
+  //   if (!touchedFields[field]) {
+  //     return css.default;
+  //   }
+  //   return errors[field] ? css.invalid : css.valid;
+  // };
+  // const onSubmit = data => {
+  //   toast.success('Data successfully added!');
+  //   console.log('Simulated Data:', data);
+  //   reset();
+  //   setGender('');
+  // };
+  const onSubmit = async data => {
+    const isValid = await trigger([
+      'title',
+      'name',
+      'imgUrl',
+      'birthday',
+      'species',
+      'gender',
+    ]);
+    if (!isValid) {
+      console.log('Form contains errors'); // Для тестування помилок
+      return; // Зупиняємо сабміт, якщо є помилки
+    }
+
+    try {
+      toast.success('Data successfully added!');
+      console.log('Simulated Data:', data);
+      reset();
+      setGender('');
+    } catch {
+      toast.error('Something went wrong');
+    }
   };
 
   return (
@@ -141,9 +196,12 @@ const AddPetForm = () => {
                   {...field}
                   type="text"
                   placeholder="Enter URL "
-                  className={`${css.inputfield} ${
-                    errors.imgUrl ? css.invalid : ''
-                  }`}
+                  {...register('imgUrl')}
+                  className={`${css.inputfield} ${getInputClass('imgUrl')}`}
+                  onChange={() => trigger('imgUrl')}
+                  // className={`${css.inputfield} ${
+                  //   errors.imgUrl ? css.invalid : ''
+                  // }`}
                 />
               )}
             />
@@ -161,19 +219,20 @@ const AddPetForm = () => {
             <p className={css.error}>{errors.imgUrl.message}</p>
           )}
         </div>
-        {/* Name */}
+        {/* Title*/}
         <div className={css.formGroup}>
           <Controller
-            name="name"
+            name="title"
             control={control}
             render={({ field }) => (
               <input
                 {...field}
                 type="text"
-                placeholder="Title"
-                className={`${css.inputfield} ${
-                  errors.name ? css.invalid : ''
-                }`}
+                // placeholder="Title"
+                placeholder={errors.title ? 'Title is required' : 'Title'}
+                {...register('title')}
+                className={`${css.inputfield} ${getInputClass('title')}`}
+                onChange={() => trigger('title')}
               />
             )}
           />
@@ -189,9 +248,9 @@ const AddPetForm = () => {
                 {...field}
                 type="text"
                 placeholder="Pet's name"
-                className={`${css.inputfield} ${
-                  errors.name ? css.invalid : ''
-                }`}
+                {...register('name')}
+                className={`${css.inputfield} ${getInputClass('name')}`}
+                onChange={() => trigger('name')}
               />
             )}
           />
@@ -207,9 +266,9 @@ const AddPetForm = () => {
                 <input
                   {...field}
                   type="date"
-                  className={`${css.inputfield} ${
-                    errors.birthday ? css.invalid : ''
-                  }`}
+                  {...register('birthday')}
+                  className={`${css.inputfield} ${getInputClass('birthday')}`}
+                  onChange={() => trigger('birthday')}
                 />
               )}
             />
@@ -229,6 +288,12 @@ const AddPetForm = () => {
                   options={petTypes}
                   placeholder="Select type"
                   styles={customSelectAddStyles}
+                  // {...register('species')}
+                  // className={`${css.select} ${getInputClass('species')}`}
+                  onChange={option => {
+                    field.onChange(option);
+                    handleSpeciesChange(option);
+                  }}
                   className={`${css.select} ${
                     errors.species ? css.invalid : ''
                   }`}

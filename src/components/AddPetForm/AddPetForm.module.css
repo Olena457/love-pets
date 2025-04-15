@@ -38,6 +38,7 @@
   width: 100%;
   padding: 4px 10px 4px 4px;
   border: 1px solid #b6aeae;
+  margin-top: 10px;
   border-radius: 30px;
   font-size: 14px;
   outline-color: #ffffff;
@@ -64,7 +65,18 @@
     padding: 8px 88px 8px 8px;
   }
 }
-
+.select.default {
+  border: 1px solid var(--light-border-color);
+}
+.select.valid {
+  border-color: var(--green-color);
+}
+.select:focus {
+  border-color: var(--main-color);
+}
+.select.invalid {
+  border-color: var(--red-color);
+}
 /* gender_________________________________ */
 .genderSelection {
   display: flex;
@@ -220,23 +232,23 @@
     padding: 16px 40px 16px 16px;
   }
 }
-form inputfield:first-child {
-  margin-top: 20px;
+form .inputfield:nth-child(1) {
+  margin-top: 10px;
 }
 
-form inputfield:nth-child(3) {
+form .inputfield:nth-child(3) {
   margin-top: 0;
 }
-inputfield.default {
+.inputfield.default {
   border: 1px solid var(--light-border-color);
 }
-inputfield.valid {
+.inputfield.valid {
   border-color: var(--green-color);
 }
-inputfield.focus {
+.inputfield:focus {
   border-color: var(--main-color);
 }
-inputfield.invalid {
+.inputfield.invalid {
   border-color: var(--red-color);
 }
 .error {

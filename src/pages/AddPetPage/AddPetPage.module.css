@@ -9,7 +9,6 @@
 }
 @media screen and (min-width: 768px) {
   .pageAdd {
-    /* padding: 32px; */
     gap: 16px;
   }
 }
@@ -17,8 +16,6 @@
   .pageAdd {
     max-width: 1216px;
     flex-direction: row;
-
-    /* gap: 32px; */
   }
 }
 

@@ -8,9 +8,7 @@
     gap: 16px;
   }
 }
-form input:first-child {
-  margin-top: 0px;
-}
+
 .inputWrapper {
   position: relative;
   display: flex;
@@ -33,7 +31,9 @@ form input:first-child {
     padding: 16px 40px 16px 16px;
   }
 }
-
+form .input:first-child {
+  margin-top: 0px;
+}
 input.default {
   border: 1px solid var(--input-default);
 }

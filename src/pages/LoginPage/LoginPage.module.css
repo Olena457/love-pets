@@ -10,16 +10,13 @@
 @media screen and (min-width: 768px) {
   .pageLogin {
     max-width: 704px;
-    /* padding: 32px; */
-    gap: 16px;
+    gap: 32px;
   }
 }
 @media screen and (min-width: 1280px) {
   .pageLogin {
     max-width: 1216px;
     flex-direction: row;
-
-    /* gap: 32px; */
   }
 }
 
@@ -43,7 +40,7 @@
 
 @media screen and (min-width: 1280px) {
   .containerLogin {
-    max-width: 592px;
+    width: 592px;
     height: 654px;
     padding: 120px 80px 85px 80px;
   }

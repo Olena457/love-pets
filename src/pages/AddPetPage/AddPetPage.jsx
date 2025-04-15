@@ -1,4 +1,3 @@
-// import Title from '../../components/Title/Title.jsx';
 import AddPetForm from '../../components/AddPetForm/AddPetForm.jsx';
 import css from './AddPetPage.module.css';
 import ContainerAdd from '../../components/ContainerAdd/ContainerAdd.jsx';
