@@ -6,11 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className={css.layoutContainer}>{children}</div>
-      <div className={css.containerLogo}>
-        <Link to="/home" className="homeButton">
-          <div className={css.logoMain}></div>
-        </Link>
-      </div>
+
       <main className="mainContent">
         <Outlet />
       </main>

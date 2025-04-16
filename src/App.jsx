@@ -10,6 +10,7 @@ import Header from './components/Header/Header.jsx';
 import MyFavoritesPets from '../src/components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from '../src/components/MyNotices/Viewed/Viewed.jsx';
 
+const MainPage = lazy(() => import('../src/pages/MainPage/MainPage.jsx'));
 const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
 const AddPetPage = lazy(() => import('../src/pages/AddPetPage/AddPetPage.jsx'));
 const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
@@ -40,9 +41,10 @@ function App() {
   return (
     <>
       <Suspense fallback={<Loader />}>
+        <Layout />
         {!hideHeader && <Header />}
         <Routes>
-          <Route path="/" element={<Layout hideHeader={true} />} />
+          <Route path="/" element={<MainPage hideHeader={true} />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
