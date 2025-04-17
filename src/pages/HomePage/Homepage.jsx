@@ -1,9 +1,7 @@
-// import Container from '../../components/Container/Container.jsx';
 import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    // <Container>
     <div className={css.wrapper}>
       <div className={css.home}>
         <div className={css.content}>
@@ -18,7 +16,6 @@ const HomePage = () => {
       </div>
       <div className={css.photo}></div>
     </div>
-    // </Container>
   );
 };
 
