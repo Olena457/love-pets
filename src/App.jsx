@@ -9,9 +9,9 @@ import Layout from './components/Layout/Layout.jsx';
 import Header from './components/Header/Header.jsx';
 import MyFavoritesPets from '../src/components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from '../src/components/MyNotices/Viewed/Viewed.jsx';
-
+import HomePage from './pages/HomePage/HomePage.jsx';
 const MainPage = lazy(() => import('../src/pages/MainPage/MainPage.jsx'));
-const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
+// const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
 const AddPetPage = lazy(() => import('../src/pages/AddPetPage/AddPetPage.jsx'));
 const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
 const RegisterPage = lazy(() =>
