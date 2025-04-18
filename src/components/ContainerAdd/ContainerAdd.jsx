@@ -1,9 +1,5 @@
 import css from './ContainerAdd.module.css';
-// import { useLocation } from 'react-router-dom';
-
 const ContainerAdd = ({ images }) => {
-  // const location = useLocation();
-  // const type = location.pathname.includes('register') ? 'register' : 'login';
   return (
     <div className={css.petContainer}>
       <img
