@@ -1,6 +1,7 @@
 import css from './LogoChange.module.css';
 import { Link, useLocation } from 'react-router-dom';
-
+import heartFull from '../../assets/icons/heartFull.svg';
+import heartWhite from '../../assets/icons/heartWhite.svg';
 const LogoChange = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home';
@@ -11,9 +12,25 @@ const LogoChange = () => {
         <div className={css.headerNav}>
           <Link to="/home" className={css.logo}>
             {isHomePage ? (
-              <div className={css.white}>Petl🤍ve</div>
+              <div className={css.white}>
+                Petl
+                <img
+                  src={heartWhite}
+                  className={css.heartIcon}
+                  alt="White Heart Icon"
+                />
+                ve
+              </div>
             ) : (
-              <div className={css.color}>Petl💛ve</div>
+              <div className={css.color}>
+                Petl
+                <img
+                  src={heartFull}
+                  className={css.heartIcon}
+                  alt="Yellow Heart Icon"
+                />
+                ve
+              </div>
             )}
           </Link>
         </div>

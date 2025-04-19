@@ -14,7 +14,6 @@
   font-weight: 800;
   font-size: 28px;
   line-height: 1;
-  /* margin-left: 42px; */
   color: var(--white-color);
   background-color: transparent;
 }
@@ -23,15 +22,45 @@
   font-weight: 800;
   font-size: 28px;
   line-height: 1;
-  /* margin-left: 20px; */
   color: var(--black-color);
   background-color: transparent;
 }
-/* @media screen and (min-width: 768px) {
-  .color {
-    margin-left: 32px;
-  }
-} */
+
 .logo {
+  background-color: transparent;
+}
+/* adder icon svg_________________________________________ */
+.heartIcon {
+  width: 0.7em;
+  height: 0.7em;
+  vertical-align: middle;
+  margin: 0 0.1em;
+}
+
+.white {
+  font-family: Manrope;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--white-color);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.color {
+  font-family: Manrope;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--black-color);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
   background-color: transparent;
 }
