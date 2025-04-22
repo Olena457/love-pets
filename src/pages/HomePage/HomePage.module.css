@@ -133,17 +133,17 @@
 
 @media screen and (min-width: 320px) {
   .photo {
-    background-image: url('../../assets/imgs/mobile/home-mob@1x.jpg');
+    background-image: url('../src/assets/imgs/mobile/home-mob@1x.jpg');
   }
 }
 @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
   .photo {
-    background-image: url('../../assets/imgs/mobile/home-mob@2x.jpg');
+    background-image: url('../src/assets/imgs/mobile/home-mob@2x.jpg');
   }
 }
 @media screen and (min-width: 768px) {
   .photo {
-    background-image: url('../../assets/imgs/tablet/home-tablet@1x.jpg');
+    background-image: url('../src/assets/imgs/tablet/home-tablet@1x.jpg');
     border-radius: 60px;
     margin: 0px 32px 16px 32px;
     min-width: 704px;
@@ -152,18 +152,18 @@
 }
 @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .photo {
-    background-image: url('../../assets/imgs/tablet/home-tablet@2x.jpg');
+    background-image: url('../src/assets/imgs/tablet/home-tablet@2x.jpg');
   }
 }
 @media screen and (min-width: 1280px) {
   .photo {
-    background-image: url('../../assets/imgs/desktop/home-desk@1x.jpg');
+    background-image: url('../src/assets/imgs/desktop/home-desk@1x.jpg');
     width: 1216px;
     max-height: 384px;
   }
 }
 @media screen and (min-width: 1280px) and (min-resolution: 192dpi) {
   .photo {
-    background-image: url('../../assets/imgs/desktop/home-desk@2x.jpg');
+    background-image: url('../src/assets/imgs/desktop/home-desk@2x.jpg');
   }
 }
