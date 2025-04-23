@@ -8,7 +8,8 @@
 }
 @media screen and (min-width: 768px) {
   .pageRegister {
-    max-width: 704px;
+    /* max-width: 704px; */
+    /* width: 704px; */
     gap: 16px;
   }
 }
@@ -30,7 +31,8 @@
 }
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 704px;
+    /* max-width: 704px; */
+    /* width: 704px; */
     height: 560px;
     border-radius: 60px;
     padding: 30px 140px;

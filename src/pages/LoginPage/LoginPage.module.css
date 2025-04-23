@@ -9,7 +9,8 @@
 }
 @media screen and (min-width: 768px) {
   .pageLogin {
-    max-width: 704px;
+    /* max-width: 704px; */
+    width: 704px;
     gap: 32px;
   }
 }
@@ -31,7 +32,8 @@
 }
 @media screen and (min-width: 768px) {
   .containerLogin {
-    max-width: 704px;
+    /* max-width: 704px; */
+    width: 704px;
     height: 560px;
     border-radius: 60px;
     padding: 80px 140px 60px 140px;
