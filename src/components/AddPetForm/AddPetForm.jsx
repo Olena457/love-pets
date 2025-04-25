@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { parse, format } from 'date-fns';
+// import { parse, format } from 'date-fns';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import multipleImg from '../../assets/icons/multiple.svg';
@@ -94,14 +94,20 @@ const AddPetForm = () => {
       console.log('Form contains errors');
       return;
     }
-    const parsedDate = parse(data.birthday, 'DD.MM.YYYY', new Date());
-    const formattedDate = format(parsedDate, 'yyyy-MM-dd');
-    data.birthday = formattedDate;
+    // const parsedDate = parse(data.birthday, 'dd.MM.yyyy', new Date());
+    // const formattedDate = format(parsedDate, 'yyyy-MM-dd');
+    // data.birthday = formattedDate;
     try {
       toast.success('Data successfully added!');
       console.log('Simulated Data:', data);
       reset();
       // setSex('');
+      // } catch {
+      //   toast.error('Something went wrong');
+      // }
+      setTimeout(() => {
+        window.location.href = '/profile';
+      }, 2000);
     } catch {
       toast.error('Something went wrong');
     }
