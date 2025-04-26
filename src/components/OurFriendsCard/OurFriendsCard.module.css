@@ -1,7 +1,7 @@
 .wrapperFriends {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
+  min-width: 280px;
   position: relative;
   padding: 50px 12px 40px 12px;
   border-radius: 15px;
@@ -13,7 +13,11 @@
 .wrapperFriends:not(last-child) {
   margin-bottom: 8px;
 }
-
+@media screen and (min-width: 768px) {
+  .wrapperFriends {
+    min-width: 320px;
+  }
+}
 .hourTime {
   position: absolute;
   top: 12px;

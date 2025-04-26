@@ -34,7 +34,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
 }
 @media screen and (min-width: 768px) {
   .home {
@@ -64,7 +64,7 @@
   font-size: 46px;
   font-weight: 700;
   line-height: 0.86;
-  margin-bottom: 14px;
+  margin-top: 14px;
 }
 @media screen and (min-width: 768px) {
   .title {
@@ -77,8 +77,9 @@
 @media screen and (min-width: 1280px) {
   .title {
     font-size: 90px;
-    margin-bottom: 0;
-    width: 730px;
+    margin-bottom: 16px;
+    width: 760px;
+    height: 174px;
   }
 }
 
@@ -89,6 +90,7 @@
   color: var(--white-color);
   font-size: 14px;
   font-weight: 500;
+  margin-bottom: 10px;
   line-height: 1.28;
 }
 @media screen and (min-width: 768px) {
