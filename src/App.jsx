@@ -51,7 +51,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <PrivateRoute redirectTo="/" component={<ProfilePage />} />
+              <PrivateRoute redirectTo="/home" component={<ProfilePage />} />
             }
           >
             <Route index element={<Navigate to="favorites" replace />} />
