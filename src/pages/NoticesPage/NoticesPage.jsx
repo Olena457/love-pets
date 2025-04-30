@@ -42,19 +42,6 @@ const NoticesPage = () => {
   const isModalOpen = useSelector(selectIsOpenModal);
   const isLoading = useSelector(selectIsLoading);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     fetchNotices({
-  //       page: currentPage,
-  //       perPage: 6,
-  //       searchQuery,
-  //       category,
-  //       gender,
-  //       type,
-  //       location,
-  //     })
-  //   );
-  // }, [dispatch, currentPage, searchQuery, category, gender, type, location]);
   const params = useMemo(
     () => ({
       page: currentPage,

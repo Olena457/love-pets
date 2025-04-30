@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFriends } from '../../redux/friends/ourFriendsSlice.js';
-// import Title from '../../components/Title/Title.jsx';
 import {
   selectFriends,
   selectIsLoading,
@@ -28,7 +27,6 @@ const OurFriendsPage = () => {
       ) : (
         <div className={css.containerPageFriends}>
           <h1 className={css.titleFriend}>Our friends</h1>
-          {/* <Title title={'Our friends'} /> */}
           <OurFriendsList />
           {error && <p>Error: {error}</p>}
           {friends.length === 0 && !isLoading && !error && (

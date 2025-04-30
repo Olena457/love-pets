@@ -35,7 +35,6 @@
 @media screen and (min-width: 1280px) {
   .mainContainer {
     background-image: url(../src/assets/imgs/desktop/main-desk@1x.jpg);
-    /* width: 1261px; */
   }
 }
 
