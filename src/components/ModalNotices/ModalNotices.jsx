@@ -204,10 +204,15 @@ const ModalNotices = () => {
         <p className={css.comment}>{notice?.comment}</p>
       </div>
       <div className={css.btnWrap}>
-        <button className={css.btn} onClick={handleAddToFavorites}>
-          Add to
-          <img src={EmptyWhite} alt="heart" className={css.icon} />
-        </button>
+        <div className={css.wrapperAdd}>
+          <button
+            className={`${css.btn} ${css.addBtn}`}
+            onClick={handleAddToFavorites}
+          >
+            Add to
+            <img src={EmptyWhite} alt="heart" className={css.icon} />
+          </button>
+        </div>
         <button
           className={`${css.btn} ${css.contactBtn}`}
           onClick={handleContactClick}

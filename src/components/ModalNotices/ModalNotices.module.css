@@ -62,42 +62,6 @@
 
 .accentProperty {
   font-weight: bold;
-}
-
-.comment {
-  font-size: 14px;
-  color: #666;
-}
-
-.btnWrap {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: #007bff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background: #0056b3;
-}
-
-.contactBtn {
-  background: #28a745;
-}
-
-.contactBtn:hover {
-  background: #218838;
 } */
 .modalWrap {
   display: flex;
@@ -127,8 +91,8 @@
   position: absolute;
   top: 0;
   left: -4px;
-  background-color: #f0f0f0; /* Змінити на ваш колір */
-  color: #333; /* Змінити на ваш колір */
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .textBlock {
@@ -140,7 +104,7 @@
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 10px;
-  color: #000; /* Змінити на ваш колір */
+  color: #000;
 }
 
 .popularityWrap {
@@ -165,32 +129,67 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.286;
-  color: #666; /* Змінити на ваш колір */
+  color: #666;
 }
 
 .btnWrap {
   display: flex;
-  gap: 10px;
-  width: 100%;
+  width: 272px;
+  height: 42px;
+  gap: 8px;
+  justify-content: center;
 }
-
+@media screen and (min-width: 768px) {
+  .btnWrap {
+    width: 288px;
+    height: 48px;
+  }
+}
 .btn {
-  padding: 12px 30px;
+  padding: 12px 24px;
   border-radius: 30px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
+  width: 129px;
+  height: 42px;
+  font-size: 14px;
+  font-weight: 700;
   transition: background-color 0.3s ease-in-out;
 }
-
-.btn:hover {
-  background-color: #0056b3;
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 16px;
+    font-weight: 700;
+    width: 140px;
+    height: 48px;
+  }
 }
-
 .contactBtn {
-  background-color: #28a745;
+  color: var(--main-color);
+  background-color: var(--main-light);
 }
 
 .contactBtn:hover {
-  background-color: #218838;
+  background-color: var(--hover-light);
+}
+.wrapperAdd {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+}
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--white-color);
+  background-color: var(--main-color);
+}
+
+.addBtn:hover {
+  background-color: var(--dark-hover);
 }
