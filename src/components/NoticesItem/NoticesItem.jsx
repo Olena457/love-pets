@@ -180,9 +180,9 @@ const NoticesItem = ({ notice, onLearnMore, onToggleFavorite }) => {
       return;
     }
     if (isFavorite) {
-      await dispatch(removeNoticeFromFavorites(_id));
+      dispatch(removeNoticeFromFavorites(_id));
     } else {
-      await dispatch(addNoticeToFavorites(_id));
+      dispatch(addNoticeToFavorites(_id));
     }
   };
 

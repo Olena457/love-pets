@@ -4,7 +4,7 @@ import Title from '../../components/Title/Title.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
-import ModalWrapper from '../../components/ModalWrapper/ModalWrapper.jsx';
+import ContainerModal from '../../components/ContainerModal/ContainerModal.jsx';
 import { openModal } from '../../redux/modal/modalSlice.js';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations.js';
 import { selectIsOpenModal } from '../../redux/modal/modalSelectors.js';
@@ -125,7 +125,7 @@ const NoticesPage = () => {
           )}
         </>
       )}
-      {isModalOpen && <ModalWrapper />}
+      {isModalOpen && <ContainerModal />}
     </div>
   );
 };
