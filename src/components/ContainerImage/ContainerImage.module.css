@@ -6,7 +6,7 @@
   background-color: var(--main-color);
   border-radius: 30px;
   width: 100%;
-  background-image: url('../../assets/imgs/mobile/rectangle-mob@1x.png');
+  background-image: url('../src/assets/imgs/mobile/rectangle-mob@1x.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,18 +17,17 @@
   .petContainer {
     border-radius: 60px;
     flex-shrink: 1;
-    /* max-width: 704px; */
+    max-width: 704px;
     height: auto;
-    background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
+    background-image: url('../src/assets/imgs/tablet/rectangle-tablet@1x.png');
   }
 }
 
 @media (min-width: 1280px) {
   .petContainer {
     max-width: 592px;
-
     height: auto;
-    background-image: url('../../assets/imgs/desktop/rectangle-desk@1x.png');
+    background-image: url('../src/assets/imgs/desktop/rectangle-desk@1x.png');
   }
 }
 
@@ -44,7 +43,7 @@
     width: 294px;
     z-index: 3;
     height: 121px;
-    background-image: url('../../assets/imgs/block-cat.png');
+    background-image: url('../src/assets/imgs/block-cat.png');
     border-radius: 20px;
   }
 }
@@ -67,7 +66,7 @@
     width: 294px;
     z-index: 3;
     height: 121px;
-    background-image: url('../../assets/imgs/block-dog.png');
+    background-image: url('../src/assets/imgs/block-dog.png');
     border-radius: 20px;
   }
 }
@@ -85,7 +84,7 @@
 @media screen and (min-width: 768px) {
   .petImage {
     height: 302px;
-    margin-left: 250px;
+    margin-left: 302px;
   }
 }
 

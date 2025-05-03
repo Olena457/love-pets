@@ -1,5 +1,5 @@
 .formContainer {
-  background-color: var(--white-color);
+  background-color: var(--text-color);
 }
 .titleWrapper {
   display: flex;

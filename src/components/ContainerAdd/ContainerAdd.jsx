@@ -13,7 +13,7 @@ const ContainerAdd = ({ images }) => {
                (min-width: 768px) 768px, 
                100vw"
         alt="Pet representation"
-        className={css.petImage}
+        className={css.petImageAdd}
       />
     </div>
   );

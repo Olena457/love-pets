@@ -1,6 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  background-color: var(--text-color);
   gap: 10px;
 }
 @media (min-width: 768px) {

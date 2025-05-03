@@ -31,19 +31,19 @@
     background-image: url('../src/assets/imgs/desktop/rectangle-desk@1x.png');
   }
 }
-.petImage {
+.petImageAdd {
   height: 280px;
   margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
-  .petImage {
+  .petImageAdd {
     height: 302px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .petImage {
+  .petImageAdd {
     height: 664px;
     /* max-width: 592px; */
   }
