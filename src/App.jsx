@@ -49,9 +49,7 @@ function App() {
           <Route path="/notices" element={<NoticesPage />} />
           <Route
             path="/add-pet"
-            element={
-              <PrivateRoute redirectTo="/profile" component={<AddPetPage />} />
-            }
+            element={<PrivateRoute component={<AddPetPage />} />}
           />
           <Route
             path="/profile"

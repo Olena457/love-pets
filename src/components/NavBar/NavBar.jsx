@@ -211,14 +211,14 @@ const NavBar = () => {
               >
                 Our friends
               </Link>
-              <Link
+              {/* <Link
                 to="/add-pet"
                 className={`${css.menuItem} ${
                   isActive('/add-pet') ? css.active : ''
                 }`}
               >
                 AddPet
-              </Link>
+              </Link> */}
             </div>
             {isAuthenticated ? (
               <UserNav onClose={handleMenuClose} />

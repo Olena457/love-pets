@@ -11,7 +11,7 @@ const ProfilePage = () => {
   }, [dispatch]);
   return (
     <div className={css.containerProfile}>
-      {/* <h1 className={css.title}>Profile Page</h1> */}
+      <h1 className={css.title}>Profile Page</h1>
       <UserCard />
       <MyNotice />
     </div>
