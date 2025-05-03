@@ -23,7 +23,7 @@ export const signin = createAsyncThunk(
   'user/signin',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('/user/sifnin', credentials);
+      const response = await axiosInstance.post('/user/signin', credentials);
 
       const { token, ...userData } = response.data;
 

@@ -166,7 +166,7 @@ const RegisterForm = () => {
         Registration
       </button>
       <p className={css.footerDescription}>
-        Already have an account?<a href="/register">Login</a>
+        Already have an account?<a href="/login">Login</a>
       </p>
     </form>
   );
