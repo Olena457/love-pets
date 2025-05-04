@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from 'react-router-dom';
 import Loader from './components/Loader/Loader.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import RestrictedRoute from './components/RestrictedRoute.jsx';
 import Layout from './components/Layout/Layout.jsx';
 import Header from './components/Header/Header.jsx';
 import MyFavoritesPets from './components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
@@ -42,11 +43,24 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage hideHeader={true} />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/home"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
+            }
+          />
           <Route
             path="/add-pet"
             element={<PrivateRoute component={<AddPetPage />} />}
