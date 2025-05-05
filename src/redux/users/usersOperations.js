@@ -1,89 +1,17 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import axiosInstance, { setAuthHeader, clearAuthHeader } from '../api.js';
-
-// const prepareAuthHeader = thunkAPI => {
-//   const token = thunkAPI.getState().auth.token;
-//   if (!token) {
-//     throw new Error('Token is missing');
-//   }
-//   setAuthHeader(token);
-// };
-// export const signup = createAsyncThunk(
-//   'user/signup',
-//   async (userData, { rejectWithValue }) => {
-//     try {
-//       const response = await axiosInstance.post('/users/signup', userData);
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-// export const signin = createAsyncThunk(
-//   'user/signin',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       const response = await axiosInstance.post('/user/signin', credentials);
-
-//       const { token, ...userData } = response.data;
-
-//       setAuthHeader(token);
-//       return { token, userData };
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-// export const signout = createAsyncThunk(
-//   'user/signout',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const response = await axiosInstance.post('/user/signout');
-//       clearAuthHeader();
-//       return response.data.message;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-// export const getCurrentUser = createAsyncThunk(
-//   'user/current',
-//   async (_, thukAPi) => {
-//     try {
-//       prepareAuthHeader(thukAPi);
-//       const response = await axiosInstance.get('/user/current');
-//       return response.data.data;
-//     } catch (error) {
-//       return thukAPi.rejectWithValue(error.reponse.data);
-//     }
-//   }
-// );
-// export const getCurrentUserFullInfo = createAsyncThunk(
-//   'user/current/full',
-//   async (_, thukAPI) => {
-//     try {
-//       prepareAuthHeader(thukAPI);
-//       const response = await axiosInstance.get('/user/current/full');
-//       return response.data.data;
-//     } catch (error) {
-//       return thukAPI.rejectWithValue(error.reponse.data);
-//     }
-//   }
-// );
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance, { setAuthHeader, clearAuthHeader } from '../api.js';
 import { toast } from 'react-toastify';
 
-// Функція для перевірки токена перед запитом
+// This function prepares the authorization header for requests that require authentication.
 const prepareAuthHeader = thunkAPI => {
-  const token = thunkAPI.getState().auth.token;
+  const token = thunkAPI.getState().user.token;
   if (!token) {
     return thunkAPI.rejectWithValue('Token is missing');
   }
   setAuthHeader(token);
 };
 
-// Реєстрація
+// register user
 export const signup = createAsyncThunk(
   'user/signup',
   async (userData, { rejectWithValue }) => {
@@ -102,14 +30,14 @@ export const signup = createAsyncThunk(
   }
 );
 
-// Логін
+// login user
 export const signin = createAsyncThunk(
   'user/signin',
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post('/users/signin', credentials);
       const { token, ...userData } = response.data;
-
+      token;
       setAuthHeader(token);
       toast.success('Welcome back!');
       return { token, userData };
@@ -156,7 +84,7 @@ export const getCurrentUser = createAsyncThunk(
       const errorMessage =
         error?.response?.data?.message ||
         error.message ||
-        'Помилка отримання даних користувача';
+        'Error getting user data';
       toast.error(errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);
     }
@@ -181,3 +109,110 @@ export const getCurrentUserFullInfo = createAsyncThunk(
     }
   }
 );
+// ___________________________________________________
+// Реєстрація користувача
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import axiosInstance, { setAuthHeader, clearAuthHeader } from '../api.js';
+// import { toast } from 'react-toastify';
+
+// export const signup = createAsyncThunk(
+//   'user/signup',
+//   async (userData, thunkAPI) => {
+//     try {
+//       const { data } = await axiosInstance.post('/users/signup', userData);
+//       setAuthHeader(data.token);
+//       toast.success('Registration is successful');
+//       return data;
+//     } catch (error) {
+//       const errorMessage =
+//         error?.response?.data?.message ||
+//         error.message ||
+//         'An unknown error occurred';
+//       toast.error(errorMessage);
+//       return thunkAPI.rejectWithValue(errorMessage);
+//     }
+//   }
+// );
+
+// // Вхід користувача
+// export const signin = createAsyncThunk(
+//   'user/signin',
+//   async (credentials, thunkAPI) => {
+//     try {
+//       const { data } = await axiosInstance.post('/users/signin', credentials); // ✅ Виправлено маршрут
+//       setAuthHeader(data.token);
+//       toast.success('Welcome back!');
+//       return data;
+//     } catch (error) {
+//       const errorMessage =
+//         error?.response?.data?.message ||
+//         error.message ||
+//         'An unknown error occurred';
+//       toast.error(errorMessage);
+//       return thunkAPI.rejectWithValue(errorMessage);
+//     }
+//   }
+// );
+
+// // Вихід користувача
+// export const signout = createAsyncThunk('user/signout', async (_, thunkAPI) => {
+//   try {
+//     await axiosInstance.post('/users/signout');
+//     clearAuthHeader();
+//     toast.success('Exit successful');
+//     return {};
+//   } catch (error) {
+//     const errorMessage =
+//       error?.response?.data?.message ||
+//       error.message ||
+//       'An unknown error occurred';
+//     toast.error(errorMessage);
+//     return thunkAPI.rejectWithValue(errorMessage);
+//   }
+// });
+
+// // Отримання поточного користувача
+// export const getCurrentUser = createAsyncThunk(
+//   'user/current',
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.token;
+//       if (!token) {
+//         return thunkAPI.rejectWithValue('Token is missing');
+//       }
+//       setAuthHeader(token);
+//       const { data } = await axiosInstance.get('/users/current');
+//       return data;
+//     } catch (error) {
+//       const errorMessage =
+//         error?.response?.data?.message ||
+//         error.message ||
+//         'Error getting user data';
+//       toast.error(errorMessage);
+//       return thunkAPI.rejectWithValue(errorMessage);
+//     }
+//   }
+// );
+
+// // Отримання повної інформації про користувача
+// export const getCurrentUserFullInfo = createAsyncThunk(
+//   'user/current/full',
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.token;
+//       if (!token) {
+//         return thunkAPI.rejectWithValue('Token is missing');
+//       }
+//       setAuthHeader(token);
+//       const { data } = await axiosInstance.get('/users/current/full');
+//       return data;
+//     } catch (error) {
+//       const errorMessage =
+//         error?.response?.data?.message ||
+//         error.message ||
+//         'Error getting user data';
+//       toast.error(errorMessage);
+//       return thunkAPI.rejectWithValue(errorMessage);
+//     }
+//   }
+// );

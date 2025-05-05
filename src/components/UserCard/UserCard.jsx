@@ -5,7 +5,7 @@ import { PetBlock } from './PetBlock/PetBlock.jsx';
 import { useDispatch } from 'react-redux';
 import { openModalEditUser } from '../../redux/modal/modalSlice.js';
 
-export const UserCard = () => {
+const UserCard = () => {
   const dispatch = useDispatch();
 
   return (
@@ -27,3 +27,4 @@ export const UserCard = () => {
     </div>
   );
 };
+export default UserCard;
