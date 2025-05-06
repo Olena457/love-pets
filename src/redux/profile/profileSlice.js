@@ -7,7 +7,7 @@ import axiosInstance from '../api.js';
 
 //  fetching  user profile
 export const fetchProfile = createAsyncThunk(
-  'profile/fetchProfile',
+  '/profile/fetchProfile',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('users/current/full');
@@ -21,11 +21,11 @@ export const fetchProfile = createAsyncThunk(
 
 //  updating  user profile
 export const updateProfile = createAsyncThunk(
-  'profile/updateProfile',
+  '/profile/updateProfile',
   async (profileData, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.patch(
-        'users/current/edit',
+        '/users/current/edit',
         profileData
       );
       return response.data;

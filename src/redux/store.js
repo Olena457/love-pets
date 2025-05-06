@@ -9,6 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 import storage from 'redux-persist/lib/storage';
 import modalReducer from './modal/modalSlice.js';
 import { usersReducer } from './users/usersSlice.js';
@@ -19,6 +20,7 @@ import { noticesReducer } from './notices/noticesSlice.js';
 import profileReducer from './profile/profileSlice.js';
 import friendsReducer from './friends/ourFriendsSlice.js';
 import mobMenuReducer from './mobile/mobMenuSlice.js';
+
 const usersPersistConfig = {
   key: 'users',
   storage,
