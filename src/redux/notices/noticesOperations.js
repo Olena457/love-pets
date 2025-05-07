@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../api';
 
 export const fetchNotices = createAsyncThunk(
-  'notices/fetchNotices',
+  '/notices/fetchNotices',
   async (
     {
       page = 1,
@@ -35,7 +35,7 @@ export const fetchNotices = createAsyncThunk(
 );
 
 export const fetchNoticeById = createAsyncThunk(
-  'notices/fetchNoticeById',
+  '/notices/fetchNoticeById',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/notices/${id}`);
@@ -47,7 +47,7 @@ export const fetchNoticeById = createAsyncThunk(
 );
 
 export const fetchNoticeCategories = createAsyncThunk(
-  'notices/fetchCategories',
+  '/notices/fetchCategories',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/categories');
@@ -59,7 +59,7 @@ export const fetchNoticeCategories = createAsyncThunk(
 );
 
 export const fetchNoticeSexOptions = createAsyncThunk(
-  'notices/fetchSexOptions',
+  '/notices/fetchSexOptions',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/sex');
@@ -71,7 +71,7 @@ export const fetchNoticeSexOptions = createAsyncThunk(
 );
 
 export const fetchNoticeSpecies = createAsyncThunk(
-  'notices/fetchSpecies',
+  '/notices/fetchSpecies',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/species');
@@ -83,7 +83,7 @@ export const fetchNoticeSpecies = createAsyncThunk(
 );
 
 export const addNoticeToFavorites = createAsyncThunk(
-  'notices/addToFavorites',
+  '/notices/addToFavorites',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post(`/notices/favorites/add/${id}`);
@@ -95,7 +95,7 @@ export const addNoticeToFavorites = createAsyncThunk(
 );
 
 export const removeNoticeFromFavorites = createAsyncThunk(
-  'notices/removeFromFavorites',
+  '/notices/removeFromFavorites',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.delete(
@@ -109,7 +109,7 @@ export const removeNoticeFromFavorites = createAsyncThunk(
 );
 
 export const toggleFavoriteNotice = createAsyncThunk(
-  'notices/toggleFavoriteNotice',
+  '/notices/toggleFavoriteNotice',
   async (id, { getState, rejectWithValue }) => {
     const state = getState();
     const isFavorite = state.notices.favorites.includes(id); //checked favorites
