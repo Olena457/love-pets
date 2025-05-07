@@ -140,7 +140,7 @@ import { openModal } from '../../redux/modal/modalSlice.js';
 import {
   addNoticeToFavorites,
   removeNoticeFromFavorites,
-  // fetchNoticeById,
+  fetchNoticeById,
 } from '../../redux/notices/noticesOperations.js';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import css from './NoticesItem.module.css';
@@ -168,7 +168,7 @@ const NoticesItem = ({ notice, onLearnMore, onToggleFavorite }) => {
   } = notice;
 
   const handleLearnMore = () => {
-    // dispatch(fetchNoticeById( _id ));
+    dispatch(fetchNoticeById(_id));
     onLearnMore(_id);
     dispatch(openModal());
   };
