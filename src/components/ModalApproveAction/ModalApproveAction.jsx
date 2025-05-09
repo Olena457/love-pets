@@ -4,12 +4,15 @@ import catSmall from '../../assets/imgs/cat-small@1x.png';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import { signout } from '../../redux/users/usersOperations.js';
+
 const ModalApproveAction = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handlerLogOut = () => {
+  const handleLogOut = () => {
     dispatch(signout());
+    localStorage.clear();
+    sessionStorage.clear();
     dispatch(closeModal());
     navigate('/home');
   };
@@ -21,12 +24,13 @@ const ModalApproveAction = () => {
       </div>
       <p className={css.title}>Already Leaving?</p>
       <div className={css.modalBtnWrap}>
-        <button className={css.confirmButton} onClick={handlerLogOut}>
+        <button className={css.confirmButton} onClick={handleLogOut}>
           Yes
         </button>
         <button
           className={css.cancelButton}
-          onClick={() => dispatch(closeModal)}
+          // onClick={() => dispatch(closeModal)}
+          onClick={() => dispatch(closeModal())}
         >
           Cancel
         </button>
