@@ -4,10 +4,10 @@ import Title from '../../components/Title/Title.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
-import ContainerModal from '../../components/ContainerModal/ContainerModal.jsx';
+// import ContainerModal from '../../components/ContainerModal/ContainerModal.jsx';
 import { openModal } from '../../redux/modal/modalSlice.js';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations.js';
-import { selectIsOpenModal } from '../../redux/modal/modalSelectors.js';
+// import { selectIsOpenModal } from '../../redux/modal/modalSelectors.js';
 import Loader from '../../components/Loader/Loader.jsx';
 import {
   fetchNotices,
@@ -39,7 +39,7 @@ const NoticesPage = () => {
   const gender = useSelector(selectGender);
   const type = useSelector(selectType);
   const location = useSelector(selectLocation);
-  const isModalOpen = useSelector(selectIsOpenModal);
+  // const isModalOpen = useSelector(selectIsOpenModal);
   const isLoading = useSelector(selectIsLoading);
 
   const params = useMemo(
@@ -125,7 +125,7 @@ const NoticesPage = () => {
           )}
         </>
       )}
-      {isModalOpen && <ContainerModal />}
+      {/* {isModalOpen && <ContainerModal />} */}
     </div>
   );
 };

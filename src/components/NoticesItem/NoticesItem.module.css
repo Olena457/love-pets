@@ -139,7 +139,7 @@
   padding: 14px 0;
   width: 80%;
   margin-top: 10px;
-  color: var(--black-color);
+  color: var(--white-color);
   background-color: var(--main-color);
   transition: background-color 0.3s ease;
 }
@@ -147,7 +147,7 @@
 .learnMoreBtn:hover,
 .learnMoreBtn:focus {
   background-color: var(--dark-hover);
-  color: var(--white-color);
+  color: var(--black-color);
 }
 .favorite {
   border: none;
