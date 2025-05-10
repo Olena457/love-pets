@@ -7,7 +7,10 @@ import { ToastContainer } from 'react-toastify';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import { getCurrentUserFullInfo } from './redux/users/usersOperations.js';
-import { selectToken } from './redux/users/usersSelectors.js';
+import {
+  selectToken,
+  selectIsAuthenticated,
+} from './redux/users/usersSelectors.js';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx';
 import Layout from './components/Layout/Layout.jsx';
@@ -40,11 +43,14 @@ function App() {
   const location = useLocation();
   const hideHeader = location.pathname === '/';
   const token = useSelector(selectToken);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
-    if (!token) return;
-    dispatch(getCurrentUserFullInfo());
-  }, [token, dispatch]);
+    if (token && !isAuthenticated) {
+      dispatch(getCurrentUserFullInfo());
+    }
+  }, [token, isAuthenticated, dispatch]);
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -56,14 +62,34 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+
+          {!isAuthenticated && (
+            <>
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/home"
+                    component={<RegisterPage />}
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/home"
+                    component={<LoginPage />}
+                  />
+                }
+              />
+            </>
+          )}
 
           <Route
             path="/add-pet"
             element={<PrivateRoute component={<AddPetPage />} />}
           />
-
           <Route
             path="/profile"
             element={
@@ -74,6 +100,7 @@ function App() {
             <Route path="favorites" element={<MyFavoritePets />} />
             <Route path="viewed" element={<Viewed />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

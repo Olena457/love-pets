@@ -130,7 +130,7 @@
   align-items: center;
   width: 100%;
 }
-.learnMore {
+.learnMoreBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,11 +139,15 @@
   padding: 14px 0;
   width: 80%;
   margin-top: 10px;
+  color: var(--black-color);
   background-color: var(--main-color);
   transition: background-color 0.3s ease;
 }
-.learnMore:hover {
+
+.learnMoreBtn:hover,
+.learnMoreBtn:focus {
   background-color: var(--dark-hover);
+  color: var(--white-color);
 }
 .favorite {
   border: none;
@@ -155,4 +159,8 @@
   color: var(--main-color);
   align-items: center;
   justify-content: center;
+}
+.favorite:hover,
+.favorite:focus {
+  background-color: var(--hover-light);
 }

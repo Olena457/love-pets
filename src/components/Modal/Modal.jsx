@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import Icon from '../../components/Icon/Icon.jsx';

@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import { useDispatch } from 'react-redux';
+import { signout } from '../../redux/users/usersOperations.js';
 import css from './ModalApproveAction.module.css';
 import catSmall from '../../assets/imgs/cat-small@1x.png';
-import { useDispatch } from 'react-redux';
-import { closeModal } from '../../redux/modal/modalSlice.js';
-import { signout } from '../../redux/users/usersOperations.js';
 
 const ModalApproveAction = () => {
   const dispatch = useDispatch();

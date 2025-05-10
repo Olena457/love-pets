@@ -14,7 +14,7 @@ const NewsItem = ({ item }) => {
             href={url}
             target="_blank"
             rel="nooperer norefferrer"
-            className={css.link}
+            className={css.linkMore}
           >
             Reade more
           </a>
