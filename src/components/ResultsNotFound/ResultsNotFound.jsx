@@ -27,7 +27,7 @@ const ResultsNotFound = () => {
           {' '}
           there aren't any furry results{' '}
         </span>
-        on our adorable page.{' '}
+        on our adorable page.
         {isProfile
           ? 'Do not worry! View your pets on the "find your favorite pet" page and add them to your favorites.'
           : `Don't worry! Please try selecting a different

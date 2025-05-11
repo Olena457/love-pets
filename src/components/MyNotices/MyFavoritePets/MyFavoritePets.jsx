@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import NoticesContainer from '../../NoticesContainer/NoticesContainer.jsx';
 import { fetchProfile } from '../../../redux/profile/profileSlice';
 import NoticesList from '../../NoticesList/NoticesList.jsx';
 
