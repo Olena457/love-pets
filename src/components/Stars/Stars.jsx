@@ -1,5 +1,7 @@
 import css from './Stars.module.css';
 import starYellow from '../../assets/icons/starYellow.svg';
+import starGray from '../../assets/icons/starGray.svg';
+
 export const Stars = ({ popularity }) => {
   const oneStar = 500;
   const totalStars = 5;
@@ -29,8 +31,8 @@ export const Stars = ({ popularity }) => {
     stars.push(
       <img
         key={i}
-        src={starYellow}
-        color="yellow"
+        src={starGray}
+        color="gray"
         width="16"
         height="16"
         className={css.yellowItem}

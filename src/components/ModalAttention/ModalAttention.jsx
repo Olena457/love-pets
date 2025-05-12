@@ -23,10 +23,12 @@ const ModalAttention = () => {
       <img className={css.noticeImg} src={attentionDog} alt="Attention" />
       <div className={css.textWrap}>
         <h2 className={css.title}>Attention</h2>
+
         <p className={css.comment}>
-          Some functionality is available only for authorized users. If you have
-          an account, please log in. Otherwise, please register to access all
-          features.
+          We would like to remind you that certain functionality is available
+          only to authorized users.If you have an account, please log in with
+          your credentials. If you do not already have an account, you must
+          register to access these features.
         </p>
       </div>
       <div className={css.btnWrap}>

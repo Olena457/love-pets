@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
-import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound.jsx';
+import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { fetchProfile } from '../../../redux/profile/profileSlice';
+import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound.jsx';
 import NoticesList from '../../NoticesList/NoticesList.jsx';
-
-const MyFavoritesPets = () => {
+import css from './MyFavoritePets.module.css';
+const MyFavoritePets = () => {
   const dispatch = useDispatch();
   const favorite = useSelector(state => state.profile.noticesFavorites);
 
@@ -12,15 +13,21 @@ const MyFavoritesPets = () => {
     dispatch(fetchProfile());
   }, [dispatch]);
 
+  const isEmpty = !favorite?.length;
+
   return (
-    <NoticesContainer isEmpty={!favorite?.length}>
-      {favorite?.length ? (
-        <NoticesList viewed={false} profile={true} notices={favorite} />
-      ) : (
+    <div
+      className={clsx(css.noticesContainer, {
+        [css.noticesContainerEmpty]: isEmpty,
+      })}
+    >
+      {isEmpty ? (
         <ResultsNotFound />
+      ) : (
+        <NoticesList viewed={false} profile={true} notices={favorite} />
       )}
-    </NoticesContainer>
+    </div>
   );
 };
 
-export default MyFavoritesPets;
+export default MyFavoritePets;

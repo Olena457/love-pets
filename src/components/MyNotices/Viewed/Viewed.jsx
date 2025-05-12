@@ -1,21 +1,27 @@
-import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound';
+import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectProfile } from '../../../redux/profile/profileSelectors';
-import NoticesContainer from '../../NoticesContainer/NoticesContainer.jsx';
+import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound';
 import NoticesList from '../../NoticesList/NoticesList.jsx';
+import css from './Viewed.module.css';
 
 const Viewed = () => {
-  const userData = useSelector(selectProfile);
-  const viewed = userData?.noticesViewed;
+  const profileData = useSelector(selectProfile);
+  const viewedNotices = profileData?.noticesViewed;
+  const isEmpty = !viewedNotices?.length;
 
   return (
-    <NoticesContainer isEmpty={!viewed?.length}>
-      {viewed?.length ? (
-        <NoticesList profile={true} viewed={true} notices={viewed} />
-      ) : (
+    <div
+      className={clsx(css.noticesContainer, {
+        [css.noticesContainerEmpty]: isEmpty,
+      })}
+    >
+      {isEmpty ? (
         <ResultsNotFound />
+      ) : (
+        <NoticesList profile={true} viewed={true} notices={viewedNotices} />
       )}
-    </NoticesContainer>
+    </div>
   );
 };
 
