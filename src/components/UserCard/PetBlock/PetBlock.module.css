@@ -52,7 +52,7 @@
     width: 118px;
   }
 }
-
+/* ________________________________________________deleted */
 .logoutBtn {
   font-weight: 700;
   font-size: 14px;
@@ -65,7 +65,7 @@
   width: 114px;
   display: flex;
   justify-content: center;
-  background-color: var(--main-color);
+  background-color: var(--red-color);
   margin: 0;
   transition: background-color 0.3s ease-in-out;
 }
