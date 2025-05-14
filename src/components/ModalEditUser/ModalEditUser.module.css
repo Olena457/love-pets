@@ -1,0 +1,206 @@
+/* .userBigIcon {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .userBigIcon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .userBigIcon {
+    width: 50px;
+    height: 50px;
+  }
+} */
+
+.modalEditUserWrap {
+  padding: 40px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .modalEditUserWrap {
+    padding: 50px;
+  }
+}
+
+.editUserTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--main-color);
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .editUserTitle {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+}
+
+.userAvatarThumb img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .userAvatarThumb img {
+    width: 86px;
+    height: 86px;
+  }
+}
+
+.avatarUploadWrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .avatarUploadWrap {
+    margin-bottom: 20px;
+  }
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.editUserAvatarInput {
+  padding: 12px 40px 12px 12px;
+  width: 107px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--black-color);
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  border-radius: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  outline: none;
+  transition: border 300ms ease-in-out;
+}
+
+.editUserAvatarInput:hover,
+.editUserAvatarInput:focus {
+  border: 1px solid var(--light-border-color);
+}
+
+@media screen and (min-width: 768px) {
+  .editUserAvatarInput {
+    font-size: 14px;
+    line-height: 1.28571;
+    padding: 11px 20px 11px 12px;
+    width: 192px;
+  }
+}
+.errorMessage {
+  font-size: 16px;
+  margin-left: 16px;
+  color: var(--red-color);
+}
+.avatarUploadBtn {
+  border-radius: 30px;
+  padding: 12px;
+  font-weight: 500;
+  font-size: 12px;
+  width: 126px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--main-color);
+  transition: background-color 300ms ease-in-out;
+}
+
+.avatarUploadBtn:hover {
+  background-color: var(--dark-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .avatarUploadBtn {
+    font-size: 14px;
+    line-height: 1.28571;
+    padding: 12px 16px;
+    width: 146px;
+  }
+}
+
+.inputsWrap {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .inputsWrap {
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+}
+
+.editUserInput {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: var(--black-color);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 11px 12px;
+  width: 269px;
+  background-color: transparent;
+  outline: none;
+  caret-color: var(--main-color);
+  transition: border 300ms ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .editUserInput {
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 15px 16px;
+    width: 346px;
+  }
+}
+
+.editUserInput:hover,
+.editUserInput:focus {
+  border: 1px solid var(--light-border-color);
+}
+
+.editUserSubmitBtn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+  border-radius: 30px;
+  padding: 12px;
+  width: 100%;
+  background: var(--main-color);
+  justify-content: center;
+  transition: background 300ms ease-in-out;
+}
+
+.editUserSubmitBtn:hover {
+  background: var(--dark-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .editUserSubmitBtn {
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 16px;
+  }
+}

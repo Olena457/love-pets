@@ -3,8 +3,7 @@ import { useDeviceType } from '../../../hooks/useDeviceType.js';
 import { selectProfile } from '../../../redux/profile/profileSelectors';
 import css from './UserBlock.module.css';
 import Icon from '../../Icon/Icon.jsx';
-
-export const UserBlock = () => {
+const UserBlock = () => {
   const deviceType = useDeviceType();
   const userData = useSelector(selectProfile);
   const avatarUrl = userData.avatar;
@@ -61,3 +60,4 @@ export const UserBlock = () => {
     </div>
   );
 };
+export default UserBlock;

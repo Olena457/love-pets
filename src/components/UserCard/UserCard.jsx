@@ -1,9 +1,9 @@
-import css from './UserCard.module.css';
-import Icon from '../Icon/Icon';
-import { UserBlock } from './UserBlock/UserBlock.jsx';
-import { PetBlock } from './PetBlock/PetBlock.jsx';
 import { useDispatch } from 'react-redux';
 import { openModalEditUser } from '../../redux/modal/modalSlice.js';
+import Icon from '../Icon/Icon.jsx';
+import UserBlock from './UserBlock/UserBlock.jsx';
+import PetBlock from './PetBlock/PetBlock.jsx';
+import css from './UserCard.module.css';
 
 const UserCard = () => {
   const dispatch = useDispatch();

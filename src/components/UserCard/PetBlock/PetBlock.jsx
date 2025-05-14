@@ -4,7 +4,7 @@ import Icon from '../../Icon/Icon.jsx';
 import LogoutButton from '../../LogoutButton/LogoutButton.jsx';
 import css from './PetBlock.module.css';
 
-export const PetBlock = () => {
+const PetBlock = () => {
   // const dispatch = useDispatch();
   // const handleLogoutClick = () => {
   //   dispatch(openApproveModal());
@@ -23,3 +23,4 @@ export const PetBlock = () => {
     </div>
   );
 };
+export default PetBlock;

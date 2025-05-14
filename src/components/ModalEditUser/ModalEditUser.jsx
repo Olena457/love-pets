@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import Icon from '../Icon/Icon.jsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { updateProfile } from '../../redux/profile/profileSlice';
 import { selectProfile } from '../../redux/profile/profileSelectors';
 import { closeModal } from '../../redux/modal/modalSlice.js';
+import { useDeviceType } from '../../hooks/useDeviceType.js';
+import Icon from '../Icon/Icon.jsx';
 import css from './ModalEditUser.css';
 
 const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
@@ -23,7 +24,10 @@ const EditUserSchema = Yup.object().shape({
 });
 
 export const ModalEditUser = () => {
+  const deviceType = useDeviceType();
   const userData = useSelector(selectProfile);
+  const viewed = userData.noticesViewed;
+  console.log('viewed', viewed);
   const dispatch = useDispatch();
 
   const [previewAvatar, setPreviewAvatar] = useState(userData.avatar || '');
@@ -67,67 +71,82 @@ export const ModalEditUser = () => {
   };
 
   return (
-    <div className="modal-edit-user-wrap">
+    <div className={css.modalEditUserWrap}>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <h2 className="edit-user-title">Edit information</h2>
-        <div className="user-avatar-thumb">
-          {previewAvatar.trim() !== '' ? (
-            <img src={previewAvatar} alt="avatar" />
-          ) : (
-            <Icon className={css.user} width={28} height={28} id="user" />
+        <h2 className={css.editUserTitle}>Edit information</h2>
+        <div className={css.userAvatarThumb}>
+          {previewAvatar.trim() !== 'https://test.png' ? null : (
+            <Icon
+              id="user"
+              // className={css.userBigIcon}
+              width={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+              height={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+            />
           )}
         </div>
 
-        <div className="avatar-upload-wrap">
-          <div className="input-wrap">
+        <div className={css.avatarUploadWrap}>
+          <div className={css.inputWrap}>
             <input
               {...register('avatar')}
               type="text"
               placeholder="https://test.png"
-              className="edit-user-avatar-input"
+              className={css.editUserAvatarInput}
             />
-            <span className="error-message">{errors.avatar?.message}</span>
+            <span className={css.errorMessage}>{errors.avatar?.message}</span>
           </div>
           <button
             type="button"
             onClick={handleUploadPhoto}
-            className="avatar-upload-btn"
+            className={css.avatarUploadBtn}
           >
             Upload photo
             <Icon className={css.iconCloud} id="cloud" width={20} height={20} />
           </button>
         </div>
 
-        <div className="inputs-wrap">
-          <div className="input-wrap">
+        <div className={css.inputsWrap}>
+          <div className={css.inputWrap}>
             <input
               {...register('name')}
               type="text"
               placeholder="Name"
-              className="edit-user-input"
+              className={css.editUserInput}
             />
-            <span className="error-message">{errors.name?.message}</span>
+            <span className={css.errorMessage}>{errors.name?.message}</span>
           </div>
-          <div className="input-wrap">
+          <div className={css.inputWrap}>
             <input
               {...register('email')}
               type="email"
               placeholder="Email"
-              className="edit-user-input"
+              className={css.editUserInput}
             />
-            <span className="error-message">{errors.email?.message}</span>
+            <span className={css.errorMessage}>{errors.email?.message}</span>
           </div>
-          <div className="input-wrap">
+          <div className={css.inputWrap}>
             <input
               {...register('phone')}
               type="text"
               placeholder="Phone"
-              className="edit-user-input"
+              className={css.editUserInput}
             />
-            <span className="error-message">{errors.phone?.message}</span>
+            <span className={css.errorMessage}>{errors.phone?.message}</span>
           </div>
         </div>
-        <button type="submit" className="edit-user-submit-btn">
+        <button type="submit" className={css.editUserSubmitBtn}>
           Save
         </button>
       </form>
