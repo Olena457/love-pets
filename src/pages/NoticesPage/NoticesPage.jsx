@@ -4,13 +4,13 @@ import Title from '../../components/Title/Title.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
-import { openModal, closeModal } from '../../redux/modal/modalSlice.js';
+import { closeModal } from '../../redux/modal/modalSlice.js';
 import Modal from '../../components/Modal/Modal.jsx';
 import ModalAttention from '../../components/ModalAttention/ModalAttention.jsx';
 import ModalNotices from '../../components/ModalNotices/ModalNotices.jsx';
 import {
-  fetchNoticeById,
-  toggleFavoriteNotice,
+  // fetchNoticeById,
+  // toggleFavoriteNotice,
   fetchNotices,
 } from '../../redux/notices/noticesOperations.js';
 import {
@@ -69,14 +69,14 @@ const NoticesPage = () => {
     dispatch(fetchNotices(params));
   }, [dispatch, params]);
 
-  const handleLearnMore = notice => {
-    dispatch(fetchNoticeById(notice._id));
-    dispatch(openModal());
-  };
+  // const handleLearnMore = notice => {
+  //   dispatch(fetchNoticeById(notice._id));
+  //   dispatch(openModal());
+  // };
 
-  const handleToggleFavorite = notice => {
-    dispatch(toggleFavoriteNotice(notice._id));
-  };
+  // const handleToggleFavorite = notice => {
+  //   dispatch(toggleFavoriteNotice(notice._id));
+  // };
 
   const handleFilterChange = () => {
     dispatch(setCurrentPage(1));
@@ -105,8 +105,8 @@ const NoticesPage = () => {
           <NoticesList
             notices={notices}
             favorites={favorites}
-            onLearnMore={handleLearnMore}
-            onToggleFavorite={handleToggleFavorite}
+            // onLearnMore={handleLearnMore}
+            // onToggleFavorite={handleToggleFavorite}
           />
           {totalPages > 1 && (
             <Pagination

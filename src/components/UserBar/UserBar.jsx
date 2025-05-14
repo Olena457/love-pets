@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/users/usersSlice.js';
+import { selectUser } from '../../redux/users/usersSelectors.js';
 import Icon from '../../components/Icon/Icon.jsx';
 import css from './UserBar.module.css';
 

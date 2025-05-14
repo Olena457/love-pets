@@ -1,25 +1,35 @@
-import css from './NoticesList.module.css';
+import clsx from 'clsx';
 import NoticesItem from '../NoticesItem/NoticesItem.jsx';
+import css from './NoticesList.module.css';
 
 const NoticesList = ({
   notices,
-  onLearnMore,
-  onToggleFavorite,
-  onAttention,
+  profile,
+  viewed,
   isAuthenticated,
   favorites,
+  // onLearnMore,
+  // onToggleFavorite,
+  // onAttention,
 }) => {
   return (
-    <ul className={css.list}>
-      {notices.map(notice => (
+    <ul
+      className={clsx(css.list, {
+        [css.profileList]: profile,
+        [css.viewedList]: viewed,
+      })}
+    >
+      {notices.map((notice, index) => (
         <NoticesItem
-          key={notice._id}
+          key={`${notice._id} + ${index}`}
           notice={notice}
+          profile={profile}
+          viewed={viewed}
           isFavorite={favorites.includes(notice._id)}
-          onLearnMore={onLearnMore}
-          onAttention={onAttention}
-          onToggleFavorite={onToggleFavorite}
           isAuthenticated={isAuthenticated}
+          // onLearnMore={onLearnMore}
+          // onAttention={onAttention}
+          // onToggleFavorite={onToggleFavorite}
         />
       ))}
     </ul>
