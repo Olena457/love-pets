@@ -9,10 +9,10 @@ export const unsetToken = () => {
   axiosInstance.defaults.headers.common.Authorization = '';
 };
 export const signup = createAsyncThunk(
-  '/user/signup',
+  '/users/signup',
   async (userData, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/signup', userData);
+      const { data } = await axiosInstance.post('/users/signup', userData);
       setToken(data.token);
       toast.success('Registration is successful');
       return data;
@@ -24,10 +24,10 @@ export const signup = createAsyncThunk(
 
 // login user
 export const signin = createAsyncThunk(
-  '/user/signin',
+  '/users/signin',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/signin', credentials); // ✅ Виправлено маршрут
+      const { data } = await axiosInstance.post('/users/signin', credentials);
       setToken(data.token);
 
       toast.success('Welcome back!');
@@ -40,10 +40,10 @@ export const signin = createAsyncThunk(
 
 // Logout user
 export const signout = createAsyncThunk(
-  '/user/signout',
+  '/users/signout',
   async (_, thunkAPI) => {
     try {
-      const { data } = axiosInstance.post('/signout');
+      const { data } = axiosInstance.post('/users/signout');
       unsetToken();
 
       toast.success('Exit successful');
@@ -56,7 +56,7 @@ export const signout = createAsyncThunk(
 
 // get current user
 export const getCurrentUser = createAsyncThunk(
-  '/user/current',
+  '/users/current',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().users.token; //aut change users
@@ -74,13 +74,13 @@ export const getCurrentUser = createAsyncThunk(
 
 // get full info about current user
 export const getCurrentUserFullInfo = createAsyncThunk(
-  '/user/current/full',
+  '/users/current/full',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.token;
       setToken(token);
 
-      const { data } = await axiosInstance.get('/current/full');
+      const { data } = await axiosInstance.get('/users/current/full');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
