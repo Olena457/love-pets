@@ -8,7 +8,8 @@ import {
 
 //  fetching  user profile__________________________
 export const fetchProfile = createAsyncThunk(
-  '/profile/fetchProfile',
+  // '/profile/fetchProfile',
+  ' /users/current/full',
   // async (_, { rejectWithValue }) => {
   async () => {
     try {
@@ -24,7 +25,7 @@ export const fetchProfile = createAsyncThunk(
 
 //  updating  user profile_____________________
 export const updateProfile = createAsyncThunk(
-  '/profile/updateProfile',
+  '/users/current/edit',
   // async (profileData, { rejectWithValue }) => {
   async profileData => {
     try {

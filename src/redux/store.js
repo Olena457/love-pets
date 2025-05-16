@@ -24,7 +24,7 @@ import mobMenuReducer from './mobile/mobMenuSlice.js';
 const usersPersistConfig = {
   key: 'users',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'userData', 'isAuthenticated'],
 };
 
 const newsPersistConfig = {

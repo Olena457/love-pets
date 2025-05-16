@@ -27,16 +27,3 @@
   align-items: center;
   gap: 5px;
 }
-
-.userName {
-  display: block;
-  font-size: 16px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    font-size: 22px;
-  }
-}
