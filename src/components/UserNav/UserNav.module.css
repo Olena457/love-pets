@@ -1,4 +1,4 @@
-/* .logoutButton {
+.logoutButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@
 .authNav .logoutButton:hover,
 .authNav .logoutButton:focus {
   background-color: var(--hover-light);
-} */
+}
 
 .authNav {
   display: flex;
