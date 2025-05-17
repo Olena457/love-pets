@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axiosInstance from '../api';
+import axiosInstance from '../api.js';
 
 export const fetchNotices = createAsyncThunk(
   '/notices/fetchNotices',
@@ -71,7 +71,7 @@ export const fetchNoticeSexOptions = createAsyncThunk(
 );
 
 export const fetchNoticeSpecies = createAsyncThunk(
-  '/notices/fetchSpecies',
+  '/notices/fetchNoticeSpecies',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/species');
@@ -83,7 +83,7 @@ export const fetchNoticeSpecies = createAsyncThunk(
 );
 
 export const addNoticeToFavorites = createAsyncThunk(
-  '/notices/addToFavorites',
+  '/notices/addNoticeToFavorites',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post(`/notices/favorites/add/${id}`);
@@ -95,7 +95,7 @@ export const addNoticeToFavorites = createAsyncThunk(
 );
 
 export const removeNoticeFromFavorites = createAsyncThunk(
-  '/notices/removeFromFavorites',
+  '/notices/removeNoticeFromFavorites',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.delete(

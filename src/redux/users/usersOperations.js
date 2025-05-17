@@ -56,7 +56,7 @@ export const signout = createAsyncThunk(
 
 // get current user
 export const getCurrentUser = createAsyncThunk(
-  '/users/current',
+  '/users/getCurrentUser',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().users.token; //aut change users
@@ -73,17 +73,17 @@ export const getCurrentUser = createAsyncThunk(
 );
 
 // get full info about current user
-export const getCurrentUserFullInfo = createAsyncThunk(
-  '/users/current/full',
-  async (_, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.token;
-      setToken(token);
+// export const getCurrentUserFullInfo = createAsyncThunk(
+//   '/users/getCurrentUserFullInfo',
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.token;
+//       setToken(token);
 
-      const { data } = await axiosInstance.get('/users/current/full');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+//       const { data } = await axiosInstance.get('/users/current/full');
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

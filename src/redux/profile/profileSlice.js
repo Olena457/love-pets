@@ -8,16 +8,13 @@ import {
 
 //  fetching  user profile__________________________
 export const fetchProfile = createAsyncThunk(
-  // '/profile/fetchProfile',
-  ' /users/current/full',
-  // async (_, { rejectWithValue }) => {
+  ' /users/fetchProfile',
   async () => {
     try {
       const response = await axiosInstance.get('/users/current/full');
       return response.data;
     } catch (error) {
       console.error('Error fetching profile:', error);
-      // return rejectWithValue(error.response?.data || error.message);
       throw error;
     }
   }
@@ -25,8 +22,7 @@ export const fetchProfile = createAsyncThunk(
 
 //  updating  user profile_____________________
 export const updateProfile = createAsyncThunk(
-  '/users/current/edit',
-  // async (profileData, { rejectWithValue }) => {
+  '/users/updateProfile',
   async profileData => {
     try {
       const response = await axiosInstance.patch(
@@ -36,7 +32,6 @@ export const updateProfile = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error('Error updating profile:', error);
-      // return rejectWithValue(error.response?.data || error.message);
       throw error;
     }
   }
