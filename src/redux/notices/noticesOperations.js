@@ -59,7 +59,7 @@ export const fetchNoticeCategories = createAsyncThunk(
 );
 
 export const fetchNoticeSexOptions = createAsyncThunk(
-  '/notices/fetchSexOptions',
+  '/notices/fetchNoticeSexOptions',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/sex');

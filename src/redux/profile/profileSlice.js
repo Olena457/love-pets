@@ -76,33 +76,31 @@ const profileSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      //  adding to favorites
+      // add notice to favorites
       .addCase(addNoticeToFavorites.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(addNoticeToFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
-        state.profile.favorites = action.payload; // Update favorites list
+        state.favorites = action.payload;
       })
       .addCase(addNoticeToFavorites.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-      //  removing from favorites
+      // remove notice from favorites
       .addCase(removeNoticeFromFavorites.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(removeNoticeFromFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
-        state.profile.favorites = action.payload; // Update favorites list
+        state.favorites = action.payload;
       })
       .addCase(removeNoticeFromFavorites.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });

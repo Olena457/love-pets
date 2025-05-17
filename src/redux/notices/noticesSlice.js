@@ -5,23 +5,23 @@ import {
   fetchNoticeCategories,
   fetchNoticeSexOptions,
   fetchNoticeSpecies,
-  addNoticeToFavorites,
-  removeNoticeFromFavorites,
 } from './noticesOperations.js';
 
 const initialState = {
-  items: [],
-  selectedNotice: null,
+  notice: {},
+  notices: [],
+  sex: [],
   categories: [],
-  sexOptions: [],
   species: [],
   favorites: [],
-  totalPages: 0,
+  searchQuery: '',
   currentPage: 1,
   perPage: 6,
-  searchQuery: '',
-  isLoading: false,
+  totalPages: 0,
   error: null,
+  isLoading: false,
+  // sexOptions: [],
+  // selectedNotice: null,
 };
 
 const noticesSlice = createSlice({
@@ -43,40 +43,65 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNotices.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload.results;
+        state.notices = action.payload.results;
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchNotices.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
+      // fetch notice by id
       .addCase(fetchNoticeById.pending, state => {
         state.isLoading = true;
         state.error = null;
-        state.selectedNotice = null;
+        state.notice = null;
       })
       .addCase(fetchNoticeById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.selectedNotice = action.payload;
+        state.notice = action.payload;
       })
       .addCase(fetchNoticeById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
+      // featch notice categories
+      .addCase(fetchNoticeCategories.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchNoticeCategories.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.categories = action.payload;
       })
+      .addCase(fetchNoticeCategories.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // fetch sex options
+      .addCase(fetchNoticeSexOptions.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchNoticeSexOptions.fulfilled, (state, action) => {
-        state.sexOptions = action.payload;
+        state.isLoading = false;
+        state.sex = action.payload;
+      })
+      .addCase(fetchNoticeSexOptions.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // fetch species
+      .addCase(fetchNoticeSpecies.pending, state => {
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchNoticeSpecies.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.species = action.payload;
       })
-      .addCase(addNoticeToFavorites.fulfilled, (state, action) => {
-        state.favorites = action.payload;
-      })
-      .addCase(removeNoticeFromFavorites.fulfilled, (state, action) => {
-        state.favorites = action.payload;
+      .addCase(fetchNoticeSpecies.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
