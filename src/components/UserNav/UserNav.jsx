@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { selectProfile } from '../../redux/profile/profileSelectors.js';
 import {
-  selectUser,
+  // selectUser,
   selectIsAuthenticated,
 } from '../../redux/users/usersSelectors.js';
 // import { selectIsOpenModal } from '../../redux/modal/modalSelectors.js';
@@ -12,7 +13,7 @@ import LogoutButton from '../LogoutButton/LogoutButton.jsx';
 import css from './UserNav.module.css';
 
 const UserNav = () => {
-  const isUser = useSelector(selectUser);
+  const isProfile = useSelector(selectProfile);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   // const isModalOpen = useSelector(selectIsOpenModal);
   const location = useLocation();
@@ -29,7 +30,7 @@ const UserNav = () => {
           <div className={css.logoutButtonContainer}>
             <LogoutButton isHomePage={isHomePage} />
           </div>
-          <span className={css.userName}>{isUser?.name}</span>
+          <span className={css.userName}>{isProfile?.name}</span>
           {/* <Modal>{isModalOpen && <ModalApproveAction />}</Modal> */}
         </>
       ) : null}
