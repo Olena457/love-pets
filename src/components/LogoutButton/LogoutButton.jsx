@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
+// import { closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
 import { openApproveModal } from '../../redux/modal/modalSlice.js';
 import css from './LogoutButton.module.css';
 
@@ -7,8 +7,8 @@ const LogoutButton = ({ isHomePage }) => {
   const dispatch = useDispatch();
 
   const handleLogoutClick = () => {
-    dispatch(closeMobMenu());
     dispatch(openApproveModal());
+    // dispatch(closeMobMenu());
   };
 
   return (

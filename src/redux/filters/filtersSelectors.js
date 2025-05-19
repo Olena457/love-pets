@@ -14,7 +14,6 @@ export const selectGender = state => state.filters.gender;
 export const selectType = state => state.filters.type;
 export const selectLocation = state => state.filters.location;
 
-
 export const selectAvailableCategories = createSelector(
   [selectCategories],
   categories => categories.map(category => category.trim())

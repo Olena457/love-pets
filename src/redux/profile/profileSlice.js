@@ -1,14 +1,13 @@
-import axiosInstance from '../api.js';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+import axiosInstance from '../api.js';
 import {
   addNoticeToFavorites,
-  removeNoticeFromFavorites,
+  deleteFromFavorites,
 } from '../notices/noticesOperations.js';
 
 //  fetching  user profile__________________________
-export const fetchProfile = createAsyncThunk(
-  ' /users/fetchProfile',
+export const fetchProfileFull = createAsyncThunk(
+  ' /users/fetchProfileFull ',
   async () => {
     try {
       const response = await axiosInstance.get('/users/current/full');
@@ -50,15 +49,16 @@ const profileSlice = createSlice({
   extraReducers: builder => {
     builder
       // actions  fetching profile
-      .addCase(fetchProfile.pending, state => {
+      .addCase(fetchProfileFull.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchProfile.fulfilled, (state, action) => {
+      .addCase(fetchProfileFull.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.profile = action.payload;
       })
-      .addCase(fetchProfile.rejected, (state, action) => {
+      .addCase(fetchProfileFull.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       })
@@ -70,37 +70,40 @@ const profileSlice = createSlice({
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.profile = action.payload;
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       })
-      // add notice to favorites
+      // add notice to favorites___________________
       .addCase(addNoticeToFavorites.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(addNoticeToFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favorites = action.payload;
+        state.error = null;
+        state.profile.favorites = action.payload;
       })
       .addCase(addNoticeToFavorites.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       })
-      // remove notice from favorites
-      .addCase(removeNoticeFromFavorites.pending, state => {
+      // remove notice from favorites_________________
+      .addCase(deleteFromFavorites.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(removeNoticeFromFavorites.fulfilled, (state, action) => {
+      .addCase(deleteFromFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favorites = action.payload;
+        state.error = null;
+        state.profile.favorites = action.payload;
       })
-      .addCase(removeNoticeFromFavorites.rejected, (state, action) => {
+      .addCase(deleteFromFavorites.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       });
   },
 });

@@ -8,8 +8,8 @@ export const setToken = token => {
 export const unsetToken = () => {
   axiosInstance.defaults.headers.common.Authorization = '';
 };
-export const signup = createAsyncThunk(
-  '/users/signup',
+export const registerUser = createAsyncThunk(
+  '/users/registerUser',
   async (userData, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post('/users/signup', userData);
@@ -23,11 +23,11 @@ export const signup = createAsyncThunk(
 );
 
 // login user
-export const signin = createAsyncThunk(
-  '/users/signin',
-  async (credentials, thunkAPI) => {
+export const authenticatedUser = createAsyncThunk(
+  '/users/authenticatedUser',
+  async (userData, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/users/signin', credentials);
+      const { data } = await axiosInstance.post('/users/signin', userData);
       setToken(data.token);
 
       toast.success('Welcome back!');
@@ -39,7 +39,7 @@ export const signin = createAsyncThunk(
 );
 
 // Logout user
-export const signout = createAsyncThunk(
+export const logout = createAsyncThunk(
   '/users/signout',
   async (_, thunkAPI) => {
     try {
@@ -55,35 +55,20 @@ export const signout = createAsyncThunk(
 );
 
 // get current user
-export const getCurrentUser = createAsyncThunk(
-  '/users/getCurrentUser',
+export const refresh = createAsyncThunk(
+  '/users/refresh',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().users.token; //aut change users
-      if (!token) {
-        return thunkAPI.rejectWithValue('No token found');
-      }
+      // if (!token) {
+      //   return thunkAPI.rejectWithValue('No token found');
+      // }
       setToken(token);
       const { data } = await axiosInstance.get('/users/current');
+      console.log('data', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-// get full info about current user
-// export const getCurrentUserFullInfo = createAsyncThunk(
-//   '/users/getCurrentUserFullInfo',
-//   async (_, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().auth.token;
-//       setToken(token);
-
-//       const { data } = await axiosInstance.get('/users/current/full');
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );

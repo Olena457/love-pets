@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import eyeIcon from '../../assets/icons/eyeIcon.svg';
 import showEye from '../../assets/icons/showEye.svg';
 import { useDispatch } from 'react-redux';
-import { signup } from '../../redux/users/usersOperations.js';
+import { registerUser } from '../../redux/users/usersOperations.js';
 import css from './RegisterForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../Icon/Icon.jsx';
@@ -80,7 +80,7 @@ const RegisterForm = () => {
   const onSubmit = async data => {
     const { name, email, password } = data;
     try {
-      await dispatch(signup({ name, email, password }));
+      dispatch(registerUser({ name, email, password }));
       navigate('/profile');
     } catch (error) {
       alert(error.message);

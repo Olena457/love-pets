@@ -42,8 +42,9 @@
 // export default ModalApproveAction;
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
 import { closeModal } from '../../redux/modal/modalSlice.js';
-import { signout } from '../../redux/users/usersOperations.js';
+import { logout } from '../../redux/users/usersOperations.js';
 import css from './ModalApproveAction.module.css';
 import catSmall from '../../assets/imgs/cat-small@1x.png';
 
@@ -53,9 +54,10 @@ const ModalApproveAction = ({ onClose }) => {
 
   const handleLogOut = async () => {
     try {
-      await dispatch(signout()).unwrap();
+      await dispatch(logout()).unwrap();
       localStorage.clear();
       sessionStorage.clear();
+      dispatch(closeMobMenu());
       dispatch(closeModal());
       navigate('/home');
     } catch (error) {

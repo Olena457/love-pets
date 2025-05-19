@@ -22,14 +22,14 @@
 }
 
 .authNavHome {
-  background-color: var(--main-light);
+  display: none;
 }
 
 .logoutButtonContainer {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .logoutButtonContainer {
     display: block;
   }

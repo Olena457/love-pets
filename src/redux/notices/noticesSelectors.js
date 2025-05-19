@@ -1,7 +1,7 @@
-export const selectNotices = state => state.notices.items;
+export const selectNotices = state => state.notices.notices;
 export const selectSelectedNotice = state => state.notices.selectedNotice;
 export const selectCategories = state => state.notices.categories;
-export const selectSexOptions = state => state.notices.sexOptions;
+export const selectSexOptions = state => state.notices.sex;
 export const selectSpecies = state => state.notices.species;
 export const selectFavorites = state => state.notices.favorites;
 export const selectTotalPages = state => state.notices.totalPages;

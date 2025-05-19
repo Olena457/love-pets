@@ -94,7 +94,7 @@ export const addNoticeToFavorites = createAsyncThunk(
   }
 );
 
-export const removeNoticeFromFavorites = createAsyncThunk(
+export const deleteFromFavorites = createAsyncThunk(
   '/notices/removeNoticeFromFavorites',
   async (id, { rejectWithValue }) => {
     try {

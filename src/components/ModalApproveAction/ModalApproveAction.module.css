@@ -20,6 +20,14 @@
     /* width: calc(448px - 160px); */
   }
 }
+.title {
+  color: var(--black-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 28px;
+}
 .iconImgContainer {
   display: flex;
   justify-content: center;

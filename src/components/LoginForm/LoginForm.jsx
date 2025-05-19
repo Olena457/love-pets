@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import showEye from '../../assets/icons/showEye.svg';
 import eyeIcon from '../../assets/icons/eyeIcon.svg';
 import { useDispatch } from 'react-redux';
-import { signin } from '../../redux/users/usersOperations.js';
+import { authenticatedUser } from '../../redux/users/usersOperations.js';
 import css from './LoginForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../Icon/Icon.jsx';
@@ -31,6 +32,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors, touchedFields },
     trigger,
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
@@ -57,10 +59,12 @@ const LoginForm = () => {
   const onSubmit = async data => {
     const { email, password } = data;
     try {
-      await dispatch(signin({ email, password }));
+      await dispatch(authenticatedUser({ email, password }));
+      toast.success('Login successful');
+      reset();
       navigate('/profile');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -107,7 +111,7 @@ const LoginForm = () => {
         Login
       </button>
       <p className={css.footerDescription}>
-        Already have an account?<a href="/register">register</a>
+        Already have an account?<a href="/register">Register</a>
       </p>
     </form>
   );

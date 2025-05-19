@@ -114,12 +114,12 @@ import trashIcon from '../../assets/icons/trashDel.svg';
 import heartIcon from '../../assets/icons/heartEmpty.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
-import { fetchProfile } from '../../redux/profile/profileSlice.js';
+import { fetchProfileFull } from '../../redux/profile/profileSlice.js';
 import { openModal } from '../../redux/modal/modalSlice.js';
 import {
   fetchNoticeById,
   addNoticeToFavorites,
-  removeNoticeFromFavorites,
+  deleteFromFavorites,
 } from '../../redux/notices/noticesOperations.js';
 
 const NoticesItem = ({ notice, profile, viewed }) => {
@@ -130,18 +130,18 @@ const NoticesItem = ({ notice, profile, viewed }) => {
   const handleLearnMore = () => {
     if (!isAuthenticated) {
       dispatch(openModal());
-      return;
+      // return;
+      dispatch(fetchNoticeById(notice._id));
     }
-    dispatch(fetchNoticeById({ _id: notice._id }));
     dispatch(openModal());
   };
 
   const handleAddToFavorites = () => {
     if (!isAuthenticated) {
       dispatch(openModal());
-      return;
+      // return;
     }
-    dispatch(addNoticeToFavorites({ _id: notice._id }));
+    dispatch(addNoticeToFavorites(notice._id));
   };
 
   const handleDeleteNotice = async () => {
@@ -150,8 +150,8 @@ const NoticesItem = ({ notice, profile, viewed }) => {
       return;
     }
     try {
-      dispatch(removeNoticeFromFavorites({ _id: notice._id }));
-      dispatch(fetchProfile());
+      dispatch(deleteFromFavorites(notice._id)).unwrap();
+      dispatch(fetchProfileFull());
     } catch (error) {
       console.error('Error deleting pet:', error);
     }

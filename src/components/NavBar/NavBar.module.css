@@ -12,12 +12,12 @@
 .headerMenu {
   display: none;
 }
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 1280px) {
   .headerMenu {
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-right: 167px;
+    /* margin-right: 167px; */
   }
 }
 

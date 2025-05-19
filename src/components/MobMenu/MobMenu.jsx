@@ -112,6 +112,7 @@ export const MobMenu = () => {
   // const handleLogoutClick = () => {
   //   dispatch(openApproveModal());
   // };
+
   useEffect(() => {
     const handleKeyDown = evt => {
       if (evt.code === 'Escape') {

@@ -6,9 +6,10 @@ import Loader from './components/Loader/Loader.jsx';
 import { ToastContainer } from 'react-toastify';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
-import { getCurrentUserFullInfo } from './redux/users/usersOperations.js';
+import { refresh } from './redux/users/usersOperations.js';
 import {
   selectToken,
+  selectIsRefreshing,
   selectIsAuthenticated,
 } from './redux/users/usersSelectors.js';
 import PrivateRoute from './components/PrivateRoute.jsx';
@@ -17,6 +18,7 @@ import Layout from './components/Layout/Layout.jsx';
 import Header from './components/Header/Header.jsx';
 import MyFavoritePets from './components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from './components/MyNotices/Viewed/Viewed.jsx';
+
 const MainPage = lazy(() => import('./pages/MainPage/MainPage.jsx'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const AddPetPage = lazy(() => import('./pages/AddPetPage/AddPetPage.jsx'));
@@ -42,16 +44,20 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const hideHeader = location.pathname === '/';
-  const token = useSelector(selectToken);
+  const currentToken = useSelector(selectToken);
+  const isRefreshing = useSelector(selectIsRefreshing);
+
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
-    if (token && !isAuthenticated) {
-      dispatch(getCurrentUserFullInfo());
-    }
-  }, [token, isAuthenticated, dispatch]);
+    // if (currentToken && !isAuthenticated) {
+    if (!currentToken) return;
+    dispatch(refresh());
+  }, [currentToken, dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <>
       <Suspense fallback={<Loader />}>
         <Layout />

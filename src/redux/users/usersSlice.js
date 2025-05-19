@@ -1,111 +1,28 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import {
-//   signup,
-//   signin,
-//   signout,
-//   getCurrentUser,
-//   getCurrentUserFullInfo,
-// } from './usersOperations.js';
-
-// const initialState = {
-//   userData: { name: '', email: '' },
-//   token: null,
-//   isAuthenticated: false,
-//   isLoading: false,
-//   error: null,
-// };
-
-// const setLoading = state => {
-//   state.isLoading = true;
-//   state.error = null;
-// };
-
-// const setError = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
-
-// const setAuthData = (state, action) => {
-//   state.isLoading = false;
-//   state.userData = action.payload.user;
-//   state.token = action.payload.token;
-//   state.isAuthenticated = true;
-// };
-
-// const usersSlice = createSlice({
-//   name: 'users',
-//   initialState,
-//   reducers: {},
-//   extraReducers: builder => {
-//     builder
-//       // signup
-//       .addCase(signup.pending, setLoading)
-//       .addCase(signup.fulfilled, (state, action) => setAuthData(state, action))
-//       .addCase(signup.rejected, setError)
-
-//       // signin
-//       .addCase(signin.pending, setLoading)
-//       .addCase(signin.fulfilled, (state, action) => setAuthData(state, action))
-//       .addCase(signin.rejected, setError)
-
-//       // signout
-//       .addCase(signout.pending, setLoading)
-//       .addCase(signout.fulfilled, () => initialState)
-//       .addCase(signout.rejected, setError)
-
-//       // getCurrentUser
-//       .addCase(getCurrentUser.pending, setLoading)
-//       .addCase(getCurrentUser.fulfilled, (state, action) => {
-//         state.isLoading = false;
-//         state.userData = action.payload;
-//         state.isAuthenticated = true; //add
-//       })
-
-//       // getCurrentUserFullInfo
-//       .addCase(getCurrentUser.rejected, setError)
-//       .addCase(getCurrentUserFullInfo.pending, setLoading)
-//       .addCase(getCurrentUserFullInfo.fulfilled, (state, action) => {
-//         state.isLoading = false;
-//         state.userData = action.payload;
-//         state.isAuthenticated = false;
-//       })
-//       .addCase(getCurrentUserFullInfo.rejected, setError);
-//   },
-// });
-
-// export const usersReducer = usersSlice.reducer;
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  signup,
-  signin,
-  signout,
-  getCurrentUser,
-  getCurrentUserFullInfo,
+  registerUser,
+  authenticatedUser,
+  logout,
+  refresh,
 } from './usersOperations.js';
 
 const initialState = {
-  userData: { name: '', email: '' },
-  token: null,
+  userData: { name: '', email: '', password: '' },
+  token: '',
+  isRefreshing: false,
   isAuthenticated: false,
   isLoading: false,
   error: null,
 };
 
-const setLoading = state => {
+const handlePending = state => {
   state.isLoading = true;
   state.error = null;
 };
 
-const setError = (state, action) => {
+const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-};
-
-const setAuthData = (state, action) => {
-  state.isLoading = false;
-  state.userData = action.payload.user;
-  state.token = action.payload.token;
-  state.isAuthenticated = true;
 };
 
 const usersSlice = createSlice({
@@ -114,40 +31,37 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(signup.pending, setLoading)
-      .addCase(signup.fulfilled, setAuthData)
-      .addCase(signup.rejected, setError)
-
-      .addCase(signin.pending, setLoading)
-      .addCase(signin.fulfilled, setAuthData)
-      .addCase(signin.rejected, setError)
-
-      .addCase(signout.pending, setLoading)
-      .addCase(signout.fulfilled, state => {
-        state.userData = { name: '', email: '' };
-        state.token = null;
-        state.isAuthenticated = false;
-      })
-      .addCase(signout.rejected, setError)
-
-      .addCase(getCurrentUser.pending, setLoading)
-      .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.userData = action.payload;
+      .addCase(registerUser.pending, handlePending)
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
         state.isAuthenticated = true;
       })
-      .addCase(getCurrentUser.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-        state.isAuthenticated = false;
-      })
+      .addCase(registerUser.rejected, handleRejected)
 
-      .addCase(getCurrentUserFullInfo.pending, setLoading)
-      .addCase(getCurrentUserFullInfo.fulfilled, (state, action) => {
-        state.isLoading = true;
-        state.userData = action.payload;
+      .addCase(authenticatedUser.pending, handlePending)
+      .addCase(authenticatedUser.fulfilled, (state, action) => {
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
+        state.isAuthenticated = true;
       })
-      .addCase(getCurrentUserFullInfo.rejected, setError);
+      .addCase(authenticatedUser.rejected, handleRejected)
+
+      .addCase(logout.pending, handlePending)
+      .addCase(logout.fulfilled, () => {
+        return initialState;
+      })
+      .addCase(logout.rejected, handleRejected)
+
+      // refresh__________________________
+
+      .addCase(refresh.pending, handlePending)
+      .addCase(refresh.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.isAuthenticated = true;
+        state.isLoading = false;
+      })
+      .addCase(refresh.rejected, handleRejected);
   },
 });
 
