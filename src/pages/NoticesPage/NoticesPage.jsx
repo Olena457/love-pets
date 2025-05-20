@@ -1,20 +1,21 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import Title from '../../components/Title/Title.jsx';
+import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import Modal from '../../components/Modal/Modal.jsx';
 import ModalAttention from '../../components/ModalAttention/ModalAttention.jsx';
+import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
+
 import ModalNotices from '../../components/ModalNotices/ModalNotices.jsx';
-import {
-  // fetchNoticeById,
-  // toggleFavoriteNotice,
-  fetchNotices,
-} from '../../redux/notices/noticesOperations.js';
+import { fetchNotices } from '../../redux/notices/noticesOperations.js';
 import {
   selectIsOpenModal,
+  selectIsApproveModalOpen,
   selectModalData,
 } from '../../redux/modal/modalSelectors.js';
 import Loader from '../../components/Loader/Loader.jsx';
@@ -23,7 +24,8 @@ import {
   selectCurrentPage,
   selectIsLoading,
   selectFavorites,
-  selectSelectedNotice,
+  selectNotice,
+  selectError,
 } from '../../redux/notices/noticesSelectors.js';
 import {
   selectFilteredNoticesWithFilters,
@@ -42,15 +44,18 @@ const NoticesPage = () => {
   const modalData = useSelector(selectModalData);
   const notices = useSelector(selectFilteredNoticesWithFilters);
   const favorites = useSelector(selectFavorites);
-  const selectedNoticeState = useSelector(selectSelectedNotice);
+  const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
+  const selectedNoticeState = useSelector(selectNotice);
   const totalPages = useSelector(selectTotalPages);
   const currentPage = useSelector(selectCurrentPage);
   const isLoading = useSelector(selectIsLoading);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const searchQuery = useSelector(selectSearchQuery);
   const category = useSelector(selectCategory);
   const gender = useSelector(selectGender);
   const type = useSelector(selectType);
   const location = useSelector(selectLocation);
+  const errorMessage = useSelector(selectError);
 
   const params = useMemo(
     () => ({
@@ -68,16 +73,20 @@ const NoticesPage = () => {
   useEffect(() => {
     dispatch(fetchNotices(params));
   }, [dispatch, params]);
-
-  // const handleLearnMore = notice => {
-  //   dispatch(fetchNoticeById(notice._id));
-  //   dispatch(openModal());
-  // };
-
-  // const handleToggleFavorite = notice => {
-  //   dispatch(toggleFavoriteNotice(notice._id));
-  // };
-
+  // useEffect(() => {
+  //   dispatch(fetchNotices(params))
+  //     .unwrap()
+  //     .then(response => {
+  //       if (response.length === 0) {
+  //         setErrorMessage('No results found. Please provide more details.');
+  //       } else {
+  //         setErrorMessage(null);
+  //       }
+  //     })
+  //     .catch(() => {
+  //       setErrorMessage('Failed to load notices.');
+  //     });
+  // }, [dispatch, params]);
   const handleFilterChange = () => {
     dispatch(setCurrentPage(1));
     dispatch(fetchNotices(params));
@@ -95,10 +104,12 @@ const NoticesPage = () => {
 
       {isLoading ? (
         <Loader />
+      ) : errorMessage ? (
+        <div className={css.errorContainer}>{errorMessage}</div>
       ) : notices.length === 0 ? (
         <div className={css.errorContainer}>
-          No results found for the selected filters.
-          <br /> Please reset the filter and select other options 🐈
+          No results found for the selected filters.🐈 <br /> Please refine your
+          search.
         </div>
       ) : (
         <>
@@ -120,16 +131,16 @@ const NoticesPage = () => {
 
       {isModalOpen && (
         <Modal onClose={() => dispatch(closeModal())}>
-          {!selectedNoticeState ? (
+          {isApproveModalOpen ? (
+            <ModalApproveAction onClose={() => dispatch(closeModal())} />
+          ) : modalData || selectedNoticeState ? (
+            <ModalNotices
+              notice={modalData || selectedNoticeState}
+              onClose={() => dispatch(closeModal())}
+            />
+          ) : !isAuthenticated ? (
             <ModalAttention />
-          ) : (
-            modalData && (
-              <ModalNotices
-                notice={modalData}
-                onClose={() => dispatch(closeModal())}
-              />
-            )
-          )}
+          ) : null}
         </Modal>
       )}
     </div>

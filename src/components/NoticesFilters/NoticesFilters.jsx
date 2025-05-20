@@ -5,13 +5,13 @@ import blackCross from '../../assets/icons/blackCross.svg';
 import Select from 'react-select';
 import {
   fetchNoticeCategories,
-  fetchNoticeSexOptions,
+  fetchNoticeSex,
   fetchNoticeSpecies,
 } from '../../redux/notices/noticesOperations.js';
 import { fetchCityLocations } from '../../redux/cities/citiesOperations.js';
 import {
   selectAvailableCategories,
-  selectAvailableSexOptions,
+  selectAvailableSex,
   selectAvailableSpecies,
   selectAvailableLocations,
 } from '../../redux/filters/filtersSelectors.js';
@@ -32,7 +32,7 @@ const NoticesFilters = React.memo(({ onFilterChange }) => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectAvailableCategories);
-  const sexOptions = useSelector(selectAvailableSexOptions);
+  const sexOptions = useSelector(selectAvailableSex);
   const species = useSelector(selectAvailableSpecies);
   const locations = useSelector(selectAvailableLocations);
 
@@ -50,7 +50,7 @@ const NoticesFilters = React.memo(({ onFilterChange }) => {
 
   useEffect(() => {
     dispatch(fetchNoticeCategories());
-    dispatch(fetchNoticeSexOptions());
+    dispatch(fetchNoticeSex());
     dispatch(fetchNoticeSpecies());
     dispatch(fetchCityLocations());
   }, [dispatch]);

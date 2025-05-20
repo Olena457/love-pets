@@ -1,4 +1,4 @@
-/* .item {
+.item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,8 +151,9 @@
 .favorite:hover,
 .favorite:focus {
   background-color: var(--hover-light);
-} */
-.item {
+}
+/* ____________________________________________________ */
+/* .item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,15 +182,15 @@
 }
 
 /* viewed  */
-.viewedItem {
+/* .viewedItem {
   width: 315px;
   padding: 24px;
   background-color: var(--white-color);
   color: var(--black-color);
-}
+} */
 
 /* image ____________________*/
-.image {
+/* .image {
   width: 287px;
   height: 178px;
   object-fit: cover;
@@ -211,7 +212,7 @@
   }
 }
 /* title container */
-.titleContainer {
+/* .titleContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -231,14 +232,12 @@
 }
 .profileTextBlock {
   margin-bottom: 24px;
-  /* color: var(--black-color); */
 }
 .viewedTextBlock {
   margin-bottom: 32px;
-  /* color: var(--text-viewed); */
-}
+} */
 /* description notice  */
-.popularity {
+/* .popularity {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -305,9 +304,9 @@
   gap: 10px;
   align-items: center;
   width: 100%;
-}
+} */
 /* Butoon____________________ */
-.learnMoreBtn {
+/* .learnMoreBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -346,9 +345,9 @@
 .viewedLearnMoreBtn:focus {
   background-color: var(--dark-hover);
   color: var(--black-color);
-}
+} */
 /*button favorite  */
-.favorite {
+/* .favorite {
   border: none;
   display: flex;
   width: 48px;
@@ -366,12 +365,12 @@
 
 .profileFav {
   width: 46px;
-  height: 46px;
-  /* display: none; */
-  background-color: var(--main-light);
+  height: 46px; */
+/* display: none; */
+/* background-color: var(--main-light);
 }
 .viewedFav {
   width: 46px;
   height: 46px;
   background-color: var(--main-light);
-}
+} */

@@ -58,8 +58,8 @@ export const fetchNoticeCategories = createAsyncThunk(
   }
 );
 
-export const fetchNoticeSexOptions = createAsyncThunk(
-  '/notices/fetchNoticeSexOptions',
+export const fetchNoticeSex = createAsyncThunk(
+  '/notices/fetchNoticeSex',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get('/notices/sex');
@@ -95,7 +95,7 @@ export const addNoticeToFavorites = createAsyncThunk(
 );
 
 export const deleteFromFavorites = createAsyncThunk(
-  '/notices/removeNoticeFromFavorites',
+  '/notices/deleteFromFavorites',
   async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.delete(

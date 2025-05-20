@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import {
   selectCategories,
-  selectSexOptions,
+  selectSex,
   selectSpecies,
   selectNotices,
 } from '../notices/noticesSelectors.js';
@@ -19,9 +19,8 @@ export const selectAvailableCategories = createSelector(
   categories => categories.map(category => category.trim())
 );
 
-export const selectAvailableSexOptions = createSelector(
-  [selectSexOptions],
-  sexOptions => sexOptions.map(option => option.toLowerCase())
+export const selectAvailableSex = createSelector([selectSex], sexOptions =>
+  sexOptions.map(option => option.toLowerCase())
 );
 
 export const selectAvailableSpecies = createSelector(

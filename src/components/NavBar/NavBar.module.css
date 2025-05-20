@@ -17,7 +17,7 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    /* margin-right: 167px; */
+    margin-right: 200px;
   }
 }
 
@@ -36,17 +36,17 @@
 }
 
 .homeNav a.menuItem {
-  color: #fff;
+  color: var(--color-white);
 }
 
 .homeNav .menuItem:hover,
 .homeNav .menuItem:focus,
 .homeNav .menuItem:active {
-  border-color: #fff;
+  border-color: var(--color-white);
 }
 
 .otherNav .menuItem {
-  color: #262626;
+  color: var(--color-black);
 }
 
 .otherNav .menuItem:hover,

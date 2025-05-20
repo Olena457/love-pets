@@ -11,7 +11,7 @@
   /* justify-content: center; */
   align-items: center;
   padding: 40px 28px;
-  min-width: 295px;
+  /* min-width: 295px; */
   /* width: calc(335px - 28px - 28px); */
 }
 @media screen and (min-width: 768px) {

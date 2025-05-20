@@ -3,12 +3,12 @@ import {
   fetchNotices,
   fetchNoticeById,
   fetchNoticeCategories,
-  fetchNoticeSexOptions,
+  fetchNoticeSex,
   fetchNoticeSpecies,
 } from './noticesOperations.js';
 
 const initialState = {
-  notice: {},
+  notice: null,
   notices: [],
   sex: [],
   categories: [],
@@ -43,6 +43,7 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNotices.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.notices = action.payload.results;
         state.totalPages = action.payload.totalPages;
       })
@@ -58,6 +59,7 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNoticeById.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.notice = action.payload;
       })
       .addCase(fetchNoticeById.rejected, (state, action) => {
@@ -71,6 +73,7 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNoticeCategories.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.categories = action.payload;
       })
       .addCase(fetchNoticeCategories.rejected, (state, action) => {
@@ -78,15 +81,16 @@ const noticesSlice = createSlice({
         state.error = action.payload;
       })
       // fetch sex options
-      .addCase(fetchNoticeSexOptions.pending, state => {
+      .addCase(fetchNoticeSex.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchNoticeSexOptions.fulfilled, (state, action) => {
+      .addCase(fetchNoticeSex.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.sex = action.payload;
       })
-      .addCase(fetchNoticeSexOptions.rejected, (state, action) => {
+      .addCase(fetchNoticeSex.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
@@ -97,6 +101,7 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNoticeSpecies.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.species = action.payload;
       })
       .addCase(fetchNoticeSpecies.rejected, (state, action) => {

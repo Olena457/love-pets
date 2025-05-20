@@ -7,14 +7,14 @@ import EmptyWhite from '../../assets/icons/emptyWhite.svg';
 import css from './ModalNotices.module.css';
 import { selectUser } from '../../redux/users/usersSelectors.js';
 import {
-  selectSelectedNotice,
+  selectNotice,
   selectIsLoading,
   selectError,
 } from '../../redux/notices/noticesSelectors.js';
 
 const ModalNotices = () => {
   const dispatch = useDispatch();
-  const notice = useSelector(selectSelectedNotice);
+  const notice = useSelector(selectNotice);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
   // const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -27,7 +27,7 @@ const ModalNotices = () => {
     if (favorites.includes(notice._id)) {
       toast.error('This notice is already in your favorites!');
     } else {
-      dispatch(addNoticeToFavorites({ _id: notice._id }));
+      dispatch(addNoticeToFavorites(notice._id));
       toast.success('Notice added to favorites!');
     }
     dispatch(closeModal());
