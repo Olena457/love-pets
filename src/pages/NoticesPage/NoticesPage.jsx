@@ -73,20 +73,7 @@ const NoticesPage = () => {
   useEffect(() => {
     dispatch(fetchNotices(params));
   }, [dispatch, params]);
-  // useEffect(() => {
-  //   dispatch(fetchNotices(params))
-  //     .unwrap()
-  //     .then(response => {
-  //       if (response.length === 0) {
-  //         setErrorMessage('No results found. Please provide more details.');
-  //       } else {
-  //         setErrorMessage(null);
-  //       }
-  //     })
-  //     .catch(() => {
-  //       setErrorMessage('Failed to load notices.');
-  //     });
-  // }, [dispatch, params]);
+
   const handleFilterChange = () => {
     dispatch(setCurrentPage(1));
     dispatch(fetchNotices(params));
