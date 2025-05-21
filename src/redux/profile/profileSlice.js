@@ -7,7 +7,7 @@ import {
 
 //  fetching  user profile__________________________
 export const fetchProfileFull = createAsyncThunk(
-  ' /users/fetchProfileFull ',
+  '/users/fetchProfileFull',
   async () => {
     try {
       const response = await axiosInstance.get('/users/current/full');

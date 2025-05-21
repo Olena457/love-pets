@@ -7,6 +7,8 @@ import css from './Viewed.module.css';
 
 const Viewed = () => {
   const profileData = useSelector(selectProfile);
+  // const viewed = userData.noticesViewed;
+  // console.log('viewed', viewed);
   const viewedNotices = profileData?.noticesViewed;
   const isEmpty = !viewedNotices?.length;
 

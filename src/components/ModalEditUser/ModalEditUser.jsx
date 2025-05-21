@@ -9,7 +9,8 @@ import { selectProfile } from '../../redux/profile/profileSelectors';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import { useDeviceType } from '../../hooks/useDeviceType.js';
 import Icon from '../Icon/Icon.jsx';
-import css from './ModalEditUser.css';
+import css from './ModalEditUser.module.css';
+const defaultAvatar = '../src/assets/imgs/test.jpg';
 
 const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
 const emailRegExp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -26,11 +27,13 @@ const EditUserSchema = Yup.object().shape({
 export const ModalEditUser = () => {
   const deviceType = useDeviceType();
   const userData = useSelector(selectProfile);
-  const viewed = userData.noticesViewed;
-  console.log('viewed', viewed);
+  // const viewed = userData.noticesViewed;
+  // console.log('viewed', viewed);
   const dispatch = useDispatch();
 
-  const [previewAvatar, setPreviewAvatar] = useState(userData.avatar || '');
+  const [previewAvatar, setPreviewAvatar] = useState(
+    userData.avatar || defaultAvatar
+  );
 
   const {
     register,
@@ -44,7 +47,7 @@ export const ModalEditUser = () => {
     defaultValues: {
       name: userData.name || 'Name',
       email: userData.email || 'name@gmail.com',
-      phone: userData.phone || '',
+      phone: userData.phone || '+380000000000',
       avatar: userData.avatar || '',
     },
   });
@@ -66,7 +69,7 @@ export const ModalEditUser = () => {
     if (avatarUrl && avatarUrl.trim() !== '') {
       setPreviewAvatar(avatarUrl);
     } else {
-      setPreviewAvatar(''); // default avatar
+      setPreviewAvatar(defaultAvatar); // default avatar
     }
   };
 
@@ -74,7 +77,7 @@ export const ModalEditUser = () => {
     <div className={css.modalEditUserWrap}>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <h2 className={css.editUserTitle}>Edit information</h2>
-        <div className={css.userAvatarThumb}>
+        {/* <div className={css.userAvatarThumb}>
           {previewAvatar.trim() !== 'https://test.png' ? null : (
             <Icon
               id="user"
@@ -95,6 +98,48 @@ export const ModalEditUser = () => {
               }
             />
           )}
+        </div> */}
+        <div className={css.userAvatarThumb}>
+          {previewAvatar && previewAvatar.trim() !== '' ? (
+            <img
+              src={previewAvatar}
+              alt="User Avatar"
+              className={css.userAvatarImg}
+              width={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+              height={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+            />
+          ) : (
+            <Icon
+              id="user"
+              width={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+              height={
+                deviceType === 'desktop'
+                  ? 50
+                  : deviceType === 'tablet'
+                  ? 50
+                  : 40
+              }
+              className={css.userBigIcon}
+            />
+          )}
         </div>
 
         <div className={css.avatarUploadWrap}>
@@ -107,16 +152,16 @@ export const ModalEditUser = () => {
             />
             <span className={css.errorMessage}>{errors.avatar?.message}</span>
           </div>
+
           <button
             type="button"
             onClick={handleUploadPhoto}
-            className={css.avatarUploadBtn}
+            className={css.uploadButton}
           >
-            Upload photo
-            <Icon className={css.iconCloud} id="cloud" width={20} height={20} />
+            <span className={css.uploadTitle}>Upload photo</span>
+            <Icon id="cloud" width={18} height={18} className={css.cloudIcon} />
           </button>
         </div>
-
         <div className={css.inputsWrap}>
           <div className={css.inputWrap}>
             <input

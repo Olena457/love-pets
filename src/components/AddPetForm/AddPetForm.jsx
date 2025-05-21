@@ -313,7 +313,7 @@ const AddPetForm = () => {
           <button
             type="button"
             className={`${css.buttonAdd} ${css.back}`}
-            onClick={() => (window.location.href = '/news')}
+            onClick={() => (window.location.href = '/profile')}
           >
             Back
           </button>

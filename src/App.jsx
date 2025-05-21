@@ -50,7 +50,6 @@ function App() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
-    // if (currentToken && !isAuthenticated) {
     if (!currentToken) return;
     dispatch(refresh());
   }, [currentToken, dispatch]);

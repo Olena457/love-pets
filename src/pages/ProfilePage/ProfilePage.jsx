@@ -1,23 +1,33 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProfile } from '../../redux/profile/profileSlice.js';
+import ProfileContainer from '../../components/ProfileContainer/ProfileContainer.jsx';
+import { fetchProfileFull } from '../../redux/profile/profileSlice.js';
 import MyNotice from '../../components/MyNotices/MyNotices.jsx';
 import UserCard from '../../components/UserCard/UserCard.jsx';
+import Modal from '../../components/Modal/Modal.jsx';
+import { ModalEditUser } from '../../components/ModalEditUser/ModalEditUser.jsx';
+import { selectIsModalEditUserOpen } from '../../redux/modal/modalSelectors.js';
 import css from './ProfilePage.module.css';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+  const isModalOpen = useSelector(selectIsModalEditUserOpen);
 
   useEffect(() => {
-    dispatch(fetchProfile());
+    dispatch(fetchProfileFull());
   }, [dispatch]);
 
   return (
-    <div className={css.containerProfile}>
+    <ProfileContainer>
       <h1 className={css.title}>Profile Page</h1>
       <UserCard />
       <MyNotice />
-    </div>
+      {isModalOpen && (
+        <Modal>
+          <ModalEditUser />
+        </Modal>
+      )}
+    </ProfileContainer>
   );
 };
 

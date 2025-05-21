@@ -27,3 +27,9 @@
   align-items: center;
   gap: 5px;
 }
+.userName {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--black-color);
+}

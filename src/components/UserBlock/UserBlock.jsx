@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
-import { useDeviceType } from '../../../hooks/useDeviceType.js';
-import { selectProfile } from '../../../redux/profile/profileSelectors';
+import { useDeviceType } from '../../hooks/useDeviceType.js';
+import { selectProfile } from '../../redux/profile/profileSelectors.js';
 import css from './UserBlock.module.css';
-import Icon from '../../Icon/Icon.jsx';
+import Icon from '../Icon/Icon.jsx';
+
 const UserBlock = () => {
   const deviceType = useDeviceType();
-  const userData = useSelector(selectProfile);
-  const avatarUrl = userData.avatar;
+  const profile = useSelector(selectProfile);
+  const avatarUrl = profile.avatar;
 
   return (
     <div className={css.userBlockWrapper}>
@@ -39,19 +40,19 @@ const UserBlock = () => {
         <div className={css.userInfoInputsWrapper}>
           <input
             type="text"
-            value={userData?.name?.trim() || 'Name'}
+            value={profile?.name?.trim() || 'Name'}
             className={css.userInfoFormInput}
             disabled
           />
           <input
             type="email"
-            value={userData?.email?.trim() || 'name@gmail.com'}
+            value={profile?.email?.trim() || 'name@gmail.com'}
             className={css.userInfoFormInput}
             disabled
           />
           <input
             type="phone"
-            value={userData?.phone?.trim() || '+380'}
+            value={profile?.phone?.trim() || '+380000000000'}
             className={css.userInfoFormInput}
             disabled
           />
