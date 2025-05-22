@@ -13,15 +13,12 @@ const initialState = {
   sex: [],
   categories: [],
   species: [],
-  // favorites: [],
   searchQuery: '',
   currentPage: 1,
   perPage: 6,
   totalPages: 0,
   error: null,
   isLoading: false,
-  // sexOptions: [],
-  // selectedNotice: null,
 };
 
 const noticesSlice = createSlice({

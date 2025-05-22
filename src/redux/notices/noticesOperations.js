@@ -114,7 +114,7 @@ export const toggleFavoriteNotice = createAsyncThunk(
   '/notices/toggleFavoriteNotice',
   async ({ _id }, { getState, rejectWithValue }) => {
     const state = getState();
-    const isFavorite = state.notices.favorites.includes(_id); //checked favorites
+    const isFavorite = state.notices.favorites.includes(_id);
 
     try {
       if (isFavorite) {

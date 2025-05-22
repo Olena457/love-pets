@@ -24,7 +24,7 @@ import mobMenuReducer from './mobile/mobMenuSlice.js';
 const usersPersistConfig = {
   key: 'users',
   storage,
-  whitelist: ['token', 'userData', 'favorites', 'isAuthenticated'],
+  whitelist: ['token', 'userData', 'noticesFavorites', 'isAuthenticated'],
 };
 
 const newsPersistConfig = {
@@ -36,13 +36,13 @@ const newsPersistConfig = {
 const profilePersistConfig = {
   key: 'profile',
   storage,
-  whitelist: ['profile', 'favorites'],
+  whitelist: ['profile', 'noticesFavorites'],
 };
 
 const noticesPersistConfig = {
   key: 'notices',
   storage,
-  whitelist: ['currentPage', 'searchQuery', 'favorites'],
+  whitelist: ['currentPage', 'searchQuery'],
 };
 const filtersPersistConfig = {
   key: 'filters',
