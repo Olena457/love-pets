@@ -26,7 +26,6 @@
 @media (min-width: 1280px) {
   .petContainer {
     max-width: 592px;
-
     height: auto;
     background-image: url('../src/assets/imgs/desktop/rectangle-desk@1x.png');
   }

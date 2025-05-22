@@ -16,7 +16,7 @@ import { usersReducer } from './users/usersSlice.js';
 import { newsReducer } from './news/newsSlice.js';
 import { citiesReducer } from './cities/citiesSlice.js';
 import { filtersReducer } from './filters/filtersSlice.js';
-import { noticesReducer } from './notices/noticesSlice.js';
+import noticesReducer from './notices/noticesSlice.js';
 import profileReducer from './profile/profileSlice.js';
 import friendsReducer from './friends/ourFriendsSlice.js';
 import mobMenuReducer from './mobile/mobMenuSlice.js';

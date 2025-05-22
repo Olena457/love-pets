@@ -8,12 +8,12 @@ import {
 } from './noticesOperations.js';
 
 const initialState = {
-  notice: null,
+  notice: {},
   notices: [],
   sex: [],
   categories: [],
   species: [],
-  favorites: [],
+  // favorites: [],
   searchQuery: '',
   currentPage: 1,
   perPage: 6,
@@ -113,4 +113,4 @@ const noticesSlice = createSlice({
 
 export const { setCurrentPage, setSearchQuery } = noticesSlice.actions;
 
-export const noticesReducer = noticesSlice.reducer;
+export default noticesSlice.reducer;

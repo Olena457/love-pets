@@ -1,6 +1,4 @@
-// import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-// import { parse, format } from 'date-fns';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import multipleImg from '../../assets/icons/multiple.svg';
@@ -12,7 +10,6 @@ import customSelectAddStyles from '../../components/AddPetForm/customSelectAddSt
 
 import Select from 'react-select';
 import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 import css from './AddPetForm.module.css';
 
 const petTypes = [
@@ -94,17 +91,12 @@ const AddPetForm = () => {
       console.log('Form contains errors');
       return;
     }
-    // const parsedDate = parse(data.birthday, 'dd.MM.yyyy', new Date());
-    // const formattedDate = format(parsedDate, 'yyyy-MM-dd');
-    // data.birthday = formattedDate;
+
     try {
       toast.success('Data successfully added!');
       console.log('Simulated Data:', data);
       reset();
-      // setSex('');
-      // } catch {
-      //   toast.error('Something went wrong');
-      // }
+
       setTimeout(() => {
         window.location.href = '/profile';
       }, 2000);
@@ -119,7 +111,7 @@ const AddPetForm = () => {
         Add my pet/<span>personal details</span>
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-        {/* Gender Selection */}
+        {/* Gender Selection____________ */}
         <Controller
           name="sex"
           control={control}
@@ -187,7 +179,7 @@ const AddPetForm = () => {
             </div>
           )}
         />
-        {/* Image URL */}
+        {/* Image URL__________________ */}
         <div className={css.formGroup}>
           <div className={css.wrapperUpload}>
             <Controller
@@ -240,9 +232,8 @@ const AddPetForm = () => {
               />
             )}
           />
-          {/* {errors.name && <p className={css.error}>{errors.name.message}</p>} */}
         </div>
-        {/* Name */}
+        {/* Name_____________ */}
         <div className={css.formGroup}>
           <Controller
             name="name"
@@ -261,10 +252,9 @@ const AddPetForm = () => {
               />
             )}
           />
-          {/* {errors.name && <p className={css.error}>{errors.name.message}</p>} */}
         </div>
         <div className={css.GroupSelect}>
-          {/* Date of Birth */}
+          {/* Date of Birth___________ */}
           <div className={css.formGroup}>
             <Controller
               name="birthDay"
@@ -284,7 +274,7 @@ const AddPetForm = () => {
             />
           </div>
 
-          {/* Type of Animal */}
+          {/* Type of Animal______________ */}
           <div className={css.formGroup}>
             <Controller
               name="species"
@@ -308,7 +298,7 @@ const AddPetForm = () => {
             )}
           </div>
         </div>
-        {/* Buttons */}
+        {/* Buttons___________________ */}
         <div className={css.buttonGroup}>
           <button
             type="button"

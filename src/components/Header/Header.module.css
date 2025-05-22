@@ -5,8 +5,9 @@
 }
 /* @media screen and (min-width: 768px) {
   .wrapperHome {
-    margin: 16px 22px 0px 32px;
-    padding: 0px 10px 0px 0px;
+    margin: 0 auto;
+    padding: 0px;
+    max-width: 704px;
   }
 } */
 @media screen and (min-width: 1280px) {

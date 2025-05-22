@@ -28,9 +28,10 @@ const handleRejected = (state, action) => {
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  // reducers: {},
   extraReducers: builder => {
     builder
+      // register__________________________
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.userData = action.payload.user;
@@ -38,7 +39,7 @@ const usersSlice = createSlice({
         state.isAuthenticated = true;
       })
       .addCase(registerUser.rejected, handleRejected)
-
+      // authehenticatedUser__________________________
       .addCase(authenticatedUser.pending, handlePending)
       .addCase(authenticatedUser.fulfilled, (state, action) => {
         state.userData = action.payload.user;
@@ -46,7 +47,7 @@ const usersSlice = createSlice({
         state.isAuthenticated = true;
       })
       .addCase(authenticatedUser.rejected, handleRejected)
-
+      // logout__________________________
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, () => {
         return initialState;

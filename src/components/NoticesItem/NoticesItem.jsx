@@ -126,67 +126,41 @@ import css from './NoticesItem.module.css';
 import starYellow from '../../assets/icons/starYellow.svg';
 import trashIcon from '../../assets/icons/trashDel.svg';
 import heartIcon from '../../assets/icons/heartEmpty.svg';
-import { useDispatch } from 'react-redux';
-import { fetchProfileFull } from '../../redux/profile/profileSlice.js'; // Залишаємо
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
+import { fetchProfileFull } from '../../redux/profile/profileSlice.js';
 import { openModal } from '../../redux/modal/modalSlice.js';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import {
   fetchNoticeById,
   addNoticeToFavorites,
   deleteFromFavorites,
 } from '../../redux/notices/noticesOperations.js';
 
-// Приймаємо isFavorite як пропс
-const NoticesItem = ({ notice, isFavorite }) => {
-  // <-- Додаємо isFavorite сюди
+const NoticesItem = ({ notice, profile, viewed }) => {
   const dispatch = useDispatch();
-
-  // isFavorite тепер приходить як пропс, тому його не потрібно розраховувати тут
-  // const isFavorite = notice.isFavorite; // <-- Цей рядок видаляємо або коментуємо
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const isFavorite = profile?.favorites?.some(fav => fav._id === notice._id);
 
   const handleLearnMore = async () => {
-    if (!notice?._id) {
-      toast.error('Invalid notice ID');
-      return;
-    }
-    try {
-      const response = await dispatch(fetchNoticeById(notice._id)).unwrap();
-      dispatch(openModal(response));
-    } catch (error) {
-      console.error('Error fetching notice details:', error);
-      toast.error('Failed to load notice details.');
+    if (isAuthenticated) {
+      dispatch(openModal());
+      dispatch(fetchNoticeById({ _id: notice._id }));
     }
   };
-
-  const handleAddToFavorites = async () => {
-    // Додаємо async
-    if (!notice?._id) {
-      toast.error('Invalid notice ID');
+  const handleToggleFavorite = async () => {
+    if (!isAuthenticated) {
+      dispatch(openModal());
       return;
     }
-    try {
-      await dispatch(addNoticeToFavorites(notice._id)).unwrap(); // await додано
-      dispatch(fetchProfileFull()); // Перезавантажуємо профіль, щоб оновити список фаворитів
-      toast.success('Notice added to favorites!');
-    } catch (error) {
-      console.error('Error adding to favorites:', error);
-      toast.error(error.message || 'Failed to add to favorites.');
-    }
-  };
 
-  const handleDeleteNotice = async () => {
-    if (!notice?._id) {
-      toast.error('Invalid notice ID');
-      return;
+    if (isFavorite) {
+      dispatch(deleteFromFavorites({ _id: notice._id }));
+    } else {
+      dispatch(addNoticeToFavorites({ _id: notice._id }));
     }
-    try {
-      await dispatch(deleteFromFavorites(notice._id)).unwrap();
-      dispatch(fetchProfileFull()); // Перезавантажуємо профіль, щоб оновити список фаворитів
-      toast.success('Notice successfully removed!');
-    } catch (error) {
-      console.error('Error deleting notice:', error);
-      toast.error(error.message || 'Failed to delete notice.');
-    }
+
+    dispatch(fetchProfileFull()); // Оновлюємо список улюблених
   };
 
   return (
@@ -233,18 +207,48 @@ const NoticesItem = ({ notice, isFavorite }) => {
           <span className={css.negotiable}>Price negotiable</span>
         )}
       </div>
+
       <div className={css.actions}>
-        <button className={css.learnMoreBtn} onClick={handleLearnMore}>
+        <button
+          data-profile={profile}
+          onClick={handleLearnMore}
+          className={css.learnMoreBtn}
+        >
           Learn more
         </button>
-        {/* Використовуємо пропс isFavorite для відображення правильної іконки */}
-        {isFavorite ? (
-          <button className={css.favorite} onClick={handleDeleteNotice}>
-            <img src={trashIcon} alt="trash" width="18" height="18" />
+        {/* {isAuthenticated ? (
+          <button
+            data-profile={profile}
+            className={css.favorite}
+            onClick={handleAddToFavorites}
+          >
+            <img src={heartIcon} alt="heart" width="18" height="18" />
           </button>
         ) : (
-          <button className={css.favorite} onClick={handleAddToFavorites}>
-            <img src={heartIcon} alt="heart" width="18" height="18" />
+          <button
+            data-viewed={viewed}
+            data-profile={profile}
+            onClick={handleDeleteNotice}
+            className={css.favorite}
+          >
+            <img src={trashIcon} alt="trash" width="18" height="18" />
+          </button>
+        )} */}
+        {isAuthenticated && (
+          <button
+            data-viewed={viewed}
+            data-profile={profile}
+            onClick={handleToggleFavorite}
+            className={`${css.favorite} ${
+              isFavorite ? css.removeFavorite : css.addFavorite
+            }`}
+          >
+            <img
+              src={isFavorite ? trashIcon : heartIcon}
+              alt={isFavorite ? 'trash' : 'heart'}
+              width="18"
+              height="18"
+            />
           </button>
         )}
       </div>

@@ -60,14 +60,6 @@ const NavBar = () => {
               >
                 Our friends
               </Link>
-              {/* <Link
-                to="/add-pet"
-                className={`${css.menuItem} ${
-                  isActive('/add-pet') ? css.active : ''
-                }`}
-              >
-                AddPet
-              </Link> */}
             </div>
             {isAuthenticated ? (
               <UserNav onClose={handleMenuClose} />
