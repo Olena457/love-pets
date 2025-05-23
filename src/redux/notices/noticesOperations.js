@@ -98,7 +98,7 @@ export const addNoticeToFavorites = createAsyncThunk(
 
 export const deleteFromFavorites = createAsyncThunk(
   '/notices/deleteFromFavorites',
-  async ({ _id }, { rejectWithValue }) => {
+  async (_id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.delete(
         `/notices/favorites/remove/${_id}`

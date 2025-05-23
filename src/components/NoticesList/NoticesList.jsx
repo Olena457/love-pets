@@ -18,7 +18,9 @@ const NoticesList = ({ notices, profile, viewed }) => {
           key={`${notice._id} + ${index}`}
           notice={notice}
           profile={userProfile}
+          // viewed={profile ? false : viewed}
           viewed={viewed}
+          //           isFavorite={favorites.some(fav => fav._id === notice._id)} // Коректна перевірка
         />
       ))}
     </ul>
