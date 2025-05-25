@@ -1,11 +1,12 @@
-import css from './MainPage.module.css';
 import { Link } from 'react-router';
 import heartFull from '../../assets/icons/heartFull.svg';
+import css from './MainPage.module.css';
+
 const MainPage = () => {
   return (
     <div className={css.mainContainer}>
       <div className={css.containerLogo}>
-        <Link to="/home" className={css.homeButton}>
+        <Link to="/" className={css.homeButton}>
           <div className={css.logoMain}>
             <div className={css.logoText}>
               Petl

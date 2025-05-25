@@ -7,7 +7,7 @@ import { selectIsAuthenticated } from '../redux/users/usersSelectors.js';
 //   return isAuthenticated ? children : <Navigate to="/login" replace />;
 // };
 // export default PrivateRoute;
-function PrivateRoute({ component: Component, redirectTo = '/home' }) {
+function PrivateRoute({ component: Component, redirectTo = '/' }) {
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   return isAuthenticated ? Component : <Navigate to={redirectTo} />;

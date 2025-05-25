@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,8 +42,8 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const hideHeader = location.pathname === '/';
+  // const location = useLocation();
+  // const hideHeader = location.pathname === '/';
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
 
@@ -60,10 +60,10 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Layout />
-        {!hideHeader && <Header />}
+        <Header />
         <Routes>
-          <Route path="/" element={<MainPage hideHeader={true} />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
@@ -74,7 +74,7 @@ function App() {
                 path="/register"
                 element={
                   <RestrictedRoute
-                    redirectTo="/home"
+                    redirectTo="/"
                     component={<RegisterPage />}
                   />
                 }
@@ -82,10 +82,7 @@ function App() {
               <Route
                 path="/login"
                 element={
-                  <RestrictedRoute
-                    redirectTo="/home"
-                    component={<LoginPage />}
-                  />
+                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
                 }
               />
             </>
@@ -98,7 +95,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <PrivateRoute redirectTo="/home" component={<ProfilePage />} />
+              <PrivateRoute redirectTo="/" component={<ProfilePage />} />
             }
           >
             <Route index element={<Navigate to="favorites" replace />} />

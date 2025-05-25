@@ -33,7 +33,7 @@ const PageNotFound = () => {
           <h2 className={css.description}>
             Ooops! This page not found <span>:(</span>
           </h2>
-          <Link to="/home" className={css.btnGo}>
+          <Link to="/" className={css.btnGo}>
             To home page
           </Link>
         </div>

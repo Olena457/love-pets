@@ -36,9 +36,9 @@ export const fetchNotices = createAsyncThunk(
 
 export const fetchNoticeById = createAsyncThunk(
   '/notices/fetchNoticeById',
-  async ({ _id }, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get(`/notices/${_id}`);
+      const response = await axiosInstance.get(`/notices/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -84,11 +84,9 @@ export const fetchNoticeSpecies = createAsyncThunk(
 
 export const addNoticeToFavorites = createAsyncThunk(
   '/notices/addNoticeToFavorites',
-  async ({ _id }, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post(
-        `/notices/favorites/add/${_id}`
-      );
+      const response = await axiosInstance.post(`/notices/favorites/add/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -98,10 +96,10 @@ export const addNoticeToFavorites = createAsyncThunk(
 
 export const deleteFromFavorites = createAsyncThunk(
   '/notices/deleteFromFavorites',
-  async (_id, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.delete(
-        `/notices/favorites/remove/${_id}`
+        `/notices/favorites/remove/${id}`
       );
       return response.data;
     } catch (error) {
@@ -112,19 +110,19 @@ export const deleteFromFavorites = createAsyncThunk(
 
 export const toggleFavoriteNotice = createAsyncThunk(
   '/notices/toggleFavoriteNotice',
-  async ({ _id }, { getState, rejectWithValue }) => {
+  async (id, { getState, rejectWithValue }) => {
     const state = getState();
-    const isFavorite = state.notices.favorites.includes(_id);
+    const isFavorite = state.notices.favorites.includes(id);
 
     try {
       if (isFavorite) {
         const response = await axiosInstance.delete(
-          `/notices/favorites/remove/${_id}`
+          `/notices/favorites/remove/${id}`
         );
         return response.data;
       } else {
         const response = await axiosInstance.post(
-          `/notices/favorites/add/${_id}`
+          `/notices/favorites/add/${id}`
         );
         return response.data;
       }

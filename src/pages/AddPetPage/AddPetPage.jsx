@@ -1,6 +1,6 @@
 import AddPetForm from '../../components/AddPetForm/AddPetForm.jsx';
-import css from './AddPetPage.module.css';
 import ContainerAdd from '../../components/ContainerAdd/ContainerAdd.jsx';
+import css from './AddPetPage.module.css';
 
 import addImageMobile1x from '../../assets/imgs/mobile/add-mob@1x.png';
 import addImageMobile2x from '../../assets/imgs/mobile/add-mob@2x.png';

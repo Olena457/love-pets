@@ -69,7 +69,7 @@ export const ModalEditUser = () => {
     if (avatarUrl && avatarUrl.trim() !== '') {
       setPreviewAvatar(avatarUrl);
     } else {
-      setPreviewAvatar(defaultAvatar); // default avatar
+      setPreviewAvatar(defaultAvatar);
     }
   };
 
@@ -77,28 +77,7 @@ export const ModalEditUser = () => {
     <div className={css.modalEditUserWrap}>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <h2 className={css.editUserTitle}>Edit information</h2>
-        {/* <div className={css.userAvatarThumb}>
-          {previewAvatar.trim() !== 'https://test.png' ? null : (
-            <Icon
-              id="user"
-              // className={css.userBigIcon}
-              width={
-                deviceType === 'desktop'
-                  ? 50
-                  : deviceType === 'tablet'
-                  ? 50
-                  : 40
-              }
-              height={
-                deviceType === 'desktop'
-                  ? 50
-                  : deviceType === 'tablet'
-                  ? 50
-                  : 40
-              }
-            />
-          )}
-        </div> */}
+
         <div className={css.userAvatarThumb}>
           {previewAvatar && previewAvatar.trim() !== '' ? (
             <img

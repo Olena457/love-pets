@@ -1,7 +1,7 @@
+import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
 import Title from '../../components/Title/Title.jsx';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import css from './LoginPage.module.css';
-import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
 
 import dogImageMobile1x from '../../assets/imgs/mobile/login-mob@1x.png';
 import dogImageMobile2x from '../../assets/imgs/mobile/login-mob@2x.png';

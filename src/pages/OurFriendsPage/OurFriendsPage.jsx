@@ -6,9 +6,9 @@ import {
   selectIsLoading,
   selectError,
 } from '../../redux/friends/ourFriendsSelectors.js';
-import css from './OurFriendsPage.module.css';
 import OurFriendsList from '../../components/OurFriendsList/OurFiendsList.jsx';
 import Loader from '../../components/Loader/Loader.jsx';
+import css from './OurFriendsPage.module.css';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();

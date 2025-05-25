@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import css from './SelectLocation.module.css';
 import searchCommon from '../../assets/icons/searchCommon.svg';

@@ -64,3 +64,32 @@
   align-items: center;
   background-color: transparent;
 }
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.pawLink {
+  margin-left: 10px;
+}
+.petAvatar {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: var(--main-light);
+}
+
+@media screen and (min-width: 768px) {
+  .petAvatar {
+    width: 86px;
+    height: 86px;
+  }
+}
+.iconPetDefault {
+  margin-top: 0;
+}

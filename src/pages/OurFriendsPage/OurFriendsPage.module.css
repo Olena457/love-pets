@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 34px;
   padding-bottom: 80px;
+  /* padding-top: 34px; */
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .containerPageFriends {
     padding-top: 53px;
   }
@@ -14,8 +14,23 @@
   .containerPageFriends {
     padding-top: 64px;
   }
-}
+} */
 .titleFriend {
-  margin-left: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 0.94;
   margin-bottom: 38px;
+}
+@media screen and (min-width: 768px) {
+  .titleFriend {
+    margin-left: 50px;
+    font-size: 48px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .titleFriend {
+    margin-left: 100px;
+    font-size: 54px;
+  }
 }

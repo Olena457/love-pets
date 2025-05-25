@@ -1,7 +1,7 @@
-import css from './Loader.module.css';
+import { useState, useEffect } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { useState, useEffect } from 'react';
+import css from './Loader.module.css';
 
 const Loader = () => {
   const [progress, setProgress] = useState(0);

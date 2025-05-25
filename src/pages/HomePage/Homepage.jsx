@@ -1,5 +1,6 @@
-import css from './HomePage.module.css';
 import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
+import css from './HomePage.module.css';
+
 const HomePage = () => {
   return (
     <ContainerPage>

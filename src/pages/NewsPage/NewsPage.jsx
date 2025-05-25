@@ -8,11 +8,11 @@ import {
   selectTotalPages,
 } from '../../redux/news/newsSelectors.js';
 import { setCurrentPage, setSearchQuery } from '../../redux/news/newsSlice.js';
-import css from './NewsPage.module.css';
+import Pagination from '../../components/Pagination/Pagination.jsx';
 import Title from '../../components/Title/Title.jsx';
 import SearchField from '../../components/SearchField/SearchField.jsx';
 import NewsList from '../../components/NewsList/NewsList.jsx';
-import Pagination from '../../components/Pagination/Pagination.jsx';
+import css from './NewsPage.module.css';
 
 const NewsPage = () => {
   const dispatch = useDispatch();

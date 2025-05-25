@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import css from './ResultsNotFound.module.css';
-// import DogImg from '../../assets/imgs/attentionDog.png';
 import { useLocation } from 'react-router-dom';
 
 const ResultsNotFound = () => {

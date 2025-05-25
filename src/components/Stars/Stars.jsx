@@ -26,7 +26,7 @@ export const Stars = ({ popularity }) => {
     );
   }
 
-  // added stars
+  // gray stars
   for (let i = startsToShow; i < totalStars; i++) {
     stars.push(
       <img

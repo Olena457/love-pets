@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import Title from '../../components/Title/Title.jsx';
-import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
@@ -17,6 +17,7 @@ import {
   selectIsOpenModal,
   selectIsApproveModalOpen,
   selectModalData,
+  selectIsAttentionModalOpen,
 } from '../../redux/modal/modalSelectors.js';
 import Loader from '../../components/Loader/Loader.jsx';
 import {
@@ -24,7 +25,7 @@ import {
   selectCurrentPage,
   selectIsLoading,
   selectFavorites,
-  selectNotice,
+  // selectNotice,
   selectError,
 } from '../../redux/notices/noticesSelectors.js';
 import {
@@ -44,12 +45,13 @@ const NoticesPage = () => {
   const modalData = useSelector(selectModalData);
   const notices = useSelector(selectFilteredNoticesWithFilters);
   const favorites = useSelector(selectFavorites);
+  const isAttentionModalOpen = useSelector(selectIsAttentionModalOpen);
+  // const selectedNoticeState = useSelector(selectNotice);
   const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
-  const selectedNoticeState = useSelector(selectNotice);
   const totalPages = useSelector(selectTotalPages);
   const currentPage = useSelector(selectCurrentPage);
   const isLoading = useSelector(selectIsLoading);
-  const isAuthenticated = useSelector(selectIsAuthenticated);
+  // const isAuthenticated = useSelector(selectIsAuthenticated);
   const searchQuery = useSelector(selectSearchQuery);
   const category = useSelector(selectCategory);
   const gender = useSelector(selectGender);
@@ -89,11 +91,10 @@ const NoticesPage = () => {
       <Title title="Find your favorite pet" />
       <NoticesFilters onFilterChange={handleFilterChange} />
 
-      {isLoading ? (
-        <Loader />
-      ) : errorMessage ? (
+      {isLoading && <Loader />}
+      {!isLoading && errorMessage ? (
         <div className={css.errorContainer}>{errorMessage}</div>
-      ) : notices.length === 0 ? (
+      ) : !isLoading && notices.length === 0 ? (
         <div className={css.errorContainer}>
           No results found for the selected filters.🐈 <br /> Please refine your
           search.
@@ -115,23 +116,21 @@ const NoticesPage = () => {
           )}
         </>
       )}
-
       {isModalOpen && (
         <Modal onClose={() => dispatch(closeModal())}>
-          {isApproveModalOpen ? (
+          {isAttentionModalOpen && <ModalAttention />}
+          {isApproveModalOpen && (
             <ModalApproveAction onClose={() => dispatch(closeModal())} />
-          ) : modalData || selectedNoticeState ? (
+          )}
+          {modalData && (
             <ModalNotices
-              notice={modalData || selectedNoticeState}
+              notice={modalData}
               onClose={() => dispatch(closeModal())}
             />
-          ) : !isAuthenticated ? (
-            <ModalAttention />
-          ) : null}
+          )}
         </Modal>
       )}
     </div>
   );
 };
-
 export default NoticesPage;
