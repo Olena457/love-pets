@@ -12,7 +12,7 @@ const UserBar = () => {
     <div className={css.userBarContainer}>
       <span className={css.userName}>{userData?.name}</span>
       <Link to="/profile" className={css.circle}>
-        <Icon id="user" width={18} height={18} />
+        <Icon id="user" width={24} height={24} />
       </Link>
     </div>
   );

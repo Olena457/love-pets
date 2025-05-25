@@ -1,3 +1,24 @@
+.container {
+  max-width: 335px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 704px;
+    /* padding: 0 32px; */
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1280px;
+    padding: 0px;
+    /* padding: 0 63px 0 64px; */
+  }
+}
+
 .mainContainer {
   position: relative;
   display: flex;
@@ -5,13 +26,14 @@
   align-items: center;
   background-image: url(../src/assets/imgs/mobile/main-mob@1x.jpg);
   background-size: cover;
+  background-position: top center;
   background-position: center;
   object-fit: contain;
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
   height: 100dvh;
-
-  flex-grow: 0;
+  /* width: 100vw;
+  height: 100dvh; */
 }
 
 @media only screen and (min-width: 320px) and (min-resolution: 192dpi) {
@@ -32,13 +54,13 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) and (min-width: 1280px) {
   .mainContainer {
     background-image: url(../src/assets/imgs/desktop/main-desk@1x.jpg);
   }
 }
 
-@media screen and (min-width: 1280px) and (min-resolution: 192dpi) {
+@media screen and (min-width: 1024px) and (min-width: 1280px) and (min-resolution: 192dpi) {
   .mainContainer {
     background-image: url(../src/assets/imgs/desktop/main-desk@2x.jpg);
   }

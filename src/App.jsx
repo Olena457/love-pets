@@ -1,6 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './components/Loader/Loader.jsx';
 import { ToastContainer } from 'react-toastify';
@@ -42,11 +43,10 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  // const location = useLocation();
-  // const hideHeader = location.pathname === '/';
+  const location = useLocation();
+  const hideHeader = location.pathname === '/main';
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
-
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
@@ -60,10 +60,10 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Layout />
-        <Header />
+        {!hideHeader && <Header />}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/main" element={<MainPage />} />
+          <Route path="/main" element={<MainPage hideHeader={true} />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />

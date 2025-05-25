@@ -169,7 +169,7 @@
 @media screen and (min-width: 1280px) {
   .photo {
     background-image: url('../src/assets/imgs/desktop/home-desk@1x.jpg');
-    width: 1115px;
+    /* width: 1115px; */
     max-height: 384px;
   }
 }
@@ -178,6 +178,6 @@
     background-image: url('../src/assets/imgs/desktop/home-desk@2x.jpg');
     max-height: 384px;
     /* adeded */
-    max-width: 1115px;
+    /* max-width: 1115px; */
   }
 }

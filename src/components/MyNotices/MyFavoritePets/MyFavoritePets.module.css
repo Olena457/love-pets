@@ -3,7 +3,7 @@
 }
 .noticesContainerEmpty {
   padding: 80px 0 0;
-  background-color: #f8d7da;
+  background-color: var(--main-light);
 }
 @media screen and (min-width: 768px) {
   .noticesContainer {

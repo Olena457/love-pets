@@ -16,11 +16,13 @@
 
 .myNoticesList {
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .myNoticesList {
+    justify-content: flex-start;
     gap: 8px;
   }
 }
@@ -33,29 +35,10 @@
   padding: 15px 20px;
   font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase;
-  min-width: 99px;
+  min-width: 142px;
   border: none;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
-.navLinkFavorite {
-  color: var(--white-color);
-  background-color: var(--main-color);
-}
-.navLinkFavorite:hover,
-.navLinkFavorite:active {
-  background-color: var(--dark-hover);
-}
-.navLinkView {
-  color: var(--black-color);
-  background-color: var(--white-color);
-  border: 1px solid var(--light-border-color);
-}
-.navLinkView:active,
-.navLinkView:active {
-  border: 1px solid var(--main-color);
-}
-
 @media screen and (min-width: 768px) {
   .navLink {
     font-size: 16px;
@@ -63,4 +46,24 @@
     padding: 14px;
     min-width: 114px;
   }
+}
+.navLinkFavorite {
+  background-color: var(--main-color);
+  border: transparent;
+}
+.navLinkFavorite:hover,
+.navLinkFavorite:active {
+  color: var(--white-color);
+  background-color: var(--dark-hover);
+  border: 1px solid var(--light-border-color);
+}
+.navLinkView {
+  color: var(--black-color);
+  background-color: var(--white-color);
+  border: transparent;
+}
+.navLinkView:active,
+.navLinkView:hover {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
 }

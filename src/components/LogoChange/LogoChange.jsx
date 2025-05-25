@@ -45,7 +45,7 @@ import { Link, useLocation } from 'react-router-dom';
 import heartFull from '../../assets/icons/heartFull.svg';
 import heartWhite from '../../assets/icons/heartWhite.svg';
 import css from './LogoChange.module.css';
-import { Icon } from '../../components/Icon/Icon.jsx';
+import Icon from '../../components/Icon/Icon.jsx';
 
 const LogoChange = () => {
   const location = useLocation();
@@ -79,11 +79,11 @@ const LogoChange = () => {
                 </div>
               )}
             </Link>
-            <Link to="/" className={css.petAvatar}>
+            <Link to="/main" className={css.petAvatar}>
               <Icon
                 id="paw"
-                width={20}
-                height={20}
+                width={22}
+                height={22}
                 className={css.iconPetDefault}
               />
             </Link>

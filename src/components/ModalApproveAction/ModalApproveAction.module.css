@@ -1,32 +1,37 @@
 .iconCat {
   width: 80px;
   height: 80px;
-  /* margin-bottom: 20px; */
+  margin-top: 30px;
 }
-
+@media screen and (min-width: 768px) {
+  .iconCat {
+    width: 90px;
+    height: 90px;
+  }
+}
 .modalWrap {
   display: flex;
   flex-direction: column;
-
-  /* justify-content: center; */
   align-items: center;
   padding: 40px 28px;
+
+  justify-content: center;
   /* min-width: 295px; */
   /* width: calc(335px - 28px - 28px); */
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .modalWrap {
     padding: 80px;
-    /* width: calc(448px - 160px); */
+    width: calc(448px - 160px);
   }
-}
+} */
 .title {
   color: var(--black-color);
   font-size: 20px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
-  margin-bottom: 28px;
+  margin-top: 30px;
 }
 .iconImgContainer {
   display: flex;
@@ -34,7 +39,6 @@
   align-items: center;
   width: 80px;
   height: 80px;
-  /* border-radius: 50px; */
   margin-bottom: 20px;
 }
 
@@ -54,6 +58,7 @@
 }
 .modalBtnWrap {
   display: flex;
+  margin-top: 60px;
   /* justify-content: space-between; */
   width: 100%;
   gap: 8px;
@@ -66,7 +71,6 @@
   align-items: center;
   border: none;
   padding: 12px;
-  /* width: 100%; */
   width: 135px;
   border-radius: 30px;
   font-size: 14px;
@@ -86,8 +90,11 @@
   background-color: var(--main-color);
   color: var(--white-color);
 }
+.cancelButton {
+  background-color: #dde0e6;
+}
 .cancelButton:hover {
-  background-color: #e5e7eb;
+  background-color: var(--light-border-color);
 }
 .confirmButton:hover {
   background-color: #f9a825;

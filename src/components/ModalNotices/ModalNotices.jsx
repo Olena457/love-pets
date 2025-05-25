@@ -25,10 +25,10 @@ const ModalNotices = () => {
 
   const handleAddToFavorites = () => {
     if (favorites.includes(notice._id)) {
-      toast.error('This notice is already in your favorites!');
+      toast.error('This pet is already in your favorites!');
     } else {
       dispatch(addNoticeToFavorites(notice._id));
-      toast.success('Notice added to favorites!');
+      toast.success('This animal is already in favorites!');
     }
     dispatch(closeModal());
   };

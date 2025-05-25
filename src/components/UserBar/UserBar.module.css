@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 @media screen and (min-width: 1280px) {
   .circle {
@@ -25,11 +26,12 @@
 .userBarContainer {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 .userName {
   font-weight: 600;
   font-size: 14px;
   line-height: 1.2;
   color: var(--black-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

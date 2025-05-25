@@ -1,12 +1,14 @@
 .title {
   font-size: 24px;
   font-weight: 700;
-  margin-left: 30px;
-  margin-bottom: 10px;
+  margin-left: 60px;
+  margin-bottom: 15px;
   line-height: 32px;
   color: var(--black-color);
 }
 .containerProfile {
+  display: grid;
+  grid-template-columns: 1fr;
   min-width: 335px;
   margin: 0 auto;
   padding: 0 0 20px;
@@ -20,8 +22,7 @@
 
 @media screen and (min-width: 1280px) {
   .containerProfile {
-    display: grid;
-    grid-template-columns: 520px 1fr;
+    grid-template-columns: 435px 1.1fr;
     max-width: 1216px;
     padding: 0 32px;
   }

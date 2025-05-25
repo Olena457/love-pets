@@ -1,15 +1,13 @@
 import { useForm, Controller } from 'react-hook-form';
+import Select from 'react-select';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import customSelectAddStyles from '../../components/AddPetForm/customSelectAddStyles.js';
 import multipleImg from '../../assets/icons/multiple.svg';
 import iconMale from '../../assets/icons/iconMale.svg';
 import iconFemale from '../../assets/icons/iconFemale.svg';
 import Icon from '../Icon/Icon.jsx';
-
-import customSelectAddStyles from '../../components/AddPetForm/customSelectAddStyles.js';
-
-import Select from 'react-select';
-import { toast } from 'react-toastify';
 import css from './AddPetForm.module.css';
 
 const petTypes = [
@@ -93,7 +91,7 @@ const AddPetForm = () => {
     }
 
     try {
-      toast.success('Data successfully added!');
+      toast.success('The simulation adding an animal successfully!');
       console.log('Simulated Data:', data);
       reset();
 

@@ -5,10 +5,13 @@ const MyNotices = () => {
   return (
     <div className={css.myNoticesWrap}>
       <div className={css.myNoticesList}>
-        <NavLink className={css.navLinkFavorite} to="favorites">
+        <NavLink
+          className={`${css.navLink} ${css.navLinkFavorite}`}
+          to="favorites"
+        >
           My favorites pets
         </NavLink>
-        <NavLink className={css.navLinkView} to="viewed">
+        <NavLink className={`${css.navLink} ${css.navLinkView}`} to="viewed">
           Viewed
         </NavLink>
       </div>

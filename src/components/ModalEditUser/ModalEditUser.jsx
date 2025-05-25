@@ -21,7 +21,10 @@ const EditUserSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Name should have at least 2 characters'),
   email: Yup.string().matches(emailRegExp, 'Invalid email'),
   phone: Yup.string().matches(phoneRegExp, 'Invalid phone'),
-  avatar: Yup.string().matches(avatarUrlRegExp, 'Invalid URL or file format'),
+  avatar: Yup.string()
+    .matches(avatarUrlRegExp, 'Invalid URL or file format')
+    .nullable()
+    .transform(value => (value === '' ? null : value)),
 });
 
 export const ModalEditUser = () => {
@@ -126,7 +129,7 @@ export const ModalEditUser = () => {
             <input
               {...register('avatar')}
               type="text"
-              placeholder="https://test.png"
+              placeholder="Avatar URL"
               className={css.editUserAvatarInput}
             />
             <span className={css.errorMessage}>{errors.avatar?.message}</span>

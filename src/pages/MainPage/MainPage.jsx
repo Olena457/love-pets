@@ -4,17 +4,23 @@ import css from './MainPage.module.css';
 
 const MainPage = () => {
   return (
-    <div className={css.mainContainer}>
-      <div className={css.containerLogo}>
-        <Link to="/" className={css.homeButton}>
-          <div className={css.logoMain}>
-            <div className={css.logoText}>
-              Petl
-              <img className={css.logoIcon} src={heartFull} alt="Heart Icon" />
-              ve
+    <div className={css.containerPage}>
+      <div className={css.mainContainer}>
+        <div className={css.containerLogo}>
+          <Link to="/" className={css.homeButton}>
+            <div className={css.logoMain}>
+              <div className={css.logoText}>
+                Petl
+                <img
+                  className={css.logoIcon}
+                  src={heartFull}
+                  alt="Heart Icon"
+                />
+                ve
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );
