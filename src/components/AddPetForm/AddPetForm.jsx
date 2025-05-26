@@ -62,7 +62,6 @@ const AddPetForm = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
-  // const [sex, setSex] = useState('');
 
   const handleSpeciesChange = option => {
     setValue('species', option);
@@ -97,7 +96,7 @@ const AddPetForm = () => {
 
       setTimeout(() => {
         window.location.href = '/profile';
-      }, 2000);
+      }, 3000);
     } catch {
       toast.error('Something went wrong');
     }

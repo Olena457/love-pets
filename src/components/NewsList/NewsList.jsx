@@ -1,7 +1,7 @@
-import NewsItem from '../NewsItem/NewsItem.jsx';
-import css from './NewsList.module.css';
 import { useSelector } from 'react-redux';
 import { selectNews } from '../../redux/news/newsSelectors.js';
+import NewsItem from '../NewsItem/NewsItem.jsx';
+import css from './NewsList.module.css';
 
 const NewsList = () => {
   const news = useSelector(selectNews);

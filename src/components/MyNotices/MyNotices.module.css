@@ -1,5 +1,5 @@
 .myNoticesWrap {
-  padding: 40px 0;
+  padding: 40px 0px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,11 +16,17 @@
 
 .myNoticesList {
   display: flex;
+  min-width: 280px;
   justify-content: center;
   gap: 10px;
 }
 
 @media screen and (min-width: 768px) {
+  .myNoticesList {
+    max-width: 142px;
+  }
+}
+@media screen and (min-width: 1280px) {
   .myNoticesList {
     justify-content: flex-start;
     gap: 8px;
@@ -35,7 +41,7 @@
   padding: 15px 20px;
   font-size: 14px;
   font-weight: 700;
-  min-width: 142px;
+  /* min-width: 142px; */
   border: none;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -51,8 +57,9 @@
   background-color: var(--main-color);
   border: transparent;
 }
-.navLinkFavorite:hover,
-.navLinkFavorite:active {
+.navLinkFavorite:active,
+.navLinkFavorite:focus,
+.navLinkFavorite:hover {
   color: var(--white-color);
   background-color: var(--dark-hover);
   border: 1px solid var(--light-border-color);
@@ -63,6 +70,7 @@
   border: transparent;
 }
 .navLinkView:active,
+.navLinkView:focus,
 .navLinkView:hover {
   color: var(--main-color);
   border: 1px solid var(--main-color);

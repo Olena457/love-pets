@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectIsAuthenticated } from '../redux/users/usersSelectors.js';
 import { Navigate } from 'react-router-dom';
+import { selectIsAuthenticated } from '../redux/users/usersSelectors.js';
 
 const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);

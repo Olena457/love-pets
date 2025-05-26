@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import blackBurger from '../../assets/icons/blackBurger.svg';
-import whiteBurger from '../../assets/icons/whiteBurger.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import { selectIsOpenMobMenu } from '../../redux/mobile/mobMenuSelectors.js';
 import { openMobMenu, closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
-import css from './NavBar.module.css';
+import { MobMenu } from '../MobMenu/MobMenu.jsx';
 import UserNav from '../UserNav/UserNav.jsx';
 import AuthNav from '../AuthNav/AuthNav.jsx';
 import UserBar from '../UserBar/UserBar.jsx';
-import { MobMenu } from '../MobMenu/MobMenu.jsx';
+import blackBurger from '../../assets/icons/blackBurger.svg';
+import whiteBurger from '../../assets/icons/whiteBurger.svg';
+import css from './NavBar.module.css';
 
 const NavBar = () => {
   const dispatch = useDispatch();

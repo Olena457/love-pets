@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { openApproveModal } from '../../redux/modal/modalSlice.js';
 import { useDispatch } from 'react-redux';
+import { openApproveModal } from '../../redux/modal/modalSlice.js';
 import Icon from '../Icon/Icon.jsx';
 import css from './PetBlock.module.css';
 

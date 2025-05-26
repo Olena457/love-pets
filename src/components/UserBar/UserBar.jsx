@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/users/usersSelectors.js';
 import Icon from '../../components/Icon/Icon.jsx';
-
 import css from './UserBar.module.css';
 
 const UserBar = () => {
@@ -10,10 +9,10 @@ const UserBar = () => {
 
   return (
     <div className={css.userBarContainer}>
-      <span className={css.userName}>{userData?.name}</span>
       <Link to="/profile" className={css.circle}>
         <Icon id="user" width={24} height={24} />
       </Link>
+      <span className={css.userName}>{userData?.name}</span>
     </div>
   );
 };

@@ -2,21 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 320px;
-  margin: 0 auto;
-  padding: 20px;
   gap: 10px;
 }
 @media screen and (min-width: 768px) {
   .pageLogin {
     gap: 16px;
-    /* width: 704px; */
-    padding: 0px;
   }
 }
 @media screen and (min-width: 1280px) {
   .pageLogin {
-    max-width: 1216px;
     flex-direction: row;
 
     gap: 32px;
@@ -34,16 +28,15 @@
 }
 @media screen and (min-width: 768px) {
   .containerLogin {
-    height: 560px;
     border-radius: 60px;
-    padding: 80px 140px 60px 140px;
+    padding: 80px 100px 60px 100px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .containerLogin {
     width: 592px;
-    height: 654px;
+    min-height: 620px;
     padding: 120px 80px 85px 80px;
   }
 }

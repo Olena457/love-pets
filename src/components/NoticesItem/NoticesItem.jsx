@@ -1,4 +1,4 @@
-import css from './NoticesItem.module.css';
+import { useState } from 'react';
 import starYellow from '../../assets/icons/starYellow.svg';
 import trashIcon from '../../assets/icons/trashDel.svg';
 import heartIcon from '../../assets/icons/heartEmpty.svg';
@@ -13,8 +13,10 @@ import {
   deleteFromFavorites,
 } from '../../redux/notices/noticesOperations.js';
 import { selectProfile } from '../../redux/profile/profileSelectors.js';
+import css from './NoticesItem.module.css';
 
 const NoticesItem = ({ notice, profile, viewed }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const userProfile = useSelector(selectProfile);
@@ -83,7 +85,13 @@ const NoticesItem = ({ notice, profile, viewed }) => {
           <b className={css.info}>Category:</b> {notice.category}
         </p>
       </div>
-      <p className={css.comment}>{notice.comment}</p>
+      <p
+        className={`${css.comment} ${isExpanded ? css.expanded : ''}`}
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {isExpanded ? notice.comment : `${notice.comment.slice(0, 100)}...`}
+      </p>
+      {/* <p className={css.comment}>{notice.comment}</p> */}
       <div className={css.priceContainer}>
         {notice.price > 0 ? (
           <span className={css.price}>${notice.price}</span>

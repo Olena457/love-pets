@@ -1,25 +1,5 @@
-/* .wrapperHome {
-  background-color: aqua;
-  min-width: 280px;
-  margin: 10px 20px 0 20px;
-} */
-/* @media screen and (min-width: 768px) {
-  .wrapperHome {
-    margin: 0 auto;
-    padding: 0px;
-    max-width: 704px;
-  }
-} */
-/* @media screen and (min-width: 1280px) {
-  .wrapperHome {
-    margin-top: 16px;
-    padding: 0px;
-    max-width: 1216px;
-  }
-} */
 .wrapperHome {
   max-width: 335px;
-  /* min-width: 280px; */
   margin: 0 auto;
   margin-top: 20px;
   padding: 0 20px;
@@ -28,17 +8,14 @@
 @media screen and (min-width: 768px) {
   .wrapperHome {
     max-width: 704px;
-    margin-top: 32px;
-    /* padding: 0px; */
-    padding: 0 20px;
+    padding: 0 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .wrapperHome {
-    max-width: 1180px;
-    margin-top: 0px;
-    /* padding: 0 63px 0 64px; */
+    max-width: 1280px;
+    margin-top: 10px;
   }
 }
 .header {
@@ -47,14 +24,10 @@
   align-items: center;
   padding: 20px 20px 20px;
   min-width: 280px;
-  /* width: 100%; */
   margin: 0 auto;
 }
 
 .homeHeader {
-  margin-top: 20px;
-  /* margin: 0 auto; */
-  /* min-width: 280px; */
   background-color: var(--main-color);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -72,10 +45,10 @@
 
 @media screen and (min-width: 1280px) {
   .header {
-    padding: 32px 64px;
+    padding: 20px 64px 20px 64px;
   }
   .homeHeader {
-    padding: 32px 64px 26px 32px;
+    padding: 20px 64px 44px 32px;
     max-width: 1280px;
   }
 }

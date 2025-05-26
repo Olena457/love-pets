@@ -1,6 +1,6 @@
-import css from './Stars.module.css';
 import starYellow from '../../assets/icons/starYellow.svg';
 import starGray from '../../assets/icons/starGray.svg';
+import css from './Stars.module.css';
 
 export const Stars = ({ popularity }) => {
   const oneStar = 500;
@@ -12,7 +12,7 @@ export const Stars = ({ popularity }) => {
 
   let stars = [];
 
-  // added yellow stars
+  // __________ yellow stars
   for (let i = 0; i < startsToShow; i++) {
     stars.push(
       <img
@@ -26,7 +26,7 @@ export const Stars = ({ popularity }) => {
     );
   }
 
-  // gray stars
+  //___________ gray stars
   for (let i = startsToShow; i < totalStars; i++) {
     stars.push(
       <img

@@ -25,8 +25,8 @@ import {
   resetFilters,
 } from '../../redux/filters/filtersSlice.js';
 import SearchField from '../SearchField/SearchField.jsx';
-import css from './NoticesFilters.module.css';
 import selectStyles from './selectStyles';
+import css from './NoticesFilters.module.css';
 
 const NoticesFilters = React.memo(({ onFilterChange }) => {
   const dispatch = useDispatch();

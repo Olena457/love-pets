@@ -1,7 +1,7 @@
-import css from './SearchField.module.css';
 import { useEffect, useState } from 'react';
 import searchCommon from '../../assets/icons/searchCommon.svg';
 import blackCross from '../../assets/icons/blackCross.svg';
+import css from './SearchField.module.css';
 
 const SearchField = ({ onSubmit, initialQuery = '' }) => {
   const [query, setQuery] = useState(initialQuery);

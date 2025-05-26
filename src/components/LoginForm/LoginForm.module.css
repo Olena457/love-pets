@@ -58,6 +58,7 @@ input.invalid {
   right: 10px;
   cursor: pointer;
   font-size: 18px;
+  margin-top: 15px;
   border: none;
   background: none;
 }
@@ -68,7 +69,6 @@ input.invalid + .togglePassword {
   .togglePassword {
     right: 16px;
     font-size: 32px;
-    margin-top: 5px;
   }
 }
 

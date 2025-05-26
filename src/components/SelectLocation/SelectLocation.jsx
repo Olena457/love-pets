@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
-import css from './SelectLocation.module.css';
 import searchCommon from '../../assets/icons/searchCommon.svg';
 import blackCross from '../../assets/icons/blackCross.svg';
 import selectCustomLocationStyles from './selectCustomLocationStyles.js';
+import css from './SelectLocation.module.css';
 
 const SelectLocation = ({ onSubmit, initialValue = '', options }) => {
   const [selectedValue, setSelectedValue] = useState(initialValue);

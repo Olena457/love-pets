@@ -1,5 +1,5 @@
-import css from './ContainerImage.module.css';
 import { useLocation } from 'react-router-dom';
+import css from './ContainerImage.module.css';
 
 const ContainerImage = ({ images }) => {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import css from './ResultsNotFound.module.css';
-import { useLocation } from 'react-router-dom';
 
 const ResultsNotFound = () => {
   const [isProfile, setIsProfile] = useState(false);

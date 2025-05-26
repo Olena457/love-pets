@@ -7,6 +7,7 @@ import Modal from '../../components/Modal/Modal.jsx';
 import { ModalEditUser } from '../../components/ModalEditUser/ModalEditUser.jsx';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 // import ModalAttention from '../../components/ModalAttention/ModalAttention.jsx';
+import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import ModalNotices from '../../components/ModalNotices/ModalNotices.jsx';
 import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
 import {
@@ -34,8 +35,7 @@ const ProfilePage = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1 className={css.title}>Profile Page</h1>
+    <div className={css.containerPage}>
       <div className={css.containerProfile}>
         <UserCard />
         <MyNotice />
@@ -59,8 +59,11 @@ const ProfilePage = () => {
           </Modal>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
 export default ProfilePage;
+{
+  /* <h1 className={css.title}>Profile Page</h1> */
+}

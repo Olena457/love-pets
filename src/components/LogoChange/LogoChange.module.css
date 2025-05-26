@@ -71,24 +71,27 @@
 }
 
 .petAvatar {
-  display: flex;
-  margin-left: 10px;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-color: var(--main-light);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.iconPaw {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
+  .iconPaw {
+    display: block;
+  }
   .petAvatar {
     width: 36px;
     height: 36px;
+    display: flex;
+    margin-left: 10px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    background-color: var(--main-light);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
-}
-.iconPetDefault {
-  margin-top: 0;
 }

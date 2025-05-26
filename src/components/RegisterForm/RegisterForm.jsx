@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import eyeIcon from '../../assets/icons/eyeIcon.svg';
 import showEye from '../../assets/icons/showEye.svg';
-import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/users/usersOperations.js';
-import css from './RegisterForm.module.css';
-import { useNavigate } from 'react-router-dom';
 import Icon from '../Icon/Icon.jsx';
+import css from './RegisterForm.module.css';
 
 const schema = yup.object().shape({
   name: yup.string().required('Name is required'),

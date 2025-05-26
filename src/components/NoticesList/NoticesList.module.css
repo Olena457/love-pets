@@ -40,12 +40,19 @@
     row-gap: 40px;
   }
 }
-/* style favorite_______________ */
-.profileList {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-/* styles viewed__________ */
+/* style favorite and view_______________ */
+.profileList,
 .viewedList {
-  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+@media screen and (min-width: 580px) {
+  .profileList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .viewedList {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

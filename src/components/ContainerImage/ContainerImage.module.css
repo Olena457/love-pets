@@ -49,7 +49,7 @@
 }
 @media screen and (min-width: 1280px) {
   .blockCat {
-    bottom: 90px;
+    bottom: 60px;
     left: 90px;
   }
 }
@@ -63,7 +63,6 @@
     bottom: 32px;
     left: 32px;
     display: flex;
-    width: 294px;
     z-index: 3;
     height: 121px;
     background-image: url('../src/assets/imgs/block-dog.png');
@@ -78,7 +77,7 @@
 }
 
 .petImage {
-  height: 280px;
+  min-height: 280px;
 }
 
 @media screen and (min-width: 768px) {
@@ -90,8 +89,10 @@
 
 @media screen and (min-width: 1280px) {
   .petImage {
-    height: 652px;
-    width: 592px;
+    height: 620px;
+    display: block;
     margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
   }
 }

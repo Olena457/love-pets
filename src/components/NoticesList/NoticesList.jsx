@@ -1,8 +1,8 @@
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import NoticesItem from '../NoticesItem/NoticesItem.jsx';
-import css from './NoticesList.module.css';
-import { useSelector } from 'react-redux';
 import { selectProfile } from '../../redux/profile/profileSelectors.js';
+import css from './NoticesList.module.css';
 
 const NoticesList = ({ notices, profile, viewed }) => {
   const userProfile = useSelector(selectProfile);

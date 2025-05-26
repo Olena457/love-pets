@@ -62,15 +62,7 @@ input.invalid {
   margin-left: 16px;
   color: var(--red-color);
 }
-/* .togglePassword {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  border: none;
-  background: none;
-  transition: color 0.3s ease;
-} */
+
 .togglePassword {
   position: absolute;
   top: 50%;
@@ -88,7 +80,6 @@ input.invalid {
   .togglePassword {
     right: 16px;
     font-size: 22px;
-    /* margin-top: 5px; */
   }
 }
 
