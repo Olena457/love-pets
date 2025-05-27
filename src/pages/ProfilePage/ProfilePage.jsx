@@ -64,6 +64,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-{
-  /* <h1 className={css.title}>Profile Page</h1> */
-}

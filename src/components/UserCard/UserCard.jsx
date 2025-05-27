@@ -4,9 +4,8 @@ import Icon from '../Icon/Icon.jsx';
 import UserBlock from '../UserBlock/UserBlock.jsx';
 import { selectProfile } from '../../redux/profile/profileSelectors.js';
 import PetBlock from '../PetBlock/PetBlock.jsx';
-import css from './UserCard.module.css';
 import defaultAvatar from '../../assets/imgs/test.jpg';
-// import ProfileContainer from '../ProfileContainer/ProfileContainer.jsx';
+import css from './UserCard.module.css';
 
 const UserCard = () => {
   const dispatch = useDispatch();

@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../../redux/modal/modalSlice.js';
-import { addNoticeToFavorites } from '../../redux/notices/noticesOperations.js';
 import { toast } from 'react-toastify';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import { selectUser } from '../../redux/users/usersSelectors.js';
+import { addNoticeToFavorites } from '../../redux/notices/noticesOperations.js';
 import { Stars } from '../Stars/Stars.jsx';
 import EmptyWhite from '../../assets/icons/emptyWhite.svg';
-import css from './ModalNotices.module.css';
-import { selectUser } from '../../redux/users/usersSelectors.js';
 import {
   selectNotice,
   selectIsLoading,
   selectError,
 } from '../../redux/notices/noticesSelectors.js';
+import css from './ModalNotices.module.css';
 
 const ModalNotices = () => {
   const dispatch = useDispatch();

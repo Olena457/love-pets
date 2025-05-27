@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import { logout } from '../../redux/users/usersOperations.js';
-import css from './ModalApproveAction.module.css';
 import catSmall from '../../assets/imgs/cat-small@1x.png';
+import css from './ModalApproveAction.module.css';
 
 const ModalApproveAction = ({ onClose }) => {
   const dispatch = useDispatch();

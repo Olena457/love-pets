@@ -196,7 +196,7 @@ const AddPetForm = () => {
                 />
               )}
             />
-            <button className={css.uploadButton}>
+            <button className={css.uploadButton} disabled>
               <span className={css.uploadTitle}>Upload photo</span>
               <Icon
                 id="cloud"

@@ -9,14 +9,13 @@ import { selectProfile } from '../../redux/profile/profileSelectors';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import { useDeviceType } from '../../hooks/useDeviceType.js';
 import Icon from '../Icon/Icon.jsx';
-import css from './ModalEditUser.module.css';
 const defaultAvatar = '../src/assets/imgs/test.jpg';
+import css from './ModalEditUser.module.css';
 
 const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
 const emailRegExp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 const phoneRegExp = /^\+38\d{10}$/;
 
-// form validation
 const EditUserSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Name should have at least 2 characters'),
   email: Yup.string().matches(emailRegExp, 'Invalid email'),
@@ -136,7 +135,7 @@ export const ModalEditUser = () => {
           </div>
 
           <button
-            type="button"
+            disabled
             onClick={handleUploadPhoto}
             className={css.uploadButton}
           >
