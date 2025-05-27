@@ -34,7 +34,6 @@
 .loginButton:hover,
 .loginButton:focus {
   background-color: var(--dark-hover);
-  color: var(--white-color);
 }
 
 .registerButton {
@@ -44,5 +43,5 @@
 
 .registerButton:hover,
 .registerButton:focus {
-  background-color: var(--hover-light);
+  background-color: var(--main-light);
 }

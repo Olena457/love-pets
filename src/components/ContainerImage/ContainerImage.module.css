@@ -62,6 +62,7 @@
     position: absolute;
     bottom: 32px;
     left: 32px;
+    width: 294px;
     display: flex;
     z-index: 3;
     height: 121px;

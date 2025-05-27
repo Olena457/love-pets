@@ -3,10 +3,10 @@
   flex-direction: column;
   min-width: 280px;
   position: relative;
-  padding: 50px 12px 40px 12px;
   border-radius: 15px;
-  background-color: var(--white-color);
   gap: 20px;
+  padding: 50px 12px 40px 12px;
+  background-color: var(--white-color);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -15,7 +15,12 @@
 }
 @media screen and (min-width: 768px) {
   .wrapperFriends {
-    min-width: 320px;
+    width: 320px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapperFriends {
+    width: 370px;
   }
 }
 .hourTime {

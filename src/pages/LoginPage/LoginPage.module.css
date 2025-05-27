@@ -37,7 +37,7 @@
   .containerLogin {
     width: 592px;
     min-height: 620px;
-    padding: 120px 80px 85px 80px;
+    padding: 80px 80px 85px 80px;
   }
 }
 
@@ -59,9 +59,8 @@
   font-weight: 500;
   margin-top: 15px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .description {
-    margin-top: 15px;
-    gap: 18px;
+    margin-top: 20px;
   }
 }

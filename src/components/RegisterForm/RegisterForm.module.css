@@ -122,8 +122,11 @@ input.invalid {
     font-size: 16px;
   }
 }
-.loginBtn:hover {
-  background-color: var(--dark-hover);
+.loginBtn:hover,
+.loginBtn:focus,
+.loginBtn:active {
+  background-color: var(--hover-light);
+  color: var(--main-color);
 }
 .footerDescription,
 .footerDescription a {
@@ -134,7 +137,7 @@ input.invalid {
 }
 .footerDescription {
   margin-bottom: 12px;
-  color: var(--input-default);
+  color: #757575;
 }
 @media screen and (min-width: 768px) {
   .footerDescription,

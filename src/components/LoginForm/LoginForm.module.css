@@ -86,16 +86,22 @@ input.invalid + .togglePassword {
 .loginBtn {
   margin-top: 14px;
   padding: 12px;
-  background-color: var(--main-color);
   border: none;
   border-radius: 30px;
-  color: var(--white-color);
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  color: var(--white-color);
+  background-color: var(--main-color);
   transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.loginBtn:hover,
+.loginBtn:focus,
+.loginBtn:active {
+  background-color: var(--hover-light);
+  color: var(--main-color);
 }
 @media screen and (min-width: 768px) {
   .loginBtn {
@@ -105,9 +111,7 @@ input.invalid + .togglePassword {
     font-size: 16px;
   }
 }
-.loginBtn:hover {
-  background-color: var(--dark-hover);
-}
+
 .footerDescription,
 .footerDescription a {
   display: flex;
@@ -117,7 +121,7 @@ input.invalid + .togglePassword {
 }
 .footerDescription {
   margin-bottom: 12px;
-  color: var(--input-default);
+  color: #757575;
 }
 @media screen and (min-width: 768px) {
   .footerDescription,
