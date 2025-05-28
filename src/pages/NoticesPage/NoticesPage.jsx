@@ -84,19 +84,19 @@ const NoticesPage = () => {
     dispatch(setCurrentPage(page));
     dispatch(fetchNotices({ ...params, page }));
   };
-
   return (
     <div className={css.container}>
       <Title title="Find your favorite pet" />
       <NoticesFilters onFilterChange={handleFilterChange} />
 
-      {isLoading && <Loader />}
-      {!isLoading && errorMessage ? (
+      {isLoading ? (
+        <Loader />
+      ) : errorMessage ? (
         <div className={css.errorContainer}>{errorMessage}</div>
-      ) : !isLoading && notices.length === 0 ? (
+      ) : notices.length === 0 ? (
         <div className={css.errorContainer}>
-          No results found for the selected filters.🐈 <br /> Please refine your
-          search.
+          No results found for the selected filters.🐈 <br />
+          Please refine your search.
         </div>
       ) : (
         <>
@@ -110,6 +110,7 @@ const NoticesPage = () => {
           )}
         </>
       )}
+
       {isModalOpen && (
         <Modal onClose={() => dispatch(closeModal())}>
           {isAttentionModalOpen && <ModalAttention />}

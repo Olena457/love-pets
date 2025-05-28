@@ -14,17 +14,34 @@ import css from './ModalEditUser.module.css';
 
 const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
 const emailRegExp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-const phoneRegExp = /^\+38\d{10}$/;
+// const phoneRegExp = /^\+38\d{10}$/;
+const phoneRegExp = /^\+?38\s?\d{3}\s?\d{3}\s?\d{4}$/;
 
 const EditUserSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Name should have at least 2 characters'),
-  email: Yup.string().matches(emailRegExp, 'Invalid email'),
-  phone: Yup.string().matches(phoneRegExp, 'Invalid phone'),
+  name: Yup.string()
+    .min(2, 'Name should have at least 2 characters')
+    .required('Name is required'),
+  email: Yup.string()
+    .matches(emailRegExp, 'Invalid email')
+    .required('Email is required'),
+  phone: Yup.string().matches(phoneRegExp, 'Invalid phone').nullable(),
   avatar: Yup.string()
     .matches(avatarUrlRegExp, 'Invalid URL or file format')
     .nullable()
-    .transform(value => (value === '' ? null : value)),
+    .transform((value, originalValue) =>
+      originalValue.trim() === '' ? null : value
+    ),
 });
+
+// const EditUserSchema = Yup.object().shape({
+//   name: Yup.string().min(2, 'Name should have at least 2 characters'),
+//   email: Yup.string().matches(emailRegExp, 'Invalid email'),
+//   phone: Yup.string().matches(phoneRegExp, 'Invalid phone'),
+//   avatar: Yup.string()
+//     .matches(avatarUrlRegExp, 'Invalid URL or file format')
+//     .nullable()
+//     .transform(value => (value === '' ? null : value)),
+// });
 
 export const ModalEditUser = () => {
   const deviceType = useDeviceType();
@@ -46,18 +63,43 @@ export const ModalEditUser = () => {
     resolver: yupResolver(EditUserSchema),
     mode: 'onChange',
     defaultValues: {
-      name: userData.name || 'Name',
-      email: userData.email || 'name@gmail.com',
-      phone: userData.phone || '+380000000000',
-      avatar: userData.avatar || '',
+      name: userData.name || '',
+      email: userData.email || '',
+      phone: userData.phone || null,
+      avatar: userData.avatar || null,
     },
   });
 
+  // const handleFormSubmit = data => {
+  //   const { name, email, phone, avatar } = data;
+
+  //   try {
+  //     dispatch(
+  //       updateProfile({
+  //         name,
+  //         email,
+  //         phone: phone || null,
+  //         avatar: data.avatar?.trim() ? data.avatar : null,
+  //       })
+  //     );
+  //     reset();
+  //     dispatch(closeModal());
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   }
+  // };
   const handleFormSubmit = data => {
-    const { name, email, phone, avatar } = data;
+    const cleanedData = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone?.trim() ? data.phone : null, // Якщо порожнє, буде null
+      avatar: data.avatar?.trim() ? data.avatar : null, // Якщо порожнє, буде null
+    };
+
+    console.log('Sent profile update:', cleanedData); // Перевіримо, що відправляється
 
     try {
-      dispatch(updateProfile({ name, email, phone, avatar }));
+      dispatch(updateProfile(cleanedData));
       reset();
       dispatch(closeModal());
     } catch (error) {

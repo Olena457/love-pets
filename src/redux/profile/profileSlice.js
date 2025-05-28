@@ -71,8 +71,9 @@ const profileSlice = createSlice({
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.profile = action.payload;
+        state.profile = { ...state.profile, ...action.payload }; // Оновлюємо всі дані профілю
       })
+      // state.profile = action.payload;
       .addCase(updateProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
