@@ -38,14 +38,21 @@ const NoticesItem = ({ notice, profile, viewed }) => {
       dispatch(openAttentionModal());
       return;
     }
-    console.log('Видаляється notice з ID:', notice._id); // log id
+
+    console.log('Видаляється notice з ID:', notice._id);
     if (isFavorite) {
       dispatch(deleteFromFavorites(notice._id));
-      toast.info(`Notice "${notice.title}" has been removed from favorites!`);
+      toast.error(`Notice "${notice.title}" has been removed from favorites!`);
     } else {
+      if (userProfile?.noticesFavorites?.some(fav => fav._id === notice._id)) {
+        toast.error('This pet is already in your favorites!');
+        return;
+      }
+
       dispatch(addNoticeToFavorites(notice._id));
       toast.success(`Notice "${notice.title}" has been added to favorites!`);
     }
+
     dispatch(fetchProfileFull());
   };
 
@@ -89,9 +96,8 @@ const NoticesItem = ({ notice, profile, viewed }) => {
         className={`${css.comment} ${isExpanded ? css.expanded : ''}`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        {isExpanded ? notice.comment : `${notice.comment.slice(0, 100)}...`}
+        {isExpanded ? notice.comment : `${notice.comment}...`}
       </p>
-      {/* <p className={css.comment}>{notice.comment}</p> */}
       <div className={css.priceContainer}>
         {notice.price > 0 ? (
           <span className={css.price}>${notice.price}</span>
@@ -109,7 +115,6 @@ const NoticesItem = ({ notice, profile, viewed }) => {
           Learn more
         </button>
 
-        {/* {isAuthenticated && */}
         {!viewed &&
           (isFavorite ? (
             <button

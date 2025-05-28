@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useDeviceType } from '../../hooks/useDeviceType.js';
 import { selectProfile } from '../../redux/profile/profileSelectors.js';
-import css from './UserBlock.module.css';
 import Icon from '../Icon/Icon.jsx';
+import css from './UserBlock.module.css';
 
 const UserBlock = () => {
   const deviceType = useDeviceType();

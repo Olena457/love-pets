@@ -59,7 +59,7 @@ export const refresh = createAsyncThunk(
   '/users/refresh',
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().users.token; //aut change users
+      const token = thunkAPI.getState().users.token;
 
       setToken(token);
       const { data } = await axiosInstance.get('/users/current');

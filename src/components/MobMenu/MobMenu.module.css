@@ -95,7 +95,6 @@
 
 .navigationMenu {
   margin-top: 120px;
-  /* margin-top: 235px; */
   display: flex;
   flex-direction: column;
   gap: 16px;

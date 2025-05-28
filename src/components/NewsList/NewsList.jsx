@@ -6,7 +6,7 @@ import css from './NewsList.module.css';
 const NewsList = () => {
   const news = useSelector(selectNews);
   return (
-    <div className={css.list}>
+    <div className={css.listNews}>
       {news.map(item => (
         <NewsItem key={item.id} item={item} />
       ))}

@@ -13,7 +13,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         breakLabel="..."
         breakClassName={css.ellipsis}
         pageCount={totalPages}
-        marginPagesDisplayed={2}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={1}
         onPageChange={handlePageClick}
         containerClassName={`${css.pagination} ${css.pagesWrapper}`}
         activeClassName={css.active}

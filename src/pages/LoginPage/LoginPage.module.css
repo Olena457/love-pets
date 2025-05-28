@@ -1,3 +1,22 @@
+.wrapperLogin {
+  display: block;
+  max-width: 335px;
+  margin: 0 auto;
+  padding: 20px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperLogin {
+    max-width: 768px;
+    padding: 0 32px 20px 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapperLogin {
+    max-width: 1280px;
+    padding: 0px 34px 20px 34px;
+  }
+}
+
 .pageLogin {
   display: flex;
   flex-direction: column;
@@ -12,7 +31,6 @@
 @media screen and (min-width: 1280px) {
   .pageLogin {
     flex-direction: row;
-
     gap: 32px;
   }
 }
@@ -37,30 +55,23 @@
   .containerLogin {
     width: 592px;
     min-height: 620px;
-    padding: 80px 80px 85px 80px;
+    padding: 40px 80px 40px 80px;
   }
 }
 
-.titleContainer {
+.titleWrapper {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
-  .titleContainer {
-    gap: 16px;
-    margin-bottom: 32px;
+  .titleWrapper {
+    gap: 25px;
   }
 }
 
 .description {
   font-size: 14px;
   font-weight: 500;
-  margin-top: 15px;
-}
-@media screen and (min-width: 1280px) {
-  .description {
-    margin-top: 20px;
-  }
+  padding: 10px;
 }

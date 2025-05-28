@@ -7,8 +7,7 @@
 
 @media screen and (min-width: 768px) {
   .wrapperHome {
-    max-width: 704px;
-    padding: 0 32px;
+    max-width: 754px;
   }
 }
 
@@ -22,20 +21,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 20px;
-  min-width: 280px;
+  padding: 20px;
+  max-width: 335px;
   margin: 0 auto;
 }
 
 .homeHeader {
-  background-color: var(--main-color);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  background-color: var(--main-color);
 }
 
 @media screen and (min-width: 768px) {
   .header {
-    padding: 32px;
+    max-width: 704px;
+    padding: 20 32px;
   }
   .homeHeader {
     border-top-left-radius: 60px;
@@ -45,10 +45,11 @@
 
 @media screen and (min-width: 1280px) {
   .header {
-    padding: 20px 64px 20px 64px;
+    max-width: 1280px;
+    padding: 20px 64px;
   }
   .homeHeader {
     padding: 20px 64px 44px 32px;
-    max-width: 1280px;
+    max-width: 1152px;
   }
 }

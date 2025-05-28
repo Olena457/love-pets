@@ -75,34 +75,19 @@
 }
 
 .userInfoInputsWrapper {
-  min-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-
-/* @media screen and (min-width: 768px) {
-  .userInfoInputsWrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .userInfoInputsWrapper {
-    grid-template-columns: 1fr;
-  }
-} */
 
 .userInfoFormInput {
   font-weight: 500;
   width: 100%;
   font-size: 14px;
   line-height: 1.2;
-  color: var(--black-color);
   padding: 12px;
   border-radius: 30px;
+  color: var(--black-color);
   border: 1px solid var(--border-color);
   background-color: transparent;
 }

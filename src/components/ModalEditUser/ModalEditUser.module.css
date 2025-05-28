@@ -229,7 +229,7 @@
   width: 100%;
   background: var(--main-color);
   justify-content: center;
-  transition: background 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
 .editUserSubmitBtn:hover {

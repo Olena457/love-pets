@@ -9,6 +9,7 @@ import {
 import OurFriendsList from '../../components/OurFriendsList/OurFiendsList.jsx';
 import Loader from '../../components/Loader/Loader.jsx';
 import css from './OurFriendsPage.module.css';
+import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();
@@ -25,14 +26,16 @@ const OurFriendsPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className={css.containerPageFriends}>
-          <h1 className={css.titleFriend}>Our friends</h1>
-          <OurFriendsList />
-          {error && <p>Error: {error}</p>}
-          {friends.length === 0 && !isLoading && !error && (
-            <p className={css.noFound}>No results found friends.</p>
-          )}
-        </div>
+        <ContainerPage>
+          <div className={css.containerPageFriends}>
+            <h1 className={css.titleFriend}>Our friends</h1>
+            <OurFriendsList />
+            {error && <p>Error: {error}</p>}
+            {friends.length === 0 && !isLoading && !error && (
+              <p className={css.noFound}>No results found friends.</p>
+            )}
+          </div>
+        </ContainerPage>
       )}
     </>
   );

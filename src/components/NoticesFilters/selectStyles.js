@@ -24,12 +24,14 @@ const selectStyles = {
   singleValue: provided => ({
     ...provided,
     color: '#262626',
-    fontSize: window.innerWidth <= 320 ? '12px' : '16px',
+    fontSize: window.innerWidth <= 768 ? '14px' : '16px',
+    // fontSize: window.innerWidth <= 320 ? '12px' : '16px',
     textTransform: 'capitalize',
     cursor: 'pointer',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    maxWidth: '80px',
   }),
   indicatorSeparator: () => ({
     display: 'none',

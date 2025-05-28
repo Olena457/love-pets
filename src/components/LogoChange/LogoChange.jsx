@@ -13,6 +13,9 @@ const LogoChange = () => {
       <div className={css.container}>
         <div className={css.headerNav}>
           <div className={css.logoContainer}>
+            <Link to="/main" className={css.petAvatar}>
+              <Icon id="paw" width={22} height={22} className={css.iconPaw} />
+            </Link>
             <Link to="/" className={css.logo}>
               {isHomePage ? (
                 <div className={css.white}>
@@ -35,9 +38,6 @@ const LogoChange = () => {
                   ve
                 </div>
               )}
-            </Link>
-            <Link to="/main" className={css.petAvatar}>
-              <Icon id="paw" width={22} height={22} className={css.iconPaw} />
             </Link>
           </div>
         </div>

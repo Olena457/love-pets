@@ -25,24 +25,42 @@
 }
 .hourTime {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  line-height: 1.33;
-  padding: 8px;
-  border-radius: 30px;
+  top: 8px;
+  right: 8px;
+  line-height: 1.2;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 20px;
   text-align: center;
   color: var(--main-color);
   background: var(--hover-light);
 }
-
+@media screen and (min-width: 768px) {
+  .hourTime {
+    top: 12px;
+    right: 12px;
+    line-height: 1.33;
+    padding: 8px;
+    border-radius: 30px;
+  }
+}
 .wrapperImage {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (min-width: 768px) {
+  .wrapperImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
 .wrapperImage img {
   width: 100%;
   height: 100%;
@@ -52,7 +70,6 @@
 .details {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
 }
 

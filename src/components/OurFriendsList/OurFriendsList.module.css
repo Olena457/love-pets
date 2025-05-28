@@ -5,18 +5,22 @@
 .list {
   display: grid;
   grid-template-columns: 1fr;
+  margin: 0 auto;
+  padding: 20px 0px;
 }
 @media screen and (min-width: 768px) {
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    padding: 40px 0px;
   }
 }
 @media screen and (min-width: 1280px) {
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: 60px 0px;
     gap: 28px 20px;
   }
 }

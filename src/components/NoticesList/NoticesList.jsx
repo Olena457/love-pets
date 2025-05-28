@@ -19,8 +19,6 @@ const NoticesList = ({ notices, profile, viewed }) => {
           notice={notice}
           profile={userProfile}
           viewed={viewed}
-          // viewed={false}
-          //isFavorite={favorites.some(fav => fav._id === notice._id)}
         />
       ))}
     </ul>

@@ -24,10 +24,6 @@ const MainPage = lazy(() => import('./pages/MainPage/MainPage.jsx'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const AddPetPage = lazy(() => import('./pages/AddPetPage/AddPetPage.jsx'));
 const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage.jsx'));
-// const RegisterPage = lazy(() =>
-//   import('./pages/RegisterPage/RegisterPage.jsx')
-// );
-// const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx'));
 
 const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage.jsx'));
 

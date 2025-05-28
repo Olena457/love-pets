@@ -1,36 +1,37 @@
-.containerPage {
+.wrapperProfile {
+  display: block;
+  max-width: 335px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 2px;
 }
 @media screen and (min-width: 768px) {
-  .containerPage {
+  .wrapperProfile {
     max-width: 768px;
-    padding: 32px;
+    padding: 20px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .containerPage {
-    padding: 40px;
+  .wrapperProfile {
     max-width: 1280px;
+    padding: 32px;
   }
 }
 
 .containerProfile {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr;
-  /* min-width: 280px; */
-  /* padding: 20px; */
-  /* margin: 0 auto; */
 }
 @media screen and (min-width: 768px) {
   .containerProfile {
-    width: 704px;
+    margin: 0px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .containerProfile {
-    grid-template-columns: 435px 1.1fr;
-    margin: 0px;
+    grid-template-columns: 435px 2fr;
+    row-gap: 10px;
+    column-gap: 5px;
   }
 }

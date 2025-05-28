@@ -12,6 +12,7 @@ import Pagination from '../../components/Pagination/Pagination.jsx';
 import Title from '../../components/Title/Title.jsx';
 import SearchField from '../../components/SearchField/SearchField.jsx';
 import NewsList from '../../components/NewsList/NewsList.jsx';
+import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import css from './NewsPage.module.css';
 
 const NewsPage = () => {
@@ -37,7 +38,7 @@ const NewsPage = () => {
   };
 
   return (
-    <div className={css.container}>
+    <ContainerPage>
       <div className={css.searchContainer}>
         <Title title="News" />
         <div className={css.search}>
@@ -62,7 +63,7 @@ const NewsPage = () => {
           onPageChange={handlePageChange}
         />
       )}
-    </div>
+    </ContainerPage>
   );
 };
 

@@ -33,13 +33,19 @@
 @media screen and (min-width: 768px) {
   .userName {
     display: block;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.2;
     max-width: 50px;
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--black-color);
   }
+  .userBarContainer {
+    margin-left: 10px;
+  }
+}
+.whiteText {
+  color: var(--white-color);
 }

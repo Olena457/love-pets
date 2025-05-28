@@ -110,6 +110,8 @@ export const deleteFromFavorites = createAsyncThunk(
 
 export const toggleFavoriteNotice = createAsyncThunk(
   '/notices/toggleFavoriteNotice',
+
+  '/notices/toggleFavoriteNotice',
   async (id, { getState, rejectWithValue }) => {
     const state = getState();
     const isFavorite = state.notices.favorites.includes(id);

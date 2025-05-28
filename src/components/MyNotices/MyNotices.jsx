@@ -4,7 +4,7 @@ import css from './MyNotices.module.css';
 const MyNotices = () => {
   return (
     <div className={css.myNoticesWrap}>
-      <div className={css.myNoticesList}>
+      <div className={css.wrapperLink}>
         <NavLink
           className={`${css.navLink} ${css.navLinkFavorite}`}
           to="favorites"

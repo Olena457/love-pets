@@ -1,8 +1,18 @@
 .item {
   display: flex;
   flex-direction: column;
+  min-width: 280px;
 }
-
+@media screen and (min-width: 768px) {
+  .photoNews {
+    width: 340px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .photoNews {
+    max-width: 360px;
+  }
+}
 .photoNews {
   border-radius: 15px;
   width: 100%;
@@ -24,6 +34,10 @@
   font-weight: 700;
   margin-bottom: 12px;
 }
+.text {
+  overflow: hidden;
+  cursor: pointer;
+}
 .text,
 .date,
 .linkMore {
@@ -36,6 +50,19 @@
   .linkMore {
     font-size: 16px;
   }
+}
+.collapsed {
+  display: block;
+  max-height: 3em;
+  line-height: 1.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expanded {
+  white-space: normal;
+  overflow: visible;
 }
 .container {
   display: flex;

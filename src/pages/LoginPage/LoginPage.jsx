@@ -1,4 +1,3 @@
-import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
 import Title from '../../components/Title/Title.jsx';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
@@ -13,7 +12,7 @@ import dogImageDesktop2x from '../../assets/imgs/desktop/login-desk@2x.png';
 
 const LoginPage = () => {
   return (
-    <ContainerPage>
+    <div className={css.wrapperLogin}>
       <div className={css.pageLogin}>
         <ContainerImage
           images={{
@@ -35,7 +34,7 @@ const LoginPage = () => {
           <LoginForm />
         </div>
       </div>
-    </ContainerPage>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import ConainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import ContainerImage from '../../components/ContainerImage/ContainerImage.jsx';
 import Title from '../../components/Title/Title.jsx';
 import RegisterForm from '../../components/RegisterForm/RegisterForm.jsx';
@@ -12,7 +11,7 @@ import css from './RegisterPage.module.css';
 
 const RegisterPage = () => {
   return (
-    <ConainerPage>
+    <div className={css.wrapperRegister}>
       <div className={css.pageRegister}>
         <ContainerImage
           images={{
@@ -34,7 +33,7 @@ const RegisterPage = () => {
           <RegisterForm />
         </div>
       </div>
-    </ConainerPage>
+    </div>
   );
 };
 

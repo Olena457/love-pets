@@ -37,18 +37,7 @@ export const updateProfile = createAsyncThunk(
 );
 
 const initialState = {
-  profile: {
-    // name: '',
-    // email: '',
-    // phone: '',
-    // birthday: '',
-    // location: {
-    //   city: '',
-    //   country: '',
-    // },
-    // avatarURL: '',
-    noticesFavorites: [],
-  },
+  profile: {},
   isLoading: false,
   error: null,
 };
@@ -96,7 +85,6 @@ const profileSlice = createSlice({
       .addCase(addNoticeToFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // state.profile.favorites = action.payload;
         state.profile.noticesFavorites = action.payload;
       })
       .addCase(addNoticeToFavorites.rejected, (state, action) => {
@@ -116,11 +104,6 @@ const profileSlice = createSlice({
         );
       })
 
-      // .addCase(deleteFromFavorites.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   state.profile.noticesFavorites = action.payload;
-      // })
       .addCase(deleteFromFavorites.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;

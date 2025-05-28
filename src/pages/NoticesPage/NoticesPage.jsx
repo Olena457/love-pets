@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import Title from '../../components/Title/Title.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
@@ -101,12 +100,7 @@ const NoticesPage = () => {
         </div>
       ) : (
         <>
-          <NoticesList
-            notices={notices}
-            favorites={favorites}
-            // onLearnMore={handleLearnMore}
-            // onToggleFavorite={handleToggleFavorite}
-          />
+          <NoticesList notices={notices} favorites={favorites} />
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

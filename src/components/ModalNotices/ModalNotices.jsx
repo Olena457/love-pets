@@ -17,18 +17,15 @@ const ModalNotices = () => {
   const notice = useSelector(selectNotice);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
-  // const isAuthenticated = useSelector(selectIsAuthenticated);
   const profileInfo = useSelector(selectUser);
   const favorites = profileInfo?.noticesFavorites || [];
-
-  // if (!isAuthenticated) return null;
 
   const handleAddToFavorites = () => {
     if (favorites.includes(notice._id)) {
       toast.error('This pet is already in your favorites!');
     } else {
       dispatch(addNoticeToFavorites(notice._id));
-      toast.success('This animal is already in favorites!');
+      toast.error('This animal is already in favorites!');
     }
     dispatch(closeModal());
   };

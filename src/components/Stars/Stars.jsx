@@ -12,7 +12,6 @@ export const Stars = ({ popularity }) => {
 
   let stars = [];
 
-  // __________ yellow stars
   for (let i = 0; i < startsToShow; i++) {
     stars.push(
       <img
@@ -26,7 +25,6 @@ export const Stars = ({ popularity }) => {
     );
   }
 
-  //___________ gray stars
   for (let i = startsToShow; i < totalStars; i++) {
     stars.push(
       <img
