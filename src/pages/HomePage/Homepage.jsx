@@ -1,7 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import {
+  selectIsApproveModalOpen,
+  selectIsOpenModal,
+} from '../../redux/modal/modalSelectors.js';
+import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
+
+import Modal from '../../components/Modal/Modal.jsx';
+
 import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import css from './HomePage.module.css';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(selectIsOpenModal);
+  const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
   return (
     <ContainerPage>
       <div className={css.wrapper}>
@@ -19,6 +32,13 @@ const HomePage = () => {
         </div>
         <div className={css.photo}></div>
       </div>
+      {isModalOpen && (
+        <Modal onClose={() => dispatch(closeModal())}>
+          {isApproveModalOpen && (
+            <ModalApproveAction onClose={() => dispatch(closeModal())} />
+          )}
+        </Modal>
+      )}
     </ContainerPage>
   );
 };

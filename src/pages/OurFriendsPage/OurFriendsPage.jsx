@@ -1,5 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import {
+  selectIsApproveModalOpen,
+  selectIsOpenModal,
+} from '../../redux/modal/modalSelectors.js';
+import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
+import Modal from '../../components/Modal/Modal.jsx';
 import { fetchFriends } from '../../redux/friends/ourFriendsSlice.js';
 import {
   selectFriends,
@@ -16,6 +23,8 @@ const OurFriendsPage = () => {
   const friends = useSelector(selectFriends);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
+  const isModalOpen = useSelector(selectIsOpenModal);
+  const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
 
   useEffect(() => {
     dispatch(fetchFriends());
@@ -35,6 +44,13 @@ const OurFriendsPage = () => {
               <p className={css.noFound}>No results found friends.</p>
             )}
           </div>
+          {isModalOpen && (
+            <Modal onClose={() => dispatch(closeModal())}>
+              {isApproveModalOpen && (
+                <ModalApproveAction onClose={() => dispatch(closeModal())} />
+              )}
+            </Modal>
+          )}
         </ContainerPage>
       )}
     </>

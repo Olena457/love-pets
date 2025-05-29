@@ -1,6 +1,10 @@
 .userBigIcon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--hover-light);
 }
 
 @media screen and (min-width: 768px) {
@@ -12,8 +16,8 @@
 
 @media screen and (min-width: 1024px) {
   .userBigIcon {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
   }
 }
 .uploadButton {
@@ -50,6 +54,9 @@
 .cloudIcon {
   width: 18px;
   height: 18px;
+}
+.modalEditUserWrap {
+  padding: 40px 20px;
 }
 @media screen and (min-width: 768px) {
   .cloudIcon {

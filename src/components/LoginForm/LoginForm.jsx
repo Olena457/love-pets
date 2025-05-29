@@ -56,6 +56,24 @@ const LoginForm = () => {
     return null;
   };
 
+  // const onSubmit = async data => {
+  //   const { email, password } = data;
+  //   try {
+  //     const response = await dispatch(
+  //       authenticatedUser({ email, password })
+  //     ).unwrap();
+
+  //     if (response?.token) {
+  //       toast.success('Login successful');
+  //       reset();
+  //       navigate('/profile');
+  //     } else {
+  //       toast.error('Invalid password. Try again.');
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.message || 'Login failed. Check your credentials.');
+  //   }
+  // };
   const onSubmit = async data => {
     const { email, password } = data;
     try {
@@ -67,7 +85,6 @@ const LoginForm = () => {
       toast.error(error.message);
     }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.inputWrapper}>

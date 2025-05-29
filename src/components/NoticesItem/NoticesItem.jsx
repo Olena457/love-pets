@@ -45,7 +45,7 @@ const NoticesItem = ({ notice, profile, viewed }) => {
       toast.error(`Notice "${notice.title}" has been removed from favorites!`);
     } else {
       if (userProfile?.noticesFavorites?.some(fav => fav._id === notice._id)) {
-        toast.error('This pet is already in your favorites!');
+        toast.info('This pet is already in your favorites!');
         return;
       }
 

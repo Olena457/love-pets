@@ -96,7 +96,7 @@ const AddPetForm = () => {
 
       setTimeout(() => {
         window.location.href = '/profile';
-      }, 4000);
+      }, 5000);
     } catch {
       toast.error('Something went wrong');
     }

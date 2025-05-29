@@ -1,4 +1,12 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import {
+  selectIsApproveModalOpen,
+  selectIsOpenModal,
+} from '../../redux/modal/modalSelectors.js';
+import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
+import Modal from '../../components/Modal/Modal.jsx';
 import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import CatMob from '../../assets/imgs/mobile/404-mob@1x.png';
 import CatMobRetina from '../../assets/imgs/mobile/404-mob@2x.png';
@@ -9,6 +17,9 @@ import CatDeskRetina from '../../assets/imgs/desktop/404-desk@2x.png';
 import css from './NotFoundPage.module.css';
 
 const PageNotFound = () => {
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(selectIsOpenModal);
+  const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
   return (
     <ContainerPage>
       <div className={css.container}>
@@ -41,6 +52,13 @@ const PageNotFound = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <Modal onClose={() => dispatch(closeModal())}>
+          {isApproveModalOpen && (
+            <ModalApproveAction onClose={() => dispatch(closeModal())} />
+          )}
+        </Modal>
+      )}
     </ContainerPage>
   );
 };

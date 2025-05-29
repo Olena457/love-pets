@@ -1,5 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../redux/modal/modalSlice.js';
+import {
+  selectIsApproveModalOpen,
+  selectIsOpenModal,
+} from '../../redux/modal/modalSelectors.js';
+import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
+import Modal from '../../components/Modal/Modal.jsx';
 import { fetchNews } from '../../redux/news/newsOperations.js';
 import {
   selectNews,
@@ -23,6 +30,8 @@ const NewsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = useSelector(state => state.news.currentPage);
   const searchQuery = useSelector(state => state.news.searchQuery);
+  const isModalOpen = useSelector(selectIsOpenModal);
+  const isApproveModalOpen = useSelector(selectIsApproveModalOpen);
 
   useEffect(() => {
     dispatch(fetchNews({ page: currentPage, perPage: 6, searchQuery }));
@@ -62,6 +71,13 @@ const NewsPage = () => {
           totalPages={totalPages}
           onPageChange={handlePageChange}
         />
+      )}
+      {isModalOpen && (
+        <Modal onClose={() => dispatch(closeModal())}>
+          {isApproveModalOpen && (
+            <ModalApproveAction onClose={() => dispatch(closeModal())} />
+          )}
+        </Modal>
       )}
     </ContainerPage>
   );

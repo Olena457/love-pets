@@ -4,54 +4,30 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { updateProfile } from '../../redux/profile/profileSlice';
 import { selectProfile } from '../../redux/profile/profileSelectors';
 import { closeModal } from '../../redux/modal/modalSlice.js';
 import { useDeviceType } from '../../hooks/useDeviceType.js';
 import Icon from '../Icon/Icon.jsx';
-const defaultAvatar = '../src/assets/imgs/test.jpg';
 import css from './ModalEditUser.module.css';
 
-const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
 const emailRegExp = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-// const phoneRegExp = /^\+38\d{10}$/;
-const phoneRegExp = /^\+?38\s?\d{3}\s?\d{3}\s?\d{4}$/;
+const phoneRegExp = /^\+38\d{10}$/;
+// const avatarUrlRegExp = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
 
 const EditUserSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Name should have at least 2 characters')
-    .required('Name is required'),
-  email: Yup.string()
-    .matches(emailRegExp, 'Invalid email')
-    .required('Email is required'),
-  phone: Yup.string().matches(phoneRegExp, 'Invalid phone').nullable(),
-  avatar: Yup.string()
-    .matches(avatarUrlRegExp, 'Invalid URL or file format')
-    .nullable()
-    .transform((value, originalValue) =>
-      originalValue.trim() === '' ? null : value
-    ),
+  name: Yup.string().min(2, 'Name should have at least 2 characters'),
+  email: Yup.string().matches(emailRegExp, 'Invalid email'),
+  phone: Yup.string().matches(phoneRegExp, 'Invalid phone'),
+  avatar: Yup.string(),
+  // .matches(avatarUrlRegExp, 'Invalid URL or file format')
 });
-
-// const EditUserSchema = Yup.object().shape({
-//   name: Yup.string().min(2, 'Name should have at least 2 characters'),
-//   email: Yup.string().matches(emailRegExp, 'Invalid email'),
-//   phone: Yup.string().matches(phoneRegExp, 'Invalid phone'),
-//   avatar: Yup.string()
-//     .matches(avatarUrlRegExp, 'Invalid URL or file format')
-//     .nullable()
-//     .transform(value => (value === '' ? null : value)),
-// });
 
 export const ModalEditUser = () => {
   const deviceType = useDeviceType();
   const userData = useSelector(selectProfile);
-
   const dispatch = useDispatch();
 
-  const [previewAvatar, setPreviewAvatar] = useState(
-    userData.avatar || defaultAvatar
-  );
+  const [previewAvatar, setPreviewAvatar] = useState(userData.avatar || '');
 
   const {
     register,
@@ -63,43 +39,19 @@ export const ModalEditUser = () => {
     resolver: yupResolver(EditUserSchema),
     mode: 'onChange',
     defaultValues: {
-      name: userData.name || '',
-      email: userData.email || '',
-      phone: userData.phone || null,
-      avatar: userData.avatar || null,
+      name: userData.name || 'Name',
+      email: userData.email || 'name@example.com',
+      phone: userData.phone || '',
+      avatar: userData.avatar || '',
     },
   });
 
-  // const handleFormSubmit = data => {
-  //   const { name, email, phone, avatar } = data;
-
-  //   try {
-  //     dispatch(
-  //       updateProfile({
-  //         name,
-  //         email,
-  //         phone: phone || null,
-  //         avatar: data.avatar?.trim() ? data.avatar : null,
-  //       })
-  //     );
-  //     reset();
-  //     dispatch(closeModal());
-  //   } catch (error) {
-  //     toast.error(error.message);
-  //   }
-  // };
-  const handleFormSubmit = data => {
-    const cleanedData = {
-      name: data.name,
-      email: data.email,
-      phone: data.phone?.trim() ? data.phone : null, // Якщо порожнє, буде null
-      avatar: data.avatar?.trim() ? data.avatar : null, // Якщо порожнє, буде null
-    };
-
-    console.log('Sent profile update:', cleanedData); // Перевіримо, що відправляється
+  const handleFormSubmit = () => {
+    // const { name, email, phone, avatar } = data;
 
     try {
-      dispatch(updateProfile(cleanedData));
+      toast.success('Simulation of update successful!');
+      // dispatch(updateProfile({ name, email, phone, avatar }));
       reset();
       dispatch(closeModal());
     } catch (error) {
@@ -111,8 +63,6 @@ export const ModalEditUser = () => {
     const avatarUrl = watch('avatar');
     if (avatarUrl && avatarUrl.trim() !== '') {
       setPreviewAvatar(avatarUrl);
-    } else {
-      setPreviewAvatar(defaultAvatar);
     }
   };
 
@@ -122,29 +72,10 @@ export const ModalEditUser = () => {
         <h2 className={css.editUserTitle}>Edit information</h2>
 
         <div className={css.userAvatarThumb}>
-          {previewAvatar && previewAvatar.trim() !== '' ? (
-            <img
-              src={previewAvatar}
-              alt="User Avatar"
-              className={css.userAvatarImg}
-              width={
-                deviceType === 'desktop'
-                  ? 50
-                  : deviceType === 'tablet'
-                  ? 50
-                  : 40
-              }
-              height={
-                deviceType === 'desktop'
-                  ? 50
-                  : deviceType === 'tablet'
-                  ? 50
-                  : 40
-              }
-            />
-          ) : (
+          {previewAvatar && previewAvatar.trim() !== '' ? null : (
             <Icon
               id="user"
+              className={css.userBigIcon}
               width={
                 deviceType === 'desktop'
                   ? 50
@@ -159,7 +90,6 @@ export const ModalEditUser = () => {
                   ? 50
                   : 40
               }
-              className={css.userBigIcon}
             />
           )}
         </div>
@@ -168,8 +98,8 @@ export const ModalEditUser = () => {
           <div className={css.inputWrap}>
             <input
               {...register('avatar')}
-              type="text"
-              placeholder="Avatar URL"
+              type="avatar"
+              placeholder="https://test-user.png"
               className={css.editUserAvatarInput}
             />
             <span className={css.errorMessage}>{errors.avatar?.message}</span>

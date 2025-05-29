@@ -52,7 +52,7 @@ const UserBlock = () => {
           />
           <input
             type="phone"
-            value={profile?.phone?.trim() || '+380'}
+            value={profile?.phone?.trim() || '+38'}
             className={css.userInfoFormInput}
             disabled
           />
