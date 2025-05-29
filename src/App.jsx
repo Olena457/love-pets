@@ -1,12 +1,10 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './components/Loader/Loader.jsx';
 import { ToastContainer } from 'react-toastify';
-import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
-import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import { refresh } from './redux/users/usersOperations.js';
 import {
   selectToken,
@@ -16,12 +14,15 @@ import {
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx';
 import Layout from './components/Layout/Layout.jsx';
-import Header from './components/Header/Header.jsx';
 import MyFavoritePets from './components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from './components/MyNotices/Viewed/Viewed.jsx';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage.jsx'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx'));
+const RegisterPage = lazy(() =>
+  import('./pages/RegisterPage/RegisterPage.jsx')
+);
 const AddPetPage = lazy(() => import('./pages/AddPetPage/AddPetPage.jsx'));
 const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage.jsx'));
 
@@ -39,8 +40,6 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const hideHeader = location.pathname === '/main';
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -56,7 +55,6 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Layout />
-        {!hideHeader && <Header />}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/main" element={<MainPage hideHeader={true} />} />
