@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import { selectProfile } from '../../../redux/profile/profileSelectors';
-import ResultsNotFound from '../../ResultsNotFound/ResultsNotFound';
-import NoticesList from '../../NoticesList/NoticesList.jsx';
+import { selectProfile } from '../../redux/profile/profileSelectors.js';
+import ResultsNotFound from '../ResultsNotFound/ResultsNotFound.jsx';
+import NoticesList from '../NoticesList/NoticesList.jsx';
 import css from './Viewed.module.css';
 
 const Viewed = () => {

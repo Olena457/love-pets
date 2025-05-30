@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProfileFull } from '../../redux/profile/profileSlice.js';
-import MyNotice from '../../components/MyNotices/MyNotices.jsx';
+import MyNotices from '../../components/MyNotices/MyNotices.jsx';
 import UserCard from '../../components/UserCard/UserCard.jsx';
 import Modal from '../../components/Modal/Modal.jsx';
 import { ModalEditUser } from '../../components/ModalEditUser/ModalEditUser.jsx';
@@ -31,7 +31,7 @@ const ProfilePage = () => {
     <div className={css.wrapperProfile}>
       <div className={css.containerProfile}>
         <UserCard />
-        <MyNotice />
+        <MyNotices />
         {isModalEditUserOpen && (
           <Modal onClose={() => dispatch(closeModal())}>
             <ModalEditUser />
