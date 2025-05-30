@@ -10,7 +10,7 @@ import addImageTablet2x from '../../assets/imgs/tablet/add-tablet@2x.png';
 import addImageDesktop1x from '../../assets/imgs/desktop/add-desktop@1x.png';
 import addImageDesktop2x from '../../assets/imgs/desktop/add-desktop@2x.png';
 
-const LoginPage = () => {
+const AddPetPage = () => {
   return (
     <ContainerPage>
       <div className={css.pageAdd}>
@@ -32,4 +32,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default AddPetPage;
