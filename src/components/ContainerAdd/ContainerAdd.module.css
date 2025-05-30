@@ -6,7 +6,7 @@
   background-color: var(--main-color);
   border-radius: 30px;
   width: 100%;
-  background-image: url('../src/assets/imgs/mobile/rectangle-mob@1x.png');
+  background-image: url('../../assets/imgs/mobile/rectangle-mob@1x.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -19,7 +19,7 @@
     flex-shrink: 1;
     max-width: 704px;
     height: auto;
-    background-image: url('../src/assets/imgs/tablet/rectangle-tablet@1x.png');
+    background-image: url('../../assets/imgs/tablet/rectangle-tablet@1x.png');
   }
 }
 
@@ -27,7 +27,7 @@
   .petContainer {
     width: 592px;
     height: auto;
-    background-image: url('../src/assets/imgs/desktop/rectangle-desk@1x.png');
+    background-image: url('../../assets/imgs/desktop/rectangle-desk@1x.png');
   }
 }
 .petImageAdd {

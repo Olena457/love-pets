@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,7 +9,6 @@ import { refresh } from './redux/users/usersOperations.js';
 import {
   selectToken,
   selectIsRefreshing,
-  selectIsAuthenticated,
 } from './redux/users/usersSelectors.js';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx';
@@ -17,32 +16,36 @@ import Layout from './components/Layout/Layout.jsx';
 import MyFavoritePets from './components/MyNotices/MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from './components/MyNotices/Viewed/Viewed.jsx';
 
-const MainPage = lazy(() => import('./pages/MainPage/MainPage.jsx'));
-const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
-const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx'));
+const HomePage = lazy(() => import('../src/pages/HomePage/HomePage.jsx'));
+const MainPage = lazy(() => import('../src/pages/MainPage/MainPage.jsx'));
+const LoginPage = lazy(() => import('../src/pages/LoginPage/LoginPage.jsx'));
 const RegisterPage = lazy(() =>
-  import('./pages/RegisterPage/RegisterPage.jsx')
+  import('../src/pages/RegisterPage/RegisterPage.jsx')
 );
-const AddPetPage = lazy(() => import('./pages/AddPetPage/AddPetPage.jsx'));
-const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage.jsx'));
+const AddPetPage = lazy(() => import('../src/pages/AddPetPage/AddPetPage.jsx'));
+const NewsPage = lazy(() => import('../src/pages/NewsPage/NewsPage.jsx'));
 
-const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage.jsx'));
+const ProfilePage = lazy(() =>
+  import('../src/pages/ProfilePage/ProfilePage.jsx')
+);
 
 const OurFriendsPage = lazy(() =>
-  import('./pages/OurFriendsPage/OurFriendsPage.jsx')
+  import('../src/pages/OurFriendsPage/OurFriendsPage.jsx')
 );
-const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage.jsx'));
+const NoticesPage = lazy(() =>
+  import('../src/pages/NoticesPage/NoticesPage.jsx')
+);
 const NotFoundPage = lazy(() =>
-  import('./pages/NotFoundPage/NotFoundPage.jsx')
+  import('../src/pages/NotFoundPage/NotFoundPage.jsx')
 );
 
 import './App.css';
 
 function App() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
     if (!currentToken) return;
@@ -53,34 +56,28 @@ function App() {
     <b>Refreshing user...</b>
   ) : (
     <>
+      <Layout />
       <Suspense fallback={<Loader />}>
-        <Layout />
+        {location.pathname !== '/' && <Header />}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/main" element={<MainPage hideHeader={true} />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/our-friends" element={<OurFriendsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/main" element={<MainPage hideHeader={true} />} />
 
-          {!isAuthenticated && (
-            <>
-              <Route
-                path="/register"
-                element={
-                  <RestrictedRoute
-                    redirectTo="/"
-                    component={<RegisterPage />}
-                  />
-                }
-              />
-              <Route
-                path="/login"
-                element={
-                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-                }
-              />
-            </>
-          )}
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+            }
+          />
 
           <Route
             path="/add-pet"

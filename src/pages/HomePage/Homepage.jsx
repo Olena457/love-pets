@@ -7,7 +7,6 @@ import {
 import ModalApproveAction from './../../components/ModalApproveAction/ModalApproveAction';
 
 import Modal from '../../components/Modal/Modal.jsx';
-
 import ContainerPage from '../../components/ContainerPage/ContainerPage.jsx';
 import css from './HomePage.module.css';
 
