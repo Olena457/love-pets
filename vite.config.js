@@ -7,7 +7,5 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  base: '/',
 });
