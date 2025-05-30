@@ -10,6 +10,7 @@ import {
   selectToken,
   selectIsRefreshing,
 } from './redux/users/usersSelectors.js';
+import Header from './components/Header/Header.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx';
 import Layout from './components/Layout/Layout.jsx';
@@ -46,6 +47,7 @@ function App() {
   const dispatch = useDispatch();
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
+  const hiddenHeader = location.pathname == '/main';
 
   useEffect(() => {
     if (!currentToken) return;
@@ -56,9 +58,9 @@ function App() {
     <b>Refreshing user...</b>
   ) : (
     <>
-      <Layout />
       <Suspense fallback={<Loader />}>
-        {location.pathname !== '/' && <Header />}
+        <Layout />
+        {!hiddenHeader && <Header />}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/news" element={<NewsPage />} />

@@ -91,13 +91,13 @@ const NoticesPage = () => {
 
       {isLoading ? (
         <Loader />
-      ) : errorMessage ? (
-        <div className={css.errorContainer}>{errorMessage}</div>
-      ) : notices.length === 0 ? (
+      ) : notices.length === 0 && !isLoading ? (
         <div className={css.errorContainer}>
           No results found for the selected filters.🐈 <br />
           Please refine your search.
         </div>
+      ) : errorMessage ? (
+        <div className={css.errorContainer}>{errorMessage}</div>
       ) : (
         <>
           <NoticesList notices={notices} favorites={favorites} />
