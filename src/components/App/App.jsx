@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -91,6 +91,7 @@ function App() {
               <PrivateRoute redirectTo="/" component={<ProfilePage />} />
             }
           >
+            <Route index element={<Navigate to="favorites" replace />} />
             <Route path="favorites" element={<MyFavoritePets />} />
             <Route path="viewed" element={<Viewed />} />
           </Route>
