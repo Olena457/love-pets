@@ -1,19 +1,5 @@
-.layoutContainer {
-  max-width: 375px;
+.container {
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
-}
-
-@media (min-width: 768px) {
-  .layoutContainer {
-    width: 768px;
-    padding: 0 32px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .layouContainer {
-    padding: 0 64px;
-    width: 1440px;
-  }
+  padding: 0px 2px;
 }

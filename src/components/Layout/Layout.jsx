@@ -4,11 +4,8 @@ import css from './Layout.module.css';
 const Layout = ({ children }) => {
   return (
     <>
-      <div className={css.layoutContainer}>{children}</div>
-
-      <main className="mainContent">
-        <Outlet />
-      </main>
+      <div className={css.container}>{children}</div>
+      <Outlet />
     </>
   );
 };
