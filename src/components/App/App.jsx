@@ -22,6 +22,7 @@ import LoginPage from '../../pages/LoginPage/LoginPage.jsx';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
 import NoticesPage from '../../pages/NoticesPage/NoticesPage.jsx';
 import MainPage from '../../pages/MainPage/MainPage.jsx';
+
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 
 const AddPetPage = lazy(() => import('../../pages/AddPetPage/AddPetPage.jsx'));
