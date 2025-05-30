@@ -10,6 +10,7 @@ import {
   selectToken,
   selectIsRefreshing,
 } from '../../redux/users/usersSelectors.js';
+
 import Header from '../Header/Header.jsx';
 import PrivateRoute from '../PrivateRoute.jsx';
 import RestrictedRoute from '../RestrictedRoute.jsx';
@@ -40,9 +41,7 @@ const NotFoundPage = lazy(() =>
   import('../../pages/NotFoundPage/NotFoundPage.jsx')
 );
 
-import './App.module.css';
-
-function App() {
+const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const currentToken = useSelector(selectToken);
@@ -59,49 +58,50 @@ function App() {
   ) : (
     <>
       <Suspense fallback={<Loader />}>
-        <Layout />
-        {!hiddenHeader && <Header />}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/our-friends" element={<OurFriendsPage />} />
-          <Route path="/notices" element={<NoticesPage />} />
-          <Route path="/main" element={<MainPage hideHeader={true} />} />
+        <Layout>
+          {!hiddenHeader && <Header />}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/our-friends" element={<OurFriendsPage />} />
+            <Route path="/notices" element={<NoticesPage />} />
+            <Route path="/main" element={<MainPage hideHeader={true} />} />
 
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-            }
-          />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
 
-          <Route
-            path="/add-pet"
-            element={<PrivateRoute component={<AddPetPage />} />}
-          />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute redirectTo="/" component={<ProfilePage />} />
-            }
-          >
-            <Route index element={<Navigate to="favorites" replace />} />
-            <Route path="favorites" element={<MyFavoritePets />} />
-            <Route path="viewed" element={<Viewed />} />
-          </Route>
+            <Route
+              path="/add-pet"
+              element={<PrivateRoute component={<AddPetPage />} />}
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute redirectTo="/" component={<ProfilePage />} />
+              }
+            >
+              <Route index element={<Navigate to="favorites" replace />} />
+              <Route path="favorites" element={<MyFavoritePets />} />
+              <Route path="viewed" element={<Viewed />} />
+            </Route>
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
       </Suspense>
       <ToastContainer />
     </>
   );
-}
+};
 
 export default App;
