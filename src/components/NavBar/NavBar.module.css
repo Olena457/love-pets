@@ -87,7 +87,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 20px; */
 }
 
 .iconsWrap {
@@ -96,11 +95,11 @@
   gap: 10px;
 }
 .whiteIcon .burgerIcon {
-  content: url('../src/assets/icons/whiteBurger.svg');
+  content: url('../../assets/icons/whiteBurger.svg');
 }
 
 .blackIcon .burgerIcon {
-  content: url('../src/assets/icons/blackBurger.svg');
+  content: url('../../assets/icons/blackBurger.svg');
 }
 
 .circle {
