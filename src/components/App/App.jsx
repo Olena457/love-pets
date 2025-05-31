@@ -18,15 +18,19 @@ import Layout from '../Layout/Layout.jsx';
 import MyFavoritePets from '../MyFavoritePets/MyFavoritePets.jsx';
 import Viewed from '../Viewed/Viewed.jsx';
 
-import LoginPage from '../../pages/LoginPage/LoginPage.jsx';
-import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
-import NoticesPage from '../../pages/NoticesPage/NoticesPage.jsx';
-import MainPage from '../../pages/MainPage/MainPage.jsx';
-
+const MainPage = lazy(() => import('../../pages/MainPage/MainPage.jsx'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
+const NoticesPage = lazy(() =>
+  import('../../pages/NoticesPage/NoticesPage.jsx')
+);
+const RegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage.jsx')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage.jsx'));
+
+const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage.jsx'));
 
 const AddPetPage = lazy(() => import('../../pages/AddPetPage/AddPetPage.jsx'));
-const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage.jsx'));
 
 const ProfilePage = lazy(() =>
   import('../../pages/ProfilePage/ProfilePage.jsx')
