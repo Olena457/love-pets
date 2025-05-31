@@ -229,7 +229,9 @@
     url('../../assets/imgs/mobile/home-mob@1x.jpg') 1x,
     url('../../assets/imgs/mobile/home-mob@2x.jpg') 2x,
     url('../../assets/imgs/tablet/home-tablet@1x.jpg') 768w,
-    url('../../assets/imgs/desktop/home-desk@1x.jpg') 1280w
+    url('../../assets/imgs/tablet/home-tablet@2x.jpg') 768w,
+    url('../../assets/imgs/desktop/home-desk@1x.jpg') 768w,
+    url('../../assets/imgs/desktop/home-desk@2x.jpg') 1280w
   );
 }
 
