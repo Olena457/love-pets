@@ -226,10 +226,10 @@
 /* Використання image-set() для оптимального вибору зображення */
 .photo {
   background-image: image-set(
-    url('../../assets/imgs/mobile/home-mob@1x.webp') 1x,
-    url('../../assets/imgs/mobile/home-mob@2x.webp') 2x,
-    url('../../assets/imgs/tablet/home-tablet@1x.webp') 768w,
-    url('../../assets/imgs/desktop/home-desk@1x.webp') 1280w
+    url('../../assets/imgs/mobile/home-mob@1x.jpg') 1x,
+    url('../../assets/imgs/mobile/home-mob@2x.jpg') 2x,
+    url('../../assets/imgs/tablet/home-tablet@1x.jpg') 768w,
+    url('../../assets/imgs/desktop/home-desk@1x.jpg') 1280w
   );
 }
 
