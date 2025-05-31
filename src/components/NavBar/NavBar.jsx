@@ -16,7 +16,7 @@ const NavBar = () => {
   const location = useLocation();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const isMobMenuOpen = useSelector(selectIsOpenMobMenu);
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   const isActive = path => location.pathname === path;
   const shouldShowUserBar =

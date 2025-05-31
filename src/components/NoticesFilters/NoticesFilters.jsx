@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import blackCross from '../../assets/icons/blackCross.svg';
-// import SelectLocation from '../SelectLocation/SelectLocation.jsx';
 import Select from 'react-select';
 import {
   fetchNoticeCategories,

@@ -6,17 +6,17 @@ import Icon from '../../components/Icon/Icon.jsx';
 
 const LogoChange = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   return (
     <div className={`${css.nav} ${isHomePage ? css.homeNav : ''}`}>
       <div className={css.container}>
         <div className={css.headerNav}>
           <div className={css.logoContainer}>
-            <Link to="/main" className={css.petAvatar}>
+            <Link to="/" className={css.petAvatar}>
               <Icon id="paw" width={22} height={22} className={css.iconPaw} />
             </Link>
-            <Link to="/" className={css.logo}>
+            <Link to="/home" className={css.logo}>
               {isHomePage ? (
                 <div className={css.white}>
                   Petl

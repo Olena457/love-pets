@@ -70,27 +70,35 @@
   align-items: center;
 }
 
-.petAvatar {
+/* .petAvatar {
   display: none;
+} */
+/* .iconPaw {
+  display: none;
+} */
+.petAvatar {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  margin-right: 10px;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--main-light);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .iconPaw {
-  display: none;
+  width: 28px;
+  height: 28px;
 }
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .iconPaw {
-    display: block;
+    width: 30px;
+    height: 30px;
   }
   .petAvatar {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    margin-right: 10px;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--main-light);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 34px;
+    height: 34px;
   }
 }

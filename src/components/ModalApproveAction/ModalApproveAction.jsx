@@ -17,7 +17,7 @@ const ModalApproveAction = ({ onClose }) => {
       sessionStorage.clear();
       dispatch(closeMobMenu());
       dispatch(closeModal());
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       console.error('Logout failed:', error);
     }

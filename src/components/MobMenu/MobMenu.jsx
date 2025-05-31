@@ -12,7 +12,7 @@ export const MobMenu = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const isAuthenticated = useSelector(selectIsAuthenticated);
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   useEffect(() => {
     const handleKeyDown = evt => {

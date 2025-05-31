@@ -7,7 +7,7 @@ import css from './UserBar.module.css';
 const UserBar = () => {
   const userData = useSelector(selectUser);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   return (
     <div className={css.userBarContainer}>

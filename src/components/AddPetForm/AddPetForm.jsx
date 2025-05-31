@@ -90,7 +90,7 @@ const AddPetForm = () => {
     }
 
     try {
-      toast.success('The simulation adding an animal successfully!');
+      toast.success('The simulation successfully completed!');
       console.log('Simulated Data:', data);
       reset();
 

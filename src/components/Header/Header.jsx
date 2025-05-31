@@ -5,7 +5,7 @@ import css from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   return (
     <div className={isHomePage ? css.wrapperHome : ''}>

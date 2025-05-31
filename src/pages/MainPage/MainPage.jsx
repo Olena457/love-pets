@@ -7,7 +7,7 @@ const MainPage = () => {
     <div className={css.containerPage}>
       <div className={css.mainContainer}>
         <div className={css.containerLogo}>
-          <Link to="/" className={css.homeButton}>
+          <Link to="/home" className={css.homeButton}>
             <div className={css.logoMain}>
               <div className={css.logoText}>
                 Petl

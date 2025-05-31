@@ -45,7 +45,7 @@ const App = () => {
   const dispatch = useDispatch();
   const currentToken = useSelector(selectToken);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const hiddenHeader = location.pathname == '/main';
+  const hiddenHeader = location.pathname == '/';
 
   useEffect(() => {
     if (!currentToken) return;
@@ -60,11 +60,11 @@ const App = () => {
         <Layout>
           {!hiddenHeader && <Header />}
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<MainPage hideHeader={true} />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/notices" element={<NoticesPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/our-friends" element={<OurFriendsPage />} />
-            <Route path="/notices" element={<NoticesPage />} />
-            <Route path="/main" element={<MainPage hideHeader={true} />} />
 
             <Route
               path="/register"

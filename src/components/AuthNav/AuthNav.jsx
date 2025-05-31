@@ -4,7 +4,7 @@ import css from './AuthNav.module.css';
 
 const AuthNav = ({ onClose }) => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/home';
 
   return (
     <div className={`${css.authNav} ${isHomePage ? css.authNavHome : ''}`}>

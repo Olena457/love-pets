@@ -35,7 +35,7 @@
 @media screen and (min-width: 768px) {
   .header {
     max-width: 704px;
-    padding: 20 32px;
+    padding: 20px 32px;
   }
   .homeHeader {
     border-top-left-radius: 60px;

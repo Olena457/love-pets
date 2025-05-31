@@ -90,11 +90,11 @@ const NoticesPage = () => {
       <NoticesFilters onFilterChange={handleFilterChange} />
 
       {isLoading ? (
-        <Loader />
+        <div className={css.loadText}>Loading pets... </div>
       ) : notices.length === 0 && !isLoading ? (
         <div className={css.errorContainer}>
-          No results found for the selected filters.🐈 <br />
-          Please refine your search.
+          No results found for the selected filters. <br />
+          Please select more filter for search.🐈
         </div>
       ) : errorMessage ? (
         <div className={css.errorContainer}>{errorMessage}</div>
