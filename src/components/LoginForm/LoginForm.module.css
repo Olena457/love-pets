@@ -11,14 +11,15 @@
 }
 
 .inputWrapper {
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .input {
   width: 100%;
+
   padding: 12px 40px 12px 12px;
   border: 1px solid var(--input-default);
   transition: border-color 0.3s ease;
@@ -26,6 +27,7 @@
   font-size: 14px;
   outline: none;
 }
+
 @media screen and (min-width: 768px) {
   .input {
     font-size: 16px;
@@ -33,7 +35,7 @@
   }
 }
 form input:first-child {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 input.default {
@@ -53,10 +55,12 @@ input.invalid {
   margin-left: 16px;
   color: var(--red-color);
 }
-.togglePassword {
+.togglePasswordLogin {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
   transform: translateY(-50%);
   cursor: pointer;
   border: none;
@@ -66,11 +70,11 @@ input.invalid {
   justify-content: center;
   align-items: center;
 }
-input.invalid + .togglePassword {
+.input.invalid + .togglePassword {
   margin-bottom: 17px;
 }
 @media screen and (min-width: 768px) {
-  .togglePassword {
+  .togglePasswordLogin {
     right: 16px;
     font-size: 22px;
   }

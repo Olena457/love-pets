@@ -93,7 +93,6 @@ input.invalid {
   right: 50px;
   font-size: 18px;
   fill: #ef2447;
-  stroke: #ef2447;
 }
 @media screen and(min-width:768px) {
   .validIcon,

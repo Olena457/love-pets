@@ -92,7 +92,7 @@ const LoginForm = () => {
         {getValidationIcon('password')}
         <button
           type="button"
-          className={css.togglePassword}
+          className={css.togglePasswordLogin}
           onClick={() => setShowPassword(prev => !prev)}
         >
           {showPassword ? (
