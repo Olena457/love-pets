@@ -46,7 +46,7 @@
 @media screen and (min-width: 1280px) {
   .header {
     max-width: 1280px;
-    padding: 20px 64px;
+    padding: 10px 64px 10px 64px;
   }
   .homeHeader {
     padding: 20px 64px 44px 32px;
