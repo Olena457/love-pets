@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, Link } from 'react-redux';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
 import { useLocation } from 'react-router-dom';
 import whiteCross from '../../assets/icons/whiteCross.svg';
