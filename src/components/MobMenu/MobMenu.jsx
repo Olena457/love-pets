@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch, Link } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectIsAuthenticated } from '../../redux/users/usersSelectors.js';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import whiteCross from '../../assets/icons/whiteCross.svg';
 import blackCross from '../../assets/icons/blackCross.svg';
 import { closeMobMenu } from '../../redux/mobile/mobMenuSlice.js';
