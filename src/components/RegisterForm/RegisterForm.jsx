@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import eyeIcon from '../../assets/icons/eyeIcon.svg';
 import showEye from '../../assets/icons/showEye.svg';
 import { registerUser } from '../../redux/users/usersOperations.js';
@@ -82,37 +81,11 @@ const RegisterForm = () => {
     const { name, email, password } = data;
 
     try {
-      const response = await fetch('/api/check-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const result = await response.json();
-
-      if (result.exists) {
-        toast.error(
-          'This email address is already registered.Choose onother email.',
-          {
-            position: 'top-right',
-            autoClose: 3000,
-            hideProgressBar: true,
-          }
-        );
-        return;
-      }
-
       dispatch(registerUser({ name, email, password }));
       navigate('/profile');
     } catch (error) {
       alert(error.message);
     }
-    // try {
-    //   dispatch(registerUser({ name, email, password }));
-    //   navigate('/profile');
-    // } catch (error) {
-    //   alert(error.message);
-    // }
   };
 
   return (
