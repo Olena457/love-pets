@@ -92,27 +92,14 @@ const RegisterForm = () => {
 
       navigate('/profile');
     } catch (error) {
-      if (error.response?.status === 409) {
-        toast.error(
-          'This email is already in use. Please enter a different one.',
-          {
-            position: 'top-right',
-            autoClose: 3000,
-          }
-        );
-
-        reset();
-        return;
-      }
-
       toast.error(
-        error.response?.data?.message || 'An error occurred. Try again.',
+        error.response?.data?.message ||
+          'This email is already in use. Try another one.',
         {
           position: 'top-right',
           autoClose: 3000,
         }
       );
-
       reset();
     }
   };
