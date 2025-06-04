@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import eyeIcon from '../../assets/icons/eyeIcon.svg';
 import showEye from '../../assets/icons/showEye.svg';
@@ -76,17 +77,40 @@ const RegisterForm = () => {
     }
     return null;
   };
-
   const onSubmit = async data => {
     const { name, email, password } = data;
 
     try {
-      dispatch(registerUser({ name, email, password }));
+      await dispatch(registerUser({ name, email, password }));
       navigate('/profile');
     } catch (error) {
-      alert(error.message);
+      if (error.response?.status === 409) {
+        toast.error('This email address is already in use,try another one.', {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+      } else {
+        toast.error(
+          error.response?.data?.message || 'An error ocurred.Try again.',
+          {
+            position: 'top-right',
+            autoClose: 3000,
+          }
+        );
+      }
     }
   };
+
+  // const onSubmit = async data => {
+  //   const { name, email, password } = data;
+
+  //   try {
+  //     dispatch(registerUser({ name, email, password }));
+  //     navigate('/profile');
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>

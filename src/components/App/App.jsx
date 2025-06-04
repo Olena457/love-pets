@@ -73,13 +73,16 @@ const App = () => {
             <Route
               path="/register"
               element={
-                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+                <RestrictedRoute
+                  redirectTo="/home"
+                  component={<RegisterPage />}
+                />
               }
             />
             <Route
               path="/login"
               element={
-                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+                <RestrictedRoute redirectTo="/home" component={<LoginPage />} />
               }
             />
 
