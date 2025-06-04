@@ -85,12 +85,12 @@ const RegisterForm = () => {
     try {
       await dispatch(registerUser({ name, email, password })).unwrap();
 
-      navigate('/profile');
-
-      toast.success('Registration successful! Welcome to your profile.', {
+      toast.success('Registration successful!', {
         position: 'top-right',
         autoClose: 3000,
       });
+
+      navigate('/profile');
     } catch (error) {
       if (error.response?.status === 409) {
         toast.error(
@@ -112,6 +112,8 @@ const RegisterForm = () => {
           autoClose: 3000,
         }
       );
+
+      reset();
     }
   };
 
