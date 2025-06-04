@@ -36,6 +36,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors, touchedFields },
     trigger,
   } = useForm({
@@ -77,27 +78,40 @@ const RegisterForm = () => {
     }
     return null;
   };
+
   const onSubmit = async data => {
     const { name, email, password } = data;
 
     try {
-      await dispatch(registerUser({ name, email, password }));
+      await dispatch(registerUser({ name, email, password })).unwrap();
+
       navigate('/profile');
+
+      toast.success('Registration successful! Welcome to your profile.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
     } catch (error) {
       if (error.response?.status === 409) {
-        toast.error('This email address is already in use,try another one.', {
-          position: 'top-right',
-          autoClose: 3000,
-        });
-      } else {
         toast.error(
-          error.response?.data?.message || 'An error ocurred.Try again.',
+          'This email is already in use. Please enter a different one.',
           {
             position: 'top-right',
             autoClose: 3000,
           }
         );
+
+        reset();
+        return;
       }
+
+      toast.error(
+        error.response?.data?.message || 'An error occurred. Try again.',
+        {
+          position: 'top-right',
+          autoClose: 3000,
+        }
+      );
     }
   };
 
