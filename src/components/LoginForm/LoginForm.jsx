@@ -55,18 +55,37 @@ const LoginForm = () => {
     }
     return null;
   };
-
   const onSubmit = async data => {
     const { email, password } = data;
+
     try {
-      await dispatch(authenticatedUser({ email, password }));
-      toast.success('Login successful');
-      reset();
-      navigate('/profile');
+      const response = await dispatch(
+        authenticatedUser({ email, password })
+      ).unwrap();
+
+      if (response.token) {
+        toast.success('Login successful!', {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+
+        reset();
+        navigate('/profile');
+      }
     } catch (error) {
-      toast.error(error.message);
+      const errorMessage =
+        error.response?.data?.message ||
+        'Incorrect email or password. Please try again.';
+
+      toast.error(errorMessage, {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+
+      reset();
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.inputWrapper}>

@@ -104,17 +104,6 @@ const RegisterForm = () => {
     }
   };
 
-  // const onSubmit = async data => {
-  //   const { name, email, password } = data;
-
-  //   try {
-  //     dispatch(registerUser({ name, email, password }));
-  //     navigate('/profile');
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.inputWrapper}>
