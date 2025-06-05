@@ -12,7 +12,7 @@ PetFinder is a convenient service for all animal lovers. Here you can:
 
 ## 📷 Gallery
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 15px;">
   <img src="./src/assets/screen/dog.jpg" width="30%" height="130px" alt="dog"/>
   <img src="./src/assets/screen/girl.jpg" width="30%" height="130px" alt="girl"/>
   <img src="./src/assets/screen/reg.jpg" width="30%" height="130px" alt="register"/>
